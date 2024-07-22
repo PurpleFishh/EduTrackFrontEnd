@@ -1,0 +1,66 @@
+@import "src/config/variables";
+
+footer{
+    margin-top: auto;
+}
+
+:host {
+  footer {
+    padding: 50px 8% 70px 8%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: $color-accent3;
+   
+  }
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sitemap {
+    color: $color-bg;
+    font-size: 48px;
+    font-weight: 700;
+  }
+
+  .navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    button {
+      color: $color-bg !important;
+      justify-content: flex-start;
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+  }
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+
+  .description {
+    color: $color-bg;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 400;
+    width: 306px;
+    height: 70px;
+  }
+
+  .social-media {
+    display: flex;
+    gap: 5px;
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}

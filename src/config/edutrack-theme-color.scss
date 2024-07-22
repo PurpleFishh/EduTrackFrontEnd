@@ -1,0 +1,247 @@
+/* For use in src/lib/core/theming/_palette.scss */
+$edutrack-primary: (
+    50 : #e0f3fa,
+    100 : #b3e2f3,
+    200 : #80ceeb,
+    300 : #4dbae2,
+    400 : #26acdc,
+    500 : #009DD6,
+    600 : #05a3e2,
+    700 : #019ae1,
+    800 : #009DD6,
+    900 : #006fbc,
+    A100 : #e5f3ff,
+    A200 : #b2dbff,
+    A400 : #7fc3ff,
+    A700 : #65b8ff,
+    contrast: (
+        50 : #050b0c,
+        100 : #050b0c,
+        200 : #050b0c,
+        300 : #050b0c,
+        400 : #050b0c,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #050b0c,
+        A200 : #050b0c,
+        A400 : #050b0c,
+        A700 : #050b0c,
+    )
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$edutrack-secondary: (
+    50 : #e3fbf2,
+    100 : #b9f4df,
+    200 : #8aedca,
+    300 : #5be6b5,
+    400 : #38e0a5,
+    500 : #15db95,
+    600 : #12d78d,
+    700 : #0fd282,
+    800 : #0ccd78,
+    900 : #06c467,
+    A100 : #edfff5,
+    A200 : #baffda,
+    A400 : #87ffbe,
+    A700 : #6effb0,
+    contrast: (
+        50 : #050b0c,
+        100 : #050b0c,
+        200 : #050b0c,
+        300 : #050b0c,
+        400 : #050b0c,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #050b0c,
+        A200 : #050b0c,
+        A400 : #050b0c,
+        A700 : #050b0c,
+    )
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$edutrack-accent: (
+    50 : #e0e7ea,
+    100 : #b3c3c9,
+    200 : #809ca6,
+    300 : #4d7482,
+    400 : #265667,
+    500 : #00384c,
+    600 : #003245,
+    700 : #002b3c,
+    800 : #002333,
+    900 : #001724,
+    A100 : #5fb6ff,
+    A200 : #2c9fff,
+    A400 : #0087f8,
+    A700 : #0079df,
+    contrast: (
+        50 : #050b0c,
+        100 : #050b0c,
+        200 : #050b0c,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #050b0c,
+        A200 : #050b0c,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$edutrack-bg: (
+    50 : #feffff,
+    100 : #fefefe,
+    200 : #fdfefe,
+    300 : #fcfdfd,
+    400 : #fbfcfc,
+    500 : #fafcfc,
+    600 : #f9fcfc,
+    700 : #f9fbfb,
+    800 : #f8fbfb,
+    900 : #f6fafa,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+    contrast: (
+        50 : #050b0c,
+        100 : #050b0c,
+        200 : #050b0c,
+        300 : #050b0c,
+        400 : #050b0c,
+        500 : #050b0c,
+        600 : #050b0c,
+        700 : #050b0c,
+        800 : #050b0c,
+        900 : #050b0c,
+        A100 : #050b0c,
+        A200 : #050b0c,
+        A400 : #050b0c,
+        A700 : #050b0c,
+    )
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$edutrack-bg-secondary: (
+    50 : #fdfefe,
+    100 : #fbfdfd,
+    200 : #f9fbfb,
+    300 : #f6f9f9,
+    400 : #f4f8f8,
+    500 : #f2f7f7,
+    600 : #f0f6f6,
+    700 : #eef5f5,
+    800 : #ecf3f3,
+    900 : #e8f1f1,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+/* For use in src/lib/core/theming/_palette.scss */
+$edutrack-text: (
+    50 : #e1e2e2,
+    100 : #b4b6b6,
+    200 : #828586,
+    300 : #505455,
+    400 : #2b3030,
+    500 : #050b0c,
+    600 : #040a0a,
+    700 : #040808,
+    800 : #030606,
+    900 : #010303,
+    A100 : #a6a6a6,
+    A200 : #8c8c8c,
+    A400 : #737373,
+    A700 : #666666,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$edutrack-text-secondary: (
+    50 : #eaeaea,
+    100 : #cacbcb,
+    200 : #a6a8a8,
+    300 : #828585,
+    400 : #686a6b,
+    500 : #4d5051,
+    600 : #46494a,
+    700 : #3d4040,
+    800 : #343737,
+    900 : #252727,
+    A100 : #80f4f4,
+    A200 : #51f0f0,
+    A400 : #0fffff,
+    A700 : #00f5f5,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+
+
+
+
+
+
+

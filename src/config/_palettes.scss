@@ -1,0 +1,25 @@
+@use "@angular/material" as mat;
+@use "sass:map";
+
+@import "/src/config/edutrack-theme-color.scss";
+
+$edutrack-theme-primary: mat.define-palette($edutrack-primary, 700, 500, 900);
+$edutrack-theme-secondary: mat.define-palette(
+  $edutrack-secondary,
+  700,
+  500,
+  900
+);
+$edutrack-theme-accent: mat.define-palette($edutrack-accent, A200, A100, A400);
+
+$edutrack-theme-text: mat.define-palette($edutrack-text);
+$edutrack-theme-text-secondary: mat.define-palette($edutrack-text-secondary);
+
+$edutrack-theme-bg: mat.define-palette($edutrack-bg);
+$edutrack-theme-bg-secondary: mat.define-palette($edutrack-bg-secondary);
+
+// The warn palette is optional (defaults to red).
+$edutrack-warn: mat.define-palette(mat.$yellow-palette);
+$edutrack-error: mat.define-palette(mat.$red-palette);
+$edutrack-info: mat.define-palette(mat.$blue-palette);
+$edutrack-success: mat.define-palette(mat.$green-palette);

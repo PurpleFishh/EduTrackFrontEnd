@@ -1,0 +1,16 @@
+@use "sass:map";
+
+@import "/src/config/palettes";
+
+$color-primary: map.get($edutrack-theme-primary, default);
+$color-secondary: map.get($edutrack-theme-secondary, default);
+$color-accent1: map.get($edutrack-theme-accent, 500);
+$color-accent2: #063B29;
+$color-accent3: map.get($edutrack-theme-accent, 800);
+
+$color-text: map.get($edutrack-theme-text, default);
+$color-text-secondary: map.get($edutrack-theme-text-secondary, default);
+
+$color-bg: map.get($edutrack-theme-bg, default);
+$color-bg-secondary: map.get($edutrack-theme-bg-secondary, default);
+$color-item-selected: map.get($edutrack-theme-bg-secondary, 100);
