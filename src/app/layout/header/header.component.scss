@@ -1,77 +1,68 @@
 .spacer {
-    flex: 1 1 auto;
-  }
-  
-  .example-container {
-    height: 100%;
-    width: 100%;
-  }
+  flex: 1 1 auto;
+}
 
-  .logo{
-    height: 30px;
-  }
+.example-container {
+  height: 100%;
+  width: 100%;
+}
 
-  .nav{
-    padding: 0px 50px 0px 50px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    
-  }
+.logo {
+  height: 30px;
+}
 
-  .logo-search{
-    display: flex;
-    gap: 30px;
-    align-items: center;
-    width: fit-content;
-    
-  }
+.nav {
+  padding: 0px 50px 0px 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
 
-  :host .navigation{
-    padding: 0px 80px 0px 70px;
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-    align-items: center;
-  }
+.logo-search {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  width: fit-content;
+}
 
-    :host ::ng-deep button{
-        font-size: 20px;
-        font-weight: 400;
-    }
-    // Set input width
-    :host ::ng-deep .search{
-        width: 400px;
-        max-width: 400px;
-        min-width: 100px;
-    }
+:host .navigation {
+  padding: 0px 80px 0px 70px;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: center;
+}
 
-    .mat-icon{
-        height:24px !important;
-        width:24px !important;
-        font-size:24px !important;
-    }
+:host ::ng-deep button {
+  font-size: 20px;
+  font-weight: 400;
+}
+// Set input width
+:host ::ng-deep .search {
+  width: 400px;
+  max-width: 400px;
+  min-width: 100px;
+}
 
-    // Center text from search bar
-    :host ::ng-deep .mat-mdc-form-field-infix{
-        padding: 0px !important;
-        display: flex !important;
-        align-items: center !important;
-    }
+.mat-icon {
+  height: 24px !important;
+  width: 24px !important;
+  font-size: 24px !important;
+}
 
-    ::ng-deep .mat-mdc-form-field-flex{
-      height: 45px;
-    }
+// Center text from search bar
 
-    // Set border radius for input
-    :host ::ng-deep .mdc-text-field--outlined {
-        --mdc-outlined-text-field-container-shape: 20px;
-    }
-    
-    // Dezactivate text under input area
-    :host ::ng-deep .mat-mdc-form-field-subscript-wrapper {
-    height: 0px;
-    }
+:host ::ng-deep .mat-mdc-form-field-flex {
+  height: 45px;
+}
 
-    
+// Set border radius for input
+:host ::ng-deep .mdc-text-field--outlined {
+  --mdc-outlined-text-field-container-shape: 20px;
+}
+
+// Dezactivate text under input area
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  height: 0px;
+}

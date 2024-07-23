@@ -88,6 +88,24 @@ $edutrack-theme-secondary: map.deep-merge(
   }
 }
 
+.secondary-text{
+  color: $color-text-secondary
+}
+
+.mat-mdc-form-field-infix{
+  padding: 0px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.continer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
 /* You can add global styles to this file, and also import other style files */
 
 html,
