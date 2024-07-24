@@ -24,10 +24,10 @@
         </form>
 
         <div class="navigation">
-            <button mat-button color="primary" href="/">Home</button>
-            <button mat-button href="/courses">Courses</button>
-            <button mat-button href="/about">About</button>
-            <button mat-button href="/contact">Contact Us</button>
+            <button mat-button color="primary" (click)="navigate('')">Home</button>
+            <button mat-button (click)="navigate('courses')">Courses</button>
+            <button mat-button (click)="navigate('about')">About</button>
+            <button mat-button (click)="navigate('contact')">Contact Us</button>
         </div>
     </div>
 

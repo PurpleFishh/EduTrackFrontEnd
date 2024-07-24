@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-header>
+    <img class="image-1" [src]="course.image" />
+  </mat-card-header>
+  <mat-card-content>
+    <div class="content">
+      <div>
+        <div class="datas secondary-text">
+          <span> {{ course.difficulty }} </span>
+          <span> 2h 12m </span>
+        </div>
+        <p class="title">
+          {{ course.title }}
+        </p>
+      </div>
+      <span class="prereq"> {{ course.prerequisites }} </span>
+    </div>
+    
+    <button mat-icon-button class="frame-18">
+      <mat-icon> favorite </mat-icon>
+    </button>
+  </mat-card-content>
+</mat-card>
