@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CourseDisplayDto } from 'src/app/core/models/course.model';
+import { CoursesService } from 'src/app/core/services/courses.service';
 
 @Component({
   selector: 'app-courses',
@@ -6,7 +8,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent {
-  courses = [
+  courses: CourseDisplayDto[] = []
+
+  constructor(private readonly coursesService: CoursesService) {}
+
+  ngOnInit(){
+    this.coursesService.getCourses().subscribe(courses => {
+      console.log(courses);
+      this.courses = courses
+    });
+  }
+
+  courses2 = [
     {
       title: 'Angular',
       prerequisites: 'HTML, CSS, JavaScript',
