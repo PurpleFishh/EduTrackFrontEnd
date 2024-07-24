@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
 @Component({
   selector: 'app-navbar-action',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar-action.component.scss']
 })
 export class NavbarActionComponent {
-  isLogged = false;
+  constructor(private readonly authService: AuthenticationService) {}
+
+  isLogged = this.authService.isLogged();
 }

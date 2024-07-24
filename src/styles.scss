@@ -83,7 +83,7 @@ $edutrack-theme-secondary: map.deep-merge(
 // Use this class if you want to apply the secondary theme to a component
 .secondary-theme {
   @include mat.all-component-themes($edutrack-theme-secondary);
-  button {
+  button, a {
     color: white !important;
   }
 }
@@ -146,4 +146,8 @@ body {
   margin: 0;
   font-family: "Roboto", sans-serif !important;
   background-color: $color-bg-secondary !important;
+}
+
+a{
+  text-decoration: none;
 }
