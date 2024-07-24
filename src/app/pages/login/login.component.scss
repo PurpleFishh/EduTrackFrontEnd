@@ -14,10 +14,14 @@
     font-weight: 400;
   }
   mat-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
     form {
       display: flex;
       flex-direction: column;
-      
+
       mat-form-field{
         width: 380px;
 

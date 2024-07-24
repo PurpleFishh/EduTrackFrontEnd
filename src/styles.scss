@@ -30,7 +30,7 @@ $edutrack-theme: mat.define-light-theme(
       error: $edutrack-error,
       info: $edutrack-info,
       success: $edutrack-success,
-      warn: $edutrack-warn,
+      warn: $edutrack-error,
     ),
   )
 );
@@ -104,6 +104,12 @@ $edutrack-theme-secondary: map.deep-merge(
   align-items: center;
   justify-content: center;
   height: 100vh;
+}
+
+.alert{
+  color: $color-error;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 /* You can add global styles to this file, and also import other style files */

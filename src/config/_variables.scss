@@ -14,3 +14,8 @@ $color-text-secondary: map.get($edutrack-theme-text-secondary, default);
 $color-bg: map.get($edutrack-theme-bg, default);
 $color-bg-secondary: map.get($edutrack-theme-bg-secondary, default);
 $color-item-selected: map.get($edutrack-theme-bg-secondary, 100);
+
+$color-warn: map.get($edutrack-warn, default);
+$color-error: map.get($edutrack-error, default);
+$color-info: map.get($edutrack-info, default);
+$color-success: map.get($edutrack-success, default);

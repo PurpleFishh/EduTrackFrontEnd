@@ -1,33 +1,67 @@
 <div class="continer">
-    <img class="logo" src="/assets/img/logo.png" alt="logo">
+  <img class="logo" src="/assets/img/logo.png" alt="logo" />
 
-    <mat-card>
-        <mat-card-header>
-            <mat-card-title>Hello!</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            <form [formGroup]="form" (ngSubmit)="onSubmit()">
-                <mat-form-field appearance="outline">
-                <mat-label>Email</mat-label>
-                <input matInput formControlName="email" type="email">
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
-                    <button mat-icon-button matSuffix (click)="hide = !hide" type="button">
-                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
-                    <mat-hint><a href="/password-recovery" mat-line class="secondary-text">Forgot password?</a></mat-hint>
-                </mat-form-field>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Hello!</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <div
+          *ngIf="form.controls['email'].invalid && firstSubmited"
+          class="alert"
+        >
+          <span *ngIf="form.controls['email'].errors?.['required']">
+            Please enter your email
+          </span>
+        </div>
+        <div
+          *ngIf="form.controls['password'].invalid && firstSubmited"
+          class="alert"
+        >
+          <span *ngIf="form.controls['password'].errors?.['required']">
+            Please enter your password
+          </span>
+        </div>
+      </div>
 
-                <div class="action">
-                    <button mat-flat-button color="primary">Login</button>
-                    <p mat-line class="secondary-text">New to EduTrack? Create an account <a href="/register">here!</a></p>
-                </div>
-            </form>
-        </mat-card-content>   
-    </mat-card>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            formControlName="password"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            type="button"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          <mat-hint
+            ><a href="/password-recovery" mat-line class="secondary-text"
+              >Forgot password?</a
+            ></mat-hint
+          >
+        </mat-form-field>
 
-    <!-- For the content to be centered and logo be above -->
-    <img style="opacity: 0;" class="logo" src="/assets/img/logo.png" alt="logo">
+        <div class="action">
+          <button mat-flat-button color="primary">Login</button>
+          <p mat-line class="secondary-text">
+            New to EduTrack? Create an account <a href="/register">here!</a>
+          </p>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- For the content to be centered and logo be above -->
+  <img style="opacity: 0" class="logo" src="/assets/img/logo.png" alt="logo" />
 </div>
