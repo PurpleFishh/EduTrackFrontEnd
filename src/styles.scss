@@ -107,8 +107,32 @@ $edutrack-theme-secondary: map.deep-merge(
 }
 
 .alert{
-  color: $color-error;
-  font-size: 16px;
+  color: $color-error !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+}
+
+.error{
+  color: $color-error !important;
+  font-size: 18px !important;
+  font-weight: 500 !important;
+}
+
+.info{
+  color: $color-info;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.warn{
+  color: $color-warn;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.success{
+  color: $color-success;
+  font-size: 18px;
   font-weight: 500;
 }
 

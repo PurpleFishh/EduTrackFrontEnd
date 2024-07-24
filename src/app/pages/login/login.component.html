@@ -4,21 +4,16 @@
   <mat-card>
     <mat-card-header>
       <mat-card-title>Hello!</mat-card-title>
+      <mat-card-subtitle class="{{logginInfo.status}}">{{logginInfo.message}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <div>
-        <div
-          *ngIf="form.controls['email'].invalid && firstSubmited"
-          class="alert"
-        >
+      <div class="alert">
+        <div *ngIf="form.controls['email'].invalid && firstSubmited">
           <span *ngIf="form.controls['email'].errors?.['required']">
             Please enter your email
           </span>
         </div>
-        <div
-          *ngIf="form.controls['password'].invalid && firstSubmited"
-          class="alert"
-        >
+        <div *ngIf="form.controls['password'].invalid && firstSubmited">
           <span *ngIf="form.controls['password'].errors?.['required']">
             Please enter your password
           </span>
