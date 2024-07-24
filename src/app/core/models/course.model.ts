@@ -1,5 +1,5 @@
 export interface CourseDisplayDto {
-    title: string;
+    name: string;
     prerequisites: string;
     difficulty: string;
     shortDescription: string;
