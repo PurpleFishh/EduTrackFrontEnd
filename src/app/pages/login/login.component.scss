@@ -1,0 +1,82 @@
+@import "src/config/variables";
+
+:host {
+  mat-card {
+    width: fit-content;
+    border-radius: 20px;
+    padding: 25px 40px 15px 40px;
+    gap: 50px;
+    align-items: center;
+  }
+  mat-card-header {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 400;
+  }
+  mat-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      mat-form-field{
+        width: 380px;
+
+        // Set rounded corners for input
+        ::ng-deep .mdc-text-field--outlined {
+            --mdc-outlined-text-field-container-shape: 10px;
+        }
+        // Set input height
+        ::ng-deep .mat-mdc-form-field-flex{
+            height: 50px;
+        }
+      }
+    }
+  }
+
+  p, a {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 0;
+  }
+
+  .action{
+    padding-top: 30px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    gap: 10px;
+
+    button {
+      border-radius: 20px;
+      margin: 0px 20px 0px 20px;
+      padding: 0px 16px 0px 16px;
+      height: 45px;
+      align-self: stretch;
+      font-size: 18px;
+      font-weight: 500;
+    }
+    a {
+        color: $color-primary;
+      }
+  }
+
+  mat-hint{
+    padding-top: 3px;
+  }
+
+  .continer{
+    gap: 50px;
+  }
+
+  .logo{
+    width: 400px;
+  }
+}
