@@ -1,3 +1,68 @@
-<p>courses works!</p>
+<div class="continer">
+  <div class="side">
+    <div class="category">
+      <button mat-menu-item class="title">Category</button>
+      <button mat-menu-item>
+        <span>Categorie</span>
+      </button>
+      <button mat-menu-item>
+        <span>Categorie</span>
+      </button>
+      <button mat-menu-item>
+        <span>Categorie</span>
+      </button>
+      <button mat-menu-item class="selected">
+        <span>Categorie</span>
+      </button>
+      <button mat-menu-item>
+        <span>Categorie</span>
+      </button>
+    </div>
+    <div class="prereq">
+      <span class="title"> Prerequisites </span>
+      <mat-checkbox formControlName="pepperoni">Pepperoni</mat-checkbox>
+      <mat-checkbox formControlName="extracheese">Extra Cheese</mat-checkbox>
+      <mat-checkbox formControlName="mushroom">Mushroom</mat-checkbox>
+    </div>
+  </div>
+  <div class="content">
+    <div class="header-banner">
+      <div class="banner-title">Discover our Courses</div>
+      <div class="banner-content">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+        lacinia viverra lectus sit amet dapibus. Vestibulum in ullamcorper
+        magna. Sed nec lectus neque. Duis faucibus risus nisl, eget consectetur
+      </div>
+    </div>
 
-<app-course *ngFor="let course of courses" [course]="course"></app-course>
+    <div class="sort-bar">
+      <div class="option">
+        <span>Sort by: </span>
+        <mat-form-field appearance="outline">
+          <mat-select>
+            <mat-option value="one">First option</mat-option>
+            <mat-option value="two">Second option</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="option">
+        <span>Difficutly: </span>
+        <mat-form-field appearance="outline">
+          <mat-select>
+            <mat-option value="one">First option</mat-option>
+            <mat-option value="two">Second option</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="display-page">
+      <div class="courses-display">
+        <app-course
+          *ngFor="let course of courses"
+          [course]="course"
+        ></app-course>
+      </div>
+    </div>
+  </div>
+</div>
