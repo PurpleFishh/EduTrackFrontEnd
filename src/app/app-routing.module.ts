@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 import { LoginComponent } from './pages/login/login.component';
+import { LandingpageComponent } from './pages/landingpage/landingpage.component';
+import { loggedGuard } from './core/guards/logged.guard';
+import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component';
 
 const routes: Routes = [
    {
@@ -11,6 +14,15 @@ const routes: Routes = [
         {
           path: 'login',
           component: LoginComponent,
+        },
+        {
+          path: 'unauthorized',
+          component: UnauthorizedComponent,
+        },
+        {
+          path: '',
+          component: LandingpageComponent,
+          canActivate: [loggedGuard]
         }
       ]
    }

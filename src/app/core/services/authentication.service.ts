@@ -19,4 +19,12 @@ export class AuthenticationService {
         localStorage.setItem('token', token.jwtToken as string);
       });
   }
+
+  public logout(): void {
+    localStorage.removeItem('token');
+  }
+
+  public isLogged(): boolean {
+    return localStorage.getItem('token') !== null;
+  }
 }
