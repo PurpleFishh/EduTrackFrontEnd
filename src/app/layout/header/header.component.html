@@ -24,10 +24,10 @@
         </form>
 
         <div class="navigation">
-            <button mat-button color="primary" (click)="navigate('')">Home</button>
-            <button mat-button (click)="navigate('courses')">Courses</button>
-            <button mat-button (click)="navigate('about')">About</button>
-            <button mat-button (click)="navigate('contact')">Contact Us</button>
+          <button mat-button [color]="( isCurrentPage('/')) ? 'primary' : ''" (click)="navigate('')">Home</button>
+          <button mat-button [color]="isCurrentPage('/courses') ? 'primary' : ''" (click)="navigate('courses')">Courses</button>
+          <button mat-button [color]="isCurrentPage('/about') ? 'primary' : ''" (click)="navigate('about')">About</button>
+          <button mat-button [color]="isCurrentPage('/contact') ? 'primary' : ''" (click)="navigate('contact')">Contact Us</button>
         </div>
     </div>
 
