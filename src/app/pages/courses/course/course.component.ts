@@ -13,6 +13,6 @@ export class CourseComponent {
   constructor(private readonly fileReader: FileReaderService) {}
 
   ngOnInit() {
-    this.course.image = this.fileReader.readImage(this.course.image);
+    this.course.imageContents = this.fileReader.readImage(this.course.imageContents);
   }
 }

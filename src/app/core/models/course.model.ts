@@ -3,5 +3,5 @@ export interface CourseDisplayDto {
     prerequisites: string;
     difficulty: string;
     shortDescription: string;
-    image: string;
+    imageContents: string;
 }
