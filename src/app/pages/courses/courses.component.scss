@@ -1,0 +1,179 @@
+@import "src/config/variables";
+
+:host {
+  .continer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+
+    padding: 35px 60px 150px 60px;
+    height: 100%;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    width: 100%;
+  }
+
+  .side {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 350px;
+  }
+  .title {
+    font-size: 24px !important;
+    font-weight: 500 !important;
+  }
+  .category {
+    width: 100%;
+    border-radius: 20px;
+    background-color: $color-bg;
+    padding: 8px 0;
+
+    button {
+      border-radius: 10px !important;
+    }
+    span {
+      font-size: 18px;
+      font-weight: 400;
+      align-self: stretch;
+    }
+
+    .selected {
+      background-color: $color-accent3;
+      color: $color-bg;
+    }
+  }
+
+  .prereq {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    border-radius: 20px;
+    background-color: $color-bg;
+    padding: 10px 20px;
+
+    mat-checkbox {
+      width: fit-content;
+    }
+  }
+
+  .courses-display {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 15px;
+    column-gap: 10px;
+  }
+
+  .header-banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background: $color-accent3;
+    border-radius: 30px;
+    height: 180px;
+    padding: 70px 20px 50px 55px;
+
+    .banner-title {
+      color: $color-bg;
+      font-size: 42px;
+      font-weight: 700;
+      padding-bottom: 20px;
+    }
+    .banner-content {
+      color: $color-bg;
+      font-size: 24px;
+      font-weight: 400;
+    }
+  }
+
+  .sort-bar {
+    background: $color-bg;
+    border-radius: 20px;
+    padding: 10px 20px 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .option {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+    justify-content: flex-start;
+    //width: 100%;
+
+    // mat-form-field{
+    //     width: 100%;
+    //     max-width: 400px;
+    // }
+    span {
+      font-size: 18px;
+      font-weight: 400;
+      width: fit-content;
+      white-space:nowrap;
+    }
+
+    ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+      display: none !important;
+    }
+
+//     <button _ngcontent-ng-c2329463320="" mat-menu-item="" class="mat-mdc-menu-item mat-mdc-focus-indicator title" role="menuitem" tabindex="0" aria-disabled="false"><span class="mat-mdc-menu-item-text">Category</span><div matripple="" class="mat-ripple mat-mdc-menu-ripple" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><!--bindings={
+//   "ng-reflect-ng-if": "false"
+// }--></button>
+
+// <button _ngcontent-ng-c2329463320="" mat-menu-item="" class="mat-mdc-menu-item mat-mdc-focus-indicator" role="menuitem" tabindex="0" aria-disabled="false"><span class="mat-mdc-menu-item-text"><span _ngcontent-ng-c2329463320="">Categorie</span></span><div matripple="" class="mat-ripple mat-mdc-menu-ripple" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><!--bindings={
+//  "ng-reflect-ng-if": "false"
+//}--></button>
+
+    ::ng-deep .mdc-text-field--outlined {
+      --mdc-outlined-text-field-container-shape: 10px;
+    }
+
+    ::ng-deep .mat-mdc-form-field-flex {
+        display: flex;
+        height: 45px;
+        align-items: center;
+       // width: 100%;
+    }
+  }
+
+  .mat-select-slot {
+    border-radius: 10px;
+    border-style: solid;
+    border-color: var(--palette-text-secundary, #4d5051);
+    border-width: 1px;
+    padding: 8px 12px 8px 12px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1;
+    height: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mat-input-slot {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  mat-paginator{
+    border-radius: 10px;
+  }
+}

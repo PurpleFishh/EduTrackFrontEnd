@@ -5,6 +5,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { NavbarActionComponent } from './header/navbar-action/navbar-action.component';
+import { Router } from '@angular/router';
 
 
 @NgModule({
@@ -22,4 +23,5 @@ import { NavbarActionComponent } from './header/navbar-action/navbar-action.comp
     MainLayoutComponent
   ]
 })
-export class LayoutModule { }
+export class LayoutModule { 
+}
