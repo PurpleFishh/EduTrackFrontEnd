@@ -15,6 +15,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [],
@@ -35,7 +36,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatMenuModule,
     MatCardModule,
     MatCheckboxModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPaginatorModule
   ],
 })
 export class SharedModule {}
