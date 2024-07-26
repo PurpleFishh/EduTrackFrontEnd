@@ -20,6 +20,7 @@ const routes: Routes = [
           path: 'courses',
           component: CoursesComponent,
         },
+        
         {
           path: 'unauthorized',
           component: UnauthorizedComponent,
