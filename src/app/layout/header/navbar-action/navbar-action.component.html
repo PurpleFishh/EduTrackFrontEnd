@@ -1,7 +1,7 @@
 <div *ngIf="!isLogged" id="login-section">
-    <button mat-flat-button (click)="navigate('login')" color="primary" class="mat-body">Login</button>
+    <button mat-flat-button (click)="navigate('login')" color="primary">Login</button>
     <span class="secondary-theme">
-        <a mat-flat-button (click)="navigate('login')" color="primary">Register</a>
+        <button mat-flat-button (click)="navigate('login')" color="primary">Register</button>
     </span>
 </div>
 <div *ngIf="isLogged">
@@ -14,6 +14,6 @@
         <button mat-menu-item>Dashboard</button>
         <button mat-menu-item>Assignment</button>
         <button mat-menu-item>Attendance</button>
-        <button mat-menu-item>Logout</button>
+        <button mat-menu-item (click)="logout()">Logout</button>
     </mat-menu>
 </div>

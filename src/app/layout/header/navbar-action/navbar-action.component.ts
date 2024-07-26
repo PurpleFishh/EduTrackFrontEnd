@@ -14,4 +14,10 @@ export class NavbarActionComponent {
   navigate(path: string) {
     this.router.navigateByUrl(path);
   }
+
+  logout(){ 
+    this.authService.logout();
+    this.navigate('');
+    this.isLogged = this.authService.isLogged();
+  }
 }

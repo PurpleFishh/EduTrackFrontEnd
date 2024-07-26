@@ -3,5 +3,18 @@ export interface CourseDisplayDto {
     prerequisites: string;
     difficulty: string;
     shortDescription: string;
-    image: string;
+    imageContents: string;
 }
+export interface CoursesFilterDto {
+    categories: string[];
+    difficulties: string[];
+    prerequistes: string[];
+}
+export interface CoursesFilter {
+    search: string;
+    sortBy: string;
+    categories: string;
+    difficulties: string;
+    prerequistes: string[];
+}
+

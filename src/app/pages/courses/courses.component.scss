@@ -126,6 +126,14 @@
       display: none !important;
     }
 
+//     <button _ngcontent-ng-c2329463320="" mat-menu-item="" class="mat-mdc-menu-item mat-mdc-focus-indicator title" role="menuitem" tabindex="0" aria-disabled="false"><span class="mat-mdc-menu-item-text">Category</span><div matripple="" class="mat-ripple mat-mdc-menu-ripple" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><!--bindings={
+//   "ng-reflect-ng-if": "false"
+// }--></button>
+
+// <button _ngcontent-ng-c2329463320="" mat-menu-item="" class="mat-mdc-menu-item mat-mdc-focus-indicator" role="menuitem" tabindex="0" aria-disabled="false"><span class="mat-mdc-menu-item-text"><span _ngcontent-ng-c2329463320="">Categorie</span></span><div matripple="" class="mat-ripple mat-mdc-menu-ripple" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><!--bindings={
+//  "ng-reflect-ng-if": "false"
+//}--></button>
+
     ::ng-deep .mdc-text-field--outlined {
       --mdc-outlined-text-field-container-shape: 10px;
     }
@@ -162,77 +170,6 @@
     align-items: center;
     justify-content: flex-start;
     flex: 1;
-    position: relative;
     overflow: hidden;
-  }
-
-  .default-slot {
-    color: var(--palette-text, #050b0c);
-    text-align: left;
-    font-family: var(--v-text-body-1-font-family, "Roboto-Regular", sans-serif);
-    font-size: var(--v-text-body-1-font-size, 16px);
-    line-height: var(--v-text-body-1-line-height, 24px);
-    letter-spacing: var(--v-text-body-1-letter-spacing, 0.5px);
-    font-weight: var(--v-text-body-1-font-weight, 400);
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  .mat-icon {
-    flex-shrink: 0;
-    width: 24px;
-    height: 24px;
-    position: relative;
-  }
-
-  .v-icon {
-    color: var(--palette-text-secundary, #4d5051);
-    text-align: center;
-    font-family: var(
-      --v-icon-medium-font-family,
-      "MaterialIcons-Regular",
-      sans-serif
-    );
-    font-size: var(--v-icon-medium-font-size, 24px);
-    line-height: var(--v-icon-medium-line-height, 100%);
-    font-weight: var(--v-icon-medium-font-weight, 400);
-    position: absolute;
-    right: 0%;
-    left: 0%;
-    width: 100%;
-    bottom: 0%;
-    top: 0%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .difficulty {
-    padding: 0px 10px 0px 10px;
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-    align-items: center;
-    justify-content: flex-start;
-    flex: 1;
-    position: relative;
-  }
-
-  .difficutly {
-    color: var(--palette-text, #050b0c);
-    text-align: left;
-    font-family: var(
-      --wf-body-body-large-font-family,
-      "Inter-Regular",
-      sans-serif
-    );
-    font-size: var(--wf-body-body-large-font-size, 18px);
-    line-height: var(--wf-body-body-large-line-height, 150%);
-    letter-spacing: var(--wf-body-body-large-letter-spacing, -0.01em);
-    font-weight: var(--wf-body-body-large-font-weight, 400);
-    position: relative;
   }
 }

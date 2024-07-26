@@ -13,21 +13,20 @@
     </div> -->
     <div class="logo-search">
         <img class="logo" src="/assets/img/logo_only_text.png" alt="logo">
-        <form class="small-input-density">
+        <form class="small-input-density" #searchForm="ngForm" (ngSubmit)="onSearchSubmit(searchForm)">
             <mat-form-field class = "search" appearance="outline" color="primary">
-                <input matInput placeholder="Search" type="text">
-                <button mat-icon-button matSuffix color="primary">
+                <input matInput placeholder="Search" type="text" name="search" ngModel>
+                <button mat-icon-button matSuffix color="primary" type="submit">
                     <mat-icon>search</mat-icon>
-                </button>
-                
+                </button> 
             </mat-form-field>
         </form>
 
         <div class="navigation">
-            <button mat-button color="primary" (click)="navigate('')">Home</button>
-            <button mat-button (click)="navigate('courses')">Courses</button>
-            <button mat-button (click)="navigate('about')">About</button>
-            <button mat-button (click)="navigate('contact')">Contact Us</button>
+          <button mat-button [color]="( isCurrentPage('/')) ? 'primary' : ''" (click)="navigate('')">Home</button>
+          <button mat-button [color]="isCurrentPage('/courses') ? 'primary' : ''" (click)="navigate('courses')">Courses</button>
+          <button mat-button [color]="isCurrentPage('/about') ? 'primary' : ''" (click)="navigate('about')">About</button>
+          <button mat-button [color]="isCurrentPage('/contact') ? 'primary' : ''" (click)="navigate('contact')">Contact Us</button>
         </div>
     </div>
 
