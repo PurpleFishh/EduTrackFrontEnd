@@ -13,13 +13,12 @@
     </div> -->
     <div class="logo-search">
         <img class="logo" src="/assets/img/logo_only_text.png" alt="logo">
-        <form class="small-input-density">
+        <form class="small-input-density" #searchForm="ngForm" (ngSubmit)="onSearchSubmit(searchForm)">
             <mat-form-field class = "search" appearance="outline" color="primary">
-                <input matInput placeholder="Search" type="text">
-                <button mat-icon-button matSuffix color="primary">
+                <input matInput placeholder="Search" type="text" name="search" ngModel>
+                <button mat-icon-button matSuffix color="primary" type="submit">
                     <mat-icon>search</mat-icon>
-                </button>
-                
+                </button> 
             </mat-form-field>
         </form>
 

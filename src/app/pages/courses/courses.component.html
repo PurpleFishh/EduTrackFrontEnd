@@ -2,28 +2,31 @@
   <div class="side">
     <div class="category">
       <mat-menu> </mat-menu>
-      <button mat-menu-item class="title">Category</button>
-      <button mat-menu-item>
-        <span>Categorie</span>
+      <button mat-menu-item class="title" (click)="categorySelect('')">
+        Category
       </button>
-      <button mat-menu-item>
-        <span>Categorie</span>
+
+      <button
+        *ngFor="let category of filtersAvailable?.categories"
+        [ngClass]="category === categorySelected ? 'selected' : ''"
+        mat-menu-item
+        (click)="categorySelect(category)"
+      >
+        <span>{{ category }}</span>
       </button>
-      <button mat-menu-item>
+
+      <!-- <button mat-menu-item class="selected">
         <span>Categorie</span>
-      </button>
-      <button mat-menu-item class="selected">
-        <span>Categorie</span>
-      </button>
-      <button mat-menu-item>
-        <span>Categorie</span>
-      </button>
+      </button> -->
     </div>
     <div class="prereq">
       <span class="title"> Prerequisites </span>
-      <mat-checkbox>Pepperoni</mat-checkbox>
-      <mat-checkbox>Extra Cheese</mat-checkbox>
-      <mat-checkbox>Mushroom</mat-checkbox>
+      <mat-checkbox
+        *ngFor="let prereq of filtersAvailable?.prerequistes"
+        [(ngModel)]="prerequisites[prereq]"
+        (change)="onPrerequisitesChange(prereq, $event.checked)"
+        >{{ prereq }}</mat-checkbox
+      >
     </div>
   </div>
   <div class="content">
@@ -40,18 +43,26 @@
       <div class="option">
         <span>Sort by: </span>
         <mat-form-field appearance="outline">
-          <mat-select>
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
+          <mat-select [(value)]="sortBy" (selectionChange)="sortBySelected($event.value)">
+            <mat-option value="relv">Relevant</mat-option>
+            <mat-option value="asc">Ascendent</mat-option>
+            <mat-option value="desc">Descendent</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
       <div class="option">
         <span>Difficutly: </span>
         <mat-form-field appearance="outline">
-          <mat-select>
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
+          <mat-select
+            [(value)]="difficulty"
+            (selectionChange)="difficultySelected($event.value)"
+          >
+            <mat-option value="all">All</mat-option>
+            <mat-option
+              *ngFor="let difficutly of filtersAvailable?.difficulties"
+              [value]="difficutly"
+              >{{ difficutly }}</mat-option
+            >
           </mat-select>
         </mat-form-field>
       </div>
