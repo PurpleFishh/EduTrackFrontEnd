@@ -6,6 +6,7 @@ import { LandingpageComponent } from './pages/landingpage/landingpage.component'
 import { loggedGuard } from './core/guards/logged.guard';
 import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component';
 import { CoursesComponent } from './pages/courses/courses.component';
+import { userAdminGuard } from './core/guards/user-role.guard';
 
 const routes: Routes = [
    {
@@ -27,7 +28,7 @@ const routes: Routes = [
         {
           path: '',
           component: LandingpageComponent,
-          canActivate: [loggedGuard]
+          canActivate: [loggedGuard, userAdminGuard]
         }
       ]
    }

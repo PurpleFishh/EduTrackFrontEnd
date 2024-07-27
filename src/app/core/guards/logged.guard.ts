@@ -8,6 +8,6 @@ export const loggedGuard: CanActivateFn = (route, state) => {
 
   if(auth.isLogged()) {
     return true
-  } 
+  }
   return router.createUrlTree(['unauthorized']);
 };
