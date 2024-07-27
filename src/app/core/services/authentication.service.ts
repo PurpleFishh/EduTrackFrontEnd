@@ -13,8 +13,12 @@ import { UserRoles } from '../models/user-role.model';
 })
 export class AuthenticationService {
   readonly endpoint: string = 'Authentication';
+  //userRole: UserRoles | undefined;
 
-  constructor(private readonly baseService: RestBaseService) {}
+  constructor(private readonly baseService: RestBaseService) {
+    if(localStorage.getItem('role') !== null)
+      environment.userRole = localStorage.getItem('role') as UserRoles;
+  }
 
   public login(loginDto: LoginDto): Observable<Result<LoggedCredentialsDto>> {
     return this.baseService
@@ -25,7 +29,9 @@ export class AuthenticationService {
       .pipe(
         map((token) => {
           localStorage.setItem('token', token.jwtToken as string);
+          localStorage.setItem('email', token.email);
           environment.userRole = token.role;
+          localStorage.setItem('role', environment.userRole);
           return { success: true, value: token };
         }),
         catchError((error: HttpErrorResponse) => {
@@ -60,6 +66,8 @@ export class AuthenticationService {
 
   public logout(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('email');
     environment.userRole = UserRoles.Guest;
   }
 
@@ -72,19 +80,40 @@ export class AuthenticationService {
   }
 
   public isAdmin(): boolean {
-    return environment.userRole === UserRoles.Admin;
+    // if (localStorage.getItem('token') !== null) {
+    //   let isAdmin: boolean = JSON.parse(
+    //     atob(localStorage.getItem('token')?.split('.')[1] as string)
+    //   )['admin'] as boolean;
+    //   return isAdmin === true;
+    // }
+    // return false;
+    return this.isLogged() && localStorage.getItem('role') as UserRoles === UserRoles.Admin;
   }
 
   public isTeacher(): boolean {
-    return environment.userRole === UserRoles.Teacher;
+    // if (localStorage.getItem('token') !== null) {
+    //   let isTeacher: boolean = JSON.parse(
+    //     atob(localStorage.getItem('token')?.split('.')[1] as string)
+    //   )['teacher'] as boolean;
+    //   return isTeacher == true;
+    // }
+    // return false;
+    return this.isLogged() && localStorage.getItem('role') as UserRoles === UserRoles.Teacher;
   }
 
   public isStudent(): boolean {
-    return environment.userRole === UserRoles.Student;
+    // if (localStorage.getItem('token') !== null) {
+    //   let payload = JSON.parse(
+    //     atob(localStorage.getItem('token')?.split('.')[1] as string)
+    //   );
+    //   return !!payload['admin'] && !!payload['teacher'];
+    // }
+    // return false;
+    return this.isLogged() && localStorage.getItem('role') as UserRoles === UserRoles.Student;
   }
 
   public isGuest(): boolean {
-    return environment.userRole === UserRoles.Guest;
+    return localStorage.getItem('token') === null;
   }
 }
 

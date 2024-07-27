@@ -23,6 +23,10 @@ export class CoursesService {
     //return from(this.courses2);
   }
 
+  getStudentEnrolled(id: String) {
+    return this.baseService.get(`${this.endpoint}/GetStudentsEnrolled?courseName=${id}`);
+  }
+
   getFilters(filter: CoursesFilter) {
     let url = this.getUrlForFilter(`${this.endpoint}/GetFilters`, filter);
     return this.baseService.get<CoursesFilterDto>(url);

@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/app/environments/environment';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,8 @@ export class RestBaseService {
     headers = headers.set('Accept', 'application/json');
     headers = headers.set('Content-Type', 'application/json; ; charset=UTF-8');
     headers = headers.set('Cache-Control', 'no-cache');
+    if(localStorage.getItem('token') !== null)
+      headers = headers.set('Authorization', 'Bearer ' + localStorage.getItem('token'));
       
     return headers;
   }
