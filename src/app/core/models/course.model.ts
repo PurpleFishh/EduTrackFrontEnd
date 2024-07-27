@@ -5,6 +5,18 @@ export interface CourseDisplayDto {
     shortDescription: string;
     imageContents: string;
 }
+export interface CourseDto {
+    name: string;
+    prerequisites: string;
+    difficulty: string;
+    image: string;
+    description: string;
+    shortDescription: string;
+    category: string;
+    learningTopics: string;
+    duration: number;
+    imageContents: string
+}
 export interface CoursesFilterDto {
     categories: string[];
     difficulties: string[];

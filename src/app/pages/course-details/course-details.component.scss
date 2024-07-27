@@ -48,6 +48,7 @@
 
           height: 250px;
           overflow: hidden;
+          text-overflow: ellipsis;
           transition: max-height 0.3s ease;
         }
 
@@ -138,9 +139,8 @@
   .related {
     padding: 15px 0px 15px 0px;
     display: flex;
-    row-gap: 20px;
+    gap: 20px;
     align-items: center;
-    justify-content: space-between;
 
     margin-bottom: 80px;
   }

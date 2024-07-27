@@ -22,52 +22,6 @@
     height: 206px;
     overflow: hidden;
   }
-  .rectangle-19 {
-    background: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.2) 0%,
-      rgba(102, 102, 102, 0) 100%
-    );
-    width: 346px;
-    height: 44px;
-    position: absolute;
-    left: 2px;
-    top: 162px;
-  }
-
-  .frame-24 {
-    padding: 5px 10px 5px 10px;
-    display: flex;
-    flex-direction: row;
-    row-gap: 0px;
-    align-items: center;
-    justify-content: space-between;
-    width: 346px;
-    position: absolute;
-    left: 0px;
-    top: 170px;
-  }
-
-  .rate-4-2 {
-    color: var(--palette-bg, #fafcfc);
-    text-align: left;
-    font-family: var(--body-strong-font-family, "Inter-SemiBold", sans-serif);
-    font-size: var(--body-strong-font-size, 16px);
-    line-height: var(--body-strong-line-height, 140%);
-    font-weight: var(--body-strong-font-weight, 600);
-    position: relative;
-    width: 165px;
-  }
-
-  .mat-rating {
-    display: flex;
-    flex-direction: row;
-    gap: 0px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-shrink: 0;
-    position: relative;
-  }
 
   .content {
     padding: 0px 10px 0px 10px;

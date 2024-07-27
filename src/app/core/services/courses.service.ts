@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { RestBaseService } from './rest-base.service';
 import {
   CourseDisplayDto,
+  CourseDto,
   CoursesFilter,
   CoursesFilterDto,
 } from '../models/course.model';
@@ -25,6 +26,10 @@ export class CoursesService {
   getFilters(filter: CoursesFilter) {
     let url = this.getUrlForFilter(`${this.endpoint}/GetFilters`, filter);
     return this.baseService.get<CoursesFilterDto>(url);
+  }
+
+  getCourse(id: string) {
+    return this.baseService.get<CourseDto>(`${this.endpoint}/GetCourse?courseName=${id}`);
   }
 
   private getUrlForFilter(baseUrl: string, filter: CoursesFilter) {
