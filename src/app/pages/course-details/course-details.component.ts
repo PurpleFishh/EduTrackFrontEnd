@@ -39,6 +39,9 @@ export class CourseDetailsComponent {
         this.courseService.getCourses(filter).subscribe((related) => {
           this.realtedCourses = related.filter((course) => course.name !== this.course.name).slice(0, 5);
         });
+        this.courseService.getStudentEnrolled(this.courseId).subscribe((stud) => {
+          console.log(stud);
+        });
       });
       this.lessonService.getAllLessons(this.courseId).subscribe((lessons) => {
         this.lessons = lessons;
