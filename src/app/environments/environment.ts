@@ -1,5 +1,8 @@
+import { UserRoles } from "../core/models/user-role.model";
+
 export const environment = {
     apiUrl: 'http://localhost:5089',
-    isAdminOn: false,
+    userRole: UserRoles.Guest,
     //production: false,
-  };
+};
+
