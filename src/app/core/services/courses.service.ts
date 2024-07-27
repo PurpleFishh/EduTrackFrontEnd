@@ -23,13 +23,8 @@ export class CoursesService {
     //return from(this.courses2);
   }
 
-  getCourse() {
-    const courseName = localStorage.getItem('course') || 'aaa';
-    const queryParams = {
-      courseName: courseName
-    };
-
-    return this.baseService.get<CourseDisplayDto>(this.getCompleteUrlWithQuery(`${this.endpoint}/GetCourse`, queryParams));
+  getStudentEnrolled(id: String) {
+    return this.baseService.get(`${this.endpoint}/GetStudentsEnrolled?courseName=${id}`);
   }
 
   getFilters(filter: CoursesFilter) {
