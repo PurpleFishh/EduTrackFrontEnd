@@ -14,6 +14,7 @@ import { ViewAssignmentPageComponent } from './pages/view-assignment-page/view-a
 import { UpdateLessonComponent } from './pages/update-lesson/update-lesson.component';
 import { AddLessonComponent } from './pages/add-lesson/add-lesson.component';
 import { userAdminGuard } from './core/guards/user-role.guard';
+import { CourseDetailsComponent } from './pages/course-details/course-details.component';
 
 const routes: Routes = [
    {
@@ -33,8 +34,8 @@ const routes: Routes = [
           component: CoursesComponent,
         },
         {
-          path: 'course',
-          component: CourseComponent,
+          path: 'course/:id',
+          component: CourseDetailsComponent,
         },
         {
           path: 'unauthorized',

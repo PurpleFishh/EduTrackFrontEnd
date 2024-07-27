@@ -1,0 +1,35 @@
+
+  <mat-expansion-panel
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title *ngIf="!panelOpenState">
+        1. Llama’s Head and Face Animation
+      </mat-panel-title>
+      <mat-panel-title *ngIf="panelOpenState">
+        <p class="due-date">Due to: 23.12.2024
+        </p>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="content">
+      <p class="title">1. Llama’s Head and Face Animation</p>
+      <p class="lesson-cotent">
+        In this lesson you will gain an understanding of preferences:  listening
+        vs reading; detail or overview; and frequency of information
+        required.<br /><br />Listening loudly is a very important part of
+        communicating and there are different ways of listening. It is also
+        important to manage your thought process. In this lesson you will learn
+        how to listen loudly!<br /><br />In this lesson we will
+        explore open-ended vs closed ended questions; probing questions
+        and level 3 questions!<br />Let&#039;s look at different communicating
+        styles based on the style of ones decision making; we will explore
+        the charismatics, the thinkers, the skeptics, the followers and
+        the controllers, in this lesson.
+      </p>
+    </div>
+
+    <mat-action-row>
+      <button mat-flat-button color="primary">Start lesson</button>
+    </mat-action-row>
+  </mat-expansion-panel>
