@@ -7,6 +7,7 @@ import { loggedGuard } from './core/guards/logged.guard';
 import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component';
 import { CoursesComponent } from './pages/courses/courses.component';
 import { userAdminGuard } from './core/guards/user-role.guard';
+import { CourseDetailsComponent } from './pages/course-details/course-details.component';
 
 const routes: Routes = [
    {
@@ -20,6 +21,10 @@ const routes: Routes = [
         {
           path: 'courses',
           component: CoursesComponent,
+        },
+        {
+          path: 'course/:id',
+          component: CourseDetailsComponent,
         },
         {
           path: 'unauthorized',
