@@ -1,0 +1,47 @@
+<app-course-action-area [course]="course"></app-course-action-area>
+
+<div class="header">
+  <h6>{{ course.name }}</h6>
+  <p>
+    {{ course.shortDescription }}
+  </p>
+</div>
+
+<section>
+  <div class="content">
+    <div class="description" [ngClass]="{ expanded: descriptionExpanded }">
+      <p> {{ course.description }} </p>
+      <button mat-button (click)="descriptionExpanded = !descriptionExpanded">
+        {{ descriptionExpanded ? "Show Less" : "Show More" }}
+        <mat-icon matSuffix>{{
+          descriptionExpanded ? "keyboard_arrow_up" : "keyboard_arrow_down"
+        }}</mat-icon>
+      </button>
+    </div>
+
+    <div>
+      <h6>This week lesson:</h6>
+      <div class="week-lesson">
+        <div class="left-col">
+          <p class="due-date">Due to: 23.12.2024</p>
+          <p class="title">1. Llama’s Head and Face Animation</p>
+        </div>
+        <button mat-flat-button color="primary">Back to lesson</button>
+      </div>
+    </div>
+
+    <div>
+      <h6>Lessons:</h6>
+      <mat-accordion>
+        <app-lesson-display-card *ngFor="let lesson of lessons; index as i" [lesson]="lesson" [index]="i + 1"></app-lesson-display-card>
+      </mat-accordion>
+    </div>
+
+    <div>
+      <h6>Related courses</h6>
+      <div class="related">
+        <app-course *ngFor="let related of realtedCourses" [course]="related"></app-course>
+      </div>
+    </div>
+  </div>
+</section>

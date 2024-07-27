@@ -1,0 +1,25 @@
+
+  <mat-expansion-panel
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title *ngIf="!panelOpenState">
+        {{index}}. {{lesson.name}}
+      </mat-panel-title>
+      <mat-panel-title *ngIf="panelOpenState">
+        <p class="due-date">Due to: 23.12.2024
+        </p>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="content">
+      <p class="title">{{index}}. {{lesson.name}}</p>
+      <p class="lesson-cotent">
+        {{lesson.lesson_Description}}
+      </p>
+    </div>
+
+    <mat-action-row>
+      <button mat-flat-button color="primary">Start lesson</button>
+    </mat-action-row>
+  </mat-expansion-panel>

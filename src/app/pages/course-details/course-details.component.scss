@@ -1,0 +1,147 @@
+@import "src/config/variables";
+
+:host {
+  .header {
+    display: flex;
+    flex-direction: column;
+    padding: 100px calc(15% + 5% + 400px) 200px 8%;
+
+    background-color: $color-accent3;
+    gap: 15px;
+    h6 {
+      color: $color-bg;
+      font-size: 38px;
+      font-weight: 700;
+      align-self: stretch;
+      display: flex;
+      align-items: flex-end;
+    }
+    p {
+      color: $color-bg;
+      font-size: 20px;
+      font-weight: 400;
+      align-self: stretch;
+    }
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 5% 0 4%;
+    .content {
+      display: flex;
+      flex-direction: column;
+      padding-left: 40px;
+      gap: 40px;
+
+
+      .description {
+        padding-right: calc(400px + 110px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+
+        p {
+          font-size: 18px;
+          font-weight: 400;
+
+          height: 250px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          transition: max-height 0.3s ease;
+        }
+
+        button {
+          font-size: 16px;
+          line-height: 24px;
+          letter-spacing: 0.5px;
+          font-weight: 400;
+        }
+
+        &.expanded {
+          p {
+            height: fit-content;
+            overflow: visible;
+          }
+        }
+      }
+    }
+
+    h6 {
+      font-size: 23px;
+      line-height: 32px;
+      font-weight: 700;
+
+    }
+  }
+
+  app-course-action-area {
+    position: absolute;
+    right: 5%;
+    width: 400px;
+    margin-top: 100px;
+  }
+
+  mat-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 10px !important;
+  }
+
+  .week-lesson {
+    background: $color-bg;
+    border-radius: 20px;
+    padding: 12px 30px 12px 22px;
+
+    display: flex;
+    gap: 200px;
+    align-items: center;
+
+    button {
+      border-radius: 10px;
+      font-size: 14px;
+      line-height: 36px;
+      letter-spacing: 1.25px;
+      font-weight: 700;
+      height: 40px;
+    }
+    .left-col {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      flex: 1;
+
+      .title {
+        font-size: 16px;
+        line-height: 140%;
+        font-weight: 600;
+        padding-left: 30px;
+      }
+
+      .due-date {
+        background: $color-bg-secondary;
+        border-radius: 10px;
+        padding: 3px 17px 3px 17px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+
+        color: $color-text-secondary;
+        font-size: 16px;
+        line-height: 140%;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .related {
+    padding: 15px 0px 15px 0px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    margin-bottom: 80px;
+  }
+}
