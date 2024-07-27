@@ -13,6 +13,7 @@ import { LessonNotFinishedDetailsComponent } from './pages/lesson-not-finished-d
 import { ViewAssignmentPageComponent } from './pages/view-assignment-page/view-assignment-page.component';
 import { UpdateLessonComponent } from './pages/update-lesson/update-lesson.component';
 import { AddLessonComponent } from './pages/add-lesson/add-lesson.component';
+import { userAdminGuard } from './core/guards/user-role.guard';
 
 const routes: Routes = [
    {
@@ -66,7 +67,7 @@ const routes: Routes = [
         {
           path: '',
           component: LandingpageComponent,
-          canActivate: [loggedGuard]
+          canActivate: [loggedGuard, userAdminGuard]
         }
       ]
    }

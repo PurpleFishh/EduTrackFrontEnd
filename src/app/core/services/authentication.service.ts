@@ -5,6 +5,8 @@ import { LoggedCredentialsDto } from '../models/logged-credentials.model';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Result, StatusCodes } from '../models/result.model';
+import { environment } from 'src/app/environments/environment';
+import { UserRoles } from '../models/user-role.model';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +25,7 @@ export class AuthenticationService {
       .pipe(
         map((token) => {
           localStorage.setItem('token', token.jwtToken as string);
+          environment.userRole = token.role;
           return { success: true, value: token };
         }),
         catchError((error: HttpErrorResponse) => {
@@ -57,10 +60,31 @@ export class AuthenticationService {
 
   public logout(): void {
     localStorage.removeItem('token');
+    environment.userRole = UserRoles.Guest;
   }
 
   public isLogged(): boolean {
     return localStorage.getItem('token') !== null;
+  }
+
+  public getUserRole(): UserRoles {
+    return environment.userRole;
+  }
+
+  public isAdmin(): boolean {
+    return environment.userRole === UserRoles.Admin;
+  }
+
+  public isTeacher(): boolean {
+    return environment.userRole === UserRoles.Teacher;
+  }
+
+  public isStudent(): boolean {
+    return environment.userRole === UserRoles.Student;
+  }
+
+  public isGuest(): boolean {
+    return environment.userRole === UserRoles.Guest;
   }
 }
 
