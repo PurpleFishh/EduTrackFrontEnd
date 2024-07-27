@@ -1,8 +1,8 @@
 <mat-card>
   <mat-card-header>
-    <img class="image-1" [src]="course.imageContents" />
+    <img (click)="goToCourse()" class="image-1" [src]="course.imageContents" />
   </mat-card-header>
-  <mat-card-content>
+  <mat-card-content (click)="goToCourse()">
     <div class="content">
       <div>
         <div class="datas secondary-text">

@@ -1,78 +1,16 @@
-<app-course-action-area></app-course-action-area>
+<app-course-action-area [course]="course"></app-course-action-area>
 
 <div class="header">
-  <h6>Logo Animation: Bringing Mascots to Life with Adobe After Effects</h6>
+  <h6>{{ course.name }}</h6>
   <p>
-    Welcome to the fascinating world of Mascot Logo Animation! This class is a
-    creative journey to master the art of bringing logos to life using Adobe
-    After Effects. This class is all about demystifying mascot logo animation in
-    Adobe After Effects. We&#039;ll focus on practical skills that make your
-    mascot logo come to life.
+    {{ course.shortDescription }}
   </p>
 </div>
 
 <section>
   <div class="content">
     <div class="description" [ngClass]="{ expanded: descriptionExpanded }">
-      <p>
-        Who is the class for? This class is exclusively designed for beginners
-        eager to dive into animation. If you're just starting on your animation
-        journey, this is the perfect place for you to learn. We warmly welcome
-        graphic designers, animators, and individuals who are new to the field
-        and intrigued by the art of logo animations. Why learn logo animation?
-        Mastering mascot logo animation opens doors to endless possibilities.
-        Imagine creating engaging intros for your brand's videos, making your
-        social media stand out, or even offering logo animation as a service.
-        The skills you gain are versatile and can be applied in various
-        scenarios: Brand Enhancement: Bring brand identities to life with
-        animated mascots for increased recognition. Social Media Impact: Craft
-        attention-grabbing animations for social media posts and advertisements.
-        Freelance Opportunities: Offer logo animation services to clients, from
-        startups to established brands. Creative Expression: Elevate your design
-        and animation portfolio with dynamic, eye-catching pieces. Who is the
-        class for? This class is exclusively designed for beginners eager to
-        dive into animation. If you're just starting on your animation journey,
-        this is the perfect place for you to learn. We warmly welcome graphic
-        designers, animators, and individuals who are new to the field and
-        intrigued by the art of logo animations. Why learn logo animation?
-        Mastering mascot logo animation opens doors to endless possibilities.
-        Imagine creating engaging intros for your brand's videos, making your
-        social media stand out, or even offering logo animation as a service.
-        The skills you gain are versatile and can be applied in various
-        scenarios: Brand Enhancement: Bring brand identities to life with
-        animated mascots for increased recognition. Social Media Impact: Craft
-        attention-grabbing animations for social media posts and advertisements.
-        Freelance Opportunities: Offer logo animation services to clients, from
-        startups to established brands. Creative Expression: Elevate your design
-        and animation portfolio with dynamic, eye-catching pieces. graphic
-        designers, animators, and individuals who are new to the field and
-        intrigued by the art of logo animations. Why learn logo animation?
-        Mastering mascot logo animation opens doors to endless possibilities.
-        Imagine creating engaging intros for your brand's videos, making your
-        social media stand out, or even offering logo animation as a service.
-        The skills you gain are versatile and can be applied in various
-        scenarios: Brand Enhancement: Bring brand identities to life with
-        animated mascots for increased recognition. Social Media Impact: Craft
-        attention-grabbing animations for social media posts and advertisements.
-        Freelance Opportunities: Offer logo animation services to clients, from
-        startups to established brands. Creative Expression: Elevate your design
-        and animation portfolio with dynamic, eye-catching pieces. Who is the
-        class for? This class is exclusively designed for beginners eager to
-        dive into animation. If you're just starting on your animation journey,
-        this is the perfect place for you to learn. We warmly welcome graphic
-        designers, animators, and individuals who are new to the field and
-        intrigued by the art of logo animations. Why learn logo animation?
-        Mastering mascot logo animation opens doors to endless possibilities.
-        Imagine creating engaging intros for your brand's videos, making your
-        social media stand out, or even offering logo animation as a service.
-        The skills you gain are versatile and can be applied in various
-        scenarios: Brand Enhancement: Bring brand identities to life with
-        animated mascots for increased recognition. Social Media Impact: Craft
-        attention-grabbing animations for social media posts and advertisements.
-        Freelance Opportunities: Offer logo animation services to clients, from
-        startups to established brands. Creative Expression: Elevate your design
-        and animation portfolio with dynamic, eye-catching pieces.
-      </p>
+      <p> {{ course.description }} </p>
       <button mat-button (click)="descriptionExpanded = !descriptionExpanded">
         {{ descriptionExpanded ? "Show Less" : "Show More" }}
         <mat-icon matSuffix>{{
@@ -95,20 +33,14 @@
     <div>
       <h6>Lessons:</h6>
       <mat-accordion>
-        <app-lesson-display-card></app-lesson-display-card>
-        <app-lesson-display-card></app-lesson-display-card>
-        <app-lesson-display-card></app-lesson-display-card>
+        <app-lesson-display-card *ngFor="let lesson of lessons; index as i" [lesson]="lesson" [index]="i + 1"></app-lesson-display-card>
       </mat-accordion>
     </div>
 
     <div>
       <h6>Related courses</h6>
       <div class="related">
-        <!-- <app-course></app-course> -->
-        <div style="width: 300px; height: 400px; background-color: black"></div>
-        <div style="width: 300px; height: 400px; background-color: black"></div>
-        <div style="width: 300px; height: 400px; background-color: black"></div>
-        <div style="width: 300px; height: 400px; background-color: black"></div>
+        <app-course *ngFor="let related of realtedCourses" [course]="related"></app-course>
       </div>
     </div>
   </div>
