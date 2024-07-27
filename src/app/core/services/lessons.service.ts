@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RestBaseService } from './rest-base.service';
-import { LessonDto } from '../models/lesson.model';
+import { LessonDisplayDto, LessonDto } from '../models/lesson.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -46,9 +46,7 @@ export class LessonsService {
     return this.baseService.get<LessonDto>(url);
   }
 
-  getAllLessons(){
-    const courseName = localStorage.getItem('course') || 'aaa';
-    const url = `${this.endpoint}/GetAllLessons?courseName=${courseName}`;
-    return this.baseService.get<LessonDto[]>(url);
+  getAllLessons(id: string){
+    return this.baseService.get<LessonDisplayDto[]>(`${this.endpoint}/GetAllLessons?courseName=${id}`);
   }
 }

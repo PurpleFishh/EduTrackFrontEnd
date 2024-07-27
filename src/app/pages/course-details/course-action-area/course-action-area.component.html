@@ -1,6 +1,6 @@
 <mat-card>
-    <h6 class="title"> Category: curs </h6>
-    <img src="/assets/img/course_placeholder.png" />
+    <h6 class="title"> Category: {{course.category}} </h6>
+    <img [src]="course.imageContents" />
     <!-- <div class="rectangle-19">
     </div>
     <div class="frame-24">
@@ -25,16 +25,16 @@
     </div> -->
     <div class="content">
         <div class="antet">
-            <p> Difficulty: Beginner </p>
-            <p> Duration: 2h 21m </p>
+            <p> Difficulty: {{course.difficulty}} </p>
+            <p> Duration: {{hoursDuration}}h {{minutesDuration}}m </p>
         </div>
         <div class="text-area">
             <p class="title"> What you will learn: </p>
-            <p class="body"> Chestii random ...dwadaw fs fesf awdwa fsf, adwdaw, fess, dawd </p>
+            <p class="body"> {{course.learningTopics}} </p>
         </div>
         <div class="text-area">
-            <p class="title"> What you will learn: </p>
-            <p class="body"> Chestii random ...dwadaw fs fesf awdwa fsf, adwdaw, fess, dawd </p>
+            <p class="title"> Prerequisites needed: </p>
+            <p class="body"> {{course.prerequisites}} </p>
         </div>
         <div class="card-details">
             <div class="course-info-card">
