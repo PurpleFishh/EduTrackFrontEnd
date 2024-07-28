@@ -10,9 +10,10 @@ import { CourseComponent } from './courses/course/course.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
 import { CourseActionAreaComponent } from './course-details/course-action-area/course-action-area.component';
 import { LessonDisplayCardComponent } from './course-details/lesson-display-card/lesson-display-card.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
-  declarations: [LoginComponent, LandingpageComponent, UnauthorizedComponent, CoursesComponent, CourseComponent, CourseDetailsComponent, CourseActionAreaComponent, LessonDisplayCardComponent],
+  declarations: [LoginComponent, LandingpageComponent, UnauthorizedComponent, CoursesComponent, CourseComponent, CourseDetailsComponent, CourseActionAreaComponent, LessonDisplayCardComponent, ContactUsComponent],
   imports: [CommonModule, SharedModule],
   exports: [LoginComponent],
   providers: [HttpClient],
