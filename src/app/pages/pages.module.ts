@@ -21,6 +21,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { StudentDashboardMainComponent } from './dashboard/dashboards/student-dashboard-main/student-dashboard-main.component';
 import { StatisticComponent } from './dashboard/components/statistic/statistic.component';
 import { LegendComponent } from './dashboard/components/legend/legend.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { LegendComponent } from './dashboard/components/legend/legend.component'
     StudentDashboardMainComponent,
     StatisticComponent,
     LegendComponent,
+    ContactUsComponent
   ],
   imports: [CommonModule, SharedModule],
   exports: [LoginComponent],
