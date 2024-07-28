@@ -15,6 +15,7 @@ export interface CourseDto {
     category: string;
     learningTopics: string;
     duration: number;
+    teacherEmail: string;
     imageContents: string
 }
 export interface CoursesFilterDto {

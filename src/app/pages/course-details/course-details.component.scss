@@ -4,7 +4,7 @@
   .header {
     display: flex;
     flex-direction: column;
-    padding: 100px calc(15% + 5% + 400px) 200px 8%;
+    padding: 100px calc(15% + 5% + 400px) 140px 8%;
 
     background-color: $color-accent3;
     gap: 15px;
@@ -46,7 +46,7 @@
           font-size: 18px;
           font-weight: 400;
 
-          height: 250px;
+          height: 290px;
           overflow: hidden;
           text-overflow: ellipsis;
           transition: max-height 0.3s ease;
