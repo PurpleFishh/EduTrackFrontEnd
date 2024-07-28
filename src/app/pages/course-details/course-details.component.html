@@ -1,4 +1,4 @@
-<app-course-action-area [course]="course"></app-course-action-area>
+<app-course-action-area id="action-area" [course]="course"></app-course-action-area>
 
 <div class="header">
   <h6>{{ course.name }}</h6>
@@ -10,10 +10,10 @@
 <section>
   <div class="content">
     <div class="description" [ngClass]="{ expanded: descriptionExpanded }">
-      <p> {{ course.description }} </p>
+      <p id="description-text"> {{ course.description }} </p>
       <button mat-button (click)="descriptionExpanded = !descriptionExpanded">
         {{ descriptionExpanded ? "Show Less" : "Show More" }}
-        <mat-icon matSuffix>{{
+        <mat-icon iconPositionEnd>{{
           descriptionExpanded ? "keyboard_arrow_up" : "keyboard_arrow_down"
         }}</mat-icon>
       </button>
