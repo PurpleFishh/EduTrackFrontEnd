@@ -1,0 +1,48 @@
+<div class="continer">
+  <div class="content">
+    <p class="title">Statistics</p>
+    <div class="statistics">
+      <app-statistic
+        title="Courses"
+        description="Coruses descsac"
+        [procentage]="23"
+      ></app-statistic>
+      <app-statistic
+        title="Courses"
+        description="Coruses descsac"
+        [procentage]="23"
+      ></app-statistic>
+      <app-statistic
+        title="Courses"
+        description="Coruses descsac"
+        [procentage]="23"
+      ></app-statistic>
+    </div>
+  </div>
+
+  <mat-card class="courses">
+    <mat-card-header>
+      <div class="title">
+        <p>My courses</p>
+        <p>49</p>
+      </div>
+    </mat-card-header>
+    <mat-card-content
+      ><app-legend
+        completeText="In progress"
+        incompleteText="Completed"
+        [complete]="34"
+        [incomplete]="12"
+      ></app-legend
+    ></mat-card-content>
+    <mat-card-actions> 
+        <app-course [course]="course"></app-course>
+        <app-course [course]="course"></app-course>
+        <app-course [course]="course"></app-course>
+        <app-course [course]="course"></app-course>
+        <app-course [course]="course"></app-course>
+        <app-course [course]="course"></app-course>
+        <app-course [course]="course"></app-course>
+    </mat-card-actions>
+  </mat-card>
+</div>
