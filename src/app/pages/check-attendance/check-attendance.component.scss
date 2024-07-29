@@ -1,0 +1,139 @@
+@import "src/config/variables";
+
+:host {
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.checkattendanceform {
+    width: 100%;
+    max-width: 1174px;
+    background: #FAFCFC;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin:60px;
+}
+
+.title {
+
+width: 338px;
+height: 58px;
+
+/* Title Page */
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 43px;
+line-height: 120%;
+/* identical to box height, or 58px */
+display: flex;
+align-items: center;
+letter-spacing: -0.02em;
+
+/* palette/text */
+color: #050B0C;
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+}
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 40px;
+    gap: 10px;
+    background: #F2F7F7;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+
+/* M3/title/medium */
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height, or 150% */
+letter-spacing: 0.15px;
+
+/* palette/text secundary */
+color: #4D5051;
+
+
+}
+
+.table-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 60px;
+    gap: 10px;
+    background: #F2F7F7;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    /* M3/title/medium */
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height, or 150% */
+letter-spacing: 0.15px;
+}
+
+.cell {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.name-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.name-cell .material-icons {
+    color: #009DD6;
+}
+
+.submit-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.submit-button {
+    background: #00C853;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.status-cell {
+    justify-content: flex-end; /* Align the checkbox to the right */
+}
+.email{
+    justify-content: center;
+}
+
+}

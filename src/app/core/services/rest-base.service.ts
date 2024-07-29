@@ -41,7 +41,7 @@ export class RestBaseService {
     let headers: HttpHeaders;
     headers = new HttpHeaders();
     headers = headers.set('Accept', 'application/json');
-    headers = headers.set('Content-Type', 'application/json; ; charset=UTF-8');
+    headers = headers.set('Content-Type', 'application/json');
     headers = headers.set('Cache-Control', 'no-cache');
       
     return headers;

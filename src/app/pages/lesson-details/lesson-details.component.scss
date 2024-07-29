@@ -1,0 +1,70 @@
+@import "src/config/variables";
+
+:host{
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+      }
+
+      .header-banner {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        background: $color-accent3;
+        height: 230px;
+        padding: 97px 300px 50px 55px;
+
+
+        .banner-title {
+          color: $color-bg;
+          font-size: 42px;
+          font-weight: 700;
+          padding-bottom: 20px;
+        }
+        .banner-content {
+          color: $color-bg;
+          font-size: 24px;
+          font-weight: 400;
+          max-width: 1300px;
+
+        }
+        mat-card{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0px;
+
+            border-radius: 20px;
+
+            color: $color-bg;
+            font-size: 20px;
+            font-weight: 600;
+            color: #050B0C;
+            line-height: 18px;
+
+
+        }
+        .mat-card1{
+            position: absolute;
+            width: 250px;
+            height: 54px;
+            left: 1550px;
+            top: 169px;
+        }
+
+        .mat-card2{
+            position: absolute;
+            width: 250px;
+            height: 54px;
+            left: 1550px;
+            top: 250px;
+
+        }
+
+
+    }
+
+}
