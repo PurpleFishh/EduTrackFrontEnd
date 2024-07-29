@@ -1,33 +1,43 @@
 @import "src/config/variables";
 
 :host {
-    mat-card{
-        border-radius: 20px;
-        align-items: center;
-        width: 355px;
-        padding: 0 0 20px 0;
+  mat-card {
+    border-radius: 20px;
+    align-items: center;
+    width: 355px;
+    padding: 0 0 20px 0;
+  }
+  mat-card-header {
+    padding: 0;
+    img {
+      border-radius: 20px;
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
     }
-    mat-card-header{
-        padding: 0;
-        img{
-            border-radius: 20px;
-            height: 200px;
-            width: 100%;
-            object-fit: cover;
-        }
-    }
+  }
 
-    mat-card-content{
-        width: 100%;
-        padding-bottom: 0px !important;
+  mat-card-content {
+    width: 100%;
+    padding-bottom: 0px !important;
 
-        .content {
-            padding: 0 18px 0 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
+    .content {
+      padding: 0 18px 0 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
+  }
+
+  ::ng-deep mat-progress-bar {
+    background-color: $color-accent1;
+    --mdc-linear-progress-track-color: none !important;
+    height: 8px;
+    --mdc-linear-progress-active-indicator-height: 8px;
+    border-radius: 20px;
+    border: none;
+    border-color: none;
+  }
 
   .title {
     font-size: 18px;
