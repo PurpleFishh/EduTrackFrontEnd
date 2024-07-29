@@ -1,19 +1,19 @@
 <div class="continer">
   <mat-card>
     <mat-card-content>
-      <div class="avatar">AA</div>
+      <div class="avatar">{{userAvatar}}</div>
       <div>
-        <p class="name">Anon Anon</p>
-        <p class="email">{{auth.getEmail()}}</p>
+        <p class="name">{{userInfo?.firstName}} {{userInfo?.lastName}}</p>
+        <p class="email">{{userInfo?.email}}</p>
       </div>
     </mat-card-content>
     <mat-card-actions>
       <div class="menu">
         <mat-menu> </mat-menu>
-        <button mat-menu-item class="selected">Dashboard</button>
-        <button mat-menu-item>My Courses</button>
-        <button mat-menu-item *ngIf="auth.isTeacher()">Enrolled Students</button>
-        <button mat-menu-item *ngIf="auth.isAdmin()">Feedback</button>
+        <button mat-menu-item [ngClass]="isCurrentPage('/') ? 'selected' : ''">Dashboard</button>
+        <button mat-menu-item [ngClass]="isCurrentPage('/courses') ? 'selected' : ''">My Courses</button>
+        <button mat-menu-item [ngClass]="isCurrentPage('/enrolled') ? 'selected' : ''" *ngIf="auth.isTeacher()">Enrolled Students</button>
+        <button mat-menu-item [ngClass]="isCurrentPage('/feedback') ? 'selected' : ''" *ngIf="auth.isAdmin()">Feedback</button>
       </div>
       <div class="menu secondary-theme">
         <button *ngIf="auth.isTeacher()" class="action-button" mat-flat-button color="primary">

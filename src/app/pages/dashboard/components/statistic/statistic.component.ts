@@ -8,6 +8,8 @@ import { Component, Input } from '@angular/core';
 export class StatisticComponent {
  @Input() title: string | undefined;
   @Input()
-  procentage!: number;
+  procentage: number | undefined;
   @Input() description: string | undefined;
+
+  
 }

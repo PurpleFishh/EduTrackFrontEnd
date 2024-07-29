@@ -7,6 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Result, StatusCodes } from '../models/result.model';
 import { environment } from 'src/app/environments/environment';
 import { UserRoles } from '../models/user-role.model';
+import { UserInfoDto } from '../models/user-info.model';
 
 @Injectable({
   providedIn: 'root',
@@ -69,6 +70,10 @@ export class AuthenticationService {
     localStorage.removeItem('role');
     localStorage.removeItem('email');
     environment.userRole = UserRoles.Guest;
+  }
+
+  public getUserInfo(): Observable<UserInfoDto> {
+    return this.baseService.get<UserInfoDto>(`${this.endpoint}/GetUserInfo`);
   }
 
   public isLogged(): boolean {
