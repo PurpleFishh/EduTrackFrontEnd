@@ -1,245 +1,163 @@
-/* Contact Us Container */
+@import "src/config/variables";
+
 :host {
-    display: block;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.contact-us-container {
-    position: relative;
-    max-width: 100%;
-    overflow: auto;
-    margin-top: 80px;
-}
-
-.form {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px 60px 10px;
-    gap: 20px;
-    background: #FAFCFC;
-    border-radius: 20px;
-    width: 100%;
-    max-width: 1174px;
-    margin: 0 auto;
-}
-
-.form-content {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.left-side,
-.right-side {
-    flex: 1;
-}
-
-.message-center {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-}
-
-.message {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 15px;
-    width: 100%;
-}
-
-.message textarea {
-    height: 200px;
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid rgba(0, 0, 0, 0.42);
-    border-radius: 4px;
-    background: #FAFCFC;
-    box-sizing: border-box;
-    outline: none;
-}
-
-input,
-select,
-textarea {
-    width: 100%;
-    max-width: 100%;
-    padding: 8px 12px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.42);
-    border-radius: 4px;
-    background: #FAFCFC;
-    box-sizing: border-box;
-    outline: none;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-    border-color: #009DD6;
-}
-
-button {
-    background: #009DD6;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 20px;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 14px;
-    letter-spacing: 1.25px;
-}
-
-button:hover {
-    background: #007BAA;
-}
-
-/* Title */
-.title {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    width: 338px;
-    height: 101px;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-}
-
-/* Message Title */
-.message-title {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 15px;
-    width: 100%;
-}
-
-.message-title input {
-    width: 70%;
-    padding: 8px 12px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.42);
-    border-radius: 4px;
-    background: #FAFCFC;
-    box-sizing: border-box;
-    outline: none;
-}
-
-/* Name and Subject */
-.name-subject input,
-.name-subject select {
-    width: 70%;
-}
-
-/* Email */
-.email input {
-    width: 100%;
-    padding: 8px 12px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.42);
-    border-radius: 4px;
-    background: #FAFCFC;
-    box-sizing: border-box;
-    outline: none;
-}
-
-/* Anonymous */
-.anonymous {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-}
-
-.anonymous div {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.anonymous input[type="radio"] {
-    margin-right: 8px;
-}
-
-/* Rating */
-.rating {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    width: 230px;
-    height: 56px;
-}
-
-.rating-btn {
-    display: flex;
-    flex-direction: row;
     justify-content: center;
-    align-items: center;
-    padding: 0px 5px;
-    width: 46px;
-    height: 56px;
-    border-radius: 40px;
+    padding: 5%;
+
+    mat-card {
+        width: 100%;
+        // max-width: 800px;
+        border-radius: 20px;
+        padding: 20px 60px 10px 60px;
+        gap: 20px;
+        align-items: center;
+    }
+
+    mat-card-header {
+        text-align: center;
+    }
+
+    mat-card-title {
+        text-align: left, center;
+        font-size: 32px;
+        font-weight: 400;
+    }
+
+    mat-card-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            .form-content {
+                display: flex;
+                justify-content: space-between;
+                gap: 20px;
+
+                .left-side,
+                .right-side {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    flex: 1;
+                }
+            }
+
+            .message {
+                // display: flex;
+                // flex-direction: column;
+                // width: 100%;
+
+                mat-form-field.message {
+                    width: 100%;
+                    padding: 16px;
+                }
+            }
+
+            .actions {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 20px;
+            }
+
+            mat-form-field {
+                width: 100%;
+                // border-radius: 4px;
+                
+                    // Set rounded corners for input
+                    ::ng-deep .mdc-text-field--outlined {
+                        --mdc-outlined-text-field-container-shape: 10px;
+                        background-color: #fff; // Set background to white
+                    }
+                
+                    // Remove thick bottom border
+                    ::ng-deep .mdc-notched-outline__leading,
+                    ::ng-deep .mdc-notched-outline__notch,
+                    ::ng-deep .mdc-notched-outline__trailing {
+                        border-width: 1px; // Set border width to 1px
+                    }
+                
+                    // Set input height
+                    // ::ng-deep .mat-mdc-form-field-flex {
+                    //     height: 50px;
+                    // }
+            }
+        }
+    }
+
+    .rating {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+
+            mat-icon.rating {
+                color: #6d6b66;
+
+                &.selected {
+                    color: #ffc107;
+                }
+            }
+        }
+    }
+
+    .action {
+        padding-top: 30px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-self: stretch;
+        gap: 16px;
+
+        button {
+            width: 137px;
+            height: 44px;
+            border-radius: 6px;
+            margin: 0 20px;
+            padding: 0 16px;
+            align-self: stretch;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        a {
+            color: $color-primary;
+        }
+    }
+
+    mat-hint {
+        padding-top: 3px;
+    }
+
+    .continer {
+        gap: 50px;
+    }
+
+    .logo {
+        width: 400px;
+    }
 }
 
-.rating-icon {
-    width: 36px;
-    height: 36px;
-    font-family: 'Material Icons';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 36px;
-    line-height: 100%;
-    display: flex;
-    align-items: center;
-    text-align: center;
+// :host ::ng-deep .mat-mdc-form-field-flex {
+//     height: 45px;
+// }
+
+// Set border radius for input
+:host ::ng-deep .mdc-text-field--outlined {
+    --mdc-outlined-text-field-container-shape: 20px;
 }
 
-.rating-icon.yellow {
-    color: #FDD835;
-}
-
-.rating-icon.grey {
-    color: #BDBDBD;
-}
-
-.rating-span {
-    display: none;
-    width: 23px;
-    height: 20px;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.87);
-}
-
-.toggle-btn {
-    background: #f0f0f0;
-    color: #000;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 8px 12px;
-    cursor: pointer;
-    font-size: 14px;
-    text-transform: uppercase;
-}
-
-.toggle-btn.selected {
-    background: #009DD6;
-    color: #fff;
-    border: 1px solid #007BAA;
+// Dezactivate text under input area
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+    height: 0px;
 }

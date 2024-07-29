@@ -1,82 +1,60 @@
-<div class="contact-us-container">
-    <form class="form">
-        <div class="title">
-            <h1 class="contact-us">Contact Us</h1>
-            <p class="message">Feel free to leave us a message!</p>
-        </div>
-
-        <div class="form-content">
-            <div class="left-side">
-                <div class="two-col">
-                    <div class="name-subject">
-                        <label for="name">Name</label><br><br>
-                        <input type="text" id="name" name="name" required>
-                        <br><br>
-                        <label for="subject">Subject</label><br><br>
-                        <select id="subject" name="subject" required>
-                            <option value="0">Content Quality</option>
-                            <option value="1">User Experience</option>
-                            <option value="2">Technical Performance</option>
-                            <option value="3">Educational Tools</option>
-                            <option value="4">Assessment and Feedback</option>
-                        </select>
+<div class="container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Contact Us</mat-card-title>
+            <mat-card-subtitle>Feel free to leave us a message!</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="form">
+                <div class="form-content">
+                    <!-- Left Side -->
+                    <div class="left-side">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Name</mat-label>
+                            <input matInput formControlName="name" type="text" />
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Subject</mat-label>
+                            <mat-select formControlName="subject">
+                                <mat-option value="0">Content Quality</mat-option>
+                                <mat-option value="1">User Experience</mat-option>
+                                <mat-option value="2">Technical Performance</mat-option>
+                                <mat-option value="3">Educational Tools</mat-option>
+                                <mat-option value="4">Assessment and Feedback</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Message Title</mat-label>
+                            <input matInput formControlName="messageTitle" type="text" />
+                        </mat-form-field>
+                    </div>
+                    <!-- Right Side -->
+                    <div class="right-side">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="email" type="email" />
+                        </mat-form-field>
+                        <mat-checkbox formControlName="isAnonymous">Is Anonymous</mat-checkbox>
                     </div>
                 </div>
-
-                <div class="message-title">
-                    <label for="message-title">Message Title</label>
-                    <input type="text" id="message-title" name="message-title" required>
+                <!-- Centered Message Box -->
+                <!-- <div class="message"> -->
+                    <mat-form-field appearance="outline" class="message">
+                        <mat-label>Message</mat-label>
+                        <textarea matInput formControlName="message"></textarea>
+                    </mat-form-field>
+                <!-- </div> -->
+                <!-- Rating and Submit -->
+                <div class="actions">
+                    <div class="rating">
+                        <button type="button" *ngFor="let star of stars; let i = index" (click)="rate(i + 1)"
+                            [ngClass]="{'selected': i < rating}">
+                            <mat-icon class="rating" >{{i < rating ? 'star' : 'star_border' }}</mat-icon>
+                        </button>
+                    </div>
+                    <button mat-flat-button color="primary" type="submit">Submit</button>
                 </div>
-            </div>
-
-            <div class="right-side">
-                <div class="email">
-                    <label for="email">Email</label><br><br>
-                    <input type="email" id="email" name="email" required>
-                </div><br><br>
-
-                <div class="anonymous">
-                    <label for="anonymous">Is Anonymous</label><br><br>
-                    <button type="button" id="anonymous-toggle" class="toggle-btn">No</button>
-                    <input type="hidden" id="anonymous" name="anonymous" value="no">
-                </div>
-            </div>
-        </div>
-
-        <div class="message-center">
-            <div class="message">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
-            </div>
-        </div>
-
-        <div class="right-side">
-            <div class="rating">
-                <div class="rating-btn">
-                    <span class="rating-icon yellow">star</span>
-                    <span class="rating-span">1</span>
-                </div>
-                <div class="rating-btn">
-                    <span class="rating-icon grey">star</span>
-                    <span class="rating-span">2</span>
-                </div>
-                <div class="rating-btn">
-                    <span class="rating-icon grey">star</span>
-                    <span class="rating-span">3</span>
-                </div>
-                <div class="rating-btn">
-                    <span class="rating-icon grey">star</span>
-                    <span class="rating-span">4</span>
-                </div>
-                <div class="rating-btn">
-                    <span class="rating-icon grey">star</span>
-                    <span class="rating-span">5</span>
-                </div>
-            </div>
-            <br>
-            <div class="submit">
-                <button type="submit">Submit</button>
-            </div>
-        </div>
-    </form>
+            </form>
+        </mat-card-content>
+    </mat-card>
 </div>
