@@ -1,0 +1,63 @@
+@import "src/config/variables";
+
+:host {
+  .continer {
+    gap: 30px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+  }
+
+  .title {
+    font-size: 32px;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+  .statistics {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    //justify-content: center;
+  }
+
+  .courses {
+    width: 100%;
+    border-radius: 20px;
+    padding: 20px 40px 20px 40px;
+    gap: 15px;
+
+    .title {
+      font-size: 28px;
+    }
+    mat-card-header {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    mat-card-content{
+      padding: 0;
+    }
+
+    mat-card-actions {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-self: stretch;
+    }
+  }
+}

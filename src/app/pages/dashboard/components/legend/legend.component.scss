@@ -1,0 +1,65 @@
+@import "src/config/variables";
+
+:host {
+  .content {
+    padding: 0px 20px 0px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .stat {
+    background: $color-bg-secondary;
+    border-radius: 20px;
+    padding: 5px 20px 5px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-self: stretch;
+    height: 32px;
+
+    ::ng-deep mat-progress-bar{
+        background-color: $color-accent1;
+        --mdc-linear-progress-track-color: none;
+        height: 8px;
+        --mdc-linear-progress-active-indicator-height: 8px;
+        border-radius: 20px;
+        border: none;
+        border-color: none;
+    }
+  }
+  .legend {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    align-self: stretch;
+  }
+  .card {
+    background: $color-bg-secondary;
+    border-radius: 20px;
+    padding: 5px 20px 5px 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .name {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+
+    font-size: 16px;
+    line-height: 140%;
+    font-weight: 600;
+  }
+  .elipse {
+    background: $color-accent1;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+
+    &.completed{
+        background: $color-secondary !important;
+    }
+  }
+}
