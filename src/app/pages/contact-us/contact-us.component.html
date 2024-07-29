@@ -1,1 +1,82 @@
-<p>contact-us works!</p>
+<div class="contact-us-container">
+    <form class="form">
+        <div class="title">
+            <h1 class="contact-us">Contact Us</h1>
+            <p class="message">Feel free to leave us a message!</p>
+        </div>
+
+        <div class="form-content">
+            <div class="left-side">
+                <div class="two-col">
+                    <div class="name-subject">
+                        <label for="name">Name</label><br><br>
+                        <input type="text" id="name" name="name" required>
+                        <br><br>
+                        <label for="subject">Subject</label><br><br>
+                        <select id="subject" name="subject" required>
+                            <option value="0">Content Quality</option>
+                            <option value="1">User Experience</option>
+                            <option value="2">Technical Performance</option>
+                            <option value="3">Educational Tools</option>
+                            <option value="4">Assessment and Feedback</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="message-title">
+                    <label for="message-title">Message Title</label>
+                    <input type="text" id="message-title" name="message-title" required>
+                </div>
+            </div>
+
+            <div class="right-side">
+                <div class="email">
+                    <label for="email">Email</label><br><br>
+                    <input type="email" id="email" name="email" required>
+                </div><br><br>
+
+                <div class="anonymous">
+                    <label for="anonymous">Is Anonymous</label><br><br>
+                    <button type="button" id="anonymous-toggle" class="toggle-btn">No</button>
+                    <input type="hidden" id="anonymous" name="anonymous" value="no">
+                </div>
+            </div>
+        </div>
+
+        <div class="message-center">
+            <div class="message">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+        </div>
+
+        <div class="right-side">
+            <div class="rating">
+                <div class="rating-btn">
+                    <span class="rating-icon yellow">star</span>
+                    <span class="rating-span">1</span>
+                </div>
+                <div class="rating-btn">
+                    <span class="rating-icon grey">star</span>
+                    <span class="rating-span">2</span>
+                </div>
+                <div class="rating-btn">
+                    <span class="rating-icon grey">star</span>
+                    <span class="rating-span">3</span>
+                </div>
+                <div class="rating-btn">
+                    <span class="rating-icon grey">star</span>
+                    <span class="rating-span">4</span>
+                </div>
+                <div class="rating-btn">
+                    <span class="rating-icon grey">star</span>
+                    <span class="rating-span">5</span>
+                </div>
+            </div>
+            <br>
+            <div class="submit">
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
