@@ -19,14 +19,17 @@ const routes: Routes = [
           path: 'courses',
           component: CoursesComponent,
         },
-        
-        {
-          path: 'unauthorized',
-          component: UnauthorizedComponent,
-        },
         {
           path: 'main',
           component: MainPageComponent
+        },
+        {
+          path: '',
+          component: MainPageComponent
+        },
+        {
+          path: 'unauthorized',
+          component: UnauthorizedComponent,
         }
       ]
    }
