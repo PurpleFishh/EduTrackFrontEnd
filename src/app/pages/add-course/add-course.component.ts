@@ -75,7 +75,7 @@ export class AddCourseComponent implements OnInit {
             this.formCourse.controls['learningTopics'].setValue(
               course.learningTopics
             );
-            this.prereq = course.prerequisites.split(',  ');
+            this.prereq = course.prerequisites.split(',').map((x) => x.trim());
             this.formCourse.controls['shortDescription'].setValue(
               course.shortDescription
             );

@@ -54,6 +54,10 @@ export class CoursesService {
     );
   }
 
+  getStudentEnrolledCourses() {
+    return this.baseService.get<CourseDisplayDto[]>(`${this.endpoint}/GetStudentEnrolledCourses`);
+  }
+
   private getUrlForFilter(baseUrl: string, filter: CoursesFilter) {
     let querys: string[] = [];
     if (filter.search) querys.push(`Title=${filter.search}`);
