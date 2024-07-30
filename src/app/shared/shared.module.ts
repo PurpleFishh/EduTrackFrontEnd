@@ -46,7 +46,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatExpansionModule,
     MatProgressSpinnerModule,
     MatSliderModule,
-    MatProgressBarModule
+    MatProgressBarModule,
     MatChipsModule,
   ],
 })
