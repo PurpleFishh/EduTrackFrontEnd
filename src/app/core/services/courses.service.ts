@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RestBaseService } from './rest-base.service';
 import {
+  CourseContract,
   CourseDisplayDto,
   CourseDto,
   CoursesFilter,
@@ -38,6 +39,11 @@ export class CoursesService {
 
   getStudentEnrolledCourses() {
     return this.baseService.get<CourseDisplayDto[]>(`${this.endpoint}/GetStudentEnrolledCourses`);
+  }
+
+  addCourse(course: FormData)
+  {
+    return this.baseService.add<boolean, FormData>(`${this.endpoint}/AddCourse`, course);
   }
 
   private getUrlForFilter(baseUrl: string, filter: CoursesFilter) {

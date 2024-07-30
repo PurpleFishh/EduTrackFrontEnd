@@ -17,6 +17,7 @@ import { userAdminGuard } from './core/guards/user-role.guard';
 import { CourseDetailsComponent } from './pages/course-details/course-details.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { StudentDashboardMainComponent } from './pages/dashboard/dashboards/student-dashboard-main/student-dashboard-main.component';
+import { AddCourseComponent } from './pages/add-course/add-course.component';
 
 const routes: Routes = [
    {
@@ -48,6 +49,10 @@ const routes: Routes = [
               component: StudentDashboardMainComponent,
             }
           ]
+        },
+        {
+          path: 'add/course',
+          component: AddCourseComponent,
         },
         {
           path: 'unauthorized',
