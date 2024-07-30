@@ -1,0 +1,56 @@
+@import "src/config/variables";
+
+:host{
+    
+    mat-card {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto; 
+        width: 90%; 
+        border-radius: 20px;
+        mat-card-header{
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+
+    .blue_button{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 16px;
+        gap: 16px;
+
+
+        width: 150px;
+        height: 44px;
+
+        background: #009DD6;
+        border-radius: 14px;
+        margin-left:1500px;
+
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+
+        color: #FAFCFC;
+        
+    }
+
+    .good_font1{
+        font-weight:400;
+        font-size:23px;
+        line-height: 32px;
+        color: rgba(5, 11, 12, 1);
+
+    }
+
+    .good_font2{
+        font-weight:400;
+        font-size:23px;
+        line-height: 32px;
+        color: rgba(45, 54, 72, 1);
+    }
+    
+}

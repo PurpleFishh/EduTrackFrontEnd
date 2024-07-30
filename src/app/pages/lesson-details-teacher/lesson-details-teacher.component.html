@@ -1,0 +1,113 @@
+<div class="content">
+    <div class="header-banner">
+        <div class="banner-title" *ngIf="current_course">
+            {{current_course.shortDescription}}
+          </div>
+          <div class="banner-content" *ngIf="current_course">
+            <p>{{current_course.shortDescription}}</p>
+          </div>
+    <mat-card>
+        <br>
+        <mat-menu #deleteMenu="matMenu">
+            <button mat-menu-item (click)="deleteLesson()" >Delete Lesson</button>
+            <button mat-menu-item (click)="deleteAssignment()">Delete Assignment</button>
+          </mat-menu>
+        <div class="button-container">
+            <button mat-icon-button class="button1" (click)="goToEditLesson()">
+                <mat-icon > edit </mat-icon>
+                EDIT
+            </button>
+            <button mat-icon-button class="button2" [matMenuTriggerFor]="deleteMenu" >
+                <mat-icon [ngStyle]="{'color':'red'}" > delete </mat-icon>
+                DELETE
+            </button>
+        </div>
+       
+        <button mat-icon-button class="button3">
+            <mat-icon > task_alt </mat-icon>
+            MAKE ATTENDANCE
+        </button>
+        <br>
+        <button mat-icon-button class="button4">
+            <mat-icon [ngStyle]="{'color':'green'}"> check </mat-icon>
+            LESSON FINISHED
+        </button>
+    </mat-card>
+</div>
+<div>
+    <mat-card>
+        <mat-card-header>
+            <div *ngIf="current_lesson">
+                <p>{{current_lesson.name}}</p>
+            </div>
+        </mat-card-header>
+        <div *ngIf="current_lesson" style="padding-bottom: 20px;">
+            <p>&ensp;&nbsp;{{current_lesson.description}}</p>
+        </div>
+        <br>
+        <mat-card-content>
+            <div *ngIf="current_lesson">
+                <p>{{current_lesson.lesson_Content}}</p>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <br><br>
+    <mat-card>
+        <mat-card-header>
+            <div *ngIf="current_assignment">
+                <div *ngFor="let assignment of current_assignment">
+                <p>
+                {{assignment.assignment_name}}
+                </p>
+                </div>
+            </div>
+        </mat-card-header>
+        <br>
+        <mat-card-content>
+            <div *ngIf="current_assignment">
+                <div *ngFor="let assignment of current_assignment">
+                <p>
+                {{assignment.assignment_description}}
+                </p>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-header>
+            Solution title
+        </mat-card-header>
+        <br>
+        <mat-form-field appearance="outline">
+            <mat-label>Enter the title of your solution here</mat-label>
+            <textarea matInput placeholder="Ex. My attempt." [(ngModel)]="solution.solution_title"></textarea>
+          </mat-form-field>
+          <mat-card-header>
+            Solution
+          </mat-card-header>
+          <br>
+          <mat-form-field appearance="outline">
+            <mat-label>Enter your solution here</mat-label>
+            <textarea matInput placeholder="Ex. First question: the answer is 45." [(ngModel)]="solution.solution" rows="20"></textarea>
+          </mat-form-field>
+          <br>          
+        <div>
+            <div>
+            <input type="file" id="fileInput" (change)="onFileSelected($event)" style="display: none;">
+            
+            <button mat-icon-button class="blue_button" (click)="triggerFileInput()">
+                <mat-icon> upload </mat-icon>
+                Upload Files
+            </button>
+            <div *ngIf="fileName">
+                <p>{{ fileName }}</p>
+              </div>
+            </div>
+
+        </div>
+        <br>  
+        <button mat-icon-button class="green_button" (click)="onSubmit()" [disabled]="!isFormValid()">
+            Submit
+        </button>
+        <br>
+
+    </mat-card>
+</div>

@@ -1,0 +1,56 @@
+<div class="content">
+    <mat-card class="formupdatelesson">
+        <mat-card-header>
+            <mat-card-title class="title-update">Update lesson</mat-card-title>
+            <mat-card-subtitle class="textupdate">Update the lesson from the course</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <form (ngSubmit)="onSubmit()">
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label class="lesson-title-update" for="lesson-title">Lesson title:</label>
+                        <input type="text" id="lesson-title-update" [(ngModel)]="lessonTitle" name="lessonTitle">
+                    </div>
+                    <div class="form-group">
+                        <label class="lesson-title-update" for="lesson-date">Lesson date:</label>
+                        <input type="date" id="lesson-date-update" name="lessonDueDate">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="lesson-title-update" for="lesson-description">Lesson description:</label>
+                    <textarea id="lesson-description" [(ngModel)]="lessonDescription" name="lessonDescription"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="lesson-title-update" for="lesson-content">Lesson content:</label>
+                    <textarea id="lesson-content" [(ngModel)]="lessonContent" name="lessonContent"></textarea>
+                </div>
+                <div class="form-group-row">
+                    <input type="file" id="fileInput" (change)="onFileSelected($event)" style="display: none;">
+
+                    <button class="update-assignment-pdf" type="button" (click)="triggerFileInput()">Update assignment</button>
+                    <div *ngIf="fileName">
+                        <p>{{ fileName }}</p>
+                      </div>
+                </div>
+                <span class="pdf-name"></span>
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label class="lesson-title-update" for="assignment-title">Assignment title:</label>
+                        <input [(ngModel)]="assTitle"  type="text" id="assignment-title-update"  name="assignmentTitle">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="lesson-title-update" for="assignment-short-description">Assignment short description:</label>
+                    <textarea [(ngModel)]="assPreview" id="assignment-short-description"name="assignmentShortDescription"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="lesson-title-update" for="assignment-task">Assignment task:</label>
+                    <textarea [(ngModel)]="assContent"  id="assignment-task" name="assignmentTask"></textarea>
+                </div>
+                <div class="form-group-row end">
+                    <button class="update-button" type="submit">UPDATE</button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

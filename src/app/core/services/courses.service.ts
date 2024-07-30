@@ -22,6 +22,15 @@ export class CoursesService {
     //return from(this.courses2);
   }
 
+  getCourse() {
+    const courseName = localStorage.getItem('course') || 'aaa';
+    const queryParams = {
+      courseName: courseName
+    };
+
+    return this.baseService.get<CourseDisplayDto>(this.getCompleteUrlWithQuery(`${this.endpoint}/GetCourse`, queryParams));
+  }
+
   getFilters(filter: CoursesFilter) {
     let url = this.getUrlForFilter(`${this.endpoint}/GetFilters`, filter);
     return this.baseService.get<CoursesFilterDto>(url);
@@ -46,6 +55,13 @@ export class CoursesService {
     return this.baseService.get<CourseDisplayDto[]>(
       `${this.endpoint}/GetAllCourses/?title=${search}`
     );
+  }
+
+  private getCompleteUrlWithQuery(url: string, queryParams: { [key: string]: string }) {
+    const queryString = Object.keys(queryParams)
+      .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(queryParams[key])}`)
+      .join('&');
+    return `${url}?${queryString}`;
   }
 
   courses2: CourseDisplayDto[] = [
