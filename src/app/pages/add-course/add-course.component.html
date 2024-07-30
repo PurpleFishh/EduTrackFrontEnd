@@ -1,9 +1,13 @@
 <div class="continer">
   <mat-card>
     <mat-card-header>
-      <mat-card-title> Add course</mat-card-title>
-      <mat-card-subtitle
+      <mat-card-title *ngIf="courseId === null"> Add course</mat-card-title>
+      <mat-card-title *ngIf="courseId !== null"> Edit course</mat-card-title>
+      <mat-card-subtitle *ngIf="courseId === null"
         >Fill the form for adding a new course</mat-card-subtitle
+      >
+      <mat-card-subtitle *ngIf="courseId !== null"
+        >Edit the form for modifying {{ courseId }} course</mat-card-subtitle
       >
     </mat-card-header>
     <mat-card-content>
@@ -85,7 +89,9 @@
               placeholder="Learning topics..."
               name="topics"
             />
-            <mat-error *ngIf="formCourse.controls['learningTopics'].hasError('required')">
+            <mat-error
+              *ngIf="formCourse.controls['learningTopics'].hasError('required')"
+            >
               Course learning topics are required
             </mat-error>
           </mat-form-field>
@@ -107,7 +113,7 @@
               </mat-chip-row>
             </mat-chip-grid>
             <input
-              [ngStyle]="{'border-color: red': preReqError == true}"
+              [ngStyle]="{ 'border-color: red': preReqError == true }"
               formControlName="prerequisites"
               name="prerequisites"
               placeholder="Prerequisites..."
@@ -130,7 +136,11 @@
               placeholder="Description..."
               name="shortDescription"
             />
-            <mat-error *ngIf="formCourse.controls['shortDescription'].hasError('required')">
+            <mat-error
+              *ngIf="
+                formCourse.controls['shortDescription'].hasError('required')
+              "
+            >
               A short course description is required
             </mat-error>
           </mat-form-field>
@@ -145,7 +155,9 @@
               name="description"
               placeholder="Description..."
             ></textarea>
-            <mat-error *ngIf="formCourse.controls['description'].hasError('required')">
+            <mat-error
+              *ngIf="formCourse.controls['description'].hasError('required')"
+            >
               A course description is required
             </mat-error>
           </mat-form-field>
@@ -168,10 +180,13 @@
             Add course image
             <mat-icon>upload_file</mat-icon>
           </button>
-          <p [className]="fileError ? 'error' : ''" >{{ fileName || "No file uploaded yet." }}</p>
+          <p [className]="fileError ? 'error' : ''">
+            {{ fileName || "No file uploaded yet." }}
+          </p>
         </div>
         <mat-card-actions>
-          <button mat-flat-button color="primary" type="submit">Create</button>
+          <button mat-flat-button *ngIf="courseId === null" color="primary" type="submit">Create</button>
+          <button mat-flat-button *ngIf="courseId !== null" color="primary" type="submit">Edit</button>
         </mat-card-actions>
       </form>
     </mat-card-content>
