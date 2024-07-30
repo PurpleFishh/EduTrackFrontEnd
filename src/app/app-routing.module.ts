@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component';
 import { CoursesComponent } from './pages/courses/courses.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 
 const routes: Routes = [
    {
@@ -19,15 +20,20 @@ const routes: Routes = [
           path: 'courses',
           component: CoursesComponent,
         },
+        {
+          path:'about',
+          component: AboutUsComponent
+        },
+        {
+          path: 'main',
+          component: MainPageComponent
+        },
         
         {
           path: 'unauthorized',
           component: UnauthorizedComponent,
         },
-        {
-          path: 'main',
-          component: MainPageComponent
-        }
+        
       ]
    }
 ];
