@@ -87,10 +87,6 @@ export class AuthenticationService {
     return environment.userRole;
   }
 
-  public getEmail(): string {
-    return localStorage.getItem('email') !== null ? localStorage.getItem('email') as string : '';
-  }
-
   public isAdmin(): boolean {
     // if (localStorage.getItem('token') !== null) {
     //   let isAdmin: boolean = JSON.parse(
