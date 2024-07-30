@@ -1,47 +1,54 @@
-import {Component} from '@angular/core';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {NgIf} from '@angular/common';
-import {FormsModule} from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ContactUsService } from 'src/app/core/services/contact-us.service';
 
 @Component({
   selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',
   styleUrls: ['./contact-us.component.scss'],
-  
 })
 export class ContactUsComponent {
-  form: FormGroup;
+
+  form: FormGroup = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    category: new FormControl(0, [Validators.required]),
+    isAnonymus: new FormControl(false),
+    title: new FormControl('', [Validators.required]),
+    content: new FormControl('', [Validators.required]),
+    stars: new FormControl(0, [Validators.required, Validators.min(1), Validators.max(5)])
+  });
   stars = Array(5).fill(0);
   rating = 0;
 
-  constructor(private fb: FormBuilder) {
-    this.form = this.fb.group({
-      name: ['', Validators.required],
-      subject: ['', Validators.required],
-      messageTitle: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      isAnonymous: [false],
-      message: ['', Validators.required]
-    });
+  constructor(private contactUsService: ContactUsService, private router: Router) {
   }
 
   rate(star: number) {
     this.rating = star;
+    this.form.get('stars')?.setValue(star);  // Set the rating value in the form control
   }
 
   onSubmit() {
     if (this.form.valid) {
-      const formData = {
-        ...this.form.value,
-        rating: this.rating
-      };
-      console.log('Form Data: ', formData);
-      // Handle form submission
+      this.contactUsService.submitFeedback(this.convertFormValues(this.form.value)).subscribe({
+        next: (response) => {
+          console.log('Feedback submitted successfully', response);
+        },
+        error: (error) => {
+          console.error('Error submitting feedback', error);
+        },
+      });
+    } else {
+      console.log('Form is invalid');
     }
+  }
+
+  private convertFormValues(values: any): any {
+    return {
+      ...values,
+      category: parseInt(values.category, 10)
+    };
   }
 }
