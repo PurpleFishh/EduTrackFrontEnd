@@ -15,9 +15,10 @@ import { StudentDashboardMainComponent } from './dashboard/dashboards/student-da
 import { StatisticComponent } from './dashboard/components/statistic/statistic.component';
 import { LegendComponent } from './dashboard/components/legend/legend.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AddCourseComponent } from './add-course/add-course.component';
 
 @NgModule({
-  declarations: [LoginComponent, LandingpageComponent, UnauthorizedComponent, CoursesComponent, CourseComponent, CourseDetailsComponent, CourseActionAreaComponent, LessonDisplayCardComponent, ContactUsComponent, StudentDashboardMainComponent, StatisticComponent, LegendComponent],
+  declarations: [LoginComponent, LandingpageComponent, UnauthorizedComponent, CoursesComponent, CourseComponent, CourseDetailsComponent, CourseActionAreaComponent, LessonDisplayCardComponent, ContactUsComponent, StudentDashboardMainComponent, StatisticComponent, LegendComponent, AddCourseComponent],
   imports: [CommonModule, SharedModule],
   exports: [LoginComponent],
   providers: [HttpClient],

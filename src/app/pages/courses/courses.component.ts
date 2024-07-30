@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { CourseDisplayDto, CoursesFilter, CoursesFilterDto } from 'src/app/core/models/course.model';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { CoursesService } from 'src/app/core/services/courses.service';
 
 @Component({
@@ -26,7 +27,8 @@ export class CoursesComponent {
 
   constructor(private readonly coursesService: CoursesService,
      private readonly routerActive: ActivatedRoute,
-     private readonly router: Router
+     private readonly router: Router,
+     public readonly auth: AuthenticationService
     ) {}
 
   ngOnInit(){
@@ -103,6 +105,11 @@ export class CoursesComponent {
   onPrerequisitesChange(prereq: string, selected: boolean) {
     this.prerequisites[prereq] = selected;
     this.filterCourses();
+  }
+
+  addCourse()
+  {
+    this.router.navigateByUrl('add/course');
   }
 
   filterCourses() {
