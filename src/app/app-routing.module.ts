@@ -6,7 +6,7 @@ import { LandingpageComponent } from './pages/landingpage/landingpage.component'
 import { loggedGuard } from './core/guards/logged.guard';
 import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component';
 import { CoursesComponent } from './pages/courses/courses.component';
-import { userAdminGuard } from './core/guards/user-role.guard';
+import { userAdminGuard, userTeacherGuard } from './core/guards/user-role.guard';
 import { CourseDetailsComponent } from './pages/course-details/course-details.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { StudentDashboardMainComponent } from './pages/dashboard/dashboards/student-dashboard-main/student-dashboard-main.component';
@@ -40,8 +40,14 @@ const routes: Routes = [
           ]
         },
         {
+          path: 'edit/course/:id',
+          component: AddCourseComponent,
+          canActivate: [loggedGuard, userTeacherGuard]
+        },
+        {
           path: 'add/course',
           component: AddCourseComponent,
+          canActivate: [loggedGuard, userTeacherGuard]
         },
         {
           path: 'unauthorized',
@@ -51,6 +57,10 @@ const routes: Routes = [
           path: '',
           component: LandingpageComponent,
           canActivate: [loggedGuard, userAdminGuard]
+        },
+        {
+          path: '**',
+          component: UnauthorizedComponent,
         }
       ]
    }
