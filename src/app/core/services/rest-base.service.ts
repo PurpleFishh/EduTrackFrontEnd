@@ -31,9 +31,9 @@ export class RestBaseService {
     return this.http.delete<T>(completeUrl, {headers: this.buildHeadersForAss()});
   }
 
-  update<T, TDto>(url: string, id: string, object: TDto): Observable<T> {
+  update<T, TDto>(url: string, object: TDto): Observable<T> {
     const completeUrl = this.getCompleteUrl(url);
-    return this.http.patch<T>(completeUrl, JSON.stringify(object), {headers: this.buildHeaders()});
+    return this.http.patch<T>(completeUrl, object, {headers: this.buildHeaders()});
   }
 
   private getCompleteUrlWithQuery(url: string, query: string) {

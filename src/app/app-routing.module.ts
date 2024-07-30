@@ -13,7 +13,7 @@ import { LessonNotFinishedDetailsComponent } from './pages/lesson-not-finished-d
 import { ViewAssignmentPageComponent } from './pages/view-assignment-page/view-assignment-page.component';
 import { UpdateLessonComponent } from './pages/update-lesson/update-lesson.component';
 import { AddLessonComponent } from './pages/add-lesson/add-lesson.component';
-import { userAdminGuard } from './core/guards/user-role.guard';
+import { userAdminGuard, userTeacherGuard } from './core/guards/user-role.guard';
 import { CourseDetailsComponent } from './pages/course-details/course-details.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { StudentDashboardMainComponent } from './pages/dashboard/dashboards/student-dashboard-main/student-dashboard-main.component';
@@ -51,8 +51,14 @@ const routes: Routes = [
           ]
         },
         {
+          path: 'edit/course/:id',
+          component: AddCourseComponent,
+          canActivate: [loggedGuard, userTeacherGuard]
+        },
+        {
           path: 'add/course',
           component: AddCourseComponent,
+          canActivate: [loggedGuard, userTeacherGuard]
         },
         {
           path: 'unauthorized',
@@ -86,6 +92,10 @@ const routes: Routes = [
           path: '',
           component: LandingpageComponent,
           canActivate: [loggedGuard, userAdminGuard]
+        },
+        {
+          path: '**',
+          component: UnauthorizedComponent,
         }
       ]
    }
