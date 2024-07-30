@@ -36,11 +36,11 @@
     display: flex;
     justify-content: space-between;
     align-self: stretch;
-    p{
-        color: $color-text-secondary;
-        font-size: 16px;
-        line-height: 22px;
-        font-weight: 400;
+    p {
+      color: $color-text-secondary;
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 400;
     }
   }
 
@@ -48,65 +48,87 @@
     display: flex;
     flex-direction: column;
     align-self: stretch;
-    .title{
-        font-size: 18px;
-        line-height: 140%;
-        font-weight: 600;
+    .title {
+      font-size: 18px;
+      line-height: 140%;
+      font-weight: 600;
     }
-    .body{
-        font-size: 18px;
-        line-height: 24px;
-        font-weight: 400;
+    .body {
+      font-size: 18px;
+      line-height: 24px;
+      font-weight: 400;
     }
-}
+  }
 
   .card-details {
     display: flex;
     gap: 20px;
     padding: 0 20px;
     .course-info-card {
-        background: $color-accent3;
-        border-radius: 20px;
-        padding: 14px 12px 14px 12px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        width: 120px;
-        height: 90px;
-        color: $color-bg;
+      background: $color-accent3;
+      border-radius: 20px;
+      padding: 14px 12px 14px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      width: 120px;
+      height: 90px;
+      color: $color-bg;
 
-        .data{
-            text-align: center;
-            font-size: 22px;
-            font-weight: 600;
-        }
-        .title{
-            font-size: 18px;
-            line-height: 24px;
-            font-weight: 400;
-        }
-        mat-icon{
-            font-size: 40px;
-            width: 40px;
-            height: 40px;
-        }
-
+      .data {
+        text-align: center;
+        font-size: 22px;
+        font-weight: 600;
+      }
+      .title {
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: 400;
+      }
+      mat-icon {
+        font-size: 40px;
+        width: 40px;
+        height: 40px;
+      }
     }
   }
-
-  button {
-    background: $color-accent3;
-    border-radius: 10px;
+  .action {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 48px;
-    color: $color-bg;
 
-    font-family: var(--v-text-button-font-family, "Roboto-Medium", sans-serif);
-    font-size: 14px;
-    line-height: 36px;
-    letter-spacing: 1.25px;
-    font-weight: 500;
-    text-transform: uppercase;
+    gap: inherit;
+
+    button {
+      background: $color-accent3;
+      border-radius: 10px;
+      width: 100%;
+      height: 48px;
+      color: $color-bg;
+
+      font-family: var(
+        --v-text-button-font-family,
+        "Roboto-Medium",
+        sans-serif
+      );
+      font-size: 14px;
+      line-height: 36px;
+      letter-spacing: 1.25px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    #newLesson{
+      background: none;
+      border-color: $color-accent3;
+      color: $color-accent3;
+    }
+
+    .small {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
   }
 }

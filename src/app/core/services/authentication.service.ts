@@ -79,6 +79,9 @@ export class AuthenticationService {
   public isLogged(): boolean {
     return localStorage.getItem('token') !== null;
   }
+  public getEmail(): string {
+    return localStorage.getItem('email') !== null ? localStorage.getItem('email') as string : '';
+  }
 
   public getUserRole(): UserRoles {
     return environment.userRole;
