@@ -8,7 +8,7 @@
         {{index}}. {{lesson.name}}
       </mat-panel-title>
       <mat-panel-title *ngIf="panelOpenState">
-        <p class="due-date">Due to: 23.12.2024
+        <p class="due-date">Due to: {{lesson.startDate | date:'short'}}
         </p>
       </mat-panel-title>
     </mat-expansion-panel-header>

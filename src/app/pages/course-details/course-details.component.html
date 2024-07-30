@@ -23,8 +23,8 @@
       <h6>This week lesson:</h6>
       <div class="week-lesson">
         <div class="left-col">
-          <p class="due-date">Due to: 23.12.2024</p>
-          <p class="title">1. Llama’s Head and Face Animation</p>
+          <p class="due-date">Due to: {{thisWeekLesson?.startDate | date:'short'}}</p>
+          <p class="title">{{thisWeekLesson?.name}}</p>
         </div>
         <button mat-flat-button color="primary">Back to lesson</button>
       </div>
