@@ -16,6 +16,7 @@ export class CourseDetailsComponent {
   course!: CourseDto;
   realtedCourses: CourseDisplayDto[] = [];
   lessons: LessonDisplayDto[] = [];
+  thisWeekLesson: LessonDisplayDto | undefined;
   descriptionExpanded = false;
   actionAreaHeight = 0;
   descriptionOverflow = true;
@@ -37,7 +38,6 @@ export class CourseDetailsComponent {
         if(document.getElementById('description-text'))
         {  
           let descriptionText = document.getElementById('description-text')!;
-          console.log(descriptionText, descriptionText.offsetHeight, descriptionText.scrollHeight);
           this.descriptionOverflow = descriptionText.offsetHeight  < descriptionText.scrollHeight;
         }
 
@@ -54,6 +54,10 @@ export class CourseDetailsComponent {
       });
       this.lessonService.getAllLessons(this.courseId).subscribe((lessons) => {
         this.lessons = lessons;
+        this.lessons.forEach((lesson) => lesson.startDate =  new Date(lesson.startDate));
+        this.lessons = this.lessons.sort((a, b) => b.startDate.getTime() - a.startDate.getTime());
+        this.thisWeekLesson = this.lessons.filter((lesson) => {
+          return lesson.startDate > new Date()})[0];
       });
       
     });
