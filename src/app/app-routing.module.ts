@@ -11,6 +11,8 @@ import { CourseDetailsComponent } from './pages/course-details/course-details.co
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { StudentDashboardMainComponent } from './pages/dashboard/dashboards/student-dashboard-main/student-dashboard-main.component';
 import { AddCourseComponent } from './pages/add-course/add-course.component';
+import { RecoveryComponent } from './pages/recovery/recovery.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
 const routes: Routes = [
    {
@@ -20,6 +22,14 @@ const routes: Routes = [
         {
           path: 'login',
           component: LoginComponent,
+        },
+        {
+          path: 'recovery',
+          component: RecoveryComponent,
+        },
+        {
+          path: 'resetpassword',
+          component: ResetPasswordComponent,
         },
         {
           path: 'courses',

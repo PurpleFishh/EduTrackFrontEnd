@@ -9,14 +9,14 @@ import { NavigationEnd, Router } from '@angular/router';
 export class MainLayoutComponent {
   showHeader: boolean = true;
   showFooter: boolean = true;
-  headerBlacklist = ['/login']
-  footerBlacklist = ['/login']
+  headerBlacklist = ['/login', '/recovery', '/resetpassword']
+  footerBlacklist = ['/login', '/recovery', '/resetpassword']
 
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.showHeader = !this.headerBlacklist.includes(event.url);
-        this.showFooter = !this.footerBlacklist.includes(event.url);
+        this.showHeader = !this.headerBlacklist.includes(event.url.split('?')[0]);
+        this.showFooter = !this.footerBlacklist.includes(event.url.split('?')[0]);
       }
     });
   }

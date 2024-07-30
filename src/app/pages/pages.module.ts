@@ -16,9 +16,11 @@ import { StatisticComponent } from './dashboard/components/statistic/statistic.c
 import { LegendComponent } from './dashboard/components/legend/legend.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AddCourseComponent } from './add-course/add-course.component';
+import { RecoveryComponent } from './recovery/recovery.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
-  declarations: [LoginComponent, LandingpageComponent, UnauthorizedComponent, CoursesComponent, CourseComponent, CourseDetailsComponent, CourseActionAreaComponent, LessonDisplayCardComponent, ContactUsComponent, StudentDashboardMainComponent, StatisticComponent, LegendComponent, AddCourseComponent],
+  declarations: [LoginComponent, LandingpageComponent, UnauthorizedComponent, CoursesComponent, CourseComponent, CourseDetailsComponent, CourseActionAreaComponent, LessonDisplayCardComponent, ContactUsComponent, StudentDashboardMainComponent, StatisticComponent, LegendComponent, AddCourseComponent, DashboardComponent, RecoveryComponent, ResetPasswordComponent],
   imports: [CommonModule, SharedModule],
   exports: [LoginComponent],
   providers: [HttpClient],

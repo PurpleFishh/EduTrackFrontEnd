@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RestBaseService } from './rest-base.service';
-import { LoginDto } from '../models/login.model';
+import { LoginDto, ResetPasswordDto } from '../models/login.model';
 import { LoggedCredentialsDto } from '../models/logged-credentials.model';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -17,7 +17,7 @@ export class AuthenticationService {
   //userRole: UserRoles | undefined;
 
   constructor(private readonly baseService: RestBaseService) {
-    if(localStorage.getItem('role') !== null)
+    if (localStorage.getItem('role') !== null)
       environment.userRole = localStorage.getItem('role') as UserRoles;
   }
 
@@ -65,6 +65,19 @@ export class AuthenticationService {
     // });
   }
 
+  public recovery(email: string): Observable<boolean> {
+    return this.baseService.add(
+      `${this.endpoint}/RecoverPassword?email=${email}`,
+      {}
+    );
+  }
+  public reserPassword(token: string, reset: string): Observable<boolean> {
+    return this.baseService.add(
+      `${this.endpoint}/ResetPassword?token=${token}`,
+      reset, true
+    );
+  }
+
   public logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
@@ -80,7 +93,9 @@ export class AuthenticationService {
     return localStorage.getItem('token') !== null;
   }
   public getEmail(): string {
-    return localStorage.getItem('email') !== null ? localStorage.getItem('email') as string : '';
+    return localStorage.getItem('email') !== null
+      ? (localStorage.getItem('email') as string)
+      : '';
   }
 
   public getUserRole(): UserRoles {
@@ -95,7 +110,10 @@ export class AuthenticationService {
     //   return isAdmin === true;
     // }
     // return false;
-    return this.isLogged() && localStorage.getItem('role') as UserRoles === UserRoles.Admin;
+    return (
+      this.isLogged() &&
+      (localStorage.getItem('role') as UserRoles) === UserRoles.Admin
+    );
   }
 
   public isTeacher(): boolean {
@@ -106,7 +124,10 @@ export class AuthenticationService {
     //   return isTeacher == true;
     // }
     // return false;
-    return this.isLogged() && localStorage.getItem('role') as UserRoles === UserRoles.Teacher;
+    return (
+      this.isLogged() &&
+      (localStorage.getItem('role') as UserRoles) === UserRoles.Teacher
+    );
   }
 
   public isStudent(): boolean {
@@ -117,7 +138,10 @@ export class AuthenticationService {
     //   return !!payload['admin'] && !!payload['teacher'];
     // }
     // return false;
-    return this.isLogged() && localStorage.getItem('role') as UserRoles === UserRoles.Student;
+    return (
+      this.isLogged() &&
+      (localStorage.getItem('role') as UserRoles) === UserRoles.Student
+    );
   }
 
   public isGuest(): boolean {
