@@ -1,0 +1,194 @@
+<div class="continer">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title *ngIf="courseId === null"> Add course</mat-card-title>
+      <mat-card-title *ngIf="courseId !== null"> Edit course</mat-card-title>
+      <mat-card-subtitle *ngIf="courseId === null"
+        >Fill the form for adding a new course</mat-card-subtitle
+      >
+      <mat-card-subtitle *ngIf="courseId !== null"
+        >Edit the form for modifying {{ courseId }} course</mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="formCourse" (ngSubmit)="onSubmit()">
+        <div class="split">
+          <div class="field">
+            <label for="name">Course name</label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                formControlName="name"
+                placeholder="Course Name"
+                name="name"
+              />
+              <mat-error
+                *ngIf="formCourse.controls['name'].hasError('required')"
+              >
+                Course name is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="field" style="width: fit-content">
+            <label for="duration">Duration</label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                formControlName="duration"
+                placeholder="2 32"
+                name="duration"
+                type="time"
+              />
+              <p class="hint">h:min</p>
+              <mat-error
+                *ngIf="formCourse.controls['duration'].hasError('required')"
+              >
+                Duration is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="split">
+          <div class="field">
+            <label for="category">Category:</label>
+            <mat-form-field appearance="outline">
+              <mat-select formControlName="category" name="category">
+                <mat-option value="Prog">Programming</mat-option>
+                <mat-option value="Easy">Med</mat-option>
+                <mat-option value="Easy">Drawing</mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="formCourse.controls['category'].hasError('required')"
+              >
+                Course category is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="field">
+            <label for="difficulty">Difficulty:</label>
+            <mat-form-field appearance="outline">
+              <mat-select formControlName="difficulty" name="difficulty">
+                <mat-option value="Easy">Easy</mat-option>
+                <mat-option value="Medium">Medium</mat-option>
+                <mat-option value="Hard">Hard</mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="formCourse.controls['difficulty'].hasError('required')"
+              >
+                Course difficulty is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="field">
+          <label for="topics">What will the student learn:</label>
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              formControlName="learningTopics"
+              placeholder="Learning topics..."
+              name="topics"
+            />
+            <mat-error
+              *ngIf="formCourse.controls['learningTopics'].hasError('required')"
+            >
+              Course learning topics are required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="field">
+          <label for="prerequisites"
+            >Prerequisites the student should have(Enter after each):</label
+          >
+          <mat-form-field appearance="outline">
+            <mat-chip-grid #chipGrid>
+              <mat-chip-row
+                *ngFor="let fruit of prereq"
+                (removed)="removePrereq(fruit)"
+              >
+                {{ fruit }}
+                <button matChipRemove [attr.aria-label]="'remove ' + fruit">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip-row>
+            </mat-chip-grid>
+            <input
+              [ngStyle]="{ 'border-color: red': preReqError == true }"
+              formControlName="prerequisites"
+              name="prerequisites"
+              placeholder="Prerequisites..."
+              #fruitInput
+              [matChipInputFor]="chipGrid"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              (matChipInputTokenEnd)="addPrereq($event)"
+            />
+            <mat-hint *ngIf="preReqError == true" class="error">
+              Course prerequisites are required
+            </mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="field">
+          <label for="shortDescription">Shot description of the course:</label>
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              formControlName="shortDescription"
+              placeholder="Description..."
+              name="shortDescription"
+            />
+            <mat-error
+              *ngIf="
+                formCourse.controls['shortDescription'].hasError('required')
+              "
+            >
+              A short course description is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="field">
+          <label for="description">Course description:</label>
+          <mat-form-field appearance="outline" class="textarea">
+            <textarea
+              cdkTextareaAutosize
+              matInput
+              formControlName="description"
+              name="description"
+              placeholder="Description..."
+            ></textarea>
+            <mat-error
+              *ngIf="formCourse.controls['description'].hasError('required')"
+            >
+              A course description is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="add-image">
+          <input
+            type="file"
+            formControlName="image"
+            style="display: none"
+            (change)="onFileSelected($event)"
+            #fileUpload
+          />
+          <button
+            mat-flat-button
+            type="button"
+            color="primary"
+            (click)="fileUpload.click()"
+          >
+            Add course image
+            <mat-icon>upload_file</mat-icon>
+          </button>
+          <p [className]="fileError ? 'error' : ''">
+            {{ fileName || "No file uploaded yet." }}
+          </p>
+        </div>
+        <mat-card-actions>
+          <button mat-flat-button *ngIf="courseId === null" color="primary" type="submit">Create</button>
+          <button mat-flat-button *ngIf="courseId !== null" color="primary" type="submit">Edit</button>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
