@@ -17,6 +17,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [],
@@ -40,6 +41,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatSelectModule,
     MatPaginatorModule,
     MatExpansionModule,
+    MatChipsModule,
   ],
 })
 export class SharedModule {}
