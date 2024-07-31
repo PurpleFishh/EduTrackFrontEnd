@@ -24,6 +24,8 @@
       [lessonId]="lessonId"
       [lessonStatus]="current_lesson?.lessonStatus"
       (changeStatus)="changeLessonStatus($event)"
+      (deleteLesson)="deleteLesson()"
+      (deleteAssignment)="deleteAssignment()"
     ></app-lesson-action-area>
   </div>
   <div>

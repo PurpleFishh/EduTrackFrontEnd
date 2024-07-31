@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 import {
@@ -53,7 +56,9 @@ export class LessonDetailsComponent {
     private readonly courseService: CoursesService,
     private readonly assService: AssignmentInventoryService,
     private readonly routerActive: ActivatedRoute,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly dialog: MatDialog,
+    private readonly snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -111,16 +116,17 @@ export class LessonDetailsComponent {
   }
 
   changeLessonStatus(status: LessonStatus) {
-    console.log(status);
     this.lessonSevice
       .changeLessonStatus(this.courseId, this.lessonId, status)
       .subscribe((data) => {
-        if (data)
+        if (data) {
           this.assService
             .getLesson(this.courseId, this.lessonId)
             .subscribe((lesson) => {
               this.current_lesson = lesson;
             });
+            this.snackBar.open(`Lesson status changed!`, 'Close');
+        }
       });
   }
 
@@ -154,4 +160,41 @@ export class LessonDetailsComponent {
     const fileInput = document.getElementById('fileInput') as HTMLInputElement;
     fileInput.click();
   }
+
+  deleteLesson() {
+    const dialogRef = this.dialog.open(DeleteConfirmDialog);
+
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this.lessonSevice.deleteLesson(this.courseId, this.lessonId).subscribe(
+          (response) => this.router.navigateByUrl('/course/' + this.courseId),
+          (error) => console.error('Delete error:', error)
+        );
+      }
+    });
+  }
+
+  deleteAssignment() {
+    const dialogRef = this.dialog.open(DeleteConfirmDialog);
+
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this.assService
+          .deleteAssignment(this.courseId, this.lessonId)
+          .subscribe(
+            (response) => this.router.navigateByUrl('/course/' + this.courseId),
+            (error) => console.error('Delete error:', error)
+          );
+      }
+    });
+  }
 }
+
+@Component({
+  selector: 'delete-confrim',
+  templateUrl: 'delete-confirmation/delete-confirm-dialog.html',
+  styleUrls: ['./delete-confirmation/delete-confirm-dialog.scss'],
+  standalone: true,
+  imports: [MatDialogModule, MatButtonModule],
+})
+export class DeleteConfirmDialog {}

@@ -34,11 +34,8 @@ export class LessonsService {
     );
 }
 
-  deleteLesson(){
-    const courseName = localStorage.getItem('course') || 'aaa';
-    const lessonTitle = localStorage.getItem('lesson') || 'ccc';
-
-    return this.baseService.deleteAss<boolean>(`${this.endpoint}/DeleteLesson?CourseName=${courseName}&LessonTitle=${lessonTitle}`);
+  deleteLesson(courseId: string, lessonId: string): Observable<boolean> {
+    return this.baseService.deleteAss<boolean>(`${this.endpoint}/DeleteLesson?CourseName=${courseId}&LessonTitle=${lessonId}`);
   }
 
   getLesson(courseTitle: string, lessonTitle: string): Observable<LessonDto> {

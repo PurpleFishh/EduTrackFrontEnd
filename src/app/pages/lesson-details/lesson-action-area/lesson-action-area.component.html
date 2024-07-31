@@ -24,8 +24,8 @@
 <div class="teacher" *ngIf="isTeacher">
   <mat-card>
     <mat-menu #deleteMenu="matMenu">
-      <button mat-menu-item (click)="deleteLesson()">Delete Lesson</button>
-      <button mat-menu-item (click)="deleteAssignment()">
+      <button mat-menu-item (click)="deleteLesson.emit()">Delete Lesson</button>
+      <button mat-menu-item (click)="deleteAssignment.emit()">
         Delete Assignment
       </button>
     </mat-menu>
