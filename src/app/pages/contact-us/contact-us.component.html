@@ -12,6 +12,9 @@
                         <mat-form-field appearance="outline">
                             <mat-label>Name</mat-label>
                             <input matInput formControlName="name" type="text" />
+                            <mat-error *ngIf="form.get('name')?.hasError('required')">
+                                Name is required
+                            </mat-error>
                         </mat-form-field>
                         <mat-form-field appearance="outline">
                             <mat-label>Subject</mat-label>
@@ -22,10 +25,16 @@
                                 <mat-option value="3">Educational Tools</mat-option>
                                 <mat-option value="4">Assessment and Feedback</mat-option>
                             </mat-select>
+                            <mat-error *ngIf="form.get('category')?.hasError('required')">
+                                Subject is required
+                            </mat-error>
                         </mat-form-field>
                         <mat-form-field appearance="outline">
                             <mat-label>Message Title</mat-label>
                             <input matInput formControlName="title" type="text" />
+                            <mat-error *ngIf="form.get('title')?.hasError('required')">
+                                Message title is required
+                            </mat-error>
                         </mat-form-field>
                     </div>
                     <!-- Right Side -->
@@ -33,6 +42,12 @@
                         <mat-form-field appearance="outline">
                             <mat-label>Email</mat-label>
                             <input matInput formControlName="email" type="email" />
+                            <mat-error *ngIf="form.get('email')?.hasError('required')">
+                                Email is required
+                            </mat-error>
+                            <mat-error *ngIf="form.get('email')?.hasError('email')">
+                                Please enter a valid email
+                            </mat-error>
                         </mat-form-field>
                         <mat-checkbox formControlName="isAnonymus">Click for anonymity</mat-checkbox>
                     </div>
@@ -42,6 +57,9 @@
                     <mat-form-field appearance="outline" class="message">
                         <mat-label>Message</mat-label>
                         <textarea matInput formControlName="content"></textarea>
+                        <mat-error *ngIf="form.get('content')?.hasError('required')">
+                            Message content is required
+                        </mat-error>
                     </mat-form-field>
                 <!-- </div> -->
                 <!-- Rating and Submit -->
@@ -53,6 +71,10 @@
                         </button>
                     </div>
                     <button mat-flat-button color="primary" type="submit">Submit</button>
+                </div>
+                <!-- Error Message -->
+                <div *ngIf="errorMessage" class="error-message">
+                    {{ errorMessage }}
                 </div>
             </form>
         </mat-card-content>
