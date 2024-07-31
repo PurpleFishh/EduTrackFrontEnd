@@ -13,9 +13,10 @@ import { LessonNotFinishedDetailsComponent } from './lesson-not-finished-details
 import { ViewAssignmentPageComponent } from './view-assignment-page/view-assignment-page.component';
 import { AddLessonComponent } from './add-lesson/add-lesson.component';
 import { UpdateLessonComponent } from './update-lesson/update-lesson.component';
+import { LessonActionAreaComponent } from './lesson-details/lesson-action-area/lesson-action-area.component';
 
 @NgModule({
-  declarations: [LoginComponent, LandingpageComponent, UnauthorizedComponent, CoursesComponent, CourseComponent, LessonDetailsComponent, LessonDetailsTeacherComponent, LessonNotFinishedDetailsComponent, ViewAssignmentPageComponent, AddLessonComponent, UpdateLessonComponent],
+  declarations: [LoginComponent, LandingpageComponent, UnauthorizedComponent, CoursesComponent, CourseComponent, LessonDetailsComponent, LessonDetailsTeacherComponent, LessonNotFinishedDetailsComponent, ViewAssignmentPageComponent, AddLessonComponent, UpdateLessonComponent, LessonActionAreaComponent],
   imports: [CommonModule, SharedModule],
   exports: [LoginComponent],
   providers: [HttpClient],

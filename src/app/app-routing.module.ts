@@ -24,6 +24,10 @@ const routes: Routes = [
           component: LoginComponent,
         },
         {
+          path: 'course/:curs/lesson/:lesson',
+          component: LessonDetailsComponent
+        },
+        {
           path: 'courses',
           component: CoursesComponent,
         },
@@ -35,10 +39,7 @@ const routes: Routes = [
           path: 'unauthorized',
           component: UnauthorizedComponent,
         },
-        {
-          path: 'lesson-details',
-          component: LessonDetailsComponent
-        },
+       
         {
           path: 'lesson-details-teacher',
           component: LessonDetailsTeacherComponent

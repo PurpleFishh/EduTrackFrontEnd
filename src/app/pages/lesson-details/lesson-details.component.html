@@ -1,96 +1,100 @@
 <div class="content">
-    <div class="header-banner">
-      <div class="banner-title" *ngIf="current_course">
-        {{current_course.shortDescription}}
-      </div>
-      <div class="banner-content" *ngIf="current_course">
-        <p>{{current_course.shortDescription}}</p>
-      </div>
-    <mat-card class="mat-card1">
-        <div *ngIf="final_grade">
-            <p>Final grade: {{final_grade}}</p>
-        </div>
-    </mat-card>
-    <mat-card class="mat-card2">
-        <div *ngIf="current_grade">
-            <p>Grade: {{current_grade}}
-        </div>
-    </mat-card>
-</div>
-<div>
+  <div class="header-banner">
+    <div class="banner-title">
+      {{ current_lesson?.name }}
+    </div>
+    <div class="banner-content">
+      <p>{{ current_lesson?.description }}</p>
+    </div>
+    <app-lesson-action-area [currentGrade]="current_grade?.grade" [finalGrade]="final_grade"></app-lesson-action-area>
+    
+  </div>
+  <div>
     <mat-card>
-        <mat-card-header>
-            <div *ngIf="current_lesson">
-                <p>{{current_lesson.name}}</p>
-            </div>
-        </mat-card-header>
-        <div *ngIf="current_lesson" style="padding-bottom: 20px;">
-            <p>&ensp;&nbsp;{{current_lesson.description}}</p>
+      <mat-card-header>
+          <p>Lesson</p>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngIf="current_lesson">
+          <p>{{ current_lesson.lesson_Content }}</p>
         </div>
-        <br>
-        <mat-card-content>
-            <div *ngIf="current_lesson">
-                <p>{{current_lesson.lesson_Content}}</p>
-            </div>
-        </mat-card-content>
+      </mat-card-content>
     </mat-card>
-    <br><br>
+    <br /><br />
+    
     <mat-card>
-        <mat-card-header>
-            <div *ngIf="current_assignment">
-                <div *ngFor="let assignment of current_assignment">
-                <p>
-                {{assignment.assignment_name}}
-                </p>
-                </div>
-            </div>
-        </mat-card-header>
-        <br>
-        <mat-card-content>
-            <div *ngIf="current_assignment">
-                <div *ngFor="let assignment of current_assignment">
-                <p>
-                {{assignment.assignment_description}}
-                </p>
-                </div>
-            </div>
-        </mat-card-content>
-        <mat-card-header>
-            Solution title
-        </mat-card-header>
-        <br>
-        <mat-form-field appearance="outline">
-            <mat-label>Enter the title of your solution here</mat-label>
-            <textarea matInput placeholder="Ex. My attempt." [(ngModel)]="solution.solution_title"></textarea>
-          </mat-form-field>
-          <mat-card-header>
-            Solution
-          </mat-card-header>
-          <br>
-          <mat-form-field appearance="outline">
-            <mat-label>Enter your solution here</mat-label>
-            <textarea matInput placeholder="Ex. First question: the answer is 45." [(ngModel)]="solution.solution" rows="20"></textarea>
-          </mat-form-field>
-          <br>          
+      <mat-card-header>
+        <div *ngIf="current_assignment">
+          <div *ngFor="let assignment of current_assignment">
+            <p>
+              Assignment: {{ assignment.assignment_name }}
+            </p>
+          </div>
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngIf="current_assignment">
+          <div *ngFor="let assignment of current_assignment">
+            <p>
+              {{ assignment.assignment_description }}
+            </p>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-header> Solution title </mat-card-header>
+      <br />
+      <mat-form-field appearance="outline">
+        <mat-label>Enter the title of your solution here</mat-label>
+        <textarea
+          matInput
+          placeholder="Ex. My attempt."
+          [(ngModel)]="solution.solution_title"
+        ></textarea>
+      </mat-form-field>
+      <mat-card-header> Solution </mat-card-header>
+      <br />
+      <mat-form-field appearance="outline">
+        <mat-label>Enter your solution here</mat-label>
+        <textarea
+          matInput
+          placeholder="Ex. First question: the answer is 45."
+          [(ngModel)]="solution.solution"
+          rows="20"
+        ></textarea>
+      </mat-form-field>
+      <br />
+      <div>
         <div>
-            <div>
-            <input type="file" id="fileInput" (change)="onFileSelected($event)" style="display: none;">
-            
-            <button mat-icon-button class="blue_button" (click)="triggerFileInput()">
-                <mat-icon> upload </mat-icon>
-                Upload Files
-            </button>
-            <div *ngIf="fileName">
-                <p>{{ fileName }}</p>
-              </div>
-            </div>
+          <input
+            type="file"
+            id="fileInput"
+            (change)="onFileSelected($event)"
+            style="display: none"
+          />
 
+          <button
+            mat-icon-button
+            class="blue_button"
+            (click)="triggerFileInput()"
+          >
+            <mat-icon> upload </mat-icon>
+            Upload Files
+          </button>
+          <div *ngIf="fileName">
+            <p>{{ fileName }}</p>
+          </div>
         </div>
-        <br>  
-        <button mat-icon-button class="green_button" (click)="onSubmit()" [disabled]="!isFormValid()">
-            Submit
-        </button>
-        <br>
-
+      </div>
+      <br />
+      <button
+        mat-icon-button
+        class="green_button"
+        (click)="onSubmit()"
+        [disabled]="!isFormValid()"
+      >
+        Submit
+      </button>
+      <br />
     </mat-card>
+  </div>
 </div>

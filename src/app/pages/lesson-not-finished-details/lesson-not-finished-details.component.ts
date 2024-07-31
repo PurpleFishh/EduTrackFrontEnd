@@ -29,7 +29,7 @@ export class LessonNotFinishedDetailsComponent {
       console.log(assignment);
       this.current_assignment = assignment;
     });
-    this.assService.getLesson().subscribe(lesson => {
+    this.assService.getLesson('Curs', 'Lectie').subscribe(lesson => {
       console.log(lesson);
       this.current_lesson = lesson;
     });

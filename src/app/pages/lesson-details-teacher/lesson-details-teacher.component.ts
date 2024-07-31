@@ -37,7 +37,7 @@ export class LessonDetailsTeacherComponent {
       //console.log(assignment);
       this.current_assignment = assignment;
     });
-    this.assService.getLesson().subscribe(lesson => {
+    this.assService.getLesson('Curs', 'lectie').subscribe(lesson => {
       //console.log(lesson);
       this.current_lesson = lesson;
     });
