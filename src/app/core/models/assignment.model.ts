@@ -20,3 +20,7 @@ export interface AssignmentSolutionDto{
 export interface Grade{
     grade: string
 }
+
+export interface MenuItem {
+    label: string;
+  }

@@ -1,1 +1,23 @@
-<p>student-dashboard-assignments works!</p>
+<button mat-button [matMenuTriggerFor]="menu" class="menu-button">
+    {{ currentCourse }}
+    <mat-icon>keyboard_arrow_down</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item *ngFor="let item of menuItems" (click)="selectCourse(item.label)">
+      {{ item.label }}
+    </button>
+  </mat-menu>
+
+  <p class="title">My grades</p>
+  <mat-card>
+
+  </mat-card>
+
+  <p class="title">My attendance</p>
+  <mat-card>
+
+  </mat-card>
+
+    
+
+
