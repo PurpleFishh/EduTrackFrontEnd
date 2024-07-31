@@ -123,8 +123,10 @@
 
                 <div class="isAnonymus">
                     <mat-checkbox formControlName="isAnonymus">Anonymous</mat-checkbox>
+                    <button class="custom-button" (click)="resetAnonymity()" type="button">Reset Anonymity</button>
                 </div> 
 
+                <button mat-raised-button class="custom-button" (click)="resetForm()" type="button">Reset Filters</button>
                 <button mat-flat-button color="primary" type="submit">Filter</button>
             </form>
 

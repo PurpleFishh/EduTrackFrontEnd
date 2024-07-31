@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FeedbackService } from 'src/app/core/services/feedback.service';
 import { FeedbackFiltersDto } from 'src/app/core/models/feedback.model';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-feedback',
@@ -88,6 +89,17 @@ export class FeedbackComponent {
       this.byEmail.splice(index, 1);
     if (type == 'title')
       this.byTitle.splice(index, 1);
+  }
+
+  resetForm() {
+    this.form.reset();
+    this.byName = [];
+    this.byEmail = [];
+    this.byTitle = [];
+  }
+
+  resetAnonymity() {
+    this.form.get('isAnonymus')?.reset();
   }
 
   private serializeForm(formValue: any): FeedbackFiltersDto {

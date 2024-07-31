@@ -24,3 +24,28 @@ button {
     color: red;
     /* Ensure error messages are visible */
 }
+
+.custom-button {
+    font-size: 12px;
+    /* Smaller font size */
+    padding: 4px 8px;
+    /* Less padding */
+    // background-color: gray;
+    /* Gray background color */
+    color: black;
+    /* White text color */
+    box-shadow: none;
+    /* Remove box-shadow for a less visible look */
+    border: 1px solid darkgray;
+    /* Optional: border for contrast */
+    opacity: 0.7;
+    /* Slightly transparent */
+    border-radius: 9px;
+}
+
+.custom-button:hover {
+    background-color: darkgray;
+    /* Darker gray on hover */
+    color: white;
+    /* Keep text color white on hover */
+}
