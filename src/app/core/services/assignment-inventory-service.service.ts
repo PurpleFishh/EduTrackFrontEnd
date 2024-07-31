@@ -25,7 +25,7 @@ export class AssignmentInventoryService {
     private readonly auth: AuthenticationService
   ) {}
 
-  public getAssignment(courseName: string = '', lessonTitle: string = '') {
+  public getAssignment(courseName: string, lessonTitle: string) {
     return this.baseService.get<AssignmentDisplayDto[]>(
       this.getCompleteUrlWithQuery(`${this.endpoint}/GetAssignment`, {
         CourseName: courseName,
@@ -94,7 +94,7 @@ export class AssignmentInventoryService {
     &Assignment_preview=${assignment.assignment_preview}`;
     return this.baseService.update(
       url,
-      {}
+      formData
     );
   }
 

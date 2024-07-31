@@ -11,6 +11,7 @@ export interface LessonDisplayDto {
   lesson_Content: string;
   lessonStatus: LessonStatus;
   startDate: Date;
+  teacherEmail: string;
 }
 
 export enum LessonStatus {

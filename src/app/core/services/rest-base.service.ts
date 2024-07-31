@@ -15,13 +15,17 @@ export class RestBaseService {
     return this.http.get<T>(completeUrl, {headers: this.buildHeaders()});
   }
 
-  add<T,TDto>(url: string, object: TDto): Observable<T> {
+  add<T,TDto>(url: string, object: TDto, jsonType:boolean = false): Observable<T> {
     const completeUrl = this.getCompleteUrl(url);
-    return this.http.post<T>(completeUrl, object, {headers: this.buildHeaders()});
+    return this.http.post<T>(completeUrl, object, {headers: this.buildHeaders(jsonType)});
   }
 
-  delete<T>(url: string, id: string) {
-    const completeUrl = this.getCompleteUrlWithQuery(url, id);
+  delete<T>(url: string, id: string='') {
+    let completeUrl = '';
+    if(id === '')
+      completeUrl = this.getCompleteUrl(url);
+    else
+      completeUrl = this.getCompleteUrlWithQuery(url, id);
     return this.http.delete<T>(completeUrl, {headers: this.buildHeaders()});
   }
   
@@ -51,12 +55,12 @@ export class RestBaseService {
     return `${environment.apiUrl}/${url}`;
   }
 
-  private buildHeaders(jsonType:boolean = true): HttpHeaders {
+  private buildHeaders(jsonType:boolean = false): HttpHeaders {
     let headers: HttpHeaders;
     headers = new HttpHeaders();
     headers = headers.set('Accept', 'application/json');
-   // if(jsonType)
-    //  headers = headers.set('Content-Type', 'application/json; charset=UTF-8');
+    if(jsonType)
+      headers = headers.set('Content-Type', 'application/json; charset=UTF-8');
     headers = headers.set('Cache-Control', 'no-cache');
     if(localStorage.getItem('token') !== null)
       headers = headers.set('Authorization', 'Bearer ' + localStorage.getItem('token'));

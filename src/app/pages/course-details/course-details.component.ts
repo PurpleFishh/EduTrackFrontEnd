@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import {
   CourseDisplayDto,

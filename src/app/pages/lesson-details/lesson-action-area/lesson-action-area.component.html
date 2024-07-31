@@ -30,7 +30,7 @@
       </button>
     </mat-menu>
     <div class="button-container">
-      <button mat-icon-button class="button1" (click)="goToEditLesson()">
+      <button mat-icon-button class="button1" (click)="editLesson.emit()">
         <mat-icon> edit </mat-icon>
         EDIT
       </button>
@@ -40,7 +40,7 @@
       </button>
     </div>
 
-    <button mat-stroked-button class="button-stroked">
+    <button *ngIf="lessonStatus === allLessonStatus.InProgess" mat-stroked-button class="button-stroked" (click)="goToAttendanceChecker()">
       <mat-icon> task_alt </mat-icon>
       MAKE ATTENDANCE
     </button>

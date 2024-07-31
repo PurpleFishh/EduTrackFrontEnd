@@ -1,9 +1,13 @@
 <div class="content">
-  <mat-card class="formaddlesson">
+  <mat-card>
     <mat-card-header>
-      <mat-card-title class="title">Add lesson</mat-card-title>
-      <mat-card-subtitle class="textadd"
-        >Fill the form for adding a new lesson to the course</mat-card-subtitle
+      <mat-card-title *ngIf="lessonTitle === undefined"> Add lesson</mat-card-title>
+      <mat-card-title *ngIf="lessonTitle !== undefined"> Edit lesson</mat-card-title>
+      <mat-card-subtitle *ngIf="lessonTitle === undefined"
+        >Fill the form for adding a new lesson</mat-card-subtitle
+      >
+      <mat-card-subtitle *ngIf="lessonTitle !== undefined"
+        >Edit the form for modifying {{ lessonTitle }} lesson</mat-card-subtitle
       >
     </mat-card-header>
     <mat-card-content>
@@ -23,7 +27,7 @@
                   addLessonForm.controls['lessonName'].hasError('required')
                 "
               >
-                Course learning topics are required
+                Lesson title is required
               </mat-error>
             </mat-form-field>
           </div>
@@ -32,83 +36,130 @@
             <mat-form-field appearance="outline">
               <input
                 matInput
-                [matDatepicker]="picker"
+                [matDatepicker]="pickerLesson"
                 formControlName="lessonDueDate"
               />
               <mat-datepicker-toggle
                 matIconSuffix
-                [for]="picker"
+                [for]="pickerLesson"
               ></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
+              <mat-datepicker #pickerLesson></mat-datepicker>
               <mat-error
                 *ngIf="
                   addLessonForm.controls['lessonDueDate'].hasError('required')
                 "
               >
-                Course learning topics are required
+                Lesson date is required
               </mat-error>
             </mat-form-field>
           </div>
         </div>
-        
-        <div class="form-group-row">
-          <div class="form-group">
-            <label class="lesson-title" for="lesson-title">Lesson title:</label>
-            <input
-              formControlName="lessonName"
-              type="text"
-              id="lesson-title"
-              placeholder="Cursul meu bun"
-            />
-          </div>
-          <div class="form-group">
-            <label class="lesson-title" for="lesson-date">Lesson date:</label>
-            <input
-              formControlName="lessonDueDate"
-              type="date"
-              id="lesson-date"
-              value="2024-12-03"
-            />
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="lesson-title" for="lesson-description"
-            >Lesson description:</label
-          >
-          <textarea
-            formControlName="lessonDescription"
-            id="lesson-description"
-            placeholder="Text..."
-          ></textarea>
-        </div>
+
         <div class="field">
-          <label for="topics">What will the student learn:</label>
-          <mat-form-field appearance="outline">
-            <input
+          <label for="description">Lesson description:</label>
+          <mat-form-field appearance="outline" class="textarea">
+            <textarea
+              cdkTextareaAutosize
               matInput
               formControlName="lessonDescription"
-              placeholder="Learning topics..."
-              name="topics"
-            />
+              name="description"
+              placeholder="Description..."
+            ></textarea>
             <mat-error
               *ngIf="
                 addLessonForm.controls['lessonDescription'].hasError('required')
               "
             >
-              Course learning topics are required
+              Lesson description is required
             </mat-error>
           </mat-form-field>
         </div>
-        <div class="form-group">
-          <label class="lesson-title" for="lesson-content"
-            >Lesson content:</label
-          >
-          <textarea
-            formControlName="lessonContent"
-            id="lesson-content"
-            placeholder="Text..."
-          ></textarea>
+
+        <div class="field">
+          <label for="lesson-content">Lesson content:</label>
+          <mat-form-field appearance="outline" class="textarea">
+            <textarea
+              cdkTextareaAutosize
+              matInput
+              formControlName="lessonContent"
+              name="lesson-content"
+              placeholder="Content..."
+            ></textarea>
+            <mat-error
+              *ngIf="
+                addLessonForm.controls['lessonContent'].hasError('required')
+              "
+            >
+              Lesson content is required
+            </mat-error>
+          </mat-form-field>
         </div>
+
+        <!-- Assignments: -->
+
+        <div class="field">
+          <label for="assignment-title">Assignment title:</label>
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              formControlName="assignmentTitle"
+              placeholder="Assignment title..."
+              name="assignment-title"
+            />
+            <mat-error
+              *ngIf="
+                addLessonForm.controls['assignmentTitle'].hasError('required')
+              "
+            >
+              Assignment title is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="field">
+          <label for="assignment-short">Assignment short description:</label>
+          <mat-form-field appearance="outline" class="textarea">
+            <textarea
+              cdkTextareaAutosize
+              matInput
+              formControlName="assignmentShortDescription"
+              name="assignment-short"
+              placeholder="Description..."
+            ></textarea>
+            <mat-error
+              *ngIf="
+                addLessonForm.controls['assignmentShortDescription'].hasError(
+                  'required'
+                )
+              "
+            >
+              A short description is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="field">
+          <label for="assignment-task">Assignment task:</label>
+          <mat-form-field appearance="outline" class="textarea">
+            <textarea
+              cdkTextareaAutosize
+              matInput
+              formControlName="assignmentTask"
+              name="assignment-task"
+              placeholder="Content..."
+            ></textarea>
+            <mat-error
+              *ngIf="
+                addLessonForm.controls['assignmentTask'].hasError('required')
+              "
+            >
+              Assignment task is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Add file button -->
+
         <div class="form-group-row">
           <input
             type="file"
@@ -125,52 +176,11 @@
           </button>
           <span class="pdf-name" *ngIf="fileName">{{ fileName }}</span>
         </div>
-        <div class="form-group-row">
-          <div class="form-group">
-            <label class="lesson-title" for="assignment-title"
-              >Assignment title:</label
-            >
-            <input
-              formControlName="assignmentTitle"
-              type="text"
-              id="assignment-title"
-              placeholder="Cursul meu bun"
-            />
-          </div>
-          <div class="form-group">
-            <label class="lesson-title" for="assignment-due-date"
-              >Assignment due date:</label
-            >
-            <input
-              formControlName="assignmentDueDate"
-              type="date"
-              id="assignment-due-date"
-              value="2024-12-03"
-            />
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="lesson-title" for="assignment-short-description"
-            >Assignment short description:</label
-          >
-          <textarea
-            formControlName="assignmentShortDescription"
-            id="assignment-short"
-            placeholder="Text..."
-          ></textarea>
-        </div>
-        <div class="form-group">
-          <label class="lesson-title" for="assignment-task"
-            >Assignment task:</label
-          >
-          <textarea
-            formControlName="assignmentTask"
-            id="assignment-task"
-            placeholder="Text..."
-          ></textarea>
-        </div>
+
         <div class="form-group-row end">
-          <button class="submit-button" type="submit">CREATE</button>
+          <!-- <button class="submit-button" type="submit">CREATE</button> -->
+          <button mat-flat-button class="submit-button" *ngIf="lessonTitle === undefined" color="primary" type="submit">Create</button>
+          <button mat-flat-button class="submit-button" *ngIf="lessonTitle !== undefined" color="primary" type="submit">Edit</button>
         </div>
       </form>
     </mat-card-content>

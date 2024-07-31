@@ -25,9 +25,19 @@ export class CoursesService {
     //return from(this.courses2);
   }
 
+  enrollToCourse(courseName: string) {
+    const url = `${this.endpoint}/EnrollToCourse`;
+    return this.baseService.add(url, `"${courseName}"`, true);
+  }
+
   getStudentEnrolled(courseName: string) {
     const url = `${this.endpoint}/GetStudentsEnrolled?courseName=${courseName}`;
     return this.baseService.get<StudentDto[]>(url);
+  }
+  
+  isStudentEnrolled(courseName: string) {
+    const url = `${this.endpoint}/GetStudentEnrolledCourses?courseName=${courseName}`;
+    return this.baseService.get<boolean>(url);
   }
 
   getFilters(filter: CoursesFilter) {
@@ -48,12 +58,27 @@ export class CoursesService {
     );
   }
   getStudentEnrolledCourses() {
-    return this.baseService.get<CourseDisplayDto[]>(`${this.endpoint}/GetStudentEnrolledCourses`);
+    return this.baseService.get<CourseDisplayDto[]>(
+      `${this.endpoint}/GetStudentEnrolledCourses`
+    );
   }
+  isUserCourseOwner(courseId: string) {
+    let result = this.baseService.get<boolean>(
+      `${this.endpoint}/IsUserCourseOwner?courseName=${courseId}`
+    );
+    return result;
+  }
+
   updateCourse(courseId: string, course: FormData) {
     return this.baseService.update<boolean, FormData>(
       `${this.endpoint}/EditCourse?courseName=${courseId}`,
       course
+    );
+  }
+
+  deleteCourse(courseId: string) {
+    return this.baseService.delete<boolean>(
+      `${this.endpoint}/DeleteCourse?courseName=${courseId}`
     );
   }
 
@@ -78,9 +103,15 @@ export class CoursesService {
     );
   }
 
-  private getCompleteUrlWithQuery(url: string, queryParams: { [key: string]: string }) {
+  private getCompleteUrlWithQuery(
+    url: string,
+    queryParams: { [key: string]: string }
+  ) {
     const queryString = Object.keys(queryParams)
-      .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(queryParams[key])}`)
+      .map(
+        (key) =>
+          `${encodeURIComponent(key)}=${encodeURIComponent(queryParams[key])}`
+      )
       .join('&');
     return `${url}?${queryString}`;
   }
