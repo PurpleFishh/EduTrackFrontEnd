@@ -34,7 +34,8 @@ const routes: Routes = [
       },
       {
         path: 'course/:curs/lesson/:lesson',
-        component: LessonDetailsComponent
+        component: LessonDetailsComponent,
+        canActivate: [loggedGuard],
       },
       {
         path: 'course/:id',
@@ -49,14 +50,6 @@ const routes: Routes = [
         path: 'add/course',
         component: AddCourseComponent,
         canActivate: [loggedGuard, userTeacherGuard],
-      },
-      {
-        path: 'lesson-details-teacher',
-        component: LessonDetailsTeacherComponent
-      },
-      {
-        path: 'lesson-notfinished-details',
-        component: LessonNotFinishedDetailsComponent
       },
       {
         path: 'view-assignment-page',

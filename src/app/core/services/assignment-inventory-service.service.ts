@@ -56,10 +56,7 @@ export class AssignmentInventoryService {
     );
   }
 
-  public deleteAssignment() {
-    const courseName = localStorage.getItem('course') || 'Curs';
-    const lessonTitle = localStorage.getItem('lesson') || 'Lectia 1';
-
+  public deleteAssignment(courseName: string, lessonTitle: string) {
     return this.baseService.deleteAss<boolean>(
       `${this.endpoint}/DeleteAssignment?CourseName=${courseName}&LessonTitle=${lessonTitle}`
     );

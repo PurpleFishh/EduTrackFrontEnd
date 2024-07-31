@@ -17,6 +17,8 @@ export class LessonActionAreaComponent {
   @Input() lessonId: string | undefined;
 
   @Output() changeStatus: EventEmitter<any> = new EventEmitter();
+  @Output() deleteLesson: EventEmitter<any> = new EventEmitter();
+  @Output() deleteAssignment: EventEmitter<any> = new EventEmitter();
 
   allLessonStatus = LessonStatus;
 
@@ -34,27 +36,7 @@ export class LessonActionAreaComponent {
     const result = window.confirm(
       'Select ok to delete lesson or cancel to delete assignment'
     );
-
-    if (result) {
-      this.deleteLesson();
-    } else {
-      this.deleteAssignment();
-    }
   }
 
-  deleteLesson() {
-    this.lessonSevice.deleteLesson().subscribe(
-      (response) => console.log('Delete response:', response),
-      (error) => console.error('Delete error:', error)
-    );
-    window.location.reload();
-  }
-
-  deleteAssignment() {
-    this.assService.deleteAssignment().subscribe(
-      (response) => console.log('Delete response:', response),
-      (error) => console.error('Delete error:', error)
-    );
-    window.location.reload();
-  }
+  
 }

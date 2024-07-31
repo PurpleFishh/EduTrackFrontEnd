@@ -21,6 +21,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -48,6 +50,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatSliderModule,
     MatProgressBarModule,
     MatChipsModule,
+    MatDialogModule,
+    MatSnackBarModule,
   ],
 })
 export class SharedModule {}
