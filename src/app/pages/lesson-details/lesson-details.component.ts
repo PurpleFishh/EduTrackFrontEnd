@@ -187,6 +187,10 @@ export class LessonDetailsComponent {
       }
     });
   }
+
+  goToEditLesson() {
+    this.router.navigateByUrl(`/edit/course/${this.courseId}/lesson/${this.lessonId}`);
+  }
 }
 
 @Component({

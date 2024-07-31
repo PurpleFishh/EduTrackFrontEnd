@@ -45,7 +45,7 @@ export class LessonDetailsTeacherComponent {
       solution: '',
       fileName: '',
     };
-    this.assService.getAssignment().subscribe((assignment) => {
+    this.assService.getAssignment('','').subscribe((assignment) => {
       //console.log(assignment);
       this.current_assignment = assignment;
     });

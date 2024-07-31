@@ -50,9 +50,19 @@ const routes: Routes = [
         component: CourseDetailsComponent,
       },
       {
+        path: 'edit/course/:curs/lesson/:lesson',
+        component: AddLessonComponent,
+        canActivate: [loggedGuard],
+      },
+      {
         path: 'edit/course/:id',
         component: AddCourseComponent,
         canActivate: [loggedGuard, teacherCourseOwner],
+      },
+      {
+        path: 'add/course/:curs/lesson',
+        component: AddLessonComponent,
+        canActivate: [loggedGuard],
       },
       {
         path: 'add/course',
@@ -67,11 +77,6 @@ const routes: Routes = [
       {
         path: 'update-lesson',
         component: UpdateLessonComponent,
-        canActivate: [loggedGuard]
-      },
-      {
-        path: 'add-lesson',
-        component: AddLessonComponent,
         canActivate: [loggedGuard]
       },
       {

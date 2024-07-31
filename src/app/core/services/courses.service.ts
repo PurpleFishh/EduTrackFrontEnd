@@ -25,9 +25,19 @@ export class CoursesService {
     //return from(this.courses2);
   }
 
+  enrollToCourse(courseName: string) {
+    const url = `${this.endpoint}/EnrollToCourse`;
+    return this.baseService.add(url, `"${courseName}"`, true);
+  }
+
   getStudentEnrolled(courseName: string) {
     const url = `${this.endpoint}/GetStudentsEnrolled?courseName=${courseName}`;
     return this.baseService.get<StudentDto[]>(url);
+  }
+  
+  isStudentEnrolled(courseName: string) {
+    const url = `${this.endpoint}/GetStudentEnrolledCourses?courseName=${courseName}`;
+    return this.baseService.get<boolean>(url);
   }
 
   getFilters(filter: CoursesFilter) {
@@ -53,8 +63,9 @@ export class CoursesService {
     );
   }
   isUserCourseOwner(courseId: string) {
-    let result = this.baseService
-      .get<boolean>(`${this.endpoint}/IsUserCourseOwner?courseName=${courseId}`)
+    let result = this.baseService.get<boolean>(
+      `${this.endpoint}/IsUserCourseOwner?courseName=${courseId}`
+    );
     return result;
   }
 
@@ -62,6 +73,12 @@ export class CoursesService {
     return this.baseService.update<boolean, FormData>(
       `${this.endpoint}/EditCourse?courseName=${courseId}`,
       course
+    );
+  }
+
+  deleteCourse(courseId: string) {
+    return this.baseService.delete<boolean>(
+      `${this.endpoint}/DeleteCourse?courseName=${courseId}`
     );
   }
 
