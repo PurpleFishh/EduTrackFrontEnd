@@ -5,45 +5,47 @@
             <mat-card-subtitle class="textupdate">Update the lesson from the course</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-            <div class="form-group-row">
-                <div class="form-group">
-                    <label class="lesson-title-update" for="lesson-title">Lesson title:</label>
-                    <input type="text" id="lesson-title-update" value="">
+            <form (ngSubmit)="onSubmit()">
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label class="lesson-title-update" for="lesson-title">Lesson title:</label>
+                        <input type="text" id="lesson-title-update" [(ngModel)]="lessonTitle" name="lessonTitle">
+                    </div>
+                    <div class="form-group">
+                        <label class="lesson-title-update" for="lesson-date">Lesson date:</label>
+                        <input type="date" id="lesson-date-update" name="lessonDueDate">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label class="lesson-title-update" for="lesson-date">Lesson date:</label>
-                    <input type="date" id="lesson-date-update" value="">
+                    <label class="lesson-title-update" for="lesson-description">Lesson description:</label>
+                    <textarea id="lesson-description" [(ngModel)]="lessonDescription" name="lessonDescription"></textarea>
                 </div>
-            </div>
-            <div class="form-group">
-                <label class="lesson-title-update" for="lesson-description">Lesson description:</label>
-                <textarea id="lesson-description" placeholder="" value=""></textarea>
-            </div>
-            <div class="form-group">
-                <label class="lesson-title-update" for="lesson-content">Lesson content:</label>
-                <textarea id="lesson-content" placeholder="" value=""></textarea>
-            </div>
-            <div class="form-group-row">
-                <button class="update-assignment-pdf" type="button">Update assignment PDF</button>
-                <span class="pdf-name"></span>
-            </div>
-            <div class="form-group-row">
                 <div class="form-group">
-                    <label class="lesson-title-update" for="assignment-title">Assignment title:</label>
-                    <input type="text" id="assignment-title-update" placeholder="" value="">
+                    <label class="lesson-title-update" for="lesson-content">Lesson content:</label>
+                    <textarea id="lesson-content" [(ngModel)]="lessonContent" name="lessonContent"></textarea>
                 </div>
-            </div>
-            <div class="form-group">
-                <label class="lesson-title-update" for="assignment-short-description">Assignment short description:</label>
-                <textarea id="assignment-short-description" placeholder="" value=""></textarea>
-            </div>
-            <div class="form-group">
-                <label class="lesson-title-update" for="assignment-task">Assignment task:</label>
-                <textarea id="assignment-task" placeholder="" value=""></textarea>
-            </div>
-            <div class="form-group-row end">
-                <button class="update-button" type="submit">UPDATE</button>
-            </div>
+                <div class="form-group-row">
+                    <button class="update-assignment-pdf" type="button">Update assignment PDF</button>
+                    <span class="pdf-name"></span>
+                </div>
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label class="lesson-title-update" for="assignment-title">Assignment title:</label>
+                        <input type="text" id="assignment-title-update"name="assignmentTitle">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="lesson-title-update" for="assignment-short-description">Assignment short description:</label>
+                    <textarea id="assignment-short-description"  name="assignmentShortDescription"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="lesson-title-update" for="assignment-task">Assignment task:</label>
+                    <textarea id="assignment-task" name="assignmentTask"></textarea>
+                </div>
+                <div class="form-group-row end">
+                    <button class="update-button" type="submit">UPDATE</button>
+                </div>
+            </form>
         </mat-card-content>
     </mat-card>
 </div>

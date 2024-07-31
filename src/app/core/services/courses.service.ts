@@ -7,6 +7,7 @@ import {
 } from '../models/course.model';
 import { query } from '@angular/animations';
 import { from } from 'rxjs';
+import { StudentDto } from '../models/student.model';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +27,11 @@ export class CoursesService {
     let url = this.getUrlForFilter(`${this.endpoint}/GetFilters`, filter);
     return this.baseService.get<CoursesFilterDto>(url);
   }
-
+  getStudentEnrolled(courseName: string) {
+    const url = `${this.endpoint}/GetStudentsEnrolled?courseName=${courseName}`;
+    return this.baseService.get<StudentDto[]>(url);
+  }
+  
   private getUrlForFilter(baseUrl: string, filter: CoursesFilter) {
     let querys: string[] = [];
     if (filter.search) querys.push(`Title=${filter.search}`);

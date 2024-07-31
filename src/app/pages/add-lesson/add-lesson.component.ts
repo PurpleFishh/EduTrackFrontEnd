@@ -40,13 +40,13 @@ export class AddLessonComponent {
       const lessonData = {
         name: lessonName,
         description: lessonDescription,
-        content: lessonContent
+        lesson_Content: lessonContent
       };
 
       this.lessonsService.addLesson(this.courseTitle, this.teacherEmail, lessonData).subscribe({
         next: (response: boolean) => {
           if (response) {
-            this.router.navigate(['/lessons']);
+            this.router.navigate(['/courses']);
           } else {
             alert('Failed to add lesson. Please check the details and try again.');
           }
