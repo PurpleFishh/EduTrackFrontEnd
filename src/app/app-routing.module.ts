@@ -19,6 +19,7 @@ import { UpdateLessonComponent } from './pages/update-lesson/update-lesson.compo
 import { AddLessonComponent } from './pages/add-lesson/add-lesson.component';
 import { userAdminGuard, userTeacherGuard } from './core/guards/user-role.guard';
 import { CheckAttendanceComponent } from './pages/check-attendance/check-attendance.component';
+import { StudentDashboardAssignmentsComponent } from './pages/dashboard/dashboards/student-dashboard-assignments/student-dashboard-assignments.component';
 
 const routes: Routes = [
   {
@@ -74,6 +75,10 @@ const routes: Routes = [
           {
             path: '',
             component: StudentDashboardMainComponent,
+          },
+          {
+            path: 'student-dashboard-assignments',
+            component: StudentDashboardAssignmentsComponent,
           },
         ],
       },
