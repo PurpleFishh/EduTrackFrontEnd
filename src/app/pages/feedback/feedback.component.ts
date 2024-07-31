@@ -46,11 +46,15 @@ export class FeedbackComponent {
           console.log('Feedback retrived successfully', response, typeof(response));
           // TODO: add to items to local storage
           // clerearing local Storage
+          const keysToRemove: string[] = [];
           for (let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
             if (key && key.startsWith('feedbackItem_')) {
-              localStorage.removeItem(key);
+              keysToRemove.push(key);
             }
+          }
+          for (const key of keysToRemove) {
+            localStorage.removeItem(key);
           }
           // puting the feedback in the local Storage
           const feedbackData = response;
@@ -58,6 +62,8 @@ export class FeedbackComponent {
             feedbackData.forEach((item: any, index: number) => {
               localStorage.setItem(`feedbackItem_${index}`, JSON.stringify(item));
             });
+
+            this.showFeedback();
           } else {
             console.error('Parsed response is not an array:', feedbackData);
           }
@@ -71,6 +77,20 @@ export class FeedbackComponent {
       console.log('Form is invalid');
       this.errorMessage = 'Form is invalid';
     }
+  }
+
+  private showFeedback() {
+    const storedFeedbackData = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith('feedbackItem_')) {
+        const item = localStorage.getItem(key);
+        if (item) {
+          storedFeedbackData.push(JSON.parse(item));
+        }
+      }
+    }
+    console.log("stored items in local staorage", storedFeedbackData);
   }
 
   constructor(private fb:FormBuilder, private feedbackService: FeedbackService) {
