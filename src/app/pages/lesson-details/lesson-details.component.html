@@ -1,18 +1,25 @@
 <div class="content">
-  <div class="header-banner">
-    <div class="banner-title">
-      {{ current_lesson?.name }}
+  <div class="banner">
+    <div class="header-banner">
+      <div class="banner-title">
+        {{ current_lesson?.name }}
+      </div>
+      <div class="banner-content">
+        <p>{{ current_lesson?.description }}</p>
+      </div>
     </div>
-    <div class="banner-content">
-      <p>{{ current_lesson?.description }}</p>
-    </div>
-    <app-lesson-action-area [currentGrade]="current_grade?.grade" [finalGrade]="final_grade"></app-lesson-action-area>
-    
+    <app-lesson-action-area
+      [isTeacher]="auth.isTeacher()"
+      [currentGrade]="current_grade?.grade"
+      [lessonId]="lessonId"
+      [lessonStatus]="current_lesson?.lessonStatus"
+      (changeStatus)="changeLessonStatus($event)"
+    ></app-lesson-action-area>
   </div>
   <div>
     <mat-card>
       <mat-card-header>
-          <p>Lesson</p>
+        <p>Lesson</p>
       </mat-card-header>
       <mat-card-content>
         <div *ngIf="current_lesson">
@@ -21,80 +28,116 @@
       </mat-card-content>
     </mat-card>
     <br /><br />
-    
+
     <mat-card>
       <mat-card-header>
         <div *ngIf="current_assignment">
-          <div *ngFor="let assignment of current_assignment">
-            <p>
-              Assignment: {{ assignment.assignment_name }}
-            </p>
+          <div
+            class="assignment-title"
+            *ngFor="let assignment of current_assignment"
+          >
+            <mat-icon
+              *ngIf="current_lesson?.lessonStatus !== allLessonStatus.Finished  && !auth.isTeacher()"
+            >
+              lock
+            </mat-icon>
+            <p>Assignment: {{ assignment.assignment_name }}</p>
           </div>
         </div>
       </mat-card-header>
       <mat-card-content>
-        <div *ngIf="current_assignment">
-          <div *ngFor="let assignment of current_assignment">
-            <p>
-              {{ assignment.assignment_description }}
-            </p>
-          </div>
+        <div
+          *ngIf="
+            current_assignment &&
+            (current_lesson?.lessonStatus === allLessonStatus.Finished || auth.isTeacher())
+          "
+        >
+          <p *ngFor="let assignment of current_assignment">
+            {{ assignment.assignment_description }}
+          </p>
+        </div>
+        <div
+          *ngIf="
+            current_assignment &&
+            (current_lesson?.lessonStatus !== allLessonStatus.Finished && !auth.isTeacher())
+          "
+        >
+          <p *ngFor="let assignment of current_assignment">
+            {{ assignment.assignment_preview }}
+          </p>
         </div>
       </mat-card-content>
       <br />
-      <mat-card-header> Solution title </mat-card-header>
-      <mat-form-field appearance="outline">
-        <mat-label>Enter the title of your solution here</mat-label>
-        <textarea
-          matInput
-          placeholder="Ex. My attempt."
-          [(ngModel)]="solution.solution_title"
-        ></textarea>
-      </mat-form-field>
-      
-      <mat-card-header> Solution </mat-card-header>
-      <mat-form-field appearance="outline">
-        <mat-label>Enter your solution here</mat-label>
-        <textarea
-          matInput
-          placeholder="Ex. First question: the answer is 45."
-          [(ngModel)]="solution.solution"
-          rows="20"
-        ></textarea>
-      </mat-form-field>
-      <br />
-      <div>
-        <div>
-          <input
-            type="file"
-            id="fileInput"
-            (change)="onFileSelected($event)"
-            style="display: none"
-          />
+      <span
+        class="solution-continer"
+        *ngIf="
+          current_lesson?.lessonStatus === allLessonStatus.Finished &&
+          !auth.isTeacher()
+        "
+      >
+        <mat-card-header> Solution title </mat-card-header>
+        <mat-form-field appearance="outline">
+          <mat-label>Enter the title of your solution here</mat-label>
+          <textarea
+            matInput
+            placeholder="Ex. My attempt."
+            [(ngModel)]="solution.solution_title"
+          ></textarea>
+        </mat-form-field>
 
-          <button
-            mat-icon-button
-            class="blue_button"
-            (click)="triggerFileInput()"
-          >
-            <mat-icon> upload </mat-icon>
-            Upload Files
-          </button>
-          <div *ngIf="fileName">
-            <p>{{ fileName }}</p>
+        <mat-card-header> Solution </mat-card-header>
+        <mat-form-field appearance="outline">
+          <mat-label>Enter your solution here</mat-label>
+          <textarea
+            matInput
+            placeholder="Ex. First question: the answer is 45."
+            [(ngModel)]="solution.solution"
+            rows="20"
+          ></textarea>
+        </mat-form-field>
+        <br />
+        <div>
+          <div class="file">
+            <input
+              type="file"
+              id="fileInput"
+              (change)="onFileSelected($event)"
+              style="display: none"
+            />
+
+            <button
+              mat-icon-button
+              class="blue_button"
+              (click)="triggerFileInput()"
+            >
+              <mat-icon> upload </mat-icon>
+              Upload Files
+            </button>
+            <div *ngIf="fileName">
+              <p>{{ fileName }}</p>
+            </div>
           </div>
         </div>
-      </div>
-      <br />
-      <button
-        mat-icon-button
-        class="green_button"
-        (click)="onSubmit()"
-        [disabled]="!isFormValid()"
+        <br />
+        <div class="center">
+          <button
+            mat-icon-button
+            class="green_button"
+            (click)="onSubmit()"
+            [disabled]="!isFormValid()"
+          >
+            Submit
+          </button>
+        </div>
+        <br />
+      </span>
+
+      <div
+        class="finish-assignmnet"
+        *ngIf="current_lesson?.lessonStatus !== allLessonStatus.Finished  && !auth.isTeacher()"
       >
-        Submit
-      </button>
-      <br />
+        Finish the lesson to unlock the assignment!
+      </div>
     </mat-card>
   </div>
 </div>

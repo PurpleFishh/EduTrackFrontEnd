@@ -26,7 +26,7 @@
           <p class="due-date">Due to: {{thisWeekLesson?.startDate | date:'short'}}</p>
           <p class="title">{{thisWeekLesson?.name}}</p>
         </div>
-        <button mat-flat-button color="primary">Back to lesson</button>
+        <button mat-flat-button color="primary" (click)="goToWeekLesson()">Back to lesson</button>
       </div>
     </div>
 

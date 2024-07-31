@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RestBaseService } from './rest-base.service';
-import { LessonDisplayDto, LessonDto } from '../models/lesson.model';
+import { LessonDisplayDto, LessonDto, LessonStatus } from '../models/lesson.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -47,5 +47,13 @@ export class LessonsService {
 
   getAllLessons(id: string){
     return this.baseService.get<LessonDisplayDto[]>(`${this.endpoint}/GetAllLessons?courseName=${id}`);
+  }
+
+  changeLessonStatus(courseId: string, lessonId: string, status: LessonStatus): Observable<boolean> {
+    const url = `${this.endpoint}/ChangeLessonStatus?courseTitle=${courseId}&lessonTitle=${lessonId}&status=${status}`;
+    return this.baseService.add(
+      url,
+      {}
+    );
   }
 }

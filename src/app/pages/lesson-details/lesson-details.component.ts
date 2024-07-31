@@ -13,10 +13,15 @@ import {
   Grade,
 } from 'src/app/core/models/assignment.model';
 import { CourseDisplayDto } from 'src/app/core/models/course.model';
-import { LessonDisplayDto, LessonDto } from 'src/app/core/models/lesson.model';
+import {
+  LessonDisplayDto,
+  LessonDto,
+  LessonStatus,
+} from 'src/app/core/models/lesson.model';
 import { LoginDto } from 'src/app/core/models/login.model';
 import { ResultError, StatusCodes } from 'src/app/core/models/result.model';
 import { AssignmentInventoryService } from 'src/app/core/services/assignment-inventory-service.service';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { CoursesService } from 'src/app/core/services/courses.service';
 import { LessonsService } from 'src/app/core/services/lessons.service';
 
@@ -40,7 +45,10 @@ export class LessonDetailsComponent {
   file!: File;
   iterations: number = 0;
 
+  allLessonStatus = LessonStatus;
+
   constructor(
+    public readonly auth: AuthenticationService,
     private readonly lessonSevice: LessonsService,
     private readonly courseService: CoursesService,
     private readonly assService: AssignmentInventoryService,
@@ -60,24 +68,30 @@ export class LessonDetailsComponent {
       }
       this.courseId = params['curs'];
       this.lessonId = params['lesson'];
-      this.assService.getLesson(this.courseId, this.lessonId).subscribe((lesson) => {
-        this.current_lesson = lesson;
-      });
-      this.assService.getAssignment(this.courseId, this.lessonId).subscribe((assignment) => {
-        //console.log(assignment);
-        this.current_assignment = assignment;
-      });
-      this.assService.getGrade(this.courseId, this.lessonId).subscribe((grade) => {
-        //console.log(grade);
-        this.current_grade = grade;
-      });
+      this.assService
+        .getLesson(this.courseId, this.lessonId)
+        .subscribe((lesson) => {
+          this.current_lesson = lesson;
+        });
+      this.assService
+        .getAssignment(this.courseId, this.lessonId)
+        .subscribe((assignment) => {
+          //console.log(assignment);
+          this.current_assignment = assignment;
+        });
+      this.assService
+        .getGrade(this.courseId, this.lessonId)
+        .subscribe((grade) => {
+          //console.log(grade);
+          this.current_grade = grade;
+        });
     });
 
     this.solution = {
       solution_title: '',
       solution: '',
     };
-    
+
     this.lessonSevice.getAllLessons('').subscribe((lessons) => {
       //console.log(lessons);
       for (let lesson of lessons) {
@@ -93,6 +107,20 @@ export class LessonDetailsComponent {
       }
       this.final_grade = this.final_grade / this.iterations;
     });
+  }
+
+  changeLessonStatus(status: LessonStatus) {
+    console.log(status);
+    this.lessonSevice
+      .changeLessonStatus(this.courseId, this.lessonId, status)
+      .subscribe((data) => {
+        if (data)
+          this.assService
+            .getLesson(this.courseId, this.lessonId)
+            .subscribe((lesson) => {
+              this.current_lesson = lesson;
+            });
+      });
   }
 
   onFileSelected(event: Event) {

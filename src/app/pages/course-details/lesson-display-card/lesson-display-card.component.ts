@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { LessonDisplayDto } from 'src/app/core/models/lesson.model';
 
 @Component({
@@ -11,4 +12,12 @@ export class LessonDisplayCardComponent {
   @Input() index!: number;
 
   panelOpenState = false;
+
+  constructor(private readonly router: Router) { }
+
+  startLesson()
+  {
+    this.router.navigateByUrl(`${this.router.url}/lesson/${this.lesson.name}`);
+    window.scrollTo(0, 0);
+  }
 }
