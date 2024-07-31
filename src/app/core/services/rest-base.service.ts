@@ -17,7 +17,7 @@ export class RestBaseService {
 
   add<T,TDto>(url: string, object: TDto): Observable<T> {
     const completeUrl = this.getCompleteUrl(url);
-    return this.http.post<T>(completeUrl, JSON.stringify(object), {headers: this.buildHeaders()});
+    return this.http.post<T>(completeUrl, object, {headers: this.buildHeaders()});
   }
 
   delete<T>(url: string, id: string) {
