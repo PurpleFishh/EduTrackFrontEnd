@@ -35,6 +35,7 @@ export class ContactUsComponent {
       this.contactUsService.submitFeedback(this.convertFormValues(this.form.value)).subscribe({
         next: (response) => {
           console.log('Feedback submitted successfully', response);
+          this.router.navigate(['10q4urfb']);
         },
         error: (error) => {
           console.error('Error submitting feedback', error);

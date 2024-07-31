@@ -9,6 +9,7 @@ import { CoursesComponent } from './pages/courses/courses.component';
 import { userAdminGuard } from './core/guards/user-role.guard';
 import { CourseDetailsComponent } from './pages/course-details/course-details.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { FbSubmitedComponent } from './pages/fb-submited/fb-submited.component';
 
 const routes: Routes = [
    {
@@ -39,6 +40,10 @@ const routes: Routes = [
         {
           path: 'contact',
           component: ContactUsComponent
+        },
+        {
+          path: '10q4urfb',
+          component: FbSubmitedComponent
         },
       ]
    }

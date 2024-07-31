@@ -11,9 +11,10 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
 import { CourseActionAreaComponent } from './course-details/course-action-area/course-action-area.component';
 import { LessonDisplayCardComponent } from './course-details/lesson-display-card/lesson-display-card.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { FbSubmitedComponent } from './fb-submited/fb-submited.component';
 
 @NgModule({
-  declarations: [LoginComponent, LandingpageComponent, UnauthorizedComponent, CoursesComponent, CourseComponent, CourseDetailsComponent, CourseActionAreaComponent, LessonDisplayCardComponent, ContactUsComponent],
+  declarations: [LoginComponent, LandingpageComponent, UnauthorizedComponent, CoursesComponent, CourseComponent, CourseDetailsComponent, CourseActionAreaComponent, LessonDisplayCardComponent, ContactUsComponent, FbSubmitedComponent],
   imports: [CommonModule, SharedModule],
   exports: [LoginComponent],
   providers: [HttpClient],
