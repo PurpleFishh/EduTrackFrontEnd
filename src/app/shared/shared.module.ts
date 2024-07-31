@@ -23,6 +23,8 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -53,7 +55,9 @@ import { MatTableModule } from '@angular/material/table';
     MatProgressBarModule,
     MatChipsModule,
     MatTableModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatDialogModule,
+    MatSnackBarModule
   ],
 })
 export class SharedModule {}

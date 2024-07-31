@@ -7,16 +7,6 @@
       <div class="banner-content">
         <p>{{ current_lesson?.description }}</p>
       </div>
-      <mat-card class="mat-card1">
-        <div *ngIf="final_grade">
-            <p>Final grade: {{final_grade}}</p>
-        </div>
-      </mat-card>
-      <mat-card class="mat-card2">
-        <div *ngIf="current_grade">
-            <p>Grade: {{current_grade}}
-        </div>
-      </mat-card>
     </div>
     <app-lesson-action-area
       [isTeacher]="auth.isTeacher()"
@@ -49,7 +39,10 @@
             *ngFor="let assignment of current_assignment"
           >
             <mat-icon
-              *ngIf="current_lesson?.lessonStatus !== allLessonStatus.Finished  && !auth.isTeacher()"
+              *ngIf="
+                current_lesson?.lessonStatus !== allLessonStatus.Finished &&
+                !auth.isTeacher()
+              "
             >
               lock
             </mat-icon>
@@ -61,7 +54,8 @@
         <div
           *ngIf="
             current_assignment &&
-            (current_lesson?.lessonStatus === allLessonStatus.Finished || auth.isTeacher())
+            (current_lesson?.lessonStatus === allLessonStatus.Finished ||
+              auth.isTeacher())
           "
         >
           <p *ngFor="let assignment of current_assignment">
@@ -71,7 +65,8 @@
         <div
           *ngIf="
             current_assignment &&
-            (current_lesson?.lessonStatus !== allLessonStatus.Finished && !auth.isTeacher())
+            current_lesson?.lessonStatus !== allLessonStatus.Finished &&
+              !auth.isTeacher()
           "
         >
           <p *ngFor="let assignment of current_assignment">
@@ -90,11 +85,11 @@
         <mat-card-header> Solution title </mat-card-header>
         <mat-form-field appearance="outline">
           <mat-label>Enter the title of your solution here</mat-label>
-          <textarea
+          <input
             matInput
             placeholder="Ex. My attempt."
             [(ngModel)]="solution.solution_title"
-          ></textarea>
+          />
         </mat-form-field>
 
         <mat-card-header> Solution </mat-card-header>
@@ -118,7 +113,8 @@
             />
 
             <button
-              mat-icon-button
+              mat-flat-button
+              color="primary"
               class="blue_button"
               (click)="triggerFileInput()"
             >
@@ -131,9 +127,10 @@
           </div>
         </div>
         <br />
-        <div class="center">
+        <div class="center secondary-theme">
           <button
-            mat-icon-button
+            mat-flat-button
+            color="primary"
             class="green_button"
             (click)="onSubmit()"
             [disabled]="!isFormValid()"
@@ -146,7 +143,10 @@
 
       <div
         class="finish-assignmnet"
-        *ngIf="current_lesson?.lessonStatus !== allLessonStatus.Finished  && !auth.isTeacher()"
+        *ngIf="
+          current_lesson?.lessonStatus !== allLessonStatus.Finished &&
+          !auth.isTeacher()
+        "
       >
         Finish the lesson to unlock the assignment!
       </div>

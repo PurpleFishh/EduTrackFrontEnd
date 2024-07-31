@@ -9,20 +9,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RouterTestingHarness } from '@angular/router/testing';
 import {
   AssignmentDisplayDto,
   AssignmentSolutionDto,
   Grade,
 } from 'src/app/core/models/assignment.model';
-import { CourseDisplayDto } from 'src/app/core/models/course.model';
 import {
   LessonDisplayDto,
   LessonDto,
   LessonStatus,
 } from 'src/app/core/models/lesson.model';
-import { LoginDto } from 'src/app/core/models/login.model';
-import { ResultError, StatusCodes } from 'src/app/core/models/result.model';
 import { AssignmentInventoryService } from 'src/app/core/services/assignment-inventory-service.service';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { CoursesService } from 'src/app/core/services/courses.service';
@@ -95,7 +91,7 @@ export class LessonDetailsComponent {
     this.solution = {
       solution_title: '',
       solution: '',
-      fileName: ''
+      fileName: '',
     };
 
     this.lessonSevice.getAllLessons('').subscribe((lessons) => {
@@ -125,7 +121,7 @@ export class LessonDetailsComponent {
             .subscribe((lesson) => {
               this.current_lesson = lesson;
             });
-            this.snackBar.open(`Lesson status changed!`, 'Close');
+          this.snackBar.open(`Lesson status changed!`, 'Close');
         }
       });
   }
