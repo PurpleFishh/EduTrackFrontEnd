@@ -43,11 +43,11 @@ export class FeedbackComponent {
       console.log(this.form.value);
       this.feedbackService.getFeedback(this.serializeForm(this.form.value)).subscribe({
         next: (response) => {
-          console.log('Feedback submitted successfully', response);
+          console.log('Feedback retrived successfully', response);
           // TODO: add to items to local storage 
         },
         error: (error) => {
-          console.error('Error submitting feedback', error);
+          console.error('Error geting feedback', error);
           this.errorMessage = error.error?.title || 'An unexpected error occurred';
         },
       });
@@ -92,10 +92,19 @@ export class FeedbackComponent {
   }
 
   resetForm() {
-    this.form.reset();
     this.byName = [];
     this.byEmail = [];
     this.byTitle = [];
+    this.form.reset({
+      name: this.byName,
+      email: this.byEmail,
+      title: this.byTitle,
+      startDate: '',
+      endDate: '',
+      stars: [],
+      isAnonymus: undefined,
+      category: []
+    });
   }
 
   resetAnonymity() {
