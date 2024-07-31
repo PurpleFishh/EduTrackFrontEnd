@@ -25,6 +25,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -57,7 +58,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatTableModule,
     MatDatepickerModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatNativeDateModule,
   ],
 })
 export class SharedModule {}

@@ -1,56 +1,178 @@
 <div class="content">
-    <mat-card class="formaddlesson">
-        <mat-card-header>
-            <mat-card-title class="title">Add lesson</mat-card-title>
-            <mat-card-subtitle class="textadd">Fill the form for adding a new lesson to the course</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-            <form [formGroup]="addLessonForm" (ngSubmit)="onSubmit()">
-                <div class="form-group-row">
-                    <div class="form-group">
-                        <label class="lesson-title" for="lesson-title">Lesson title:</label>
-                        <input formControlName="lessonName" type="text" id="lesson-title" placeholder="Cursul meu bun">
-                    </div>
-                    <div class="form-group">
-                        <label class="lesson-title" for="lesson-date">Lesson date:</label>
-                        <input formControlName="lessonDueDate" type="date" id="lesson-date" value="2024-12-03">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="lesson-title" for="lesson-description">Lesson description:</label>
-                    <textarea formControlName="lessonDescription" id="lesson-description" placeholder="Text..."></textarea>
-                </div>
-                <div class="form-group">
-                    <label class="lesson-title" for="lesson-content">Lesson content:</label>
-                    <textarea formControlName="lessonContent" id="lesson-content" placeholder="Text..."></textarea>
-                </div>
-                <div class="form-group-row">
-                    <input type="file" id="fileInput" (change)="onFileSelected($event)" style="display: none;">
-                    <button class="add-assignment-pdf" type="button" (click)="triggerFileInput()">Add assignment</button>
-                    <span class="pdf-name" *ngIf="fileName">{{ fileName }}</span>
-                </div>
-                <div class="form-group-row">
-                    <div class="form-group">
-                        <label class="lesson-title" for="assignment-title" >Assignment title:</label>
-                        <input formControlName="assignmentTitle" type="text" id="assignment-title" placeholder="Cursul meu bun">
-                    </div>
-                    <div class="form-group">
-                        <label class="lesson-title" for="assignment-due-date">Assignment due date:</label>
-                        <input formControlName="assignmentDueDate" type="date" id="assignment-due-date" value="2024-12-03">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="lesson-title" for="assignment-short-description">Assignment short description:</label>
-                    <textarea formControlName="assignmentShortDescription" id="assignment-short" placeholder="Text..."></textarea>
-                </div>
-                <div class="form-group">
-                    <label class="lesson-title" for="assignment-task">Assignment task:</label>
-                    <textarea formControlName="assignmentTask" id="assignment-task" placeholder="Text..."></textarea>
-                </div>
-                <div class="form-group-row end">
-                    <button class="submit-button" type="submit">CREATE</button>
-                </div>
-            </form>
-        </mat-card-content>
-    </mat-card>
+  <mat-card class="formaddlesson">
+    <mat-card-header>
+      <mat-card-title class="title">Add lesson</mat-card-title>
+      <mat-card-subtitle class="textadd"
+        >Fill the form for adding a new lesson to the course</mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="addLessonForm" (ngSubmit)="onSubmit()">
+        <div class="split">
+          <div class="field">
+            <label for="name">Lesson title:</label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                formControlName="lessonName"
+                placeholder="Course name..."
+                name="name"
+              />
+              <mat-error
+                *ngIf="
+                  addLessonForm.controls['lessonName'].hasError('required')
+                "
+              >
+                Course learning topics are required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="field" style="width: fit-content">
+            <label for="date">Lesson date:</label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                [matDatepicker]="picker"
+                formControlName="lessonDueDate"
+              />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error
+                *ngIf="
+                  addLessonForm.controls['lessonDueDate'].hasError('required')
+                "
+              >
+                Course learning topics are required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        
+        <div class="form-group-row">
+          <div class="form-group">
+            <label class="lesson-title" for="lesson-title">Lesson title:</label>
+            <input
+              formControlName="lessonName"
+              type="text"
+              id="lesson-title"
+              placeholder="Cursul meu bun"
+            />
+          </div>
+          <div class="form-group">
+            <label class="lesson-title" for="lesson-date">Lesson date:</label>
+            <input
+              formControlName="lessonDueDate"
+              type="date"
+              id="lesson-date"
+              value="2024-12-03"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="lesson-title" for="lesson-description"
+            >Lesson description:</label
+          >
+          <textarea
+            formControlName="lessonDescription"
+            id="lesson-description"
+            placeholder="Text..."
+          ></textarea>
+        </div>
+        <div class="field">
+          <label for="topics">What will the student learn:</label>
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              formControlName="lessonDescription"
+              placeholder="Learning topics..."
+              name="topics"
+            />
+            <mat-error
+              *ngIf="
+                addLessonForm.controls['lessonDescription'].hasError('required')
+              "
+            >
+              Course learning topics are required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <label class="lesson-title" for="lesson-content"
+            >Lesson content:</label
+          >
+          <textarea
+            formControlName="lessonContent"
+            id="lesson-content"
+            placeholder="Text..."
+          ></textarea>
+        </div>
+        <div class="form-group-row">
+          <input
+            type="file"
+            id="fileInput"
+            (change)="onFileSelected($event)"
+            style="display: none"
+          />
+          <button
+            class="add-assignment-pdf"
+            type="button"
+            (click)="triggerFileInput()"
+          >
+            Add assignment
+          </button>
+          <span class="pdf-name" *ngIf="fileName">{{ fileName }}</span>
+        </div>
+        <div class="form-group-row">
+          <div class="form-group">
+            <label class="lesson-title" for="assignment-title"
+              >Assignment title:</label
+            >
+            <input
+              formControlName="assignmentTitle"
+              type="text"
+              id="assignment-title"
+              placeholder="Cursul meu bun"
+            />
+          </div>
+          <div class="form-group">
+            <label class="lesson-title" for="assignment-due-date"
+              >Assignment due date:</label
+            >
+            <input
+              formControlName="assignmentDueDate"
+              type="date"
+              id="assignment-due-date"
+              value="2024-12-03"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="lesson-title" for="assignment-short-description"
+            >Assignment short description:</label
+          >
+          <textarea
+            formControlName="assignmentShortDescription"
+            id="assignment-short"
+            placeholder="Text..."
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label class="lesson-title" for="assignment-task"
+            >Assignment task:</label
+          >
+          <textarea
+            formControlName="assignmentTask"
+            id="assignment-task"
+            placeholder="Text..."
+          ></textarea>
+        </div>
+        <div class="form-group-row end">
+          <button class="submit-button" type="submit">CREATE</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>
