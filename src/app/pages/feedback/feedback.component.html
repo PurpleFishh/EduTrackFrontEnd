@@ -133,3 +133,58 @@
         </mat-expansion-panel>
     </mat-accordion>
 </mat-card>
+
+<div class="feedback-list">
+    <mat-card class="feedback-card" *ngFor="let feedback of storedFeedbackData">
+        <div class="card-header">
+            <div class="left">
+                <div class="subject">Subject: {{ getFeedbackCategory(feedback.category) }}</div>
+                <div class="name">{{ feedback.name }}</div>
+                <div class="email">{{ feedback.email }}</div>
+            </div>
+            <div class="right">
+                <div class="stars">
+                    <span *ngFor="let star of [].constructor(feedback.stars)"><mat-icon>star</mat-icon></span>
+                </div>
+                <div class="date">{{ feedback.date | date }}</div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="card-body">
+            <div class="title">{{ feedback.title }}</div>
+            <div class="message">{{ feedback.content }}</div>
+        </div>
+    </mat-card>
+</div>
+
+<!-- <div *ngFor="let feedback of storedFeedbackData">
+    <mat-card class="feedback-card">
+        <mat-card-header>
+            <div class="header-left">
+                <div class="subject">{{ feedback.subject }}</div>
+                <div class="details">
+                    <span>{{ feedback.name }}</span>
+                    <span>{{ feedback.email }}</span>
+                    <span>{{ feedback.title }}</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="date">{{ feedback.date | date }}</div>
+                <div class="stars">
+                    <mat-icon *ngFor="let star of [].constructor(feedback.stars)">star</mat-icon>
+                    <mat-icon *ngFor="let star of [].constructor(5 - feedback.stars)">star_border</mat-icon>
+                </div>
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Message Content
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p>{{ feedback.content }}</p>
+            </mat-expansion-panel>
+        </mat-card-content>
+    </mat-card>
+</div> -->

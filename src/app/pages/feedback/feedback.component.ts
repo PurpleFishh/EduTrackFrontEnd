@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FeedbackService } from 'src/app/core/services/feedback.service';
 import { FeedbackFiltersDto } from 'src/app/core/models/feedback.model';
+import { FeedbackCategory } from 'src/app/core/models/feedback.model';
 import { from } from 'rxjs';
 
 @Component({
@@ -13,6 +14,7 @@ export class FeedbackComponent {
   // form: FormGroup;
   // name: FormControl = new FormControl('');
   errorMessage: string | null = null;
+  storedFeedbackData: any[] = [];
 
   name: string = '';
   byName: string[] = [];
@@ -80,17 +82,18 @@ export class FeedbackComponent {
   }
 
   private showFeedback() {
-    const storedFeedbackData = [];
+    const feedbackData = [];
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
       if (key && key.startsWith('feedbackItem_')) {
         const item = localStorage.getItem(key);
         if (item) {
-          storedFeedbackData.push(JSON.parse(item));
+          feedbackData.push(JSON.parse(item));
         }
       }
     }
-    console.log("stored items in local staorage", storedFeedbackData);
+    this.storedFeedbackData = feedbackData;
+    console.log("stored items in local staorage", feedbackData);
   }
 
   constructor(private fb:FormBuilder, private feedbackService: FeedbackService) {
@@ -158,5 +161,22 @@ export class FeedbackComponent {
       stars: formValue.stars.length > 0 ? formValue.stars : undefined,
       isAnonymus: formValue.isAnonymus !== undefined ? formValue.isAnonymus : null,
     };
+  }
+
+  getFeedbackCategory(value: FeedbackCategory): string {
+    switch (value) {
+      case FeedbackCategory.ContentQuality:
+        return 'Content Quality';
+      case FeedbackCategory.UserExperience:
+        return 'User Experience';
+      case FeedbackCategory.TechnicalPerformance:
+        return 'Technical Performance';
+      case FeedbackCategory.EducationalTools:
+        return 'Educational Tools';
+      case FeedbackCategory.AssessmentAndFeedback:
+        return 'Assessment and Feedback';
+      default:
+        return 'Unknown Category';
+    }
   }
 }
