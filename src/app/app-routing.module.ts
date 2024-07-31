@@ -36,6 +36,11 @@ const routes: Routes = [
         component: CoursesComponent,
       },
       {
+        path: 'course/:curs/lesson/:lesson/grade',
+        component: ViewAssignmentPageComponent,
+        canActivate: [loggedGuard],
+      },
+      {
         path:'course/:curs/lesson/:lesson/check-attendance',
         component:CheckAttendanceComponent,
         canActivate: [loggedGuard, teacherCourseOwner],
@@ -68,11 +73,6 @@ const routes: Routes = [
         path: 'add/course',
         component: AddCourseComponent,
         canActivate: [loggedGuard, userTeacherGuard],
-      },
-      {
-        path: 'view-assignment-page',
-        component: ViewAssignmentPageComponent,
-        canActivate: [loggedGuard]
       },
       {
         path: 'update-lesson',

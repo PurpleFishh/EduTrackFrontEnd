@@ -92,10 +92,7 @@ export class AssignmentInventoryService {
     &Assignment_name=${assignment.assignment_name}
     &Assignment_description=${assignment.assignment_description}
     &Assignment_preview=${assignment.assignment_preview}`;
-    return this.baseService.update(
-      url,
-      formData
-    );
+    return this.baseService.update(url, formData);
   }
 
   public addSolution(solution: AssignmentSolutionDto, file: File) {
@@ -170,38 +167,46 @@ export class AssignmentInventoryService {
       });
   }
 
-  public getSolution(){
-    const courseName = localStorage.getItem('course') || 'aaa';
-    const lessonTitle = localStorage.getItem('lesson') || 'ccc';
-    const email = localStorage.getItem('student_email') || 'teacher@teacher.com';
+  public getSolution(
+    courseName: string,
+    lessonTitle: string,
+    studentEmail: string
+  ) {
     const queryParams = {
       courseName: courseName,
       lessonTitle: lessonTitle,
-      StudentEmail: email
+      StudentEmail: studentEmail,
     };
 
-    return this.baseService.get<AssignmentSolutionDto[]>(this.getCompleteUrlWithQuery(`${this.endpoint}/GetSolution`, queryParams));
+    return this.baseService.get<AssignmentSolutionDto[]>(
+      this.getCompleteUrlWithQuery(`${this.endpoint}/GetSolution`, queryParams)
+    );
   }
 
-  public gradeAssignment(grade: number){
-    const courseName = localStorage.getItem('course') || 'aaa';
-    const lessonTitle = localStorage.getItem('lesson') || 'ccc';
-    const email = localStorage.getItem('student_email') || 'teacher@teacher.com';
+  public gradeAssignment(courseName: string, lessonTitle: string, studentEmail:string, grade: number) {
+    
     const queryParams = {
       CourseName: courseName,
       LessonTitle: lessonTitle,
       Grade: grade.toString(),
-      StudentEmail: email
+      StudentEmail: studentEmail,
     };
     const formData = new FormData();
     formData.append('CourseName', courseName);
-    formData.append('StudentEmail', email);
-    formData.append('LessonTitle',lessonTitle);
+    formData.append('StudentEmail', studentEmail);
+    formData.append('LessonTitle', lessonTitle);
     formData.append('Grade', grade.toString());
 
-    return this.baseService.addData<boolean>(this.getCompleteUrlWithQuery(`${this.endpoint}/GradeAssignment`, queryParams),formData).subscribe();
+    return this.baseService
+      .addData<boolean>(
+        this.getCompleteUrlWithQuery(
+          `${this.endpoint}/GradeAssignment`,
+          queryParams
+        ),
+        formData
+      )
+      .subscribe();
   }
-
 
   private getCompleteUrlWithQuery(
     url: string,
