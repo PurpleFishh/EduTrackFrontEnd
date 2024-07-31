@@ -43,8 +43,24 @@ export class FeedbackComponent {
       console.log(this.form.value);
       this.feedbackService.getFeedback(this.serializeForm(this.form.value)).subscribe({
         next: (response) => {
-          console.log('Feedback retrived successfully', response);
-          // TODO: add to items to local storage 
+          console.log('Feedback retrived successfully', response, typeof(response));
+          // TODO: add to items to local storage
+          // clerearing local Storage
+          for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            if (key && key.startsWith('feedbackItem_')) {
+              localStorage.removeItem(key);
+            }
+          }
+          // puting the feedback in the local Storage
+          const feedbackData = response;
+          if (Array.isArray(feedbackData)) {
+            feedbackData.forEach((item: any, index: number) => {
+              localStorage.setItem(`feedbackItem_${index}`, JSON.stringify(item));
+            });
+          } else {
+            console.error('Parsed response is not an array:', feedbackData);
+          }
         },
         error: (error) => {
           console.error('Error geting feedback', error);
