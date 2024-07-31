@@ -90,6 +90,7 @@ export class LessonDetailsComponent {
     this.solution = {
       solution_title: '',
       solution: '',
+      fileName: ''
     };
 
     this.lessonSevice.getAllLessons('').subscribe((lessons) => {

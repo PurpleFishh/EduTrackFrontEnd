@@ -45,7 +45,7 @@ export class AssignmentInventoryService {
 
   public getGrade(courseName: string = '', lessonTitle: string = '') {
     //const email = this.auth.getEmail();
-    const email = 'user@yahoo.com';
+    const email = 'teacher@teacher.com';
 
     return this.baseService.get<Grade>(
       this.getCompleteUrlWithQuery(`${this.endpoint}/GetGrade`, {
@@ -66,7 +66,7 @@ export class AssignmentInventoryService {
   }
 
   public getAllGrades(lessonTitle: string) {
-    const courseName = localStorage.getItem('course') || 'Curs';
+    const courseName = localStorage.getItem('course') || 'aaa';
     const email = localStorage.getItem('email') || 'teacher@teacher.com';
     const queryParams = {
       courseName: courseName,
@@ -172,6 +172,39 @@ export class AssignmentInventoryService {
         },
       });
   }
+
+  public getSolution(){
+    const courseName = localStorage.getItem('course') || 'aaa';
+    const lessonTitle = localStorage.getItem('lesson') || 'ccc';
+    const email = localStorage.getItem('student_email') || 'teacher@teacher.com';
+    const queryParams = {
+      courseName: courseName,
+      lessonTitle: lessonTitle,
+      StudentEmail: email
+    };
+
+    return this.baseService.get<AssignmentSolutionDto[]>(this.getCompleteUrlWithQuery(`${this.endpoint}/GetSolution`, queryParams));
+  }
+
+  public gradeAssignment(grade: number){
+    const courseName = localStorage.getItem('course') || 'aaa';
+    const lessonTitle = localStorage.getItem('lesson') || 'ccc';
+    const email = localStorage.getItem('student_email') || 'teacher@teacher.com';
+    const queryParams = {
+      CourseName: courseName,
+      LessonTitle: lessonTitle,
+      Grade: grade.toString(),
+      StudentEmail: email
+    };
+    const formData = new FormData();
+    formData.append('CourseName', courseName);
+    formData.append('StudentEmail', email);
+    formData.append('LessonTitle',lessonTitle);
+    formData.append('Grade', grade.toString());
+
+    return this.baseService.addData<boolean>(this.getCompleteUrlWithQuery(`${this.endpoint}/GradeAssignment`, queryParams),formData).subscribe();
+  }
+
 
   private getCompleteUrlWithQuery(
     url: string,

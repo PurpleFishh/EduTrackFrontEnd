@@ -13,7 +13,8 @@ export interface AssignmentDto{
 
 export interface AssignmentSolutionDto{
     solution_title: string,
-    solution: string
+    solution: string,
+    fileName:string
 }
 
 export interface Grade{

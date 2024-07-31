@@ -1,37 +1,73 @@
+<form [formGroup]="solutionForm">
 <br><br>
 <mat-card>
     <mat-card-header>
-        Assignment title
+        <div *ngIf="current_assignment">
+            <div *ngFor="let assignment of current_assignment">
+            <p>
+            {{assignment.assignment_name}}
+            </p>
+            </div>
+        </div>
     </mat-card-header>
     <mat-card-content>
         <div class="good_font1">
-            <p>Assignment short description</p>
+            <div *ngIf="current_assignment">
+                <div *ngFor="let assignment of current_assignment">
+                <p>
+                {{assignment.assignment_preview}}
+                </p>
+                </div>
+            </div>
         </div>
     </mat-card-content>
     <br>
     <mat-card-header>
-        Solution title
+        <div *ngIf="solution">
+            {{solution.solution_title}}
+        </div>
     </mat-card-header>
     <p class="good_font2">&ensp;&nbsp;Student solution:</p>
     <mat-form-field appearance="outline">
-        <mat-label>Enter your solution here</mat-label>
-        <textarea matOutput placeholder="Ex. The student solution should be here."  rows="15" style= "width: 100%;"></textarea>
+        <mat-label>Student's solution</mat-label>
+        <textarea 
+            matInput 
+            placeholder="Ex. The student solution should be here."  
+            rows="15" 
+            style="width: 100%;"
+            formControlName="solutionContent">
+        </textarea>
     </mat-form-field>
     <br>
     <p class="good_font2">&ensp;&nbsp;Uploaded content:</p>
     <mat-card>
         <mat-list>
-            <mat-list-item> <mat-icon> download </mat-icon> The Solution </mat-list-item>
+            <mat-list-item>
+                <div *ngIf="solution">
+                    <mat-icon> download </mat-icon> {{solution.fileName}}
+                </div>
+            </mat-list-item>
         </mat-list>
     </mat-card> 
     <br><br>
-    <p class="good_font2">&ensp;&nbsp;Grade:&ensp;<input matInput style=" border-radius: 15px; height: 50px;width: 100px;
-    font-family: Arial, sans-serif; font-size:25px">&ensp;/ 10</p>
+    <form [formGroup]="gradeForm">
+        <p class="good_font2">
+          &ensp;&nbsp;Grade:&ensp;
+          <input 
+            min="0"
+            max="10"
+            matInput 
+            formControlName="grade" 
+            type="number"
+            style="border-radius: 15px; height: 50px; width: 100px; font-family: Arial, sans-serif; font-size: 25px">
+          &ensp;/ 10
+        </p>
+      </form>
     <br>
-    <p class="good_font2">&ensp;&nbsp;Feedback (am uitat pe backend sa fac asta):</p>
-    <button mat-icon-button class="blue_button">
+    <button mat-icon-button class="blue_button" (click)="onSubmit()">
         Submit
     </button>
     <br>  
 
 </mat-card>
+</form>

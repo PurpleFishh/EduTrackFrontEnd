@@ -31,17 +31,18 @@ export class LessonDetailsTeacherComponent {
   ngOnInit(){
     this.solution = {
       solution_title: '',
-      solution: ''
+      solution: '',
+      fileName: ''
     };
     this.assService.getAssignment().subscribe(assignment => {
       //console.log(assignment);
       this.current_assignment = assignment;
     });
-    this.assService.getLesson('Curs', 'lectie').subscribe(lesson => {
+    this.assService.getLesson('aaa', 'ccc').subscribe(lesson => {
       //console.log(lesson);
       this.current_lesson = lesson;
     });
-    this.courseService.getCourse('da').subscribe(course => {
+    this.courseService.getCourse('aaa').subscribe(course => {
       //console.log(course);
       this.current_course = course;
     });
@@ -49,7 +50,7 @@ export class LessonDetailsTeacherComponent {
       //console.log(grade);
       this.current_grade = grade;
     });
-    this.lessonSevice.getAllLessons('da').subscribe(lessons => {
+    this.lessonSevice.getAllLessons('aaa').subscribe(lessons => {
       //console.log(lessons);
       for(let lesson of lessons){
         this.all_lessons_string.push(lesson.name)

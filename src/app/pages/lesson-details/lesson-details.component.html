@@ -7,6 +7,16 @@
       <div class="banner-content">
         <p>{{ current_lesson?.description }}</p>
       </div>
+      <mat-card class="mat-card1">
+        <div *ngIf="final_grade">
+            <p>Final grade: {{final_grade}}</p>
+        </div>
+      </mat-card>
+      <mat-card class="mat-card2">
+        <div *ngIf="current_grade">
+            <p>Grade: {{current_grade}}
+        </div>
+      </mat-card>
     </div>
     <app-lesson-action-area
       [isTeacher]="auth.isTeacher()"

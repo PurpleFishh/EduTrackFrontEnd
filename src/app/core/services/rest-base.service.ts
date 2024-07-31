@@ -31,6 +31,13 @@ export class RestBaseService {
     return this.http.delete<T>(completeUrl, {headers: this.buildHeadersForAss()});
   }
 
+  addData<T>(url: string, formData:FormData): Observable<T> {
+    const completeUrl = this.getCompleteUrl(url);
+    return this.http.post<T>(completeUrl,formData, {
+      headers: this.buildHeadersForAss()
+    });
+  }
+
   update<T, TDto>(url: string, object: TDto): Observable<T> {
     const completeUrl = this.getCompleteUrl(url);
     return this.http.patch<T>(completeUrl, object, {headers: this.buildHeaders()});

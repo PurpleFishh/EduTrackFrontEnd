@@ -25,33 +25,33 @@ export class LessonNotFinishedDetailsComponent {
   constructor(private readonly lessonSevice: LessonsService,private readonly courseService: CoursesService,private readonly assService: AssignmentInventoryService,private readonly routerActive: ActivatedRoute, private readonly router: Router) {}
 
   ngOnInit(){
-    this.assService.getAssignment().subscribe(assignment => {
+    this.assService.getAssignment('aaa','ccc').subscribe(assignment => {
       console.log(assignment);
       this.current_assignment = assignment;
     });
-    this.assService.getLesson('Curs', 'Lectie').subscribe(lesson => {
+    this.assService.getLesson('aaa', 'ccc').subscribe(lesson => {
       console.log(lesson);
       this.current_lesson = lesson;
     });
-    this.courseService.getCourse('').subscribe(course => {
+    this.courseService.getCourse('aaa').subscribe(course => {
       console.log(course);
       this.current_course = course;
     });
-    this.assService.getGrade().subscribe(grade => {
+    this.assService.getGrade('aaa','ccc').subscribe(grade => {
       console.log(grade);
       this.current_grade = grade;
     });
-    this.lessonSevice.getAllLessons('da').subscribe(lessons => {
+    this.lessonSevice.getAllLessons('aaa').subscribe(lessons => {
       //console.log(lessons);
       for(let lesson of lessons){
         this.all_lessons_string.push(lesson.name)
       }
-      //console.log(this.all_lessons_string);
+      console.log(this.all_lessons_string);
       for(let lesson of this.all_lessons_string){
         this.iterations ++;
         this.assService.getAllGrades(lesson).subscribe(grade =>{
           this.final_grade += Number(grade);
-          //console.log(this.iterations);
+          console.log(grade);
         });
       }
       this.final_grade = this.final_grade/this.iterations;
