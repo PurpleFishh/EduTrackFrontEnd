@@ -32,6 +32,11 @@ export class LessonActionAreaComponent {
     this.router.navigateByUrl('/update-lesson');
   }
 
+  goToAttendanceChecker()
+  {
+    this.router.navigateByUrl(`${this.router.url}/check-attendance`);
+  }
+
   confirmDelete(): void {
     const result = window.confirm(
       'Select ok to delete lesson or cancel to delete assignment'

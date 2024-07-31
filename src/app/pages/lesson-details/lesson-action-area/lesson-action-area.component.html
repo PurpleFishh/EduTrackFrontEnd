@@ -40,7 +40,7 @@
       </button>
     </div>
 
-    <button mat-stroked-button class="button-stroked">
+    <button *ngIf="lessonStatus === allLessonStatus.InProgess" mat-stroked-button class="button-stroked" (click)="goToAttendanceChecker()">
       <mat-icon> task_alt </mat-icon>
       MAKE ATTENDANCE
     </button>

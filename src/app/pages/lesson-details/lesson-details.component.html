@@ -9,7 +9,7 @@
       </div>
     </div>
     <app-lesson-action-area
-      [isTeacher]="auth.isTeacher()"
+      [isTeacher]="isTeacherOwner"
       [currentGrade]="current_grade?.grade"
       [lessonId]="lessonId"
       [lessonStatus]="current_lesson?.lessonStatus"
@@ -41,7 +41,7 @@
             <mat-icon
               *ngIf="
                 current_lesson?.lessonStatus !== allLessonStatus.Finished &&
-                !auth.isTeacher()
+                !isTeacherOwner
               "
             >
               lock
@@ -55,7 +55,7 @@
           *ngIf="
             current_assignment &&
             (current_lesson?.lessonStatus === allLessonStatus.Finished ||
-              auth.isTeacher())
+            isTeacherOwner)
           "
         >
           <p *ngFor="let assignment of current_assignment">
@@ -66,7 +66,7 @@
           *ngIf="
             current_assignment &&
             current_lesson?.lessonStatus !== allLessonStatus.Finished &&
-              !auth.isTeacher()
+              !isTeacherOwner
           "
         >
           <p *ngFor="let assignment of current_assignment">
@@ -79,7 +79,7 @@
         class="solution-continer"
         *ngIf="
           current_lesson?.lessonStatus === allLessonStatus.Finished &&
-          !auth.isTeacher()
+          !isTeacherOwner
         "
       >
         <mat-card-header> Solution title </mat-card-header>
@@ -145,7 +145,7 @@
         class="finish-assignmnet"
         *ngIf="
           current_lesson?.lessonStatus !== allLessonStatus.Finished &&
-          !auth.isTeacher()
+          !isTeacherOwner
         "
       >
         Finish the lesson to unlock the assignment!

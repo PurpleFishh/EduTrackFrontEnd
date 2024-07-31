@@ -48,8 +48,16 @@ export class CoursesService {
     );
   }
   getStudentEnrolledCourses() {
-    return this.baseService.get<CourseDisplayDto[]>(`${this.endpoint}/GetStudentEnrolledCourses`);
+    return this.baseService.get<CourseDisplayDto[]>(
+      `${this.endpoint}/GetStudentEnrolledCourses`
+    );
   }
+  isUserCourseOwner(courseId: string) {
+    let result = this.baseService
+      .get<boolean>(`${this.endpoint}/IsUserCourseOwner?courseName=${courseId}`)
+    return result;
+  }
+
   updateCourse(courseId: string, course: FormData) {
     return this.baseService.update<boolean, FormData>(
       `${this.endpoint}/EditCourse?courseName=${courseId}`,
@@ -78,9 +86,15 @@ export class CoursesService {
     );
   }
 
-  private getCompleteUrlWithQuery(url: string, queryParams: { [key: string]: string }) {
+  private getCompleteUrlWithQuery(
+    url: string,
+    queryParams: { [key: string]: string }
+  ) {
     const queryString = Object.keys(queryParams)
-      .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(queryParams[key])}`)
+      .map(
+        (key) =>
+          `${encodeURIComponent(key)}=${encodeURIComponent(queryParams[key])}`
+      )
       .join('&');
     return `${url}?${queryString}`;
   }

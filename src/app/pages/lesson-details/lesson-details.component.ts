@@ -44,6 +44,7 @@ export class LessonDetailsComponent {
   file!: File;
   iterations: number = 0;
 
+  isTeacherOwner: boolean = false;
   allLessonStatus = LessonStatus;
 
   constructor(
@@ -73,6 +74,8 @@ export class LessonDetailsComponent {
         .getLesson(this.courseId, this.lessonId)
         .subscribe((lesson) => {
           this.current_lesson = lesson;
+          if (this.auth.isTeacher())
+            this.isTeacherOwner = lesson.teacherEmail === this.auth.getEmail();
         });
       this.assService
         .getAssignment(this.courseId, this.lessonId)

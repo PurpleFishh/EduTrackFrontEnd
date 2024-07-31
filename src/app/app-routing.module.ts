@@ -20,6 +20,7 @@ import { AddLessonComponent } from './pages/add-lesson/add-lesson.component';
 import { userAdminGuard, userTeacherGuard } from './core/guards/user-role.guard';
 import { CheckAttendanceComponent } from './pages/check-attendance/check-attendance.component';
 import { StudentDashboardAssignmentsComponent } from './pages/dashboard/dashboards/student-dashboard-assignments/student-dashboard-assignments.component';
+import { teacherCourseOwner } from './core/guards/teacher-owner.guard';
 
 const routes: Routes = [
   {
@@ -35,6 +36,11 @@ const routes: Routes = [
         component: CoursesComponent,
       },
       {
+        path:'course/:curs/lesson/:lesson/check-attendance',
+        component:CheckAttendanceComponent,
+        canActivate: [loggedGuard, teacherCourseOwner],
+      },
+      {
         path: 'course/:curs/lesson/:lesson',
         component: LessonDetailsComponent,
         canActivate: [loggedGuard],
@@ -46,7 +52,7 @@ const routes: Routes = [
       {
         path: 'edit/course/:id',
         component: AddCourseComponent,
-        canActivate: [loggedGuard, userTeacherGuard],
+        canActivate: [loggedGuard, teacherCourseOwner],
       },
       {
         path: 'add/course',
@@ -81,10 +87,6 @@ const routes: Routes = [
             component: StudentDashboardAssignmentsComponent,
           },
         ],
-      },
-      {
-        path:'check-attendance',
-        component:CheckAttendanceComponent
       },
       {
         path: 'unauthorized',
