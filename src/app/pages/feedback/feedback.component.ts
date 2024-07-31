@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FeedbackService } from 'src/app/core/services/feedback.service';
 import { FeedbackFiltersDto } from 'src/app/core/models/feedback.model';
 import { FeedbackCategory } from 'src/app/core/models/feedback.model';
+import { MatPaginator } from '@angular/material/paginator';
+import { PageEvent } from '@angular/material/paginator';
 import { from } from 'rxjs';
 
 @Component({
@@ -15,6 +17,12 @@ export class FeedbackComponent {
   // name: FormControl = new FormControl('');
   errorMessage: string | null = null;
   storedFeedbackData: any[] = [];
+  displayedFeedbackData: any[] = [];
+  pageSize = 5;
+  pageIndex = 0;
+  totalFeedback = 0;
+
+   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   name: string = '';
   byName: string[] = [];
@@ -93,6 +101,8 @@ export class FeedbackComponent {
       }
     }
     this.storedFeedbackData = feedbackData;
+    this.totalFeedback = this.storedFeedbackData.length;
+    this.updateDisplayedFeedback();
     console.log("stored items in local staorage", feedbackData);
   }
 
@@ -178,5 +188,17 @@ export class FeedbackComponent {
       default:
         return 'Unknown Category';
     }
+  }
+
+  updateDisplayedFeedback() {
+    const startIndex = this.pageIndex * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    this.displayedFeedbackData = this.storedFeedbackData.slice(startIndex, endIndex);
+  }
+
+  onPageChange(event: PageEvent) {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.updateDisplayedFeedback();
   }
 }

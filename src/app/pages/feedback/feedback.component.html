@@ -135,7 +135,7 @@
 </mat-card>
 
 <div class="feedback-list">
-    <mat-card class="feedback-card" *ngFor="let feedback of storedFeedbackData">
+    <mat-card class="feedback-card" *ngFor="let feedback of displayedFeedbackData">
         <div class="card-header">
             <div class="left">
                 <div class="subject">Subject: {{ getFeedbackCategory(feedback.category) }}</div>
@@ -156,6 +156,10 @@
         </div>
     </mat-card>
 </div>
+
+<mat-paginator [length]="totalFeedback" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]"
+    (page)="onPageChange($event)">
+</mat-paginator>
 
 <!-- <div *ngFor="let feedback of storedFeedbackData">
     <mat-card class="feedback-card">
