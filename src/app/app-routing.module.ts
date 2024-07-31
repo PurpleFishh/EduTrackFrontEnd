@@ -10,6 +10,8 @@ import { userAdminGuard } from './core/guards/user-role.guard';
 import { CourseDetailsComponent } from './pages/course-details/course-details.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { FbSubmitedComponent } from './pages/fb-submited/fb-submited.component';
+import { FeedbackCategory } from './core/models/feedback.model';
+import { FeedbackComponent } from './pages/feedback/feedback.component';
 
 const routes: Routes = [
    {
@@ -44,6 +46,10 @@ const routes: Routes = [
         {
           path: '10q4urfb',
           component: FbSubmitedComponent
+        },
+        {
+          path: 'feedback',
+          component: FeedbackComponent
         },
       ]
    }
