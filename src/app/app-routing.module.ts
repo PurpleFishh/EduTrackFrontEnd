@@ -18,6 +18,7 @@ import { ViewAssignmentPageComponent } from './pages/view-assignment-page/view-a
 import { UpdateLessonComponent } from './pages/update-lesson/update-lesson.component';
 import { AddLessonComponent } from './pages/add-lesson/add-lesson.component';
 import { userAdminGuard, userTeacherGuard } from './core/guards/user-role.guard';
+import { CheckAttendanceComponent } from './pages/check-attendance/check-attendance.component';
 
 const routes: Routes = [
   {
@@ -82,6 +83,10 @@ const routes: Routes = [
             component: StudentDashboardMainComponent,
           },
         ],
+      },
+      {
+        path:'check-attendance',
+        component:CheckAttendanceComponent
       },
       {
         path: 'unauthorized',

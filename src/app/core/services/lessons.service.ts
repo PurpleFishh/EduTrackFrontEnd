@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RestBaseService } from './rest-base.service';
 import { LessonDisplayDto, LessonDto, LessonStatus } from '../models/lesson.model';
+import { StudentDto } from '../models/student.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -56,4 +57,10 @@ export class LessonsService {
       {}
     );
   }
+  makeAttendance(courseTitle: string, lessonTitle: string, students: StudentDto[])
+{
+  const url= `${this.endpoint}/MakeAttendance?courseName=${courseTitle}&lessonTitle=${lessonTitle}`;
+  return this.baseService.add<boolean,StudentDto[] >(url,students);
+}
+
 }

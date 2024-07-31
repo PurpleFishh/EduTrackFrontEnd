@@ -1,0 +1,38 @@
+<p>check-attendance works!</p>
+<div class="content">
+    <div class="checkattendanceform mat-elevation-z8">
+      <h1 class="title">Check attendance</h1>
+      <table mat-table [dataSource]="studentsEnrolled" class="mat-table">
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let student">
+            <mat-icon color="primary">person</mat-icon>
+            {{student.firstName}} {{student.lastName}}
+          </td>
+        </ng-container>
+  
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> Email </th>
+          <td mat-cell *matCellDef="let student"> {{student.email}} </td>
+        </ng-container>
+  
+        <!-- Status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td mat-cell *matCellDef="let student; let i = index">
+            <mat-checkbox [(ngModel)]="attendanceStatus[i]"></mat-checkbox>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+  
+      <div class="submit-container">
+        <button mat-raised-button color="primary" (click)="markAttendance()">Submit</button>
+      </div>
+    </div>
+  </div>
+  

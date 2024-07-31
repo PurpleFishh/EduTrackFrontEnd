@@ -23,6 +23,7 @@ import { StatisticComponent } from './dashboard/components/statistic/statistic.c
 import { LegendComponent } from './dashboard/components/legend/legend.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AddCourseComponent } from './add-course/add-course.component';
+import { CheckAttendanceComponent } from './check-attendance/check-attendance.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { AddCourseComponent } from './add-course/add-course.component';
     LegendComponent,
     ContactUsComponent,
     AddCourseComponent,
+    CheckAttendanceComponent,
   ],
   imports: [CommonModule, SharedModule],
   exports: [LoginComponent],

@@ -1,0 +1,59 @@
+@import "src/config/variables";
+
+:host {
+    /* check-attendance.component.scss */
+
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .checkattendanceform {
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+    }
+    
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .mat-table {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    
+    .mat-header-cell, .mat-cell {
+      text-align: center;
+    }
+    
+    .mat-header-cell {
+      font-weight: bold;
+    }
+    
+    .mat-row {
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      margin: 5px 0;
+    }
+    
+    .submit-container {
+      text-align: center;
+    }
+    
+    button.mat-raised-button {
+      background-color: #28a745;
+      color: #ffffff;
+    }
+    
+    button.mat-raised-button:hover {
+      background-color: #218838;
+    }
+    
+      
+
+}

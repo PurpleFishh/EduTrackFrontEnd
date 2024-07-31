@@ -7,6 +7,7 @@ import {
   CoursesFilter,
   CoursesFilterDto,
 } from '../models/course.model';
+import { StudentDto } from '../models/student.model';
 import { query } from '@angular/animations';
 import { from } from 'rxjs';
 
@@ -24,10 +25,9 @@ export class CoursesService {
     //return from(this.courses2);
   }
 
-  getStudentEnrolled(id: String) {
-    return this.baseService.get(
-      `${this.endpoint}/GetStudentsEnrolled?courseName=${id}`
-    );
+  getStudentEnrolled(courseName: string) {
+    const url = `${this.endpoint}/GetStudentsEnrolled?courseName=${courseName}`;
+    return this.baseService.get<StudentDto[]>(url);
   }
 
   getFilters(filter: CoursesFilter) {
