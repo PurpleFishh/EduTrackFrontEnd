@@ -73,7 +73,8 @@ export class UpdateLessonComponent implements OnInit {
     const lessonData = {
       name: this.lessonTitle,
       description: this.lessonDescription,
-      lesson_Content: this.lessonContent
+      lesson_Content: this.lessonContent,
+      startDate: new Date(),
     };
 
     const assignmentData = {

@@ -29,7 +29,6 @@ export class LessonsService {
     const url = `${this.endpoint}/EditLesson?lessonTitle=${lessonTitle}`;
     return this.baseService.update<boolean, LessonDto>(
       url,
-      lessonTitle,
       lesson
     );
 }

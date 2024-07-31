@@ -95,11 +95,9 @@ export class AssignmentInventoryService {
     &Assignment_name=${assignment.assignment_name}
     &Assignment_description=${assignment.assignment_description}
     &Assignment_preview=${assignment.assignment_preview}`;
-    return this.baseService.updateAss<boolean, AssignmentDto>(
+    return this.baseService.update(
       url,
-      lessonTitle,
-      courseName,
-      formData
+      {}
     );
   }
 
@@ -126,7 +124,7 @@ export class AssignmentInventoryService {
     )}&Solution=${encodeURIComponent(solution.solution)}`;
 
     return this.baseService
-      .addData<boolean>(`${this.endpoint}/Solve?${queryString}`, formData)
+      .add<boolean, FormData>(`${this.endpoint}/Solve?${queryString}`, formData)
       .subscribe({
         next: (response) => {
           console.log('Solution submitted successfully:', response);
@@ -158,7 +156,7 @@ export class AssignmentInventoryService {
     &Assignment_preview=${encodeURIComponent(assignment.assignment_preview)}`;
 
     return this.baseService
-      .addData<boolean>(
+      .add<boolean, FormData>(
         `${this.endpoint}/AddAssignment?${queryString}`,
         formData
       )

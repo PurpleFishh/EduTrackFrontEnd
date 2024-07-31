@@ -33,7 +33,7 @@ export class LessonNotFinishedDetailsComponent {
       console.log(lesson);
       this.current_lesson = lesson;
     });
-    this.courseService.getCourse().subscribe(course => {
+    this.courseService.getCourse('').subscribe(course => {
       console.log(course);
       this.current_course = course;
     });
@@ -41,7 +41,7 @@ export class LessonNotFinishedDetailsComponent {
       console.log(grade);
       this.current_grade = grade;
     });
-    this.lessonSevice.getAllLessons().subscribe(lessons => {
+    this.lessonSevice.getAllLessons('da').subscribe(lessons => {
       //console.log(lessons);
       for(let lesson of lessons){
         this.all_lessons_string.push(lesson.name)

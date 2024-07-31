@@ -78,7 +78,7 @@ export class LessonDetailsComponent {
       solution: '',
     };
     
-    this.lessonSevice.getAllLessons().subscribe((lessons) => {
+    this.lessonSevice.getAllLessons('').subscribe((lessons) => {
       //console.log(lessons);
       for (let lesson of lessons) {
         this.all_lessons_string.push(lesson.name);

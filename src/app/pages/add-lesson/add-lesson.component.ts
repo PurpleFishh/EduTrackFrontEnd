@@ -47,7 +47,8 @@ export class AddLessonComponent {
       const lessonData = {
         name: lessonName,
         description: lessonDescription,
-        lesson_Content: lessonContent
+        lesson_Content: lessonContent,
+        startDate: new Date()
       };
 
       const assignmentData = {
