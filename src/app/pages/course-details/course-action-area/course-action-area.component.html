@@ -48,7 +48,7 @@
         <p class="title">Students</p>
       </div>
     </div>
-    <div class="action" *ngIf="!isTeacherOwner && !isEnrolled">
+    <div class="action" *ngIf="!isTeacherOwner">
       <button mat-flat-button (click)="enroll()">Enroll</button>
     </div>
     <div class="action" *ngIf="isTeacherOwner">

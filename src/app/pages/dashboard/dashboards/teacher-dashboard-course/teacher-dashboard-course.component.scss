@@ -8,9 +8,9 @@
   .styled-panel {
     border-radius: 12px;
     padding: 20px;
-    font-family: 'Arial', sans-serif; /* Change this to match the font in the image */
-    font-size: 16px; /* Adjust the font size to match the image */
-    background-color: #f9f9f9; /* Match the background color */
+    font-family: 'Arial', sans-serif; 
+    font-size: 16px; 
+    background-color: #f9f9f9; 
   }
 
   .course-item, .lesson-item {
@@ -19,13 +19,13 @@
   }
 
   .mat-expansion-panel {
-    margin-bottom: 20px; /* Adjust this value to increase or decrease the spacing */
+    margin-bottom: 20px; 
   }
 
   .attendance-header {
-    font-family: 'Arial', sans-serif; /* Match the font family */
-    font-size: 24px; /* Adjust the font size to match the image */
-    font-weight: bold; /* Adjust weight if necessary */
+    font-family: 'Arial', sans-serif; 
+    font-size: 24px; 
+    font-weight: bold; 
     margin-top: 20px;
     margin-bottom: 20px;
   }
@@ -36,12 +36,12 @@
     padding: 10px;
     font-family: 'Arial', sans-serif;
     font-size: 16px;
-    background-color: #ffffff; /* Match the background color of the expansion panel */
+    background-color: #ffffff; 
     margin-bottom:20px;
   }
 
   .custom-expansion-panel {
-    background-color: transparent; /* Make the background of the expansion panel transparent */
+    background-color: transparent; 
   }
 
   .attendance-section {
@@ -54,11 +54,11 @@
   .custom-progress-bar {
     height: 8px;
     border-radius: 4px;
-    background-color: #00384C; /* Background color for the total progress bar */
+    background-color: #00384C; 
   }
   
   ::ng-deep .custom-progress-bar .mat-progress-bar-primary {
-    background-color: #00c853 !important;  /* Fill color for attended students */
+    background-color: #00c853 !important; 
   }
 
   .mat-mdc-progress-bar {

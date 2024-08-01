@@ -35,6 +35,7 @@ import { RecoveryComponent } from './recovery/recovery.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { TeacherDashboardCourseComponent } from './dashboard/dashboards/teacher-dashboard-course/teacher-dashboard-course.component';
 import { FeedbackComponent } from './dashboard/dashboards/feedback/feedback.component';
+import { TeacherDashboardStudentsEnrolledComponent } from './dashboard/dashboards/teacher-dashboard-students-enrolled/teacher-dashboard-students-enrolled.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { FeedbackComponent } from './dashboard/dashboards/feedback/feedback.comp
     FeedbackComponent,
     FbSubmitedComponent,
     ContactUsComponent,
-    TeacherDashboardCourseComponent
+    TeacherDashboardCourseComponent,
+    TeacherDashboardStudentsEnrolledComponent
   ],
   imports: [CommonModule, SharedModule],
   exports: [LoginComponent],
