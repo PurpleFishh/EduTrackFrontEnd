@@ -11,7 +11,7 @@
       <div class="menu">
         <mat-menu> </mat-menu>
         <button mat-menu-item [ngClass]="isCurrentPage('/') ? 'selected' : ''">Dashboard</button>
-        <button mat-menu-item [ngClass]="isCurrentPage('/courses') ? 'selected' : ''">My Courses</button>
+        <button mat-menu-item [ngClass]="isCurrentPage('/courses') ? 'selected' : ''" (click)="navigateTo('courses')">My Courses</button>
         <button mat-menu-item [ngClass]="isCurrentPage('/enrolled') ? 'selected' : ''" *ngIf="auth.isTeacher()">Enrolled Students</button>
         <button mat-menu-item [ngClass]="isCurrentPage('/feedback') ? 'selected' : ''" *ngIf="auth.isAdmin()">Feedback</button>
       </div>

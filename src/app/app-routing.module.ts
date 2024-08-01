@@ -19,7 +19,7 @@ import { UpdateLessonComponent } from './pages/update-lesson/update-lesson.compo
 import { AddLessonComponent } from './pages/add-lesson/add-lesson.component';
 import { userAdminGuard, userTeacherGuard } from './core/guards/user-role.guard';
 import { CheckAttendanceComponent } from './pages/check-attendance/check-attendance.component';
-
+import { TeacherDashboardCourseComponent } from './pages/dashboard/dashboards/teacher-dashboard-course/teacher-dashboard-course.component';
 const routes: Routes = [
   {
     path: '',
@@ -35,8 +35,7 @@ const routes: Routes = [
       },
       {
         path: 'course/:curs/lesson/:lesson',
-        component: LessonDetailsComponent,
-        canActivate: [loggedGuard],
+        component: LessonDetailsComponent
       },
       {
         path: 'course/:id',
@@ -51,6 +50,14 @@ const routes: Routes = [
         path: 'add/course',
         component: AddCourseComponent,
         canActivate: [loggedGuard, userTeacherGuard],
+      },
+      {
+        path: 'lesson-details-teacher',
+        component: LessonDetailsTeacherComponent
+      },
+      {
+        path: 'lesson-notfinished-details',
+        component: LessonNotFinishedDetailsComponent
       },
       {
         path: 'view-assignment-page',
@@ -75,6 +82,11 @@ const routes: Routes = [
             path: '',
             component: StudentDashboardMainComponent,
           },
+
+          { 
+            path: 'courses', 
+            component: TeacherDashboardCourseComponent
+           }
         ],
       },
       {

@@ -57,6 +57,12 @@ export class CoursesService {
     );
   }
 
+  getTeacherCourses(teacherEmail:string)
+  {
+    return this.baseService.get<string[]>(`${this.endpoint}/GetTeacherCourses?email=${teacherEmail}`);
+  }
+
+
   private getUrlForFilter(baseUrl: string, filter: CoursesFilter) {
     let querys: string[] = [];
     if (filter.search) querys.push(`Title=${filter.search}`);

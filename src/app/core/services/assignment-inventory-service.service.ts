@@ -44,8 +44,8 @@ export class AssignmentInventoryService {
   }
 
   public getGrade(courseName: string = '', lessonTitle: string = '') {
-    //const email = this.auth.getEmail();
-    const email = 'teacher@teacher.com';
+    const email = this.auth.getEmail();
+    //const email = 'teacher@teacher.com';
 
     return this.baseService.get<Grade>(
       this.getCompleteUrlWithQuery(`${this.endpoint}/GetGrade`, {
@@ -55,6 +55,14 @@ export class AssignmentInventoryService {
       })
     );
   }
+
+  getStudentGrade(courseName: string, lessonTitle: string, email: string) {
+    const url = `${this.endpoint}/GetGrade?CourseName=${courseName}&LessonTitle=${lessonTitle}&StudentEmail=${email}`;
+    return this.baseService.get<number[]>(url);
+}
+
+
+
 
   public deleteAssignment(courseName: string, lessonTitle: string) {
     return this.baseService.deleteAss<boolean>(
