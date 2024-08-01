@@ -63,7 +63,7 @@ export class CourseDetailsComponent {
         this.courseService.getCourses(filter).subscribe((related) => {
           this.realtedCourses = related
             .filter((course) => course.name !== this.course.name)
-            .slice(0, 5);
+            .slice(0, 4);
         });
 
         this.courseService
