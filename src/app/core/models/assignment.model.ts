@@ -38,6 +38,7 @@ export interface AllAssignments {
 }
 
 export interface StudentGrade {
+  student: Student;
   lesson_name: string;
   grade: number;
 }

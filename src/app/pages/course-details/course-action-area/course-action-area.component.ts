@@ -21,6 +21,7 @@ export class CourseActionAreaComponent implements AfterContentInit, OnInit {
   isEnrolled = false;
 
   @Output() enrollToCourse: EventEmitter<any> = new EventEmitter();
+  image!: string;
 
   constructor(
     private readonly fileReader: FileReaderService,
