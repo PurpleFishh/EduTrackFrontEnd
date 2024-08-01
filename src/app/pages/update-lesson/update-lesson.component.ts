@@ -51,7 +51,7 @@ export class UpdateLessonComponent implements OnInit {
   }
 
   loadAssignment(){
-    this.assService.getAssignment().subscribe({
+    this.assService.getAssignment('','').subscribe({
       next: (assignments) => {
         
         if (assignments) {

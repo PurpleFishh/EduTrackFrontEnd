@@ -1,283 +1,390 @@
 @import "src/config/variables";
 
 :host {
-.content {
+  .content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 50px 0 150px 0;
     width: 100%;
-}
+  }
 
-.formaddlesson {
+  mat-card {
+    padding: 20px 60px 10px 60px;
+    width: 1054px;
+    border-radius: 20px;
+
+    mat-card-header {
+      padding: 0;
+      mat-card-title {
+        font-size: 48px;
+        line-height: 120%;
+        letter-spacing: -0.02em;
+        font-weight: 700;
+      }
+      mat-card-subtitle {
+        font-size: 23px;
+        line-height: 32px;
+        font-weight: 400;
+      }
+    }
+    mat-card-content {
+      padding: 20px 0 0 0;
+      input {
+        width: 100%;
+      }
+      mat-form-field {
+        width: 100%;
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        width: 100%;
+
+        font-size: 20px;
+        line-height: 32px;
+        letter-spacing: 0.25px;
+        font-weight: 400;
+
+        ::ng-deep .mat-mdc-form-field-flex {
+          display: flex;
+          height: 42px;
+          align-items: center;
+          width: 100%;
+        }
+      }
+      .textarea{
+        textarea{
+          min-height: 150px;
+        }
+        ::ng-deep .mat-mdc-form-field-flex {
+          //display: flex;
+          padding-top: 5px;
+          
+          height: auto !important;;
+          display: inline-flex;
+    align-items: baseline;
+    box-sizing: border-box;
+    width: 100%;
+        }
+      }
+      .split {
+        display: flex;
+        gap: 50px;
+      }
+      .add-image {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        align-items: center;
+        button {
+          width: 200px;
+          border-radius: 10px;
+        }
+        p {
+          color: $color-text-secondary;
+          font-size: 16px;
+          line-height: 24px;
+          letter-spacing: 0.5px;
+          font-weight: 400;
+        }
+      }
+      .hint{
+        color: $color-text-secondary;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.5px;
+        font-weight: 400;
+      }
+
+    }
+  }
+  mat-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20px;
+    button {
+      width: 140px;
+      height: 45px;
+      text-transform: uppercase;
+    }
+    
+  }
+  .file-upload
+  {
+    #file-upload-button{
+      height: 45px;
+
+      background-color: aqua;
+    }
+    
+    font-size: 14px;
+    line-height: 36px;
+    letter-spacing: 1.25px;
+    font-weight: 500;
+  }
+  .formaddlesson {
     width: 100%;
     max-width: 1174px;
-    background: #FAFCFC;
+    background: #fafcfc;
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 40px;
-    margin:60px;
-}
+    margin: 60px;
+  }
 
-.title {
+  .title {
     /* Add lesson */
 
-width: 338px;
-height: 58px;
+    width: 338px;
+    height: 58px;
 
-/* Title Page */
-font-family: 'Inter';
-font-style: normal;
-font-weight: 700;
-font-size: 48px;
-line-height: 120%;
-/* identical to box height, or 58px */
-display: flex;
-align-items: center;
-letter-spacing: -0.02em;
+    /* Title Page */
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 120%;
+    /* identical to box height, or 58px */
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.02em;
 
-/* palette/text */
-color: #050B0C;
-/* Inside auto layout */
-flex: none;
-order: 0;
-align-self: stretch;
-flex-grow: 0;
+    /* palette/text */
+    color: #050b0c;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+  }
 
-}
-
-.textadd {
-    font-family: 'Roboto', sans-serif;
+  .textadd {
+    font-family: "Roboto", sans-serif;
     font-size: 23px;
-    color: #050B0C;
+    color: #050b0c;
     margin-bottom: 20px;
-}
+  }
 
-.lesson-title {
-    font-family: 'Roboto', sans-serif;
+  .lesson-title {
+    font-family: "Roboto", sans-serif;
     font-size: 20px;
-    color: #050B0C;
+    color: #050b0c;
     margin-bottom: 10px;
-}
+  }
 
-.form-group {
+  .form-group {
     width: 100%;
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
-}
+  }
 
-.form-group-row {
+  .form-group-row {
     display: flex;
     flex-direction: row;
     gap: 20px;
     width: 100%;
     margin-bottom: 20px;
-}
+  }
 
-.form-group-row.end {
+  .form-group-row.end {
     justify-content: flex-end;
-    
-}
+  }
 
-.form-group input,
-.form-group textarea {
+  .form-group input,
+  .form-group textarea {
     /* mat-textarea__slot */
 
-box-sizing: border-box;
+    box-sizing: border-box;
 
-/* Auto layout */
-display: flex;
-flex-direction: row;
-align-items: flex-start;
-padding: 8px 12px;
-gap: 10px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 8px 12px;
+    gap: 10px;
 
-width: 1054px;
-height: 169px;
+    width: 1054px;
+    height: 169px;
 
-/* palette/BG */
-background: #FAFCFC;
-/* black/0.42 */
-border: 1px solid rgba(0, 0, 0, 0.42);
-border-radius: 4px;
+    /* palette/BG */
+    background: #fafcfc;
+    /* black/0.42 */
+    border: 1px solid rgba(0, 0, 0, 0.42);
+    border-radius: 4px;
 
-/* Inside auto layout */
-flex: none;
-order: 1;
-align-self: stretch;
-flex-grow: 0;
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+  }
 
-}
-
-.form-group textarea {
+  .form-group textarea {
     height: 100px;
-}
+  }
 
-.add-assignment-pdf {
+  .add-assignment-pdf {
     display: flex;
     align-items: center;
     padding: 10px 20px;
-    background: #009DD6;
-    color: #FAFCFC;
+    background: #009dd6;
+    color: #fafcfc;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 16px;
-    
-}
+  }
 
-.pdf-name {
-    font-family: 'Roboto', sans-serif;
+  .pdf-name {
+    font-family: "Roboto", sans-serif;
     font-size: 16px;
-    color: #4D5051;
+    color: #4d5051;
     align-self: center;
     margin-left: 20px;
-}
+  }
 
-.submit-button {
+  .submit-button {
     /* mat-btn */
 
-/* Auto layout */
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-gap: 16px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
 
-width: 137px;
-height: 44px;
+    width: 137px;
+    height: 44px;
 
-/* palette/primary */
-background: #009DD6;
+    /* palette/primary */
+    background: #009dd6;
 
-/* Inside auto layout */
-flex: none;
-order: 0;
-flex-grow: 0;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
     padding: 10px 20px;
-    color: #FAFCFC;
+    color: #fafcfc;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 16px;
+  }
 
-}
-
-#lesson-title{
+  #lesson-title {
     /* mat-input__slot */
 
-box-sizing: border-box;
+    box-sizing: border-box;
 
-/* Auto layout */
-display: flex;
-flex-direction: row;
-align-items: center;
-padding: 8px 12px;
-gap: 10px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 12px;
+    gap: 10px;
 
-width: 704px;
-height: 41px;
+    width: 704px;
+    height: 41px;
 
-/* palette/BG */
-background: #FAFCFC;
-/* black/0.42 */
-border: 1px solid rgba(0, 0, 0, 0.42);
-border-radius: 4px;
+    /* palette/BG */
+    background: #fafcfc;
+    /* black/0.42 */
+    border: 1px solid rgba(0, 0, 0, 0.42);
+    border-radius: 4px;
 
-/* Inside auto layout */
-flex: none;
-order: 1;
-align-self: stretch;
-flex-grow: 0;
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+  }
 
-}
-
-#lesson-date{
+  #lesson-date {
     /* mat-input */
 
-box-sizing: border-box;
+    box-sizing: border-box;
 
-/* Auto layout */
-display: flex;
-flex-direction: row;
-align-items: center;
-padding: 8px 12px;
-gap: 10px;
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 12px;
+    gap: 10px;
 
-width: 300px;
-min-width: 300px;
-height: 41px;
+    width: 300px;
+    min-width: 300px;
+    height: 41px;
 
-/* palette/BG */
-background: #FAFCFC;
-/* black/0.42 */
-border: 1px solid rgba(0, 0, 0, 0.42);
-border-radius: 4px;
+    /* palette/BG */
+    background: #fafcfc;
+    /* black/0.42 */
+    border: 1px solid rgba(0, 0, 0, 0.42);
+    border-radius: 4px;
 
-/* Inside auto layout */
-flex: none;
-order: 1;
-flex-grow: 0;
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
 
-}
+  #assignment-title {
+    /* mat-input__slot */
 
-#assignment-title{
-/* mat-input__slot */
+    box-sizing: border-box;
 
-box-sizing: border-box;
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 12px;
+    gap: 10px;
 
-/* Auto layout */
-display: flex;
-flex-direction: row;
-align-items: center;
-padding: 8px 12px;
-gap: 10px;
+    width: 704px;
+    height: 41px;
 
-width: 704px;
-height: 41px;
+    /* palette/BG */
+    background: #fafcfc;
+    /* black/0.42 */
+    border: 1px solid rgba(0, 0, 0, 0.42);
+    border-radius: 4px;
 
-/* palette/BG */
-background: #FAFCFC;
-/* black/0.42 */
-border: 1px solid rgba(0, 0, 0, 0.42);
-border-radius: 4px;
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+  #assignment-due-date {
+    /* mat-input */
 
-/* Inside auto layout */
-flex: none;
-order: 1;
-align-self: stretch;
-flex-grow: 0;
+    box-sizing: border-box;
 
-}
-#assignment-due-date{
-/* mat-input */
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 12px;
+    gap: 10px;
 
-box-sizing: border-box;
+    width: 300px;
+    min-width: 300px;
+    height: 41px;
 
-/* Auto layout */
-display: flex;
-flex-direction: row;
-align-items: center;
-padding: 8px 12px;
-gap: 10px;
+    /* palette/BG */
+    background: #fafcfc;
+    /* black/0.42 */
+    border: 1px solid rgba(0, 0, 0, 0.42);
+    border-radius: 4px;
 
-width: 300px;
-min-width: 300px;
-height: 41px;
-
-/* palette/BG */
-background: #FAFCFC;
-/* black/0.42 */
-border: 1px solid rgba(0, 0, 0, 0.42);
-border-radius: 4px;
-
-/* Inside auto layout */
-flex: none;
-order: 1;
-flex-grow: 0;
-
-}
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
 }

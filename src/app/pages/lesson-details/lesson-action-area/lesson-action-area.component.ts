@@ -19,6 +19,7 @@ export class LessonActionAreaComponent {
   @Output() changeStatus: EventEmitter<any> = new EventEmitter();
   @Output() deleteLesson: EventEmitter<any> = new EventEmitter();
   @Output() deleteAssignment: EventEmitter<any> = new EventEmitter();
+  @Output() editLesson: EventEmitter<any> = new EventEmitter();
 
   allLessonStatus = LessonStatus;
 
@@ -28,8 +29,9 @@ export class LessonActionAreaComponent {
     private readonly router: Router
   ) {}
 
-  goToEditLesson() {
-    this.router.navigateByUrl('/update-lesson');
+  goToAttendanceChecker()
+  {
+    this.router.navigateByUrl(`${this.router.url}/check-attendance`);
   }
 
   confirmDelete(): void {

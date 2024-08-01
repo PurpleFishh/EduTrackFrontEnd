@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import {
   CourseDisplayDto,
@@ -25,11 +28,14 @@ export class CourseDetailsComponent {
   descriptionExpanded = false;
   actionAreaHeight = 0;
   descriptionOverflow = true;
+  isEnrolled = false;
 
   constructor(
     private readonly route: ActivatedRoute,
+    private readonly auth: AuthenticationService,
     private readonly courseService: CoursesService,
     private readonly lessonService: LessonsService,
+    private readonly snackBar: MatSnackBar,
     private readonly navigator: Router
   ) {}
 
@@ -59,6 +65,12 @@ export class CourseDetailsComponent {
             .filter((course) => course.name !== this.course.name)
             .slice(0, 5);
         });
+
+        this.courseService
+          .isStudentEnrolled(this.course.name)
+          .subscribe((isEnrolled) => {
+            this.isEnrolled = isEnrolled;
+          });
       });
       this.lessonService.getAllLessons(this.courseId).subscribe((lessons) => {
         this.lessons = lessons;
@@ -82,5 +94,22 @@ export class CourseDetailsComponent {
       );
       window.scrollTo(0, 0);
     }
+  }
+
+  startLesson(lessonTitle: string) {
+    if (!this.auth.isLogged()) {
+      this.navigator.navigateByUrl('/login');
+      return;
+    }
+    if (!this.auth.isTeacher() && !this.isEnrolled) {
+      this.snackBar.open(`Please first enrolle into the course!`, 'Close');
+      return;
+    }
+    this.navigator.navigateByUrl(`${this.navigator.url}/lesson/${lessonTitle}`);
+    window.scrollTo(0, 0);
+  }
+
+  enrollToCourse() {
+    this.isEnrolled = true;
   }
 }

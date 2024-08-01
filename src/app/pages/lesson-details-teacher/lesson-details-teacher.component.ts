@@ -45,7 +45,7 @@ export class LessonDetailsTeacherComponent {
       solution: '',
       fileName: '',
     };
-    this.assService.getAssignment().subscribe((assignment) => {
+    this.assService.getAssignment('','').subscribe((assignment) => {
       //console.log(assignment);
       this.current_assignment = assignment;
     });
@@ -97,7 +97,7 @@ export class LessonDetailsTeacherComponent {
 
   onSubmit() {
     if (this.isFormValid()) {
-      this.assService.addSolution(this.solution, this.file);
+      this.assService.addSolution('dwad', 'w',this.solution, this.file);
       return true;
     } else {
       return false;

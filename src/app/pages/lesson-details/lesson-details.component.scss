@@ -95,14 +95,12 @@
     width: 234px;
     height: 44px;
 
-    background: #009dd6;
     border-radius: 14px;
 
     font-weight: 700;
     font-size: 16px;
     line-height: 24px;
 
-    color: #fafcfc;
   }
 
   .green_button {
@@ -115,8 +113,6 @@
 
     width: 234px;
     height: 44px;
-
-    background: rgba(21, 219, 149, 1);
     border-radius: 14px;
 
     font-weight: 700;
@@ -124,8 +120,6 @@
     line-height: 24px;
 
     align-self: center;
-
-    color: #fafcfc;
   }
 
   .assignment-title {
@@ -142,8 +136,15 @@
   }
   .solution-continer {
     width: 100%;
+
+    mat-card-header{
+      margin-bottom: 15px;
+    }
     mat-form-field{
       width: 100%;
+    }
+    textarea{
+      padding: 20px 0;
     }
     .center{
       display: flex;

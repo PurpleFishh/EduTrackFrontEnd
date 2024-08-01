@@ -25,10 +25,6 @@ export class LessonsService {
     );
   }
   updateLesson(lessonTitle: string,lesson: LessonDto): Observable<boolean> {
-    const payload = {
-      lessonTitle,
-      lessonData: lesson
-    };
     const url = `${this.endpoint}/EditLesson?lessonTitle=${lessonTitle}`;
     return this.baseService.update<boolean, LessonDto>(
       url,

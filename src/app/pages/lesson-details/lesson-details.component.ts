@@ -9,20 +9,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RouterTestingHarness } from '@angular/router/testing';
 import {
   AssignmentDisplayDto,
   AssignmentSolutionDto,
   Grade,
 } from 'src/app/core/models/assignment.model';
-import { CourseDisplayDto } from 'src/app/core/models/course.model';
 import {
   LessonDisplayDto,
   LessonDto,
   LessonStatus,
 } from 'src/app/core/models/lesson.model';
-import { LoginDto } from 'src/app/core/models/login.model';
-import { ResultError, StatusCodes } from 'src/app/core/models/result.model';
 import { AssignmentInventoryService } from 'src/app/core/services/assignment-inventory-service.service';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { CoursesService } from 'src/app/core/services/courses.service';
@@ -48,6 +44,7 @@ export class LessonDetailsComponent {
   file!: File;
   iterations: number = 0;
 
+  isTeacherOwner: boolean = false;
   allLessonStatus = LessonStatus;
 
   constructor(
@@ -77,6 +74,8 @@ export class LessonDetailsComponent {
         .getLesson(this.courseId, this.lessonId)
         .subscribe((lesson) => {
           this.current_lesson = lesson;
+          if (this.auth.isTeacher())
+            this.isTeacherOwner = lesson.teacherEmail === this.auth.getEmail();
         });
       this.assService
         .getAssignment(this.courseId, this.lessonId)
@@ -95,7 +94,7 @@ export class LessonDetailsComponent {
     this.solution = {
       solution_title: '',
       solution: '',
-      fileName: ''
+      fileName: '',
     };
 
     this.lessonSevice.getAllLessons('').subscribe((lessons) => {
@@ -125,7 +124,7 @@ export class LessonDetailsComponent {
             .subscribe((lesson) => {
               this.current_lesson = lesson;
             });
-            this.snackBar.open(`Lesson status changed!`, 'Close');
+          this.snackBar.open(`Lesson status changed!`, 'Close');
         }
       });
   }
@@ -149,7 +148,7 @@ export class LessonDetailsComponent {
 
   onSubmit() {
     if (this.isFormValid()) {
-      this.assService.addSolution(this.solution, this.file);
+      this.assService.addSolution(this.courseId, this.lessonId, this.solution, this.file);
       return true;
     } else {
       return false;
@@ -187,6 +186,10 @@ export class LessonDetailsComponent {
           );
       }
     });
+  }
+
+  goToEditLesson() {
+    this.router.navigateByUrl(`/edit/course/${this.courseId}/lesson/${this.lessonId}`);
   }
 }
 
