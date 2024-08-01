@@ -45,9 +45,8 @@ export class AddLessonComponent implements OnInit {
       this.courseTitle = params['curs'];
 
       const url = this.router.url.toLocaleLowerCase().split('/');
-      if(url[1] == 'add' && url[2] == 'course' && url[4] == 'lesson')
-        return;
-      
+      if (url[1] == 'add' && url[2] == 'course' && url[4] == 'lesson') return;
+
       this.lessonTitle = params['lesson'];
       if (this.lessonTitle) {
         this.lessonsService
@@ -71,27 +70,29 @@ export class AddLessonComponent implements OnInit {
               console.error('Error loading lesson:', error);
             },
           });
-        this.assService.getAssignment(this.courseTitle, this.lessonTitle).subscribe({
-          next: (assignments) => {
-            if (assignments) {
-              for (let assignment of assignments) {
-                this.addLessonForm.controls['assignmentTitle'].setValue(
-                  assignment.assignment_name
-                );
-                this.addLessonForm.controls[
-                  'assignmentShortDescription'
-                ].setValue(assignment.assignment_preview);
-                this.addLessonForm.controls['assignmentTask'].setValue(
-                  assignment.assignment_description
-                );
-                this.fileName = assignment.assignment_file;
+        this.assService
+          .getAssignment(this.courseTitle, this.lessonTitle)
+          .subscribe({
+            next: (assignments) => {
+              if (assignments) {
+                for (let assignment of assignments) {
+                  this.addLessonForm.controls['assignmentTitle'].setValue(
+                    assignment.assignment_name
+                  );
+                  this.addLessonForm.controls[
+                    'assignmentShortDescription'
+                  ].setValue(assignment.assignment_preview);
+                  this.addLessonForm.controls['assignmentTask'].setValue(
+                    assignment.assignment_description
+                  );
+                  this.fileName = assignment.assignment_file;
+                }
               }
-            }
-          },
-          error: (error) => {
-            console.error('Error loading lesson:', error);
-          },
-        });
+            },
+            error: (error) => {
+              console.error('Error loading lesson:', error);
+            },
+          });
       } else this.router.navigateByUrl('unauthorized');
     });
   }
@@ -121,6 +122,8 @@ export class AddLessonComponent implements OnInit {
         assignment_preview: assignmentShortDescription,
       };
 
+      lessonData.startDate.setHours(lessonData.startDate.getHours() + 5);
+
       // Lesson Edit
       if (this.lessonTitle) {
         this.lessonsService
@@ -140,8 +143,8 @@ export class AddLessonComponent implements OnInit {
               alert('An error occurred. Please try again.');
             },
           });
-          if(this.file === undefined || this.file === null)
-            this.file= new File([""], this.fileName);
+        if (this.file === undefined || this.file === null)
+          this.file = new File([''], this.fileName);
         this.assService
           .updateAssignment(
             this.lessonTitle,
@@ -166,7 +169,6 @@ export class AddLessonComponent implements OnInit {
           });
       } else {
         // Lesson Add
-        this.assService.addAssignment(assignmentData, this.file);
 
         this.lessonsService
           .addLesson(this.courseTitle, this.teacherEmail, lessonData)
@@ -185,6 +187,12 @@ export class AddLessonComponent implements OnInit {
               alert('An error occurred. Please try again.');
             },
           });
+        this.assService.addAssignment(
+          this.courseTitle,
+          lessonData.name,
+          assignmentData,
+          this.file
+        );
       }
     }
   }

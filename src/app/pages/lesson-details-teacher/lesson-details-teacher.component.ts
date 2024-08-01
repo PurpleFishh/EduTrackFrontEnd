@@ -97,7 +97,7 @@ export class LessonDetailsTeacherComponent {
 
   onSubmit() {
     if (this.isFormValid()) {
-      this.assService.addSolution(this.solution, this.file);
+      this.assService.addSolution('dwad', 'w',this.solution, this.file);
       return true;
     } else {
       return false;

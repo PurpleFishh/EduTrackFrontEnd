@@ -95,24 +95,22 @@ export class AssignmentInventoryService {
     return this.baseService.update(url, formData);
   }
 
-  public addSolution(solution: AssignmentSolutionDto, file: File) {
-    const courseName = localStorage.getItem('course') || 'Curs';
-    const lessonTitle = localStorage.getItem('lesson') || 'Lectia 1';
-    const email = localStorage.getItem('email') || 'teacher@teacher.com';
-
+  public addSolution(
+    courseName: string,
+    lessonTitle: string,
+    solution: AssignmentSolutionDto,
+    file: File
+  ) {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('Solution_title', solution.solution_title);
     formData.append('Solution', solution.solution);
     formData.append('CourseName', courseName);
     formData.append('LessonTitle', lessonTitle);
-    formData.append('StudentEmail', email);
 
     const queryString = `CourseName=${encodeURIComponent(
       courseName
-    )}&LessonTitle=${encodeURIComponent(
-      lessonTitle
-    )}&StudentEmail=${encodeURIComponent(email)}
+    )}&LessonTitle=${encodeURIComponent(lessonTitle)}
     &Solution_title=${encodeURIComponent(
       solution.solution_title
     )}&Solution=${encodeURIComponent(solution.solution)}`;
@@ -132,11 +130,12 @@ export class AssignmentInventoryService {
       });
   }
 
-  public addAssignment(assignment: AssignmentDto, file: File) {
-    const courseName = localStorage.getItem('course') || 'Curs';
-    const lessonTitle = localStorage.getItem('lesson') || 'Lectia 1';
-    const email = localStorage.getItem('email') || 'teacher@teacher.com';
-
+  public addAssignment(
+    courseName: string,
+    lessonTitle: string,
+    assignment: AssignmentDto,
+    file: File
+  ) {
     const formData = new FormData();
     formData.append('file', file);
 
@@ -183,8 +182,12 @@ export class AssignmentInventoryService {
     );
   }
 
-  public gradeAssignment(courseName: string, lessonTitle: string, studentEmail:string, grade: number) {
-    
+  public gradeAssignment(
+    courseName: string,
+    lessonTitle: string,
+    studentEmail: string,
+    grade: number
+  ) {
     const queryParams = {
       CourseName: courseName,
       LessonTitle: lessonTitle,

@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, Input, OnInit } from '@angular/core';
+import { AfterContentInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CourseDto } from 'src/app/core/models/course.model';
@@ -19,6 +19,8 @@ export class CourseActionAreaComponent implements AfterContentInit {
   hoursDuration: number = 0;
   isTeacherOwner = false;
   isEnrolled = true;
+
+  @Output() enrollToCourse: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private readonly fileReader: FileReaderService,
@@ -46,12 +48,15 @@ export class CourseActionAreaComponent implements AfterContentInit {
       });
   }
   enroll() {
+    if(!this.auth.isLogged())
+      this.route.navigateByUrl('/login')
     this.courseService.enrollToCourse(this.course.name).subscribe((success) => {
       if (success) {
         this.courseService
           .isStudentEnrolled(this.course.name)
           .subscribe((isEnrolled) => {
             this.isEnrolled = isEnrolled;
+            this.enrollToCourse.emit();
           });
         this.snackBar.open(
           `You are now enrolled in ${this.course.name}!`,
