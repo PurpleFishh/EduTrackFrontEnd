@@ -1,3 +1,5 @@
+<div class="feedbackElements">
+<div class="title-container">
 <div class="title">
     <h1>
         Feedback
@@ -6,7 +8,8 @@
         Here is the feedback received from the users
     </h2>
 </div>
-
+</div>
+<div class="filter-container">
 <mat-card>
     <mat-accordion class="filter">
         <mat-expansion-panel>
@@ -128,8 +131,11 @@
 
                 <button mat-raised-button class="custom-button" (click)="resetForm()" type="button">Reset Filters</button>
                 <button mat-flat-button color="primary" type="submit" >Filter</button>
-            </form>
+            </form></mat-expansion-panel>
+            </mat-accordion>
+            </mat-card>
 
+            
             <div class="sorting-menu">
                 <mat-form-field appearance="outline">
                     <mat-label>Sort By</mat-label>
@@ -143,20 +149,9 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-        </mat-expansion-panel>
-    </mat-accordion>
-</mat-card>
-
-<!-- <div class="sorting-menu">
-    <mat-form-field appearance="outline">
-        <mat-label>Sort By</mat-label>
-        <mat-select (selectionChange)="onSortChange($event)">
-            <mat-option value="date">Date</mat-option>
-            <mat-option value="stars">Stars</mat-option>
-            <mat-option value="category">Category</mat-option>
-        </mat-select>
-    </mat-form-field>
-</div> -->
+            </div>
+                
+</div>
 
 <div class="feedback-list">
     <mat-card class="feedback-card" *ngFor="let feedback of displayedFeedbackData">
@@ -181,38 +176,8 @@
     </mat-card>
 </div>
 
+<div class="paginator">
 <mat-paginator [length]="totalFeedback" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]"
     (page)="onPageChange($event)">
 </mat-paginator>
-
-<!-- <div *ngFor="let feedback of storedFeedbackData">
-    <mat-card class="feedback-card">
-        <mat-card-header>
-            <div class="header-left">
-                <div class="subject">{{ feedback.subject }}</div>
-                <div class="details">
-                    <span>{{ feedback.name }}</span>
-                    <span>{{ feedback.email }}</span>
-                    <span>{{ feedback.title }}</span>
-                </div>
-            </div>
-            <div class="header-right">
-                <div class="date">{{ feedback.date | date }}</div>
-                <div class="stars">
-                    <mat-icon *ngFor="let star of [].constructor(feedback.stars)">star</mat-icon>
-                    <mat-icon *ngFor="let star of [].constructor(5 - feedback.stars)">star_border</mat-icon>
-                </div>
-            </div>
-        </mat-card-header>
-        <mat-card-content>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Message Content
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <p>{{ feedback.content }}</p>
-            </mat-expansion-panel>
-        </mat-card-content>
-    </mat-card>
-</div> -->
+</div>

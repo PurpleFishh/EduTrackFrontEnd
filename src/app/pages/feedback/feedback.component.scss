@@ -121,6 +121,126 @@ button {
     }
 }
 
+.paginator {
+    margin-right: 30px;
+    display: flex;
+    justify-content: end;
+    
+    // align-items: flex-end;
+    mat-paginator {
+        border-radius: 10px;
+    }
+}
+
+.feedbackElements {
+    .title-container {
+        text-align: left;
+        margin: 20px 0px 20px 500px;
+        padding: 30px 40px 20px 100px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 70%;
+        .title {
+
+            h1 {
+                font-size: 2em;
+                margin: 0;
+            }
+
+            h2 {
+                font-size: 1em;
+                color: gray;
+                margin: 0;
+            }
+        }
+    }
+
+    .filter-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 20px;
+        margin-left: 600px;
+        margin-right: 30px;
+
+        mat-card {
+            width: calc(100% - 250px); // Adjust width as needed
+        }
+
+        .filter {
+            .mat-expansion-panel-header {
+                font-size: 1.2em;
+            }
+        }
+    }
+
+    .sorting-menu {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: flex-end;
+
+        mat-form-field {
+            width: auto;
+        }
+    }
+
+    .filter-content {
+        display: flex;
+        justify-content: space-between;
+
+        .left-column,
+        .right-column {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 20px;
+            flex: 1;
+
+            .mat-form-field {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        .left-column {
+            display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+            .name {
+
+            }
+        }
+
+        .right-column {
+            .isAnonymus {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            button {
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+.custom-button {
+    font-size: 12px;
+    padding: 4px 8px;
+    color: black;
+    box-shadow: none;
+    border: 1px solid darkgray;
+    opacity: 0.7;
+    border-radius: 9px;
+}
+
+.custom-button:hover {
+    background-color: darkgray;
+    color: white;
+}
 
 //-----------------------this for the feedback card
 // .feedback-card {
