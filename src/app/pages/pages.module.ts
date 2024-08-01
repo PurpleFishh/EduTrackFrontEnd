@@ -30,6 +30,8 @@ import { TestimonialCardsComponent } from './main-page/testimonial-cards/testimo
 import { AboutUsComponent } from './about-us/about-us.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { RegisterTeacherComponent } from './register-teacher/register-teacher.component';
+import { RecoveryComponent } from './recovery/recovery.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +63,8 @@ import { RegisterTeacherComponent } from './register-teacher/register-teacher.co
     AboutUsComponent,
     RegisterUserComponent,
     RegisterTeacherComponent,
+    RecoveryComponent,
+    ResetPasswordComponent,
   ],
   imports: [CommonModule, SharedModule],
   exports: [LoginComponent],

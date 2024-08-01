@@ -24,6 +24,8 @@ import { RegisterUserComponent } from './pages/register-user/register-user.compo
 import { RegisterTeacherComponent } from './pages/register-teacher/register-teacher.component';
 import { loggedGuard } from './core/guards/logged.guard';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { RecoveryComponent } from './pages/recovery/recovery.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -45,6 +47,14 @@ const routes: Routes = [
       {
         path: 'register',
         component: RegisterUserComponent
+      },
+      {
+        path: 'recovery',
+        component: RecoveryComponent,
+      },
+      {
+        path: 'resetpassword',
+        component: ResetPasswordComponent,
       },
       {
         path: 'course/:curs/lesson/:lesson/grade',

@@ -20,14 +20,14 @@ class GlobalErrorHandler implements ErrorHandler {
 export class MainLayoutComponent {
   showHeader: boolean = true;
   showFooter: boolean = true;
-  headerBlacklist = ['/login', '/register', '/add-teacher']
-  footerBlacklist = ['/login', '/register', '/add-teacher']
+  headerBlacklist = ['/login', '/register', '/add-teacher', '/recovery', '/resetpassword']
+  footerBlacklist = ['/login', '/register', '/add-teacher', '/recovery', '/resetpassword']
 
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.showHeader = !this.headerBlacklist.includes(event.url);
-        this.showFooter = !this.footerBlacklist.includes(event.url);
+        this.showHeader = !this.headerBlacklist.includes(event.url.split('?')[0]);
+        this.showFooter = !this.footerBlacklist.includes(event.url.split('?')[0]);
       }
     });
   }
