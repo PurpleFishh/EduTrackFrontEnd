@@ -1,0 +1,131 @@
+@import "/src/config/variables";
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#product-introduction {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:70px;
+    height: 500px;
+    background: $color-accent3;
+    top: 245px;
+    width:86%;
+    padding:7%;
+    align-items: center;
+}
+
+.section-title {
+
+    width: 688px;
+    height: fit-content; 
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 120%;
+    text-align: center;
+    letter-spacing: -0.02em;
+   
+}
+
+.white-text {
+    color: $color-bg;
+}
+
+
+.black-text {
+    color: $color-text;
+}
+
+.secondary-text {
+    font-size:20px;
+    font-family: Roboto;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    text-align: center;
+    width: 400px;
+    height: fit-content; 
+}
+
+
+.text-container {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    padding: 0px 220px;
+    gap: 80px 220px;
+    width: 1438px;
+    height: fit-content; 
+    left: 0px;
+    top: 464px;
+}
+
+#team-introduction {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:70px;
+    padding:7%;
+    align-items: center;
+}
+
+.member-card {
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+img {
+    width:300px;
+    height:323px;
+}
+
+.member-presentation-container {
+    display: flex;
+    width: 300px;
+    height: fit-content;
+    flex-direction: column;
+}
+
+.card-text-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap:10px;
+    margin-top: 10px;
+}
+
+.card-text {
+    font-size:16px;
+    font-family: Roboto;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+.first-row, .second-row {
+    display: flex;
+    flex-direction: row;
+    gap:100px;
+    justify-content:center;
+}
+
+.members-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 100px;
+}

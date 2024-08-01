@@ -21,6 +21,7 @@ import { StudentDashboardAssignmentsComponent } from './pages/dashboard/dashboar
 import { teacherCourseOwner } from './core/guards/teacher-owner.guard';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { loggedGuard } from './core/guards/logged.guard';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 
 const routes: Routes = [
   {
@@ -92,6 +93,10 @@ const routes: Routes = [
             component: StudentDashboardAssignmentsComponent,
           },
         ],
+      },
+      {
+        path:'about',
+        component: AboutUsComponent
       },
       {
         path: '',

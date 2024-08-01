@@ -27,6 +27,7 @@ import { StudentDashboardAssignmentsComponent } from './dashboard/dashboards/stu
 import { MainPageComponent } from './main-page/main-page.component';
 import { CoursePresentationComponent } from './main-page/course-presentation/course-presentation.component';
 import { TestimonialCardsComponent } from './main-page/testimonial-cards/testimonial-cards.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -51,8 +52,11 @@ import { TestimonialCardsComponent } from './main-page/testimonial-cards/testimo
     ContactUsComponent,
     AddCourseComponent,
     CheckAttendanceComponent,
-    StudentDashboardAssignmentsComponent
-    , MainPageComponent, CoursePresentationComponent, TestimonialCardsComponent
+    StudentDashboardAssignmentsComponent,
+    MainPageComponent,
+    CoursePresentationComponent,
+    TestimonialCardsComponent,
+    AboutUsComponent,
   ],
   imports: [CommonModule, SharedModule],
   exports: [LoginComponent],
