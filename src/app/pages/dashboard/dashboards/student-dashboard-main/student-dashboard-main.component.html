@@ -1,7 +1,26 @@
 <div class="continer">
   <div class="content">
     <p class="title">Statistics</p>
-    <div class="statistics">
+
+    <div class="statistics" *ngIf="auth.isTeacher()">
+      <app-statistic
+        title="Lesson Attendance"
+        description="Students attendance at your lesson"
+        [procentage]="statistics?.coursesCompleted"
+      ></app-statistic>
+      <app-statistic
+        title="Assignments Completed"
+        description="Assignments that your students have submitted out of all assignments"
+        [procentage]="statistics?.assignmentsCompleted"
+      ></app-statistic>
+      <app-statistic
+        title="Courses Grade"
+        description="Assignments that you have graded out of all assignments"
+        [procentage]="statistics?.coursesGrade"
+      ></app-statistic>
+    </div>
+
+    <div class="statistics" *ngIf="!auth.isTeacher()">
       <app-statistic
         title="Courses Completed"
         description="Coruses that you have completed out of all courses that you are enrolled in"
@@ -20,7 +39,7 @@
     </div>
   </div>
 
-  <mat-card class="courses">
+  <mat-card class="courses" *ngIf="!auth.isTeacher()">
     <mat-card-header>
       <div class="title">
         <p>My courses</p>
@@ -35,8 +54,51 @@
         [incomplete]="progressCourses"
       ></app-legend
     ></mat-card-content>
-    <mat-card-actions> 
-        <app-course *ngFor="let course of enrolledCourses" [course]="course" [completedProcentage]="this.statistics?.allCoursesCompleted[course.name]"></app-course>
+    <mat-card-actions>
+      <app-course
+        *ngFor="let course of enrolledCourses"
+        [course]="course"
+        [completedProcentage]="
+          this.statistics?.allCoursesCompleted[course.name]
+        "
+      ></app-course>
     </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="courses" *ngIf="auth.isTeacher()">
+    <mat-card-header>
+      <div class="title">
+        <p>My courses</p>
+        <p>{{ this.dataSource.data.length }}</p>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        class="mat-elevation-z0"
+      >
+        <ng-container matColumnDef="course">
+          <th class="table-course" mat-header-cell *matHeaderCellDef>
+            Course Name
+          </th>
+          <td class="table-course" mat-cell *matCellDef="let course">
+            {{ course.courseName }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="enrolled">
+          <th class="table-no" mat-header-cell *matHeaderCellDef>
+            No. Of Enrolled Students
+          </th>
+          <td class="table-no" mat-cell *matCellDef="let course">
+            {{ course.studentsNumber }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['course', 'enrolled']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['course', 'enrolled']"></tr>
+      </table>
+    </mat-card-content>
   </mat-card>
 </div>
