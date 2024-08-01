@@ -51,7 +51,7 @@ export class StudentDashboardAssignmentsComponent {
       difficulties: '',
       prerequistes: this.prereqFiltrt,
     };
-    this.courseService.getCourses(filter).subscribe((courses) => {
+    this.courseService.getStudentEnrolledCourses().subscribe((courses) => {
       this.courses = courses;
       this.currentCourse = courses[0].name;
       this.menuItems = courses.map((course) => ({ label: course.name }));

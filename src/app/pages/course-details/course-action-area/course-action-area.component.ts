@@ -18,7 +18,7 @@ export class CourseActionAreaComponent implements AfterContentInit {
   minutesDuration: number = 0;
   hoursDuration: number = 0;
   isTeacherOwner = false;
-  isEnrolled = true;
+  isEnrolled = false;
 
   @Output() enrollToCourse: EventEmitter<any> = new EventEmitter();
 
