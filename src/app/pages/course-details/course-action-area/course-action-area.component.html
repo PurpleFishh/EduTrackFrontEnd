@@ -1,6 +1,8 @@
 <mat-card>
   <h6 class="title">Category: {{ course.category }}</h6>
-  <img [src]="course.imageContents" />
+  <div class="img-area">
+    <img [src]="readImage(course.imageContents)" />
+  </div>
   <!-- <div class="rectangle-19">
     </div>
     <div class="frame-24">

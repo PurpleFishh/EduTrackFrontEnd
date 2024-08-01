@@ -15,4 +15,7 @@ export class StatisticsService {
   getStudentStats(): Observable<StatisticsDto> {
     return this.baseService.get<StatisticsDto>(`${this.endpoint}/GetStudentStats`);
   }
+  getTeacherStats(): Observable<StatisticsDto> {
+    return this.baseService.get<StatisticsDto>(`${this.endpoint}/GetTeacherStats`);
+  }
 }
