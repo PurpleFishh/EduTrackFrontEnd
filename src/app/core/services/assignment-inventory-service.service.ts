@@ -4,6 +4,7 @@ import {
   AssignmentDisplayDto,
   AssignmentSolutionDto,
   AssignmentDto,
+  AllAssignments,
   Grade,
 } from '../models/assignment.model';
 import { catchError, forkJoin, map, Observable, throwError } from 'rxjs';
@@ -44,8 +45,8 @@ export class AssignmentInventoryService {
   }
 
   public getGrade(courseName: string = '', lessonTitle: string = '') {
-    //const email = this.auth.getEmail();
-    const email = 'teacher@teacher.com';
+    const email = this.auth.getEmail();
+    //const email = 'teacher@teacher.com';
 
     return this.baseService.get<Grade>(
       this.getCompleteUrlWithQuery(`${this.endpoint}/GetGrade`, {
@@ -55,6 +56,14 @@ export class AssignmentInventoryService {
       })
     );
   }
+
+  getStudentGrade(courseName: string, lessonTitle: string, email: string) {
+    const url = `${this.endpoint}/GetGrade?CourseName=${courseName}&LessonTitle=${lessonTitle}&StudentEmail=${email}`;
+    return this.baseService.get<number[]>(url);
+}
+
+
+
 
   public deleteAssignment(courseName: string, lessonTitle: string) {
     return this.baseService.deleteAss<boolean>(
@@ -180,6 +189,16 @@ export class AssignmentInventoryService {
     return this.baseService.get<AssignmentSolutionDto[]>(
       this.getCompleteUrlWithQuery(`${this.endpoint}/GetSolution`, queryParams)
     );
+  }
+
+  public getAllAssignmentsSent(){
+    const courseName = localStorage.getItem('course') || 'plm';
+    const lessonTitle = localStorage.getItem('lesson') || 'string';
+    const queryParams = {
+      courseName: courseName,
+      LessonTitle: lessonTitle
+    };
+    return this.baseService.get<AllAssignments[][]>(this.getCompleteUrlWithQuery(`${this.endpoint}/GetAllAssignmentsSent`, queryParams));
   }
 
   public gradeAssignment(

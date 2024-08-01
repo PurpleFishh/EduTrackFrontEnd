@@ -81,6 +81,10 @@ export class CoursesService {
       `${this.endpoint}/DeleteCourse?courseName=${courseId}`
     );
   }
+  getTeacherCourses(teacherEmail:string)
+  {
+    return this.baseService.get<string[]>(`${this.endpoint}/GetTeacherCourses?email=${teacherEmail}`);
+  }
 
   private getUrlForFilter(baseUrl: string, filter: CoursesFilter) {
     let querys: string[] = [];

@@ -34,6 +34,7 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 import { RegisterTeacherComponent } from './register-teacher/register-teacher.component';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { TeacherDashboardCourseComponent } from './dashboard/dashboards/teacher-dashboard-course/teacher-dashboard-course.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     ResetPasswordComponent,
     FeedbackComponent,
     FbSubmitedComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    TeacherDashboardCourseComponent
   ],
   imports: [CommonModule, SharedModule],
   exports: [LoginComponent],

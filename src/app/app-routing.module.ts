@@ -32,6 +32,7 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
 import { FeedbackComponent } from './pages/dashboard/dashboards/feedback/feedback.component';
 import { FbSubmitedComponent } from './pages/fb-submited/fb-submited.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { TeacherDashboardCourseComponent } from './pages/dashboard/dashboards/teacher-dashboard-course/teacher-dashboard-course.component';
 
 const routes: Routes = [
   {
@@ -49,7 +50,7 @@ const routes: Routes = [
       {
         path: 'add-teacher',
         component: RegisterTeacherComponent,
-        canActivate: [userAdminGuard]
+        canActivate: [userAdminGuard],
       },
       {
         path: 'register',
@@ -77,6 +78,15 @@ const routes: Routes = [
         path: 'course/:curs/lesson/:lesson',
         component: LessonDetailsComponent,
         canActivate: [loggedGuard],
+      },
+      {
+        path: 'course/:curs/lesson/:lesson/check-attendance',
+        component: CheckAttendanceComponent,
+        canActivate: [loggedGuard, teacherCourseOwner],
+      },
+      {
+        path: 'course/:curs/lesson/:lesson',
+        component: LessonDetailsComponent,
       },
       {
         path: 'course/:id',
@@ -121,12 +131,16 @@ const routes: Routes = [
             canActivate: [userAdminGuard],
           },
           {
+            path: 'courses',
+            component: TeacherDashboardCourseComponent,
+          },
+          {
             path: '',
             component: StudentDashboardMainComponent,
-            canActivate: [loggedGuard]
+            canActivate: [loggedGuard],
           },
         ],
-        canActivate: [loggedGuard]
+        canActivate: [loggedGuard],
       },
       {
         path: 'about',

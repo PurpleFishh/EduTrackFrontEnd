@@ -22,7 +22,15 @@
           mat-menu-item
           (click)="navigateTo('/dashboard/my-courses')"
           [ngClass]="isCurrentPage('/courses') ? 'selected' : ''"
-          *ngIf="!auth.isAdmin()"
+          *ngIf="!auth.isAdmin() && !auth.isTeacher()"
+        >
+          My Courses
+        </button>
+        <button
+          mat-menu-item
+          (click)="navigateTo('/dashboard/courses')"
+          [ngClass]="isCurrentPage('/courses') ? 'selected' : ''"
+          *ngIf="auth.isTeacher()"
         >
           My Courses
         </button>

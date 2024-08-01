@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { MenuItem } from 'src/app/core/models/assignment.model';
+import { AllAssignments, AssignmentDto, AttendanceDictionary, MenuItem } from 'src/app/core/models/assignment.model';
 import { CourseDisplayDto, CoursesFilter } from 'src/app/core/models/course.model';
+import { AssignmentInventoryService } from 'src/app/core/services/assignment-inventory-service.service';
 import { CoursesService } from 'src/app/core/services/courses.service';
+import { LessonsService } from 'src/app/core/services/lessons.service';
 import { StatisticsService } from 'src/app/core/services/statistics.service';
 
 @Component({
@@ -13,10 +15,19 @@ export class StudentDashboardAssignmentsComponent {
   currentCourse!: string;
   courses: CourseDisplayDto[] = [];
   prereqFiltrt: string[] = [];
+  assignments: AllAssignments[][] = [];
+  selectedLesson: string | null = null;
+  attendedStudents: number = 0;
+  attendancePercentage: number = 0;
+  attendanceRecords: AttendanceDictionary = {};
+  totalLessons: number = 0;
+  currentLesson!: string;
+  allLessons!: AttendanceDictionary;
+
 
   menuItems: MenuItem[] = [
   ];
-  constructor(private readonly statsService: StatisticsService, private readonly courseService: CoursesService){}
+  constructor(private readonly statsService: StatisticsService, private readonly courseService: CoursesService,  private readonly assignmentService: AssignmentInventoryService,private lessonsService: LessonsService ){}
 
   ngOnInit(): void {
 
@@ -34,11 +45,57 @@ export class StudentDashboardAssignmentsComponent {
       this.menuItems = courses.map(course => ({ label: course.name }));
 
     });
+
+    this.assignmentService.getAllAssignmentsSent().subscribe(assignments => {
+      console.log(assignments)
+      this.assignments = assignments;
+      this.assignments = assignments.map(subArray => 
+        subArray.filter(assignment => assignment.student.email === 'teacher@teacher.com')
+      );
+      console.log(this.assignments)
+    });
+  }
+
+  getLessonNames(): string[] {
+    return Object.keys(this.allLessons);
+  }
+
+  isLessonAttended(lessonName: string): boolean {
+    const records = this.allLessons[lessonName];
+    return records.some(record => record.attended);
+  }
+
+  fetchAttendanceDetails(lessonName: string): void {
+    this.selectedLesson = lessonName;
+    this.lessonsService.getAllAttendance(this.currentCourse!).subscribe(allLessons =>{
+      console.log(allLessons)
+      this.totalLessons = Object.keys(allLessons).length;
+      this.attendedStudents = 0;
+      this.allLessons = allLessons;
+
+      for (const lesson in allLessons) {
+        const attendanceRecords = allLessons[lesson];
+        for (const record of attendanceRecords) {
+          if (record.attended) {
+            this.attendedStudents++;
+            break; 
+          }
+        }
+
+        if (this.totalLessons > 0) {
+          this.attendancePercentage = (this.attendedStudents / this.totalLessons) * 100;
+        } else {
+          this.attendancePercentage = 0;
+        }
+      }
+      
+    });
   }
 
 
   selectCourse(course: string) {
     this.currentCourse = course;
+    this.fetchAttendanceDetails(this.currentLesson);
   }
 
 }
