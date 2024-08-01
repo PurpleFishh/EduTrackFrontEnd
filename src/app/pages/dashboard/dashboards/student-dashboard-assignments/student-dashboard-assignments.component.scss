@@ -3,35 +3,135 @@
         width: 70%;
         padding: 8px;
         border: 1px solid #ccc;
-        border-radius: 4px;
-        background-color: #f9f9f9;
-        text-transform: none; 
         border-radius: 20px;
+        background-color: #f9f9f9;
+        text-transform: none;
         margin-left: 170px;
     }
-    
+
     .mat-button-wrapper {
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: 100%;
     }
-    
+
+    .course-item, .lesson-item {
+        padding: 10px;
+        cursor: pointer;
+    }
+
     .mat-icon {
         font-size: 20px;
         margin-left: 8px;
     }
-    
-      .title {
+
+    .title {
         font-size: 32px;
         line-height: 120%;
         letter-spacing: -0.02em;
         font-weight: 700;
-    
         display: flex;
         width: 100%;
         justify-content: space-between;
         margin-top: 30px;
-      }
-    
+    }
+
+    .assignment-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 16px;
+        margin-bottom: 8px;
+        border-radius: 4px;
+        background-color: #f0f4f8;
+    }
+
+    .assignment-details {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .assignment-grade {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .custom-progress-bar {
+        height: 8px;
+        border-radius: 4px;
+        background-color: #00384C; /* Background color for the total progress bar */
+    }
+
+    ::ng-deep .custom-progress-bar .mat-progress-bar-primary {
+        background-color: #00c853 !important; /* Fill color for attended students */
+    }
+
+    .mat-mdc-progress-bar {
+        --mdc-linear-progress-active-indicator-color: #00c853;
+        --mdc-linear-progress-track-color: rgba(1, 154, 225, 0.25);
+    }
+
+    .attendance-details {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .bullet {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 8px;
+    }
+
+    .total-students {
+        background-color: #00384C;
+    }
+
+    .attended {
+        background-color: #00c853;
+    }
+
+    /* New styles for attendance section */
+    .attendance-section {
+        padding: 16px;
+    }
+
+    .attendance-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .attendance-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .attendance-lesson {
+        flex: 2;
+        text-align: left;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .attendance-status {
+        flex: 1;
+        text-align: right;
+        color: #666;
+    }
+
+    .attendance-item {
+        padding: 8px;
+        margin-bottom: 8px;
+        background-color: #f9f9f9;
+        border-radius: 4px;
+        display: flex;
+        justify-content: space-between;
+    }
 }

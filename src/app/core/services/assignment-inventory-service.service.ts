@@ -4,6 +4,7 @@ import {
   AssignmentDisplayDto,
   AssignmentSolutionDto,
   AssignmentDto,
+  AllAssignments,
   Grade,
 } from '../models/assignment.model';
 import { catchError, forkJoin, map, Observable, throwError } from 'rxjs';
@@ -181,6 +182,16 @@ export class AssignmentInventoryService {
     };
 
     return this.baseService.get<AssignmentSolutionDto[]>(this.getCompleteUrlWithQuery(`${this.endpoint}/GetSolution`, queryParams));
+  }
+
+  public getAllAssignmentsSent(){
+    const courseName = localStorage.getItem('course') || 'plm';
+    const lessonTitle = localStorage.getItem('lesson') || 'string';
+    const queryParams = {
+      courseName: courseName,
+      LessonTitle: lessonTitle
+    };
+    return this.baseService.get<AllAssignments[][]>(this.getCompleteUrlWithQuery(`${this.endpoint}/GetAllAssignmentsSent`, queryParams));
   }
 
   public gradeAssignment(grade: number){
