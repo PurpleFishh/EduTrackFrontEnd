@@ -51,17 +51,17 @@
                         <input  matInput   formControlName="phone"/>
                     </mat-form-field>
 
-                    <div *ngIf="isControlNotProvided('phone')">
+                    <mat-error *ngIf="isControlNotProvided('phone')">
                         Phone is required.
-                    </div>
+                    </mat-error>
 
-                    <div *ngIf="isNamePatternInvalid('phone')">
+                    <mat-error *ngIf="isNamePatternInvalid('phone')">
                         Phone can contain only numbers.
-                    </div>
+                    </mat-error>
 
-                    <div *ngIf="isControlAtLeastXCharacters('phone',10) || isControlMaxXCharacters('phone',10)">
+                    <mat-error *ngIf="isControlAtLeastXCharacters('phone',10) || isControlMaxXCharacters('phone',10)">
                         Phone has wrong length.
-                    </div>
+                    </mat-error>
                 
                 </div>
                 
