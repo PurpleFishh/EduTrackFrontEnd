@@ -5,7 +5,6 @@ import { StudentDto } from '../models/student.model';
 import { AttendanceDto } from '../models/attendance.model';
 import { AttendanceDictionary } from '../models/attendance.model';
 import { Observable } from 'rxjs';
-import { AttendanceDictionary } from '../models/assignment.model';
 
 @Injectable({
   providedIn: 'root'
