@@ -1,26 +1,66 @@
 <div class="continer">
   <mat-card>
     <mat-card-content>
-      <div class="avatar">{{userAvatar}}</div>
+      <div class="avatar">{{ userAvatar }}</div>
       <div>
-        <p class="name">{{userInfo?.firstName}} {{userInfo?.lastName}}</p>
-        <p class="email">{{userInfo?.email}}</p>
+        <p class="name">{{ userInfo?.firstName }} {{ userInfo?.lastName }}</p>
+        <p class="email">{{ userInfo?.email }}</p>
       </div>
     </mat-card-content>
     <mat-card-actions>
       <div class="menu">
         <mat-menu> </mat-menu>
-        <button mat-menu-item [ngClass]="isCurrentPage('/') ? 'selected' : ''">Dashboard</button>
-        <button mat-menu-item [ngClass]="isCurrentPage('/courses') ? 'selected' : ''">My Courses</button>
-        <button mat-menu-item [ngClass]="isCurrentPage('/enrolled') ? 'selected' : ''" *ngIf="auth.isTeacher()">Enrolled Students</button>
-        <button mat-menu-item [ngClass]="isCurrentPage('/feedback') ? 'selected' : ''" *ngIf="auth.isAdmin()">Feedback</button>
+        <button
+          mat-menu-item
+          (click)="navigateTo('/dashboard')"
+          [ngClass]="isCurrentPage('/') ? 'selected' : ''"
+          *ngIf="!auth.isAdmin()"
+        >
+          Dashboard
+        </button>
+        <button
+          mat-menu-item
+          (click)="navigateTo('/dashboard/my-courses')"
+          [ngClass]="isCurrentPage('/courses') ? 'selected' : ''"
+          *ngIf="!auth.isAdmin()"
+        >
+          My Courses
+        </button>
+        <button
+          mat-menu-item
+          (click)="navigateTo('/dashboard')"
+          [ngClass]="isCurrentPage('/enrolled') ? 'selected' : ''"
+          *ngIf="auth.isTeacher() && !auth.isAdmin()"
+        >
+          Enrolled Students
+        </button>
+        <button
+          mat-menu-item
+          (click)="navigateTo('/dashboard/feedback')"
+          [ngClass]="isCurrentPage('/feedback') ? 'selected' : ''"
+          *ngIf="auth.isAdmin()"
+        >
+          Feedback
+        </button>
       </div>
       <div class="menu secondary-theme">
-        <button *ngIf="auth.isTeacher()" class="action-button" mat-flat-button color="primary">
+        <button
+          *ngIf="auth.isTeacher()"
+          (click)="addCourse()"
+          class="action-button"
+          mat-flat-button
+          color="primary"
+        >
           Add course
           <mat-icon iconPositionEnd>note_add</mat-icon>
         </button>
-        <button *ngIf="auth.isAdmin()" class="action-button" mat-flat-button color="primary">
+        <button
+          *ngIf="auth.isAdmin()"
+          (click)="addTeacher()"
+          class="action-button"
+          mat-flat-button
+          color="primary"
+        >
           Add teacher
           <mat-icon iconPositionEnd>add</mat-icon>
         </button>

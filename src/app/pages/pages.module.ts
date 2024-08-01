@@ -22,7 +22,7 @@ import { StatisticComponent } from './dashboard/components/statistic/statistic.c
 import { LegendComponent } from './dashboard/components/legend/legend.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { FbSubmitedComponent } from './fb-submited/fb-submited.component';
-import { FeedbackComponent } from './feedback/feedback.component';
+import { FeedbackComponent } from './dashboard/dashboards/feedback/feedback.component';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { CheckAttendanceComponent } from './check-attendance/check-attendance.component';
 import { StudentDashboardAssignmentsComponent } from './dashboard/dashboards/student-dashboard-assignments/student-dashboard-assignments.component';
@@ -67,6 +67,9 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     RegisterTeacherComponent,
     RecoveryComponent,
     ResetPasswordComponent,
+    FeedbackComponent,
+    FbSubmitedComponent,
+    ContactUsComponent
   ],
   imports: [CommonModule, SharedModule],
   exports: [LoginComponent],

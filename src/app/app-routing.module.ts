@@ -15,7 +15,10 @@ import { LessonNotFinishedDetailsComponent } from './pages/lesson-not-finished-d
 import { ViewAssignmentPageComponent } from './pages/view-assignment-page/view-assignment-page.component';
 import { UpdateLessonComponent } from './pages/update-lesson/update-lesson.component';
 import { AddLessonComponent } from './pages/add-lesson/add-lesson.component';
-import { userAdminGuard, userTeacherGuard } from './core/guards/user-role.guard';
+import {
+  userAdminGuard,
+  userTeacherGuard,
+} from './core/guards/user-role.guard';
 import { CheckAttendanceComponent } from './pages/check-attendance/check-attendance.component';
 import { StudentDashboardAssignmentsComponent } from './pages/dashboard/dashboards/student-dashboard-assignments/student-dashboard-assignments.component';
 import { teacherCourseOwner } from './core/guards/teacher-owner.guard';
@@ -26,7 +29,7 @@ import { loggedGuard } from './core/guards/logged.guard';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
-import { FeedbackComponent } from './pages/feedback/feedback.component';
+import { FeedbackComponent } from './pages/dashboard/dashboards/feedback/feedback.component';
 import { FbSubmitedComponent } from './pages/fb-submited/fb-submited.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 
@@ -45,11 +48,12 @@ const routes: Routes = [
       },
       {
         path: 'add-teacher',
-        component: RegisterTeacherComponent
+        component: RegisterTeacherComponent,
+        canActivate: [userAdminGuard]
       },
       {
         path: 'register',
-        component: RegisterUserComponent
+        component: RegisterUserComponent,
       },
       {
         path: 'recovery',
@@ -65,8 +69,8 @@ const routes: Routes = [
         canActivate: [loggedGuard],
       },
       {
-        path:'course/:curs/lesson/:lesson/check-attendance',
-        component:CheckAttendanceComponent,
+        path: 'course/:curs/lesson/:lesson/check-attendance',
+        component: CheckAttendanceComponent,
         canActivate: [loggedGuard, teacherCourseOwner],
       },
       {
@@ -101,41 +105,44 @@ const routes: Routes = [
       {
         path: 'update-lesson',
         component: UpdateLessonComponent,
-        canActivate: [loggedGuard]
+        canActivate: [loggedGuard],
       },
       {
         path: 'dashboard',
         component: DashboardComponent,
         children: [
           {
-            path: '',
-            component: StudentDashboardMainComponent,
-          },
-          {
-            path: 'student-dashboard-assignments',
+            path: 'my-courses',
             component: StudentDashboardAssignmentsComponent,
           },
+          {
+            path: 'feedback',
+            component: FeedbackComponent,
+            canActivate: [userAdminGuard],
+          },
+          {
+            path: '',
+            component: StudentDashboardMainComponent,
+            canActivate: [loggedGuard]
+          },
         ],
+        canActivate: [loggedGuard]
       },
       {
-        path:'about',
-        component: AboutUsComponent
+        path: 'about',
+        component: AboutUsComponent,
       },
       {
         path: 'contact',
-        component: ContactUsComponent
+        component: ContactUsComponent,
       },
       {
         path: '10q4urfb',
-        component: FbSubmitedComponent
-      },
-      {
-        path: 'feedback',
-        component: FeedbackComponent
+        component: FbSubmitedComponent,
       },
       {
         path: '',
-        component: MainPageComponent
+        component: MainPageComponent,
       },
       {
         path: 'unauthorized',

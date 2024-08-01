@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FeedbackService } from 'src/app/core/services/feedback.service';
 import { FeedbackFiltersDto } from 'src/app/core/models/feedback.model';
@@ -12,7 +12,7 @@ import { from } from 'rxjs';
   templateUrl: './feedback.component.html',
   styleUrls: ['./feedback.component.scss']
 })
-export class FeedbackComponent {
+export class FeedbackComponent implements OnInit {
   // form: FormGroup;
   // name: FormControl = new FormControl('');
   errorMessage: string | null = null;
@@ -51,45 +51,54 @@ export class FeedbackComponent {
     category: new FormControl([])
   });
 
+  ngOnInit(): void {
+    this.fetchFeedback()
+  }
+
   onSubmit() {
     if (this.form.valid) {
       console.log(this.form.value);
-      this.feedbackService.getFeedback(this.serializeForm(this.form.value)).subscribe({
-        next: (response) => {
-          console.log('Feedback retrived successfully', response, typeof(response));
-          // TODO: add to items to local storage
-          // clerearing local Storage
-          const keysToRemove: string[] = [];
-          for (let i = 0; i < localStorage.length; i++) {
-            const key = localStorage.key(i);
-            if (key && key.startsWith('feedbackItem_')) {
-              keysToRemove.push(key);
-            }
-          }
-          for (const key of keysToRemove) {
-            localStorage.removeItem(key);
-          }
-          // puting the feedback in the local Storage
-          const feedbackData = response;
-          if (Array.isArray(feedbackData)) {
-            feedbackData.forEach((item: any, index: number) => {
-              localStorage.setItem(`feedbackItem_${index}`, JSON.stringify(item));
-            });
-
-            this.showFeedback();
-          } else {
-            console.error('Parsed response is not an array:', feedbackData);
-          }
-        },
-        error: (error) => {
-          console.error('Error geting feedback', error);
-          this.errorMessage = error.error?.title || 'An unexpected error occurred';
-        },
-      });
+      this.fetchFeedback()
     } else {
       console.log('Form is invalid');
       this.errorMessage = 'Form is invalid';
     }
+  }
+
+  private fetchFeedback()
+  {
+    this.feedbackService.getFeedback(this.serializeForm(this.form.value)).subscribe({
+      next: (response) => {
+        console.log('Feedback retrived successfully', response, typeof(response));
+        // TODO: add to items to local storage
+        // clerearing local Storage
+        const keysToRemove: string[] = [];
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key && key.startsWith('feedbackItem_')) {
+            keysToRemove.push(key);
+          }
+        }
+        for (const key of keysToRemove) {
+          localStorage.removeItem(key);
+        }
+        // puting the feedback in the local Storage
+        const feedbackData = response;
+        if (Array.isArray(feedbackData)) {
+          feedbackData.forEach((item: any, index: number) => {
+            localStorage.setItem(`feedbackItem_${index}`, JSON.stringify(item));
+          });
+
+          this.showFeedback();
+        } else {
+          console.error('Parsed response is not an array:', feedbackData);
+        }
+      },
+      error: (error) => {
+        console.error('Error geting feedback', error);
+        this.errorMessage = error.error?.title || 'An unexpected error occurred';
+      },
+    });
   }
 
   private showFeedback() {
