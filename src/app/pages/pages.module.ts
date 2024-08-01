@@ -28,6 +28,8 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { CoursePresentationComponent } from './main-page/course-presentation/course-presentation.component';
 import { TestimonialCardsComponent } from './main-page/testimonial-cards/testimonial-cards.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
+import { RegisterTeacherComponent } from './register-teacher/register-teacher.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     CoursePresentationComponent,
     TestimonialCardsComponent,
     AboutUsComponent,
+    RegisterUserComponent,
+    RegisterTeacherComponent,
   ],
   imports: [CommonModule, SharedModule],
   exports: [LoginComponent],

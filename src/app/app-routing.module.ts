@@ -20,6 +20,8 @@ import { CheckAttendanceComponent } from './pages/check-attendance/check-attenda
 import { StudentDashboardAssignmentsComponent } from './pages/dashboard/dashboards/student-dashboard-assignments/student-dashboard-assignments.component';
 import { teacherCourseOwner } from './core/guards/teacher-owner.guard';
 import { MainPageComponent } from './pages/main-page/main-page.component';
+import { RegisterUserComponent } from './pages/register-user/register-user.component';
+import { RegisterTeacherComponent } from './pages/register-teacher/register-teacher.component';
 import { loggedGuard } from './core/guards/logged.guard';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 
@@ -35,6 +37,14 @@ const routes: Routes = [
       {
         path: 'courses',
         component: CoursesComponent,
+      },
+      {
+        path: 'add-teacher',
+        component: RegisterTeacherComponent
+      },
+      {
+        path: 'register',
+        component: RegisterUserComponent
       },
       {
         path: 'course/:curs/lesson/:lesson/grade',

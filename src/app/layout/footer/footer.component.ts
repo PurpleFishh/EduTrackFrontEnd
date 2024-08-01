@@ -27,12 +27,10 @@ export class FooterComponent {
     if(this.currentRoute == "/") {
       return {
         'background-color': '#FAFCFC',
-       // 'font-color': '#050B0C'
         }
     }
     else return {
       'background-color': '#002333',
-     // 'color': '#FAFCFC'
     };
 
   }

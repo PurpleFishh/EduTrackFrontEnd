@@ -20,8 +20,8 @@ class GlobalErrorHandler implements ErrorHandler {
 export class MainLayoutComponent {
   showHeader: boolean = true;
   showFooter: boolean = true;
-  headerBlacklist = ['/login']
-  footerBlacklist = ['/login']
+  headerBlacklist = ['/login', '/register', '/add-teacher']
+  footerBlacklist = ['/login', '/register', '/add-teacher']
 
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {
