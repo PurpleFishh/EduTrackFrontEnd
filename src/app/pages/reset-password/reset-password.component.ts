@@ -5,6 +5,7 @@ import { catchError, throwError } from 'rxjs';
 import { ResetPasswordDto } from 'src/app/core/models/login.model';
 import { ResultError, StatusCodes } from 'src/app/core/models/result.model';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
+import { mustContainAtLeastOneSpecialCharacter } from '../utils-validators/validator-functions';
 
 @Component({
   selector: 'app-reset-password',
@@ -21,7 +22,8 @@ export class ResetPasswordComponent implements OnInit {
   form: FormGroup = new FormGroup({
     password: new FormControl('', [
       Validators.required,
-      //Validators.email
+      Validators.minLength(6),
+      mustContainAtLeastOneSpecialCharacter
     ]),
   });
 
