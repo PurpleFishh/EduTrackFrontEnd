@@ -45,26 +45,32 @@ export class CourseActionAreaComponent implements AfterContentInit {
       .isStudentEnrolled(this.course.name)
       .subscribe((isEnrolled) => {
         this.isEnrolled = isEnrolled;
+        console.log(this.isEnrolled)
       });
   }
   enroll() {
     if(!this.auth.isLogged())
       this.route.navigateByUrl('/login')
-    this.courseService.enrollToCourse(this.course.name).subscribe((success) => {
-      if (success) {
-        this.courseService
-          .isStudentEnrolled(this.course.name)
-          .subscribe((isEnrolled) => {
-            this.isEnrolled = isEnrolled;
-            this.enrollToCourse.emit();
-          });
-        this.snackBar.open(
-          `You are now enrolled in ${this.course.name}!`,
-          'Close'
-        );
-      } else
-        this.snackBar.open(`Something happened... Please try again!`, 'Close');
-    });
+    if(!this.isEnrolled){
+      this.courseService.enrollToCourse(this.course.name).subscribe((success) => {
+        if (success) {
+          this.courseService
+            .isStudentEnrolled(this.course.name)
+            .subscribe((isEnrolled) => {
+              this.isEnrolled = isEnrolled;
+              this.enrollToCourse.emit();
+            });
+          this.snackBar.open(
+            `You are now enrolled in ${this.course.name}!`,
+            'Close'
+          );
+        } else
+          this.snackBar.open(`Something happened... Please try again!`, 'Close');
+      });
+    }else{
+      alert('You are already enrolled in this course!');
+    }
+    
   }
 
   addLesson() {
