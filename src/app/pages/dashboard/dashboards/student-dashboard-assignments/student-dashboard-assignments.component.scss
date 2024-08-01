@@ -1,4 +1,9 @@
 :host {
+    .custom-card{
+        padding: 20px;
+        gap: 20px;
+    }
+
     .menu-button {
         width: 70%;
         padding: 8px;
@@ -96,9 +101,7 @@
     }
 
     /* New styles for attendance section */
-    .attendance-section {
-        padding: 16px;
-    }
+    
 
     .attendance-list {
         display: flex;
@@ -123,6 +126,9 @@
     .attendance-status {
         flex: 1;
         text-align: right;
+        color: #666;
+    }
+    .attendance-email {
         color: #666;
     }
 

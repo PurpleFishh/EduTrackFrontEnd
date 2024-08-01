@@ -26,12 +26,11 @@ export class DashboardComponent implements OnInit {
       ).toUpperCase();
     });
     this.router.events.subscribe((event) => {
-      console.log(event);
       if (event.type === EventType.NavigationEnd) {
         if (
           event.urlAfterRedirects.split('?')[0].split('/')[1] === 'dashboard'
         ) {
-          console.log(event.urlAfterRedirects);
+          
           this.currentRoute =
             '/' + event.urlAfterRedirects.split('?')[0].split('/')[2];
           if (this.currentRoute === '/undefined') this.currentRoute = '/';
