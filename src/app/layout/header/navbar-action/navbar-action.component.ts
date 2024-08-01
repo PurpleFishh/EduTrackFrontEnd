@@ -9,7 +9,7 @@ import { AuthenticationService } from 'src/app/core/services/authentication.serv
 })
 export class NavbarActionComponent {
   isLogged = this.authService.isLogged();
-  constructor(private readonly authService: AuthenticationService, private readonly router: Router) {}
+  constructor(public readonly authService: AuthenticationService, private readonly router: Router) {}
   
   navigate(path: string) {
     this.router.navigateByUrl(path);

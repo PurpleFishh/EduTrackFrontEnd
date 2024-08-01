@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { CourseDisplayDto } from 'src/app/core/models/course.model';
 import { FileReaderService } from 'src/app/core/services/file-reader.service';
 
@@ -9,10 +10,16 @@ import { FileReaderService } from 'src/app/core/services/file-reader.service';
 })
 export class CourseComponent {
   @Input({ required: true }) course!: CourseDisplayDto;
+  @Input() completedProcentage: number | undefined;
 
-  constructor(private readonly fileReader: FileReaderService) {}
+  constructor(private readonly fileReader: FileReaderService, private readonly router: Router) {}
 
   ngOnInit() {
     this.course.imageContents = this.fileReader.readImage(this.course.imageContents);
+  }
+
+  goToCourse()
+  {
+    this.router.navigateByUrl(`course/${this.course.name}`);
   }
 }

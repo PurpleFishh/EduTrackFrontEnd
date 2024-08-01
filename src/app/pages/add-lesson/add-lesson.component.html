@@ -1,0 +1,188 @@
+<div class="content">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title *ngIf="lessonTitle === undefined"> Add lesson</mat-card-title>
+      <mat-card-title *ngIf="lessonTitle !== undefined"> Edit lesson</mat-card-title>
+      <mat-card-subtitle *ngIf="lessonTitle === undefined"
+        >Fill the form for adding a new lesson</mat-card-subtitle
+      >
+      <mat-card-subtitle *ngIf="lessonTitle !== undefined"
+        >Edit the form for modifying {{ lessonTitle }} lesson</mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="addLessonForm" (ngSubmit)="onSubmit()">
+        <div class="split">
+          <div class="field">
+            <label for="name">Lesson title:</label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                formControlName="lessonName"
+                placeholder="Course name..."
+                name="name"
+              />
+              <mat-error
+                *ngIf="
+                  addLessonForm.controls['lessonName'].hasError('required')
+                "
+              >
+                Lesson title is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="field" style="width: fit-content">
+            <label for="date">Lesson date:</label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                [matDatepicker]="pickerLesson"
+                formControlName="lessonDueDate"
+              />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="pickerLesson"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #pickerLesson></mat-datepicker>
+              <mat-error
+                *ngIf="
+                  addLessonForm.controls['lessonDueDate'].hasError('required')
+                "
+              >
+                Lesson date is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="description">Lesson description:</label>
+          <mat-form-field appearance="outline" class="textarea">
+            <textarea
+              cdkTextareaAutosize
+              matInput
+              formControlName="lessonDescription"
+              name="description"
+              placeholder="Description..."
+            ></textarea>
+            <mat-error
+              *ngIf="
+                addLessonForm.controls['lessonDescription'].hasError('required')
+              "
+            >
+              Lesson description is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="field">
+          <label for="lesson-content">Lesson content:</label>
+          <mat-form-field appearance="outline" class="textarea">
+            <textarea
+              cdkTextareaAutosize
+              matInput
+              formControlName="lessonContent"
+              name="lesson-content"
+              placeholder="Content..."
+            ></textarea>
+            <mat-error
+              *ngIf="
+                addLessonForm.controls['lessonContent'].hasError('required')
+              "
+            >
+              Lesson content is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Assignments: -->
+
+        <div class="field">
+          <label for="assignment-title">Assignment title:</label>
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              formControlName="assignmentTitle"
+              placeholder="Assignment title..."
+              name="assignment-title"
+            />
+            <mat-error
+              *ngIf="
+                addLessonForm.controls['assignmentTitle'].hasError('required')
+              "
+            >
+              Assignment title is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="field">
+          <label for="assignment-short">Assignment short description:</label>
+          <mat-form-field appearance="outline" class="textarea">
+            <textarea
+              cdkTextareaAutosize
+              matInput
+              formControlName="assignmentShortDescription"
+              name="assignment-short"
+              placeholder="Description..."
+            ></textarea>
+            <mat-error
+              *ngIf="
+                addLessonForm.controls['assignmentShortDescription'].hasError(
+                  'required'
+                )
+              "
+            >
+              A short description is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="field">
+          <label for="assignment-task">Assignment task:</label>
+          <mat-form-field appearance="outline" class="textarea">
+            <textarea
+              cdkTextareaAutosize
+              matInput
+              formControlName="assignmentTask"
+              name="assignment-task"
+              placeholder="Content..."
+            ></textarea>
+            <mat-error
+              *ngIf="
+                addLessonForm.controls['assignmentTask'].hasError('required')
+              "
+            >
+              Assignment task is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Add file button -->
+
+        <div class="form-group-row">
+          <input
+            type="file"
+            id="fileInput"
+            (change)="onFileSelected($event)"
+            style="display: none"
+          />
+          <button
+            class="add-assignment-pdf"
+            type="button"
+            (click)="triggerFileInput()"
+          >
+            Add assignment
+          </button>
+          <span class="pdf-name" *ngIf="fileName">{{ fileName }}</span>
+        </div>
+
+        <div class="form-group-row end">
+          <!-- <button class="submit-button" type="submit">CREATE</button> -->
+          <button mat-flat-button class="submit-button" *ngIf="lessonTitle === undefined" color="primary" type="submit">Create</button>
+          <button mat-flat-button class="submit-button" *ngIf="lessonTitle !== undefined" color="primary" type="submit">Edit</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

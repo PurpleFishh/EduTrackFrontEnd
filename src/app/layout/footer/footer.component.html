@@ -2,10 +2,10 @@
     <div class="left">
         <span class="sitemap" [ngStyle]="changeColor()"> Sitemap </span>
         <div class="navigation">
-            <button mat-button href="/"  [ngStyle]="changeColor()" >Home</button>
-            <button mat-button href="/courses"  [ngStyle]="changeColor()">Courses</button>
-            <button mat-button href="/about"  [ngStyle]="changeColor()">About</button>
-            <button mat-button href="/contact"  [ngStyle]="changeColor()">Contact Us</button>
+            <button mat-button (click)="navigate('')"  [ngStyle]="changeColor()" >Home</button>
+            <button mat-button (click)="navigate('courses')"  [ngStyle]="changeColor()">Courses</button>
+            <button mat-button (click)="navigate('about')"  [ngStyle]="changeColor()">About</button>
+            <button mat-button (click)="navigate('contact')"  [ngStyle]="changeColor()">Contact Us</button>
         </div>
     </div>
     <div class="right">

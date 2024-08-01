@@ -1,0 +1,129 @@
+@import "src/config/variables";
+
+:host {
+  .student {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    mat-card {
+      display: flex;
+      flex-direction: row;
+    //  justify-content: center;
+      align-items: center;
+      gap: 5px;
+      height: 100%;
+      padding: 15px 25px;
+      width: 250px;
+
+      border-radius: 20px;
+      font-size: 20px;
+      font-weight: 600;
+      color: #050b0c;
+    }
+    .mat-card1 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0px;
+
+      border-radius: 20px;
+
+      font-size: 20px;
+      font-weight: 600;
+      color: #050b0c;
+      line-height: 18px;
+    }
+
+    .mat-card2 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0px;
+
+      border-radius: 20px;
+
+      font-size: 20px;
+      font-weight: 600;
+      color: #050b0c;
+      line-height: 18px;
+    }
+  }
+
+  .teacher {
+    mat-card {
+      width: fit-content;
+      padding: 10px 20px;
+      border-radius: 10px;
+      gap: 10px;
+    }
+    
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      mat-icon{
+        font-weight: 500 !important;
+      }
+
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 105px;
+        height: 44px;
+
+        background: $color-accent3;
+        border-radius: 14px;
+
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+
+        color: $color-bg;
+      }
+    }
+
+    .button-stroked {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      width: 234px;
+      height: 44px;
+
+      border: 1px solid $color-accent3;
+      border-radius: 14px;
+
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+
+      color: $color-accent3;
+    }
+
+    mat-icon{
+      font-weight: 700;
+    }
+  }
+  .finish{
+    color: $color-success;
+  }
+   .finished {
+    color: $color-success;
+  }
+  .wait{
+    color: #ffb300;
+  }
+  .not-started{
+    color: $color-error;
+  }
+  ::ng-deep .mat-mdc-menu-content {
+    //width: 150px;
+    button{
+      border-radius: 10px !important;
+    }
+  }
+}
