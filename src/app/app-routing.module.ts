@@ -29,10 +29,10 @@ import { loggedGuard } from './core/guards/logged.guard';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
-import { FeedbackComponent } from './pages/dashboard/dashboards/feedback/feedback.component';
 import { FbSubmitedComponent } from './pages/fb-submited/fb-submited.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { TeacherDashboardCourseComponent } from './pages/dashboard/dashboards/teacher-dashboard-course/teacher-dashboard-course.component';
+import { FeedbackComponent } from './pages/dashboard/dashboards/feedback/feedback.component';
 import { TeacherDashboardStudentsEnrolledComponent } from './pages/dashboard/dashboards/teacher-dashboard-students-enrolled/teacher-dashboard-students-enrolled.component';
 
 const routes: Routes = [

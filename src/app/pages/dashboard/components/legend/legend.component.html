@@ -3,19 +3,26 @@
         <mat-progress-bar mode="determinate" [value]="procentage"></mat-progress-bar>
     </div>
     <div class="legend">
-        <div class="card">
+        <div class="card" *ngIf="total === 0"> 
             <div class="name">
                 <div class="elipse"></div>
                 <div> {{incompleteText}} </div>
             </div>
-            <div class="name"> {{complete}} </div>
+            <div class="name"> {{incomplete}} </div>
+        </div>
+        <div class="card" *ngIf="total !== 0">
+            <div class="name">
+                <div class="elipse"></div>
+                <div> {{incompleteText}} </div>
+            </div>
+            <div class="name"> {{total}} </div>
         </div>
         <div class="card">
             <div class="name">
                 <div class="elipse completed"></div>
                 <div> {{completeText}} </div>
             </div>
-            <div class="name"> {{incomplete}} </div>
+            <div class="name"> {{complete}} </div>
         </div>
     </div>
 </div>

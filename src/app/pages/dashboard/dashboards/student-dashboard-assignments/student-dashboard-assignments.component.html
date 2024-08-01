@@ -5,53 +5,57 @@
     </mat-panel-title>
   </mat-expansion-panel-header>
   <ng-container *ngIf="menuItems && menuItems.length > 0">
-    <div *ngFor="let item of menuItems" (click)="selectCourse(item.label)" class="course-item">
+    <div
+      *ngFor="let item of menuItems"
+      (click)="selectCourse(item.label)"
+      class="course-item"
+    >
       {{ item.label }}
     </div>
   </ng-container>
 </mat-expansion-panel>
 
 <p class="title">My grades</p>
-<br><br>
+<br /><br />
 <mat-card>
-  <ng-container *ngIf="assignments && assignments.length > 0; else noAssignments">
-    <div *ngFor="let assignment1 of assignments">
-      <div *ngFor="let assignment2 of assignment1" class="assignment-item">
-        <h3>{{ assignment2.lesson_name }}</h3>
-        <p><strong>Grade:</strong> {{ assignment2.grade }}</p>
-      </div>
+  <ng-container
+    *ngIf="assignments && assignments.length > 0; else noAssignments"
+  >
+    <div *ngFor="let assignment2 of assignments" class="assignment-item">
+      <h3>{{ assignment2.lesson_name }}</h3>
+      <p><strong>Grade:</strong> {{ assignment2.grade }}</p>
     </div>
   </ng-container>
   <ng-template #noAssignments>
-    <p>No assignments available.</p>
+    <div class="assignment-item">
+      <p>No assignments available.</p>
+    </div>
   </ng-template>
 </mat-card>
 
-<br><br>
+<br /><br />
 <p class="title">My attendance</p>
-<br><br>
+<br /><br />
 <mat-card class="custom-card">
-  <div *ngIf="currentCourse" class="attendance-section">
-    <mat-progress-bar class="custom-progress-bar" mode="determinate" [value]="attendancePercentage"></mat-progress-bar>
-    <div class="attendance-details">
-      <div class="attendance-item">
-        <span class="bullet total-students"></span> Total lessons: {{ totalLessons }}
-      </div>
-      <div class="attendance-item">
-        <span class="bullet attended"></span> Attended: {{ attendedStudents }}
-      </div>
-    </div>
-  </div>
+  <app-legend
+    completeText="Attended: "
+    incompleteText="Total lessons:"
+    [complete]="attendedStudents"
+    [total]="totalLessons"
+  ></app-legend>
 
   <div *ngIf="allLessons" class="attendance-section">
-    <div *ngIf="getLessonNames().length > 0; else noLessons">
+    <div *ngIf="allLessons.length > 0; else noLessons">
       <div class="attendance-list">
-        <div class="attendance-row" *ngFor="let lessonName of getLessonNames()">
+        <div class="attendance-row" *ngFor="let lesson of allLessons">
           <div class="attendance-lesson">
-            {{ lessonName }}
+            {{ lesson.lessonName }}
           </div>
+          <!-- <p class="attendance-email">
+            {{ lesson.studentEmail }}
+          </p> -->
           <div class="attendance-status">
-            <span>{{ isLessonAttended(lessonName) ? 'Attended' : 'Skipped' }}</span>
+            <span>{{ lesson.attended ? "Attended" : "Skipped" }}</span>
           </div>
         </div>
       </div>

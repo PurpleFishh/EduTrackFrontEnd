@@ -6,6 +6,7 @@ import {
   AssignmentDto,
   AllAssignments,
   Grade,
+  StudentGrade,
 } from '../models/assignment.model';
 import { catchError, forkJoin, map, Observable, throwError } from 'rxjs';
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
@@ -191,14 +192,19 @@ export class AssignmentInventoryService {
     );
   }
 
-  public getAllAssignmentsSent(){
-    const courseName = localStorage.getItem('course') || 'plm';
-    const lessonTitle = localStorage.getItem('lesson') || 'string';
+  public getAllAssignmentsSent(courseName: string, lessonTitle: string){
     const queryParams = {
       courseName: courseName,
       LessonTitle: lessonTitle
     };
     return this.baseService.get<AllAssignments[][]>(this.getCompleteUrlWithQuery(`${this.endpoint}/GetAllAssignmentsSent`, queryParams));
+  }
+
+  public getStudentSentAssignments(courseName: string){
+    const queryParams = {
+      CourseName: courseName,
+    };
+    return this.baseService.get<StudentGrade[]>(this.getCompleteUrlWithQuery(`${this.endpoint}/GetStudentAssignments`, queryParams));
   }
 
   public gradeAssignment(

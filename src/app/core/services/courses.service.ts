@@ -9,7 +9,8 @@ import {
 } from '../models/course.model';
 import { StudentDto } from '../models/student.model';
 import { query } from '@angular/animations';
-import { from } from 'rxjs';
+import { from, Observable } from 'rxjs';
+import { AttendanceDto } from '../models/attendance.model';
 
 @Injectable({
   providedIn: 'root',
@@ -34,7 +35,7 @@ export class CoursesService {
     const url = `${this.endpoint}/GetStudentsEnrolled?courseName=${courseName}`;
     return this.baseService.get<StudentDto[]>(url);
   }
-  
+
   isStudentEnrolled(courseName: string) {
     const url = `${this.endpoint}/GetStudentEnrolledCourses?courseName=${courseName}`;
     return this.baseService.get<boolean>(url);
@@ -81,9 +82,15 @@ export class CoursesService {
       `${this.endpoint}/DeleteCourse?courseName=${courseId}`
     );
   }
-  getTeacherCourses(teacherEmail:string)
-  {
-    return this.baseService.get<string[]>(`${this.endpoint}/GetTeacherCourses?email=${teacherEmail}`);
+  getTeacherCourses(teacherEmail: string) {
+    return this.baseService.get<string[]>(
+      `${this.endpoint}/GetTeacherCourses?email=${teacherEmail}`
+    );
+  }
+
+  getStudentAttendance(courseTitle: string) {
+    const url = `${this.endpoint}/GetStudentAttendance?courseName=${courseTitle}`;
+    return this.baseService.get<AttendanceDto[]>(url);
   }
 
   private getUrlForFilter(baseUrl: string, filter: CoursesFilter) {
