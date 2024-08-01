@@ -50,7 +50,7 @@ const routes: Routes = [
       {
         path: 'add-teacher',
         component: RegisterTeacherComponent,
-        canActivate: [userAdminGuard]
+        canActivate: [userAdminGuard],
       },
       {
         path: 'register',
@@ -80,13 +80,13 @@ const routes: Routes = [
         canActivate: [loggedGuard],
       },
       {
-        path:'course/:curs/lesson/:lesson/check-attendance',
-        component:CheckAttendanceComponent,
+        path: 'course/:curs/lesson/:lesson/check-attendance',
+        component: CheckAttendanceComponent,
         canActivate: [loggedGuard, teacherCourseOwner],
       },
       {
         path: 'course/:curs/lesson/:lesson',
-        component: LessonDetailsComponent
+        component: LessonDetailsComponent,
       },
       {
         path: 'course/:id',
@@ -130,17 +130,17 @@ const routes: Routes = [
             component: FeedbackComponent,
             canActivate: [userAdminGuard],
           },
-          { 
-            path: 'courses', 
+          {
+            path: 'courses',
             component: TeacherDashboardCourseComponent,
-           },
+          },
           {
             path: '',
             component: StudentDashboardMainComponent,
-            canActivate: [loggedGuard]
+            canActivate: [loggedGuard],
           },
         ],
-        canActivate: [loggedGuard]
+        canActivate: [loggedGuard],
       },
       {
         path: 'about',
