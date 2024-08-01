@@ -4,7 +4,7 @@ import { Router, NavigationEnd } from '@angular/router';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  styleUrls: ['./footer.component.scss'],
 })
 
 
@@ -58,6 +58,9 @@ export class FooterComponent {
       if(this.currentRoute == "/main") 
         return false;
       else return true;
+    }
+    navigate(path: string) {
+      this.router.navigateByUrl(path);
     }
 
   

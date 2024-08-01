@@ -1,0 +1,21 @@
+<div class="content">
+    <div class="stat secondary-theme">
+        <mat-progress-bar mode="determinate" [value]="procentage"></mat-progress-bar>
+    </div>
+    <div class="legend">
+        <div class="card">
+            <div class="name">
+                <div class="elipse"></div>
+                <div> {{incompleteText}} </div>
+            </div>
+            <div class="name"> {{complete}} </div>
+        </div>
+        <div class="card">
+            <div class="name">
+                <div class="elipse completed"></div>
+                <div> {{completeText}} </div>
+            </div>
+            <div class="name"> {{incomplete}} </div>
+        </div>
+    </div>
+</div>

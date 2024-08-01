@@ -1,8 +1,8 @@
 <mat-card>
   <mat-card-header>
-    <img class="image-1" [src]="course.imageContents" />
+    <img (click)="goToCourse()" class="image-1" [src]="course.imageContents" />
   </mat-card-header>
-  <mat-card-content>
+  <mat-card-content (click)="goToCourse()">
     <div class="content">
       <div>
         <div class="datas secondary-text">
@@ -13,7 +13,10 @@
           {{ course.name }}
         </p>
       </div>
-      <span class="prereq"> {{ course.prerequisites }} </span>
+      <span *ngIf="completedProcentage === undefined" class="prereq"> {{ course.prerequisites }} </span>
+      <div class="secondary-theme" *ngIf="completedProcentage !== undefined">
+        <mat-progress-bar mode="determinate" [value]="completedProcentage"></mat-progress-bar>
+      </div>
     </div>
     
     <button mat-icon-button class="frame-18">

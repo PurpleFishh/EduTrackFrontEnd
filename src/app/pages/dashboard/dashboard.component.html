@@ -1,0 +1,34 @@
+<div class="continer">
+  <mat-card>
+    <mat-card-content>
+      <div class="avatar">{{userAvatar}}</div>
+      <div>
+        <p class="name">{{userInfo?.firstName}} {{userInfo?.lastName}}</p>
+        <p class="email">{{userInfo?.email}}</p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="menu">
+        <mat-menu> </mat-menu>
+        <button mat-menu-item [ngClass]="isCurrentPage('/') ? 'selected' : ''">Dashboard</button>
+        <button mat-menu-item [ngClass]="isCurrentPage('/courses') ? 'selected' : ''">My Courses</button>
+        <button mat-menu-item [ngClass]="isCurrentPage('/enrolled') ? 'selected' : ''" *ngIf="auth.isTeacher()">Enrolled Students</button>
+        <button mat-menu-item [ngClass]="isCurrentPage('/feedback') ? 'selected' : ''" *ngIf="auth.isAdmin()">Feedback</button>
+      </div>
+      <div class="menu secondary-theme">
+        <button *ngIf="auth.isTeacher()" class="action-button" mat-flat-button color="primary">
+          Add course
+          <mat-icon iconPositionEnd>note_add</mat-icon>
+        </button>
+        <button *ngIf="auth.isAdmin()" class="action-button" mat-flat-button color="primary">
+          Add teacher
+          <mat-icon iconPositionEnd>add</mat-icon>
+        </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

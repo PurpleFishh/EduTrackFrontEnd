@@ -103,7 +103,7 @@ $edutrack-theme-secondary: map.deep-merge(
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .alert{
@@ -112,10 +112,10 @@ $edutrack-theme-secondary: map.deep-merge(
   font-weight: 500 !important;
 }
 
-.error{
+mat-error, .error{
   color: $color-error !important;
-  font-size: 18px !important;
-  font-weight: 500 !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
 }
 
 .info{
@@ -150,4 +150,8 @@ body {
 
 a{
   text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, p{
+  margin: 0;
 }

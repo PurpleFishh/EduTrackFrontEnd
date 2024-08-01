@@ -1,0 +1,239 @@
+@import "src/config/variables";
+
+:host{
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+      }
+
+      .header-banner {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    
+        background: $color-accent3;
+        height: 230px;
+        padding: 97px 300px 50px 55px;
+        
+    
+        .banner-title {
+          color: $color-bg;
+          font-size: 42px;
+          font-weight: 700;
+          padding-bottom: 20px;
+        }
+        .banner-content {
+          color: $color-bg;
+          font-size: 24px;
+          font-weight: 400;
+          max-width: 1300px;
+          padding-bottom: 100px;
+          
+        }
+        mat-card{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0px;
+            
+            border-radius: 20px;
+            
+            font-size: 20px;
+            font-weight: 600;
+            color: #050B0C;
+            line-height: 18px;
+            position: absolute;
+            width: 287px;
+            height: 192px;
+            left: 1550px;
+            top: 169px;
+
+            .button1{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                padding: 0px 16px;
+                gap: 16px;
+        
+                margin-right: auto;
+
+                width: 105px;
+                height: 44px;
+        
+                background: rgba(0, 35, 51, 1);
+                border-radius: 14px;
+        
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 24px;
+        
+                color: #FAFCFC;
+            }
+
+            .button2{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                padding: 0px 16px;
+                gap: 16px;
+        
+                margin-left: auto;
+
+                width: 125px;
+                height: 44px;
+        
+                background: rgba(0, 35, 51, 1);
+                border-radius: 14px;
+        
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 24px;
+        
+                color: #FAFCFC;
+            }
+
+            .button3{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                padding: 0px 16px;
+                gap: 16px;
+
+
+                width: 234px;
+                height: 44px;
+
+                border: 1px solid rgba(0, 35, 51, 1);
+                border-radius: 14px;
+
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 24px;
+
+                color: rgba(0, 35, 51, 1);
+                
+            }
+
+            .button4{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                padding: 0px 16px;
+                gap: 16px;
+
+
+                width: 234px;
+                height: 44px;
+
+                border-radius: 14px;
+                border: 1px solid rgba(0, 35, 51, 1);
+
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 24px;
+
+                color: rgba(0, 35, 51, 1);
+                
+            }
+        }
+        
+    }
+    
+    mat-card {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto; 
+        width: 90%; 
+        border-radius: 20px;
+        mat-card-header{
+            font-size: 20px;
+            font-weight: 600;
+            button{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                padding: 0px 16px;
+                gap: 16px;
+
+                width: 234px;
+                height: 44px;
+
+                background: #009DD6;
+                border-radius: 14px;
+                margin-left: auto;
+
+                font-style: normal;
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 24px;
+
+                color: #FAFCFC;
+
+            }
+        }
+    }
+
+    .blue_button{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 16px;
+        gap: 16px;
+
+
+        width: 234px;
+        height: 44px;
+
+        background: #009DD6;
+        border-radius: 14px;
+
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+
+        color: #FAFCFC;
+        
+    }
+
+    .green_button{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 16px;
+        gap: 16px;
+
+
+        width: 234px;
+        height: 44px;
+
+        background: rgba(21, 219, 149, 1);
+        border-radius: 14px;
+
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+
+        align-self: center;
+
+        color: #FAFCFC;
+    }
+
+    .button-container {
+        display: flex;
+        gap: 10px; 
+        margin-bottom: 10px; 
+    }
+       
+}

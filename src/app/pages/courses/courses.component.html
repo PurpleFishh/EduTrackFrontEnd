@@ -1,5 +1,12 @@
 <div class="continer">
   <div class="side">
+    <div class="action-buttons secondary-theme">
+      <button *ngIf="auth.isTeacher()" mat-flat-button color="primary" (click)="addCourse()">
+        <mat-icon>note_add</mat-icon>
+        New Course
+      </button>
+    </div>
+
     <div class="category">
       <mat-menu> </mat-menu>
       <button mat-menu-item class="title" (click)="categorySelect('')">
@@ -14,10 +21,6 @@
       >
         <span>{{ category }}</span>
       </button>
-
-      <!-- <button mat-menu-item class="selected">
-        <span>Categorie</span>
-      </button> -->
     </div>
     <div class="prereq">
       <span class="title"> Prerequisites </span>
@@ -43,7 +46,10 @@
       <div class="option">
         <span>Sort by: </span>
         <mat-form-field appearance="outline">
-          <mat-select [(value)]="sortBy" (selectionChange)="sortBySelected($event.value)">
+          <mat-select
+            [(value)]="sortBy"
+            (selectionChange)="sortBySelected($event.value)"
+          >
             <mat-option value="relv">Relevant</mat-option>
             <mat-option value="asc">Ascendent</mat-option>
             <mat-option value="desc">Descendent</mat-option>
@@ -71,10 +77,19 @@
     <div class="display-page">
       <div class="courses-display">
         <app-course
-          *ngFor="let course of courses"
+          *ngFor="let course of displayedCourses"
           [course]="course"
         ></app-course>
       </div>
     </div>
+    <mat-paginator
+      #paginator
+      [length]="courses.length"
+      (page)="handlePageEvent($event)"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      aria-label="Select page"
+    >
+    </mat-paginator>
   </div>
 </div>
