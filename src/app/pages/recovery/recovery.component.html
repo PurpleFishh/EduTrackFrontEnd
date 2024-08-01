@@ -1,0 +1,40 @@
+<div class="continer">
+  <img class="logo" src="/assets/img/logo.png" alt="logo" />
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Ups!</mat-card-title>
+      <mat-card-subtitle
+        >Forgot your password? Enter the account email address and we will send
+        you an email.
+        <p class="{{ logginInfo.status }}">{{ logginInfo.message }}</p>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="alert">
+        <div *ngIf="form.controls['email'].invalid && firstSubmited">
+          <span *ngIf="form.controls['email'].errors?.['required']">
+            Please enter your email
+          </span>
+        </div>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" />
+        </mat-form-field>
+
+        <div class="action">
+          <button mat-flat-button color="primary">Recovery</button>
+          <p mat-line class="secondary-text">
+            You’ve remembered your password? Login <a href="/login">here!</a>
+          </p>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- For the content to be centered and logo be above -->
+  <img style="opacity: 0" class="logo" src="/assets/img/logo.png" alt="logo" />
+</div>

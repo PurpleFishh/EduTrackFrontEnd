@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { LoginComponent } from './login/login.component';
 import { HttpClient } from '@angular/common/http';
-import { LandingpageComponent } from './landingpage/landingpage.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { CoursesComponent } from './courses/courses.component';
 import { CourseComponent } from './courses/course/course.component';
@@ -22,15 +21,24 @@ import { StudentDashboardMainComponent } from './dashboard/dashboards/student-da
 import { StatisticComponent } from './dashboard/components/statistic/statistic.component';
 import { LegendComponent } from './dashboard/components/legend/legend.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { FbSubmitedComponent } from './fb-submited/fb-submited.component';
+import { FeedbackComponent } from './dashboard/dashboards/feedback/feedback.component';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { CheckAttendanceComponent } from './check-attendance/check-attendance.component';
 import { StudentDashboardAssignmentsComponent } from './dashboard/dashboards/student-dashboard-assignments/student-dashboard-assignments.component';
+import { MainPageComponent } from './main-page/main-page.component';
+import { CoursePresentationComponent } from './main-page/course-presentation/course-presentation.component';
+import { TestimonialCardsComponent } from './main-page/testimonial-cards/testimonial-cards.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
+import { RegisterTeacherComponent } from './register-teacher/register-teacher.component';
+import { RecoveryComponent } from './recovery/recovery.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { TeacherDashboardCourseComponent } from './dashboard/dashboards/teacher-dashboard-course/teacher-dashboard-course.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
-    LandingpageComponent,
     UnauthorizedComponent,
     CoursesComponent,
     CourseComponent,
@@ -52,6 +60,17 @@ import { TeacherDashboardCourseComponent } from './dashboard/dashboards/teacher-
     AddCourseComponent,
     CheckAttendanceComponent,
     StudentDashboardAssignmentsComponent,
+    MainPageComponent,
+    CoursePresentationComponent,
+    TestimonialCardsComponent,
+    AboutUsComponent,
+    RegisterUserComponent,
+    RegisterTeacherComponent,
+    RecoveryComponent,
+    ResetPasswordComponent,
+    FeedbackComponent,
+    FbSubmitedComponent,
+    ContactUsComponent,
     TeacherDashboardCourseComponent
   ],
   imports: [CommonModule, SharedModule],

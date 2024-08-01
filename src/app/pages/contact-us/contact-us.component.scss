@@ -1,0 +1,175 @@
+@import "src/config/variables";
+
+:host {
+    display: flex;
+    justify-content: center;
+    padding: 5%;
+
+    mat-card {
+        width: 100%;
+        // max-width: 800px;
+        border-radius: 20px;
+        padding: 20px 60px 10px 60px;
+        gap: 20px;
+        align-items: center;
+    }
+
+    mat-card-header {
+        text-align: center;
+    }
+
+    mat-card-title {
+        text-align: left, center;
+        font-size: 32px;
+        font-weight: 400;
+    }
+
+    mat-card-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            .form-content {
+                display: flex;
+                justify-content: space-between;
+                gap: 20px;
+
+                .left-side,
+                .right-side {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    flex: 1;
+                }
+            }
+
+            .message {
+                // display: flex;
+                // flex-direction: column;
+                // width: 100%;
+
+                mat-form-field.message {
+                    width: 100%;
+                    padding: 16px;
+                }
+            }
+
+            .actions {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 20px;
+            }
+
+            mat-form-field {
+                width: 100%;
+                // border-radius: 4px;
+                
+                    // Set rounded corners for input
+                    ::ng-deep .mdc-text-field--outlined {
+                        --mdc-outlined-text-field-container-shape: 10px;
+                        background-color: #fff; // Set background to white
+                    }
+                
+                    // Remove thick bottom border
+                    ::ng-deep .mdc-notched-outline__leading,
+                    ::ng-deep .mdc-notched-outline__notch,
+                    ::ng-deep .mdc-notched-outline__trailing {
+                        border-width: 1px; // Set border width to 1px
+                    }
+                
+                    // Set input height
+                    // ::ng-deep .mat-mdc-form-field-flex {
+                    //     height: 50px;
+                    // }
+            }
+        }
+    }
+
+    .rating {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+
+            mat-icon.rating {
+                color: #6d6b66;
+
+                &.selected {
+                    color: #ffc107;
+                }
+            }
+        }
+    }
+
+    .action {
+        padding-top: 30px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-self: stretch;
+        gap: 16px;
+
+        button {
+            width: 137px;
+            height: 44px;
+            border-radius: 6px;
+            margin: 0 20px;
+            padding: 0 16px;
+            align-self: stretch;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        a {
+            color: $color-primary;
+        }
+    }
+
+    mat-hint {
+        padding-top: 3px;
+    }
+
+    .continer {
+        gap: 50px;
+    }
+
+    .logo {
+        width: 400px;
+    }
+}
+
+// :host ::ng-deep .mat-mdc-form-field-flex {
+//     height: 45px;
+// }
+
+// Set border radius for input
+:host ::ng-deep .mdc-text-field--outlined {
+    --mdc-outlined-text-field-container-shape: 20px;
+}
+
+// Dezactivate text under input area
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+    height: 0px;
+}
+
+.error-message {
+    color: red;
+    margin-top: 20px;
+    font-size: 16px;
+    text-align: center;
+}
+
+mat-error {
+    color: red;
+    /* Ensure error messages are visible */
+}

@@ -36,8 +36,8 @@ export class DashboardComponent implements OnInit {
             '/' + event.urlAfterRedirects.split('?')[0].split('/')[2];
           if (this.currentRoute === '/undefined') this.currentRoute = '/';
 
-          console.log(this.currentRoute);
-          console.log(this.isCurrentPage('/'));
+          if (this.auth.isAdmin())
+            this.router.navigateByUrl('/dashboard/feedback');
         }
       }
     });
@@ -46,8 +46,17 @@ export class DashboardComponent implements OnInit {
   isCurrentPage(route: string): boolean {
     return this.currentRoute === route;
   }
-  navigateTo(page: string): void {
-    this.router.navigate([`/dashboard/${page}`]);
+
+  navigateTo(path: string) {
+    this.router.navigateByUrl(`${path}`);
   }
-  
+
+  addTeacher()
+  {
+    this.router.navigateByUrl('/add-teacher')
+  }
+  addCourse()
+  {
+    this.router.navigateByUrl('/add/course')
+  }
 }

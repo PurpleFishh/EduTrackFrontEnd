@@ -15,6 +15,11 @@ export class RestBaseService {
     return this.http.get<T>(completeUrl, {headers: this.buildHeaders()});
   }
 
+  post<T, TDto>(url:string, object:TDto) : Observable<T> {
+    const completeUrl = this.getCompleteUrl(url);
+    return  this.http.post<T>(completeUrl, object, {headers: this.buildHeaders()});
+  }
+
   add<T,TDto>(url: string, object: TDto, jsonType:boolean = false): Observable<T> {
     const completeUrl = this.getCompleteUrl(url);
     return this.http.post<T>(completeUrl, object, {headers: this.buildHeaders(jsonType)});

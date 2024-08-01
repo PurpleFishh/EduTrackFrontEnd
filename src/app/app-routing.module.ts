@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 import { LoginComponent } from './pages/login/login.component';
-import { LandingpageComponent } from './pages/landingpage/landingpage.component';
-import { loggedGuard } from './core/guards/logged.guard';
 import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component';
 import { CoursesComponent } from './pages/courses/courses.component';
 import { CourseDetailsComponent } from './pages/course-details/course-details.component';
@@ -17,10 +15,23 @@ import { LessonNotFinishedDetailsComponent } from './pages/lesson-not-finished-d
 import { ViewAssignmentPageComponent } from './pages/view-assignment-page/view-assignment-page.component';
 import { UpdateLessonComponent } from './pages/update-lesson/update-lesson.component';
 import { AddLessonComponent } from './pages/add-lesson/add-lesson.component';
-import { userAdminGuard, userTeacherGuard } from './core/guards/user-role.guard';
+import {
+  userAdminGuard,
+  userTeacherGuard,
+} from './core/guards/user-role.guard';
 import { CheckAttendanceComponent } from './pages/check-attendance/check-attendance.component';
 import { StudentDashboardAssignmentsComponent } from './pages/dashboard/dashboards/student-dashboard-assignments/student-dashboard-assignments.component';
 import { teacherCourseOwner } from './core/guards/teacher-owner.guard';
+import { MainPageComponent } from './pages/main-page/main-page.component';
+import { RegisterUserComponent } from './pages/register-user/register-user.component';
+import { RegisterTeacherComponent } from './pages/register-teacher/register-teacher.component';
+import { loggedGuard } from './core/guards/logged.guard';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { RecoveryComponent } from './pages/recovery/recovery.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { FeedbackComponent } from './pages/dashboard/dashboards/feedback/feedback.component';
+import { FbSubmitedComponent } from './pages/fb-submited/fb-submited.component';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { TeacherDashboardCourseComponent } from './pages/dashboard/dashboards/teacher-dashboard-course/teacher-dashboard-course.component';
 
 const routes: Routes = [
@@ -37,13 +48,30 @@ const routes: Routes = [
         component: CoursesComponent,
       },
       {
+        path: 'add-teacher',
+        component: RegisterTeacherComponent,
+        canActivate: [userAdminGuard]
+      },
+      {
+        path: 'register',
+        component: RegisterUserComponent,
+      },
+      {
+        path: 'recovery',
+        component: RecoveryComponent,
+      },
+      {
+        path: 'resetpassword',
+        component: ResetPasswordComponent,
+      },
+      {
         path: 'course/:curs/lesson/:lesson/grade',
         component: ViewAssignmentPageComponent,
         canActivate: [loggedGuard],
       },
       {
-        path:'course/:curs/lesson/:lesson/check-attendance',
-        component:CheckAttendanceComponent,
+        path: 'course/:curs/lesson/:lesson/check-attendance',
+        component: CheckAttendanceComponent,
         canActivate: [loggedGuard, teacherCourseOwner],
       },
       {
@@ -87,34 +115,52 @@ const routes: Routes = [
       {
         path: 'update-lesson',
         component: UpdateLessonComponent,
-        canActivate: [loggedGuard]
+        canActivate: [loggedGuard],
       },
       {
         path: 'dashboard',
         component: DashboardComponent,
         children: [
           {
-            path: '',
-            component: StudentDashboardMainComponent,
+            path: 'my-courses',
+            component: StudentDashboardAssignmentsComponent,
           },
           {
-            path: 'student-dashboard-assignments',
-            component: StudentDashboardAssignmentsComponent,
+            path: 'feedback',
+            component: FeedbackComponent,
+            canActivate: [userAdminGuard],
           },
           { 
             path: 'courses', 
             component: TeacherDashboardCourseComponent,
-           }
+           },
+          {
+            path: '',
+            component: StudentDashboardMainComponent,
+            canActivate: [loggedGuard]
+          },
         ],
+        canActivate: [loggedGuard]
+      },
+      {
+        path: 'about',
+        component: AboutUsComponent,
+      },
+      {
+        path: 'contact',
+        component: ContactUsComponent,
+      },
+      {
+        path: '10q4urfb',
+        component: FbSubmitedComponent,
+      },
+      {
+        path: '',
+        component: MainPageComponent,
       },
       {
         path: 'unauthorized',
         component: UnauthorizedComponent,
-      },
-      {
-        path: '',
-        component: LandingpageComponent,
-        canActivate: [loggedGuard, userAdminGuard],
       },
       {
         path: '**',
@@ -122,7 +168,6 @@ const routes: Routes = [
       },
     ],
   },
-
 ];
 
 @NgModule({

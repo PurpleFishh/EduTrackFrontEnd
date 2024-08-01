@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RestBaseService } from './rest-base.service';
-import { LoginDto } from '../models/login.model';
+import { LoginDto, ResetPasswordDto } from '../models/login.model';
 import { LoggedCredentialsDto } from '../models/logged-credentials.model';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -63,6 +63,19 @@ export class AuthenticationService {
     //   },
     //   complete: () => { return { success: false, error: {status: StatusCodes.Error, message: "No result"} };}
     // });
+  }
+
+  public recovery(email: string): Observable<boolean> {
+    return this.baseService.add(
+      `${this.endpoint}/RecoverPassword?email=${email}`,
+      {}
+    );
+  }
+  public reserPassword(token: string, reset: string): Observable<boolean> {
+    return this.baseService.add(
+      `${this.endpoint}/ResetPassword?token=${token}`,
+      reset, true
+    );
   }
 
   public logout(): void {
