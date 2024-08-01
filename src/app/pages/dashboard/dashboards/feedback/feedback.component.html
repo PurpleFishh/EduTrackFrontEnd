@@ -1,0 +1,247 @@
+<div class="feedbackElements">
+  <div class="title-container">
+    <div class="title">
+      <h1>Feedback</h1>
+      <h2>Here is the feedback received from the users</h2>
+    </div>
+  </div>
+  <div class="filter-container">
+    <mat-card>
+      <mat-accordion class="filter">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title> Apply filters </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="name">
+              <mat-form-field appearance="outline">
+                <mat-label>Add Names</mat-label>
+                <input
+                  matInput
+                  [(ngModel)]="name"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </mat-form-field>
+              <button
+                mat-icon-button
+                color="primary"
+                (click)="addItem('name')"
+                type="button"
+              >
+                <mat-icon>add</mat-icon>
+              </button>
+              <div *ngIf="byName.length > 0">
+                <ul>
+                  <li *ngFor="let item of byName; let i = index">
+                    {{ item }}
+                    <button
+                      mat-icon-button
+                      color="warn"
+                      (click)="removeItem(i, 'name')"
+                    >
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="email">
+              <mat-form-field appearance="outline">
+                <mat-label>Add Email Addresses</mat-label>
+                <input
+                  matInput
+                  [(ngModel)]="email"
+                  [ngModelOptions]="{ standalone: true }"
+                  type="email"
+                />
+              </mat-form-field>
+              <button
+                mat-icon-button
+                color="primary"
+                (click)="addItem('email')"
+                type="button"
+              >
+                <mat-icon>add</mat-icon>
+              </button>
+              <div *ngIf="byEmail.length > 0">
+                <ul>
+                  <li *ngFor="let item of byEmail; let i = index">
+                    {{ item }}
+                    <button
+                      mat-icon-button
+                      color="warn"
+                      (click)="removeItem(i, 'email')"
+                    >
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <div *ngIf="errorMessage" class="error-message">
+                {{ errorMessage }}
+              </div>
+            </div>
+
+            <div class="title">
+              <mat-form-field appearance="outline">
+                <mat-label>Add Titles</mat-label>
+                <input
+                  matInput
+                  [(ngModel)]="title"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </mat-form-field>
+              <button
+                mat-icon-button
+                color="primary"
+                (click)="addItem('title')"
+                type="button"
+              >
+                <mat-icon>add</mat-icon>
+              </button>
+              <div *ngIf="byTitle.length > 0">
+                <ul>
+                  <li *ngFor="let item of byTitle; let i = index">
+                    {{ item }}
+                    <button
+                      mat-icon-button
+                      color="warn"
+                      (click)="removeItem(i, 'title')"
+                    >
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="category">
+              <mat-form-field appearance="outline">
+                <mat-label>Add Categories</mat-label>
+                <mat-select formControlName="category" multiple>
+                  <mat-option value="0">Content Quality</mat-option>
+                  <mat-option value="1">User Experience</mat-option>
+                  <mat-option value="2">Technical Performance</mat-option>
+                  <mat-option value="3">Educational Tools</mat-option>
+                  <mat-option value="4">Assessment and Feedback</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="start-date">
+              <mat-form-field appearance="outline">
+                <mat-label>Start Date</mat-label>
+                <input type="date" matInput formControlName="startDate" />
+              </mat-form-field>
+            </div>
+
+            <div class="end-date">
+              <mat-form-field appearance="outline">
+                <mat-label>End Date</mat-label>
+                <input type="date" matInput formControlName="endDate" />
+              </mat-form-field>
+            </div>
+
+            <div class="star">
+              <mat-form-field appearance="outline">
+                <mat-label>Add Number of Stars</mat-label>
+                <mat-select
+                  formControlName="star"
+                  multiple
+                  formControlName="stars"
+                >
+                  <mat-option value="1">1<mat-icon>star</mat-icon></mat-option>
+                  <mat-option value="2">2<mat-icon>star</mat-icon></mat-option>
+                  <mat-option value="3">3<mat-icon>star</mat-icon></mat-option>
+                  <mat-option value="4">4<mat-icon>star</mat-icon></mat-option>
+                  <mat-option value="5">5<mat-icon>star</mat-icon></mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="isAnonymus">
+              <mat-checkbox formControlName="isAnonymus"
+                >Anonymous</mat-checkbox
+              >
+              <button
+                class="custom-button"
+                (click)="resetAnonymity()"
+                type="button"
+              >
+                Reset Anonymity
+              </button>
+            </div>
+
+            <button
+              mat-raised-button
+              class="custom-button"
+              (click)="resetForm()"
+              type="button"
+            >
+              Reset Filters
+            </button>
+            <button mat-flat-button color="primary" type="submit">
+              Filter
+            </button>
+          </form></mat-expansion-panel
+        >
+      </mat-accordion>
+    </mat-card>
+
+    <div class="sorting-menu">
+      <mat-form-field appearance="outline">
+        <mat-label>Sort By</mat-label>
+        <mat-select (selectionChange)="onSortChange($event)">
+          <mat-option [value]="'date_asc'">Date Ascending</mat-option>
+          <mat-option [value]="'date_desc'">Date Descending</mat-option>
+          <mat-option [value]="'stars_asc'">Stars 1 -> 5</mat-option>
+          <mat-option [value]="'stars_desc'">Stars 5 -> 1</mat-option>
+          <mat-option [value]="'category_asc'">Category A -> Z</mat-option>
+          <mat-option [value]="'category_desc'">Category Z -> A</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+<div class="feedback-list">
+  <mat-card
+    class="feedback-card"
+    *ngFor="let feedback of displayedFeedbackData"
+  >
+    <div class="card-header">
+      <div class="left">
+        <div class="subject">
+          Subject: {{ getFeedbackCategory(feedback.category) }}
+        </div>
+        <div class="name">{{ feedback.name }}</div>
+        <div class="email">{{ feedback.email }}</div>
+      </div>
+      <div class="right">
+        <div class="stars">
+          <span *ngFor="let star of [].constructor(feedback.stars)"
+            ><mat-icon>star</mat-icon></span
+          >
+        </div>
+        <div class="date">{{ feedback.date | date }}</div>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="card-body">
+      <div class="title">{{ feedback.title }}</div>
+      <div class="message">{{ feedback.content }}</div>
+    </div>
+  </mat-card>
+</div>
+
+<div class="paginator">
+  <mat-paginator
+    [length]="totalFeedback"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[5, 10, 20]"
+    (page)="onPageChange($event)"
+  >
+  </mat-paginator>
+</div>
