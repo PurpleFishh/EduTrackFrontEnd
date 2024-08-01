@@ -98,7 +98,9 @@ export class AddLessonComponent implements OnInit {
   }
 
   onSubmit() {
+    
     if (this.addLessonForm.valid) {
+      
       const {
         lessonName,
         lessonDescription,
@@ -121,11 +123,12 @@ export class AddLessonComponent implements OnInit {
         assignment_description: assignmentTask,
         assignment_preview: assignmentShortDescription,
       };
-
+      
+      lessonData.startDate = new Date(lessonData.startDate)
       lessonData.startDate.setHours(lessonData.startDate.getHours() + 5);
-
       // Lesson Edit
       if (this.lessonTitle) {
+  
         this.lessonsService
           .updateLesson(this.lessonTitle, lessonData)
           .subscribe({
@@ -133,6 +136,7 @@ export class AddLessonComponent implements OnInit {
               if (response) {
                 this.router.navigateByUrl('/course/' + this.courseTitle);
               } else {
+               
                 alert(
                   'Failed to update lesson. Please check the details and try again.'
                 );
@@ -157,6 +161,7 @@ export class AddLessonComponent implements OnInit {
               if (response) {
                 this.router.navigateByUrl('/course/' + this.courseTitle);
               } else {
+               
                 alert(
                   'Failed to update lesson. Please check the details and try again.'
                 );
@@ -169,7 +174,7 @@ export class AddLessonComponent implements OnInit {
           });
       } else {
         // Lesson Add
-
+        
         this.lessonsService
           .addLesson(this.courseTitle, this.teacherEmail, lessonData)
           .subscribe({
