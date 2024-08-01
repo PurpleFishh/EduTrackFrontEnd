@@ -15,11 +15,18 @@
     font-weight: 400;
   }
 
+  .img-area {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
   img {
     border-radius: 20px;
-    align-self: stretch;
+
     flex-shrink: 0;
     height: 206px;
+    width: 100%;
+    object-fit: fill;
     overflow: hidden;
   }
 
@@ -119,7 +126,7 @@
       text-transform: uppercase;
     }
 
-    #newLesson{
+    #newLesson {
       background: none;
       border-color: $color-accent3;
       color: $color-accent3;

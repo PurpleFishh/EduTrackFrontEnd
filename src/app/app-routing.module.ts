@@ -33,6 +33,7 @@ import { FbSubmitedComponent } from './pages/fb-submited/fb-submited.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { TeacherDashboardCourseComponent } from './pages/dashboard/dashboards/teacher-dashboard-course/teacher-dashboard-course.component';
 import { FeedbackComponent } from './pages/dashboard/dashboards/feedback/feedback.component';
+import { TeacherDashboardStudentsEnrolledComponent } from './pages/dashboard/dashboards/teacher-dashboard-students-enrolled/teacher-dashboard-students-enrolled.component';
 
 const routes: Routes = [
   {
@@ -133,6 +134,10 @@ const routes: Routes = [
           {
             path: 'courses',
             component: TeacherDashboardCourseComponent,
+          },
+          {
+            path: 'enrolled',
+            component : TeacherDashboardStudentsEnrolledComponent
           },
           {
             path: '',
