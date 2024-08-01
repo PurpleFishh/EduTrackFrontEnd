@@ -15,6 +15,19 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatExpansionModule } from '@angular/material/expansion';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatNativeDateModule } from '@angular/material/core';
+
+
 
 @NgModule({
   declarations: [],
@@ -35,7 +48,18 @@ import { MatSelectModule } from '@angular/material/select';
     MatMenuModule,
     MatCardModule,
     MatCheckboxModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPaginatorModule,
+    MatExpansionModule,
+    MatProgressSpinnerModule,
+    MatSliderModule,
+    MatProgressBarModule,
+    MatChipsModule,
+    MatTableModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    MatNativeDateModule,
   ],
 })
 export class SharedModule {}

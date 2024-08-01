@@ -4,7 +4,7 @@ import { Router, NavigationEnd } from '@angular/router';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  styleUrls: ['./footer.component.scss'],
 })
 
 
@@ -23,9 +23,8 @@ export class FooterComponent {
   }
 
   changeBackgroundColor() {
-    
-    if(this.currentRoute == "/main") {
-      console.log('main');
+    console.log(this.currentRoute);
+    if(this.currentRoute == "/") {
       return {
         'background-color': '#FAFCFC',
         }
@@ -37,7 +36,9 @@ export class FooterComponent {
   }
 
   changeColor() {
-    if(this.currentRoute == "/main") {
+    console.log(this.currentRoute);
+    if(this.currentRoute == "/") {
+      console.log('main');
       return {
          'color': '#050B0C'
         }
@@ -50,9 +51,13 @@ export class FooterComponent {
 
     isWhitePictureNeeded()
     {
-      if(this.currentRoute == "/main") 
+      console.log(this.currentRoute);
+      if(this.currentRoute == "/") 
         return false;
       else return true;
+    }
+    navigate(path: string) {
+      this.router.navigateByUrl(path);
     }
 
   

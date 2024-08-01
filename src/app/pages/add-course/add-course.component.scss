@@ -1,0 +1,123 @@
+@import "src/config/variables";
+
+:host {
+  .continer {
+    padding: 50px 0 150px 0;
+  }
+  mat-card {
+    padding: 20px 60px 10px 60px;
+    width: 1054px;
+    border-radius: 20px;
+
+    mat-card-header {
+      padding: 0;
+      mat-card-title {
+        font-size: 48px;
+        line-height: 120%;
+        letter-spacing: -0.02em;
+        font-weight: 700;
+      }
+      mat-card-subtitle {
+        font-size: 23px;
+        line-height: 32px;
+        font-weight: 400;
+      }
+    }
+    mat-card-content {
+      padding: 20px 0 0 0;
+      input {
+        width: 100%;
+      }
+      mat-form-field {
+        width: 100%;
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        width: 100%;
+
+        font-size: 20px;
+        line-height: 32px;
+        letter-spacing: 0.25px;
+        font-weight: 400;
+
+        ::ng-deep .mat-mdc-form-field-flex {
+          display: flex;
+          height: 42px;
+          align-items: center;
+          width: 100%;
+        }
+      }
+      .textarea{
+        textarea{
+          min-height: 150px;
+        }
+        ::ng-deep .mat-mdc-form-field-flex {
+          //display: flex;
+          padding-top: 5px;
+          
+          height: auto !important;;
+          display: inline-flex;
+    align-items: baseline;
+    box-sizing: border-box;
+    width: 100%;
+        }
+      }
+      .split {
+        display: flex;
+        gap: 50px;
+      }
+      .add-image {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        align-items: center;
+        button {
+          width: 200px;
+          border-radius: 10px;
+        }
+        p {
+          color: $color-text-secondary;
+          font-size: 16px;
+          line-height: 24px;
+          letter-spacing: 0.5px;
+          font-weight: 400;
+        }
+      }
+      .hint{
+        color: $color-text-secondary;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.5px;
+        font-weight: 400;
+      }
+
+    }
+  }
+  mat-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20px;
+    button {
+      width: 140px;
+      height: 45px;
+      text-transform: uppercase;
+    }
+    
+  }
+  .file-upload
+  {
+    #file-upload-button{
+      height: 45px;
+
+      background-color: aqua;
+    }
+    
+    font-size: 14px;
+    line-height: 36px;
+    letter-spacing: 1.25px;
+    font-weight: 500;
+  }
+}

@@ -12,7 +12,7 @@
         </mat-form-field>
     </div> -->
     <div class="logo-search">
-        <img class="logo" src="/assets/img/logo_only_text.png" alt="logo">
+        <img class="logo" (click)="navigate('')" src="/assets/img/logo_only_text.png" alt="logo">
         <form class="small-input-density" #searchForm="ngForm" (ngSubmit)="onSearchSubmit(searchForm)">
             <mat-form-field class = "search" appearance="outline" color="primary">
                 <input matInput placeholder="Search" type="text" name="search" ngModel>
@@ -23,7 +23,7 @@
         </form>
 
         <div class="navigation">
-          <button mat-button [color]="( isCurrentPage('/')) ? 'primary' : ''" (click)="navigate('main')">Home</button>
+          <button mat-button [color]="( isCurrentPage('/')) ? 'primary' : ''" (click)="navigate('')">Home</button>
           <button mat-button [color]="isCurrentPage('/courses') ? 'primary' : ''" (click)="navigate('courses')">Courses</button>
           <button mat-button [color]="isCurrentPage('/about') ? 'primary' : ''" (click)="navigate('about')">About</button>
           <button mat-button [color]="isCurrentPage('/contact') ? 'primary' : ''" (click)="navigate('contact')">Contact Us</button>

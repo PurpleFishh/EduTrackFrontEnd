@@ -5,15 +5,17 @@
     </span>
 </div>
 <div *ngIf="isLogged">
-    <button mat-button [matMenuTriggerFor]="menu">
-        <mat-icon id="accout_icon">account_circle</mat-icon>
-        <span>My Account </span>
-        <!-- <mat-icon matIconSuffix>keyboard_arrow_down</mat-icon> -->
-    </button>
-    <mat-menu #menu="matMenu" id="action-menu">
-        <button mat-menu-item>Dashboard</button>
-        <button mat-menu-item>Assignment</button>
-        <button mat-menu-item>Attendance</button>
-        <button mat-menu-item (click)="logout()">Logout</button>
-    </mat-menu>
+    <div class="my-account">
+        <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon id="accout_icon">account_circle</mat-icon>
+            <span>My Account </span>
+            <!-- <mat-icon matIconSuffix>keyboard_arrow_down</mat-icon> -->
+        </button>
+        <mat-menu #menu="matMenu" id="action-menu">
+            <button mat-menu-item (click)="navigate('dashboard')">Dashboard</button>
+            <button mat-menu-item>Assignment</button>
+            <button mat-menu-item>Attendance</button>
+            <button mat-menu-item (click)="logout()">Logout</button>
+        </mat-menu>
+    </div>
 </div>

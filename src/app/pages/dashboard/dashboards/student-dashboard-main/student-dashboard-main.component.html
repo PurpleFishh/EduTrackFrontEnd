@@ -1,0 +1,42 @@
+<div class="continer">
+  <div class="content">
+    <p class="title">Statistics</p>
+    <div class="statistics">
+      <app-statistic
+        title="Courses Completed"
+        description="Coruses that you have completed out of all courses that you are enrolled in"
+        [procentage]="statistics?.coursesCompleted"
+      ></app-statistic>
+      <app-statistic
+        title="Assignments Completed"
+        description="Assignments that you have submitted out of all assignments"
+        [procentage]="statistics?.assignmentsCompleted"
+      ></app-statistic>
+      <app-statistic
+        title="Courses Grade"
+        description="Assignments that you have promoted out of all assignments"
+        [procentage]="statistics?.coursesGrade"
+      ></app-statistic>
+    </div>
+  </div>
+
+  <mat-card class="courses">
+    <mat-card-header>
+      <div class="title">
+        <p>My courses</p>
+        <p>{{totalCourses}}</p>
+      </div>
+    </mat-card-header>
+    <mat-card-content
+      ><app-legend
+        completeText="In progress"
+        incompleteText="Completed"
+        [complete]="completedCourses"
+        [incomplete]="progressCourses"
+      ></app-legend
+    ></mat-card-content>
+    <mat-card-actions> 
+        <app-course *ngFor="let course of enrolledCourses" [course]="course" [completedProcentage]="this.statistics?.allCoursesCompleted[course.name]"></app-course>
+    </mat-card-actions>
+  </mat-card>
+</div>

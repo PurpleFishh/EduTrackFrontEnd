@@ -44,10 +44,8 @@ export class LoginComponent {
     this.logginInfo = { status: StatusCodes.Info, message: '' };
     if (this.form.valid) {
       let loginDo: LoginDto = this.form.getRawValue();
-      console.log(loginDo);
       this.authService.login(loginDo).subscribe({
         next: (token) => {
-          console.log(token.value);
           this.router.navigateByUrl('');
         },
         error: (e) => {
