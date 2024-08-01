@@ -25,6 +25,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { CheckAttendanceComponent } from './check-attendance/check-attendance.component';
 import { StudentDashboardAssignmentsComponent } from './dashboard/dashboards/student-dashboard-assignments/student-dashboard-assignments.component';
+import { TeacherDashboardCourseComponent } from './dashboard/dashboards/teacher-dashboard-course/teacher-dashboard-course.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { StudentDashboardAssignmentsComponent } from './dashboard/dashboards/stu
     AddCourseComponent,
     CheckAttendanceComponent,
     StudentDashboardAssignmentsComponent,
+    TeacherDashboardCourseComponent
   ],
   imports: [CommonModule, SharedModule],
   exports: [LoginComponent],

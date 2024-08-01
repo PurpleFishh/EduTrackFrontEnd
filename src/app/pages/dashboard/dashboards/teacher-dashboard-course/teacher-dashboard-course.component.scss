@@ -1,0 +1,133 @@
+@import "src/config/variables";
+
+:host {
+  .course-panel {
+    margin: 20px;
+  }
+
+  .styled-panel {
+    border-radius: 12px;
+    padding: 20px;
+    font-family: 'Arial', sans-serif; /* Change this to match the font in the image */
+    font-size: 16px; /* Adjust the font size to match the image */
+    background-color: #f9f9f9; /* Match the background color */
+  }
+
+  .course-item, .lesson-item {
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .mat-expansion-panel {
+    margin-bottom: 20px; /* Adjust this value to increase or decrease the spacing */
+  }
+
+  .attendance-header {
+    font-family: 'Arial', sans-serif; /* Match the font family */
+    font-size: 24px; /* Adjust the font size to match the image */
+    font-weight: bold; /* Adjust weight if necessary */
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .custom-card {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 10px;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    background-color: #ffffff; /* Match the background color of the expansion panel */
+    margin-bottom:20px;
+  }
+
+  .custom-expansion-panel {
+    background-color: transparent; /* Make the background of the expansion panel transparent */
+  }
+
+  .attendance-section {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #ffffff;
+  }
+
+  .custom-progress-bar {
+    height: 8px;
+    border-radius: 4px;
+    background-color: #00384C; /* Background color for the total progress bar */
+  }
+  
+  ::ng-deep .custom-progress-bar .mat-progress-bar-primary {
+    background-color: #00c853 !important;  /* Fill color for attended students */
+  }
+
+  .mat-mdc-progress-bar {
+    --mdc-linear-progress-active-indicator-color: #00c853;
+    --mdc-linear-progress-track-color: rgba(1, 154, 225, 0.25);
+}
+  .attendance-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .bullet {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+
+  .total-students {
+    background-color: #00384C;
+  }
+
+  .attended {
+    background-color: #00c853;
+  }
+
+  mat-panel-title {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .lesson-item {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .green-icon {
+    color: green;
+  }
+  
+  .red-icon {
+    color: red;
+  }
+  
+  mat-panel-title {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .mat-table {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .mat-header-cell, .mat-cell {
+    text-align: center;
+  }
+  
+  .mat-header-cell {
+    font-weight: bold;
+  }
+  
+  .mat-row {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    margin: 5px 0;
+  }
+  
+}

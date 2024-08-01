@@ -148,7 +148,7 @@ export class LessonDetailsComponent {
 
   onSubmit() {
     if (this.isFormValid()) {
-      this.assService.addSolution(this.solution, this.file);
+      this.assService.addSolution(this.courseId, this.lessonId, this.solution, this.file);
       return true;
     } else {
       return false;

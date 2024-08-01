@@ -21,6 +21,7 @@ import { userAdminGuard, userTeacherGuard } from './core/guards/user-role.guard'
 import { CheckAttendanceComponent } from './pages/check-attendance/check-attendance.component';
 import { StudentDashboardAssignmentsComponent } from './pages/dashboard/dashboards/student-dashboard-assignments/student-dashboard-assignments.component';
 import { teacherCourseOwner } from './core/guards/teacher-owner.guard';
+import { TeacherDashboardCourseComponent } from './pages/dashboard/dashboards/teacher-dashboard-course/teacher-dashboard-course.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,11 @@ const routes: Routes = [
         component: CoursesComponent,
       },
       {
+        path: 'course/:curs/lesson/:lesson/grade',
+        component: ViewAssignmentPageComponent,
+        canActivate: [loggedGuard],
+      },
+      {
         path:'course/:curs/lesson/:lesson/check-attendance',
         component:CheckAttendanceComponent,
         canActivate: [loggedGuard, teacherCourseOwner],
@@ -44,6 +50,15 @@ const routes: Routes = [
         path: 'course/:curs/lesson/:lesson',
         component: LessonDetailsComponent,
         canActivate: [loggedGuard],
+      },
+      {
+        path:'course/:curs/lesson/:lesson/check-attendance',
+        component:CheckAttendanceComponent,
+        canActivate: [loggedGuard, teacherCourseOwner],
+      },
+      {
+        path: 'course/:curs/lesson/:lesson',
+        component: LessonDetailsComponent
       },
       {
         path: 'course/:id',
@@ -70,11 +85,6 @@ const routes: Routes = [
         canActivate: [loggedGuard, userTeacherGuard],
       },
       {
-        path: 'view-assignment-page',
-        component: ViewAssignmentPageComponent,
-        canActivate: [loggedGuard]
-      },
-      {
         path: 'update-lesson',
         component: UpdateLessonComponent,
         canActivate: [loggedGuard]
@@ -91,6 +101,10 @@ const routes: Routes = [
             path: 'student-dashboard-assignments',
             component: StudentDashboardAssignmentsComponent,
           },
+          { 
+            path: 'courses', 
+            component: TeacherDashboardCourseComponent,
+           }
         ],
       },
       {

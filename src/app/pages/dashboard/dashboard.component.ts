@@ -46,4 +46,8 @@ export class DashboardComponent implements OnInit {
   isCurrentPage(route: string): boolean {
     return this.currentRoute === route;
   }
+  navigateTo(page: string): void {
+    this.router.navigate([`/dashboard/${page}`]);
+  }
+  
 }
