@@ -130,9 +130,33 @@
                 <button mat-flat-button color="primary" type="submit" >Filter</button>
             </form>
 
+            <div class="sorting-menu">
+                <mat-form-field appearance="outline">
+                    <mat-label>Sort By</mat-label>
+                    <mat-select (selectionChange)="onSortChange($event)">
+                        <mat-option [value]="'date_asc'">Date Ascending</mat-option>
+                        <mat-option [value]="'date_desc'">Date Descending</mat-option>
+                        <mat-option [value]="'stars_asc'">Stars 1 -> 5</mat-option>
+                        <mat-option [value]="'stars_desc'">Stars 5 -> 1</mat-option>
+                        <mat-option [value]="'category_asc'">Category A -> Z</mat-option>
+                        <mat-option [value]="'category_desc'">Category Z -> A</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
         </mat-expansion-panel>
     </mat-accordion>
 </mat-card>
+
+<!-- <div class="sorting-menu">
+    <mat-form-field appearance="outline">
+        <mat-label>Sort By</mat-label>
+        <mat-select (selectionChange)="onSortChange($event)">
+            <mat-option value="date">Date</mat-option>
+            <mat-option value="stars">Stars</mat-option>
+            <mat-option value="category">Category</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div> -->
 
 <div class="feedback-list">
     <mat-card class="feedback-card" *ngFor="let feedback of displayedFeedbackData">

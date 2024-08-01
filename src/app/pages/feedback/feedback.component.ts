@@ -22,6 +22,9 @@ export class FeedbackComponent {
   pageIndex = 0;
   totalFeedback = 0;
 
+  sortCriteria: string = 'date'; // Default sorting criteria
+  sortDirection: 'asc' | 'desc' = 'asc'; // Default sorting direction
+
    @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   name: string = '';
@@ -191,14 +194,44 @@ export class FeedbackComponent {
   }
 
   updateDisplayedFeedback() {
+    let sortedData = this.sortData(this.storedFeedbackData, this.sortCriteria, this.sortDirection);
     const startIndex = this.pageIndex * this.pageSize;
     const endIndex = startIndex + this.pageSize;
-    this.displayedFeedbackData = this.storedFeedbackData.slice(startIndex, endIndex);
+    this.displayedFeedbackData = sortedData.slice(startIndex, endIndex);
   }
 
   onPageChange(event: PageEvent) {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
     this.updateDisplayedFeedback();
+  }
+
+  onSortChange(event: any) {
+    const [criteria, direction] = event.value.split('_');
+    this.sortCriteria = criteria;
+    this.sortDirection = direction as 'asc' | 'desc';
+    this.updateDisplayedFeedback();
+  }
+
+  sortData(data: any[], criteria: string, direction: 'asc' | 'desc'): any[] {
+    return data.slice().sort((a, b) => {
+      let comparison = 0;
+      
+      switch (criteria) {
+        case 'date':
+          comparison = new Date(a.date).getTime() - new Date(b.date).getTime();
+          break;
+        case 'stars':
+          comparison = a.stars - b.stars;
+          break;
+        case 'category':
+          comparison = a.category - b.category;
+          break;
+        default:
+          return 0;
+      }
+
+      return direction === 'desc' ? -comparison : comparison;
+    });
   }
 }
