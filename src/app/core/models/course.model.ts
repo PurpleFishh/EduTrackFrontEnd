@@ -41,4 +41,9 @@ export interface CoursesFilter {
     difficulties: string;
     prerequistes: string[];
 }
+export interface CourseEnrolled {
+    courseName: string;
+    studentsNumber: number
+}
+
 

@@ -13,12 +13,13 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './course-action-area.component.html',
   styleUrls: ['./course-action-area.component.scss'],
 })
-export class CourseActionAreaComponent implements AfterContentInit {
+export class CourseActionAreaComponent implements AfterContentInit, OnInit {
   @Input({ required: true }) course!: CourseDto;
   minutesDuration: number = 0;
   hoursDuration: number = 0;
   isTeacherOwner = false;
   isEnrolled = true;
+  image: string = ''
 
   @Output() enrollToCourse: EventEmitter<any> = new EventEmitter();
 
@@ -31,13 +32,25 @@ export class CourseActionAreaComponent implements AfterContentInit {
     private readonly dialog: MatDialog
   ) {}
 
+  ngOnInit(): void {
+    this.image = this.fileReader.readImage(
+      this.course.imageContents
+    );
+    console.log(this.course.imageContents)
+  }
+  readImage(byteArray: string): string {
+    return 'data:image/png;base64,' + byteArray;
+  }
+
+
   ngAfterContentInit() {
     this.hoursDuration = Math.floor(this.course.duration / 60);
     this.minutesDuration = this.course.duration % 60;
 
-    this.course.imageContents = this.fileReader.readImage(
+    this.image = this.fileReader.readImage(
       this.course.imageContents
     );
+    console.log(this.course.imageContents)
     this.isTeacherOwner =
       this.auth.isTeacher() &&
       this.auth.getEmail() === this.course.teacherEmail;

@@ -3,6 +3,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { CourseDisplayDto, CoursesFilter, CoursesFilterDto } from 'src/app/core/models/course.model';
 import { CoursesService } from 'src/app/core/services/courses.service';
 import { finalize } from 'rxjs';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
 @Component({
   selector: 'app-main-page',
@@ -17,7 +18,8 @@ export class MainPageComponent {
 
   constructor(private readonly coursesService: CoursesService,
      private readonly routerActive: ActivatedRoute,
-     private readonly router: Router
+     private readonly router: Router,
+     public readonly auth: AuthenticationService,
     ) {}
 
   ngOnInit() {

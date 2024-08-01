@@ -8,7 +8,7 @@
                 lacinia viverra lectus sit amet dapibus.
             </div>
 
-            <div class="presentation-buttons">
+            <div class="presentation-buttons" *ngIf="!auth.isLogged()">
                 <button  mat-stroked-button class="login-button" (click)="navigate('login')">
                     LOGIN
                 </button>
