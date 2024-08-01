@@ -1,0 +1,100 @@
+@import "src/config/variables";
+
+:host {
+  form {
+    width: 90%;
+  }
+  .continer {
+    justify-content: flex-start;
+    padding-top: 70px;
+  }
+
+  mat-card {
+    display: flex;
+    flex-direction: column;
+
+    padding: 40px 40px 10px 40px;
+
+    border-radius: 20px;
+    gap: 20px;
+    mat-card-header {
+      padding: 0;
+      mat-card-title {
+        font-size: 32px;
+        line-height: 120%;
+        letter-spacing: -0.02em;
+        font-weight: 700;
+      }
+      mat-card-subtitle {
+        font-size: 23px;
+        line-height: 32px;
+        font-weight: 400;
+      }
+    }
+    mat-card-content {
+      padding: 0;
+      .title {
+        font-size: 22px;
+        line-height: 32px;
+        letter-spacing: 0.25px;
+        font-weight: 400;
+        margin-bottom: 5px;
+      }
+      .solution {
+       
+        padding: 10px;
+        border-radius: 4px;
+        border-style: solid;
+        border-color: $color-text-secondary;
+        border-width: 1px;
+
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0.5px;
+        font-weight: 400;
+      }
+    }
+    mat-card-actions {
+      display: flex;
+      justify-content: flex-end;
+      padding: 0;
+    }
+  }
+  .file {
+    padding: 0;
+    width: 100%;
+  }
+
+  .grade {
+    border-radius: 15px;
+    height: 50px;
+    width: 100px;
+    font-size: 20px;
+  }
+
+  .blue_button {
+    padding: 0px 16px;
+    gap: 16px;
+
+    width: 150px;
+    height: 44px;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .good_font1 {
+    font-weight: 400;
+    font-size: 23px;
+    line-height: 32px;
+    color: rgba(5, 11, 12, 1);
+  }
+
+  .good_font2 {
+    font-weight: 400;
+    font-size: 23px;
+    line-height: 32px;
+    color: rgba(45, 54, 72, 1);
+  }
+}

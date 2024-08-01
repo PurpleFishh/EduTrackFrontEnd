@@ -1,0 +1,37 @@
+:host {
+    .menu-button {
+        width: 70%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+        text-transform: none; 
+        border-radius: 20px;
+        margin-left: 170px;
+    }
+    
+    .mat-button-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .mat-icon {
+        font-size: 20px;
+        margin-left: 8px;
+    }
+    
+      .title {
+        font-size: 32px;
+        line-height: 120%;
+        letter-spacing: -0.02em;
+        font-weight: 700;
+    
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 30px;
+      }
+    
+}
