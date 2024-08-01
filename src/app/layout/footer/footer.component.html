@@ -1,23 +1,20 @@
-<footer>
-  <div class="left">
-    <span class="sitemap"> Sitemap </span>
-    <div class="navigation">
-      <button mat-button (click)="navigate('')">Home</button>
-      <button mat-button (click)="navigate('courses')">Courses</button>
-      <button mat-button (click)="navigate('about')">About</button>
-      <button mat-button (click)="navigate('contact')">Contact Us</button>
+<footer [ngStyle]="changeBackgroundColor()">
+    <div class="left">
+        <span class="sitemap" [ngStyle]="changeColor()"> Sitemap </span>
+        <div class="navigation">
+            <button mat-button (click)="navigate('')"  [ngStyle]="changeColor()" >Home</button>
+            <button mat-button (click)="navigate('courses')"  [ngStyle]="changeColor()">Courses</button>
+            <button mat-button (click)="navigate('about')"  [ngStyle]="changeColor()">About</button>
+            <button mat-button (click)="navigate('contact')"  [ngStyle]="changeColor()">Contact Us</button>
+        </div>
     </div>
-  </div>
-  <div class="right">
-    <div class="social-media">
-      <img src="/assets/img/instagram_icon.png" alt="Instagram" />
-      <img src="/assets/img/facebook_icon.png" alt="Instagram" />
-      <img src="/assets/img/x_icon.png" alt="Instagram" />
-      <img src="/assets/img/linkedin_icon.png" alt="Instagram" />
+    <div class="right">
+        <div class="social-media" [ngStyle]="changeColor()">
+            <img [src]="isWhitePictureNeeded() == true ? '/assets/img/instagram_icon.png' : '/assets/img/instagram-logo-black.png'" alt="Instagram">
+            <img [src]="isWhitePictureNeeded() == true ? '/assets/img/facebook_icon.png' : '/assets/img/facebook-logo-blak.png'" alt="Instagram">
+            <img [src]="isWhitePictureNeeded() == true ? '/assets/img/x_icon.png' : '/assets/img/x-logo-blak.png'" alt="Instagram">
+            <img [src]="isWhitePictureNeeded() == true ? '/assets/img/linkedin_icon.png' : '/assets/img/linkedin-logo-black.png'" alt="Instagram">
+        </div>
+        <span class="description" [ngStyle]="changeColor()"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent lacinia viverra lectus sit amet dapibus. Vestibulum in ullamcorper magna. </span>
     </div>
-    <span class="description">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent lacinia
-      viverra lectus sit amet dapibus. Vestibulum in ullamcorper magna.
-    </span>
-  </div>
 </footer>

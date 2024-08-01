@@ -46,15 +46,15 @@
         <p class="title">Students</p>
       </div>
     </div>
-    <div class="action" *ngIf="!isTeacherOwner">
-      <button mat-flat-button>Enroll</button>
+    <div class="action" *ngIf="!isTeacherOwner && !isEnrolled">
+      <button mat-flat-button (click)="enroll()">Enroll</button>
     </div>
     <div class="action" *ngIf="isTeacherOwner">
       <div class="small">
-        <button mat-flat-button>Edit</button>
-        <button mat-flat-button>Delete</button>
+        <button mat-flat-button (click)="editCourse()">Edit</button>
+        <button mat-flat-button (click)="deleteCourse()">Delete</button>
       </div>
-      <button id="newLesson" mat-stroked-button>
+      <button id="newLesson" mat-stroked-button (click)="addLesson()">
         Add new Lesson
         <mat-icon iconPositionEnd> add </mat-icon>
     </button>

@@ -25,11 +25,14 @@
       width: 100%;
     }
   }  
-}
 
-::ng-deep .mat-mdc-menu-content {
-  width: 150px;
-  button{
-    border-radius: 10px !important;
+  ::ng-deep .mat-mdc-menu-content {
+    width: 150px;
+    button{
+      border-radius: 10px !important;
+    }
   }
 }
+
+
+

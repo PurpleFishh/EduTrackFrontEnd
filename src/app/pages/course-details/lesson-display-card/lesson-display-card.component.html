@@ -15,11 +15,11 @@
     <div class="content">
       <p class="title">{{index}}. {{lesson.name}}</p>
       <p class="lesson-cotent">
-        {{lesson.lesson_Description}}
+        {{lesson.description}}
       </p>
     </div>
 
     <mat-action-row>
-      <button mat-flat-button color="primary">Start lesson</button>
+      <button mat-flat-button color="primary" (click)="startLesson.emit(lesson.name)">Start lesson</button>
     </mat-action-row>
   </mat-expansion-panel>

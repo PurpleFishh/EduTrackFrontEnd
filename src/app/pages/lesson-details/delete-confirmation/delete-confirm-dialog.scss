@@ -1,0 +1,14 @@
+@import "src/config/variables";
+
+:host {
+  button{
+    border-radius: 10px;
+  }
+  .delete{
+    background-color: $color-error;
+    color: $color-bg;
+  }
+  h3,h2{
+    color: $color-text;
+  }
+}

@@ -1,0 +1,82 @@
+<div class="student" *ngIf="!isTeacher">
+
+  <mat-card *ngIf="lessonStatus === allLessonStatus.Finished">
+    <mat-icon class="finished"> check </mat-icon>
+    <p>Lesson finished</p>
+  </mat-card>
+  <mat-card *ngIf="lessonStatus === allLessonStatus.InProgess">
+    <mat-icon class="finish"> hourglass_empty </mat-icon>
+    <p>Lesson in progress</p>
+  </mat-card>
+  <mat-card *ngIf="lessonStatus === allLessonStatus.NotStarted">
+    <mat-icon class="not-started"> close </mat-icon>
+    <p>Lesson not today</p>
+  </mat-card>
+  <mat-card *ngIf="lessonStatus === allLessonStatus.WaitForStart">
+    <mat-icon class="wait"> check </mat-icon>
+    <p>Wait until start</p>
+  </mat-card>
+
+  <mat-card>
+    <p>Grade: {{ currentGrade !== undefined ? currentGrade : "-" }}</p>
+  </mat-card>
+</div>
+<div class="teacher" *ngIf="isTeacher">
+  <mat-card>
+    <mat-menu #deleteMenu="matMenu">
+      <button mat-menu-item (click)="deleteLesson.emit()">Delete Lesson</button>
+      <button mat-menu-item (click)="deleteAssignment.emit()">
+        Delete Assignment
+      </button>
+    </mat-menu>
+    <div class="button-container">
+      <button mat-icon-button class="button1" (click)="editLesson.emit()">
+        <mat-icon> edit </mat-icon>
+        EDIT
+      </button>
+      <button mat-icon-button class="button2" [matMenuTriggerFor]="deleteMenu">
+        <mat-icon [ngStyle]="{ color: 'red' }"> delete </mat-icon>
+        DELETE
+      </button>
+    </div>
+
+    <button *ngIf="lessonStatus === allLessonStatus.InProgess" mat-stroked-button class="button-stroked" (click)="goToAttendanceChecker()">
+      <mat-icon> task_alt </mat-icon>
+      MAKE ATTENDANCE
+    </button>
+    <button
+      mat-stroked-button
+      *ngIf="lessonStatus === allLessonStatus.Finished"
+      class="button-stroked"
+    >
+      <mat-icon class="finished"> check </mat-icon>
+      LESSON FINISHED
+    </button>
+    <button
+      mat-stroked-button
+      *ngIf="lessonStatus === allLessonStatus.NotStarted"
+      class="button-stroked"
+    >
+      <mat-icon class="not-started"> close </mat-icon>
+      WAIT UNTIL START
+    </button>
+    <button
+      mat-stroked-button
+      (click)="changeStatus.emit(allLessonStatus.InProgess)"
+      *ngIf="lessonStatus === allLessonStatus.WaitForStart"
+      class="button-stroked"
+    >
+      <mat-icon class="wait"> play_arrow </mat-icon>
+      START LESSON
+    </button>
+    <button
+      mat-stroked-button
+      (click)="changeStatus.emit(allLessonStatus.Finished)"
+      *ngIf="lessonStatus === allLessonStatus.InProgess"
+      class="button-stroked"
+    >
+      <mat-icon class="finish"> hourglass_empty </mat-icon>
+      FINISH LESSON
+    </button>
+  </mat-card>
+</div>

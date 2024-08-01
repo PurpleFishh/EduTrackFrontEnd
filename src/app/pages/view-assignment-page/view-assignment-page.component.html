@@ -1,0 +1,79 @@
+<div class="continer">
+  <form [formGroup]="solutionForm">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <div *ngIf="current_assignment">
+            <div *ngFor="let assignment of current_assignment">
+              <p>
+                {{ assignment.assignment_name }}
+              </p>
+            </div>
+          </div>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <div *ngIf="current_assignment">
+            <div *ngFor="let assignment of current_assignment">
+              <p>
+                {{ assignment.assignment_preview }}
+              </p>
+            </div>
+          </div>
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div *ngIf="solution">
+          <p class="title">Student solution: {{ solution.solution_title }}</p>
+        </div>
+        <div class="solution">
+          <p>{{ solution?.solution }}</p>
+        </div>
+        <!-- <mat-form-field appearance="outline">
+        <mat-label>Student's solution</mat-label>
+        <textarea 
+            matInput 
+            placeholder="Ex. The student solution should be here."  
+            rows="15" 
+            style="width: 100%;"
+            formControlName="solutionContent"
+            [contentEditable]="false"
+            >
+        </textarea>
+    </mat-form-field> -->
+        <br />
+        <p class="title">Uploaded content:</p>
+        <mat-card class="file">
+          <mat-list>
+            <mat-list-item>
+              <div *ngIf="solution">
+                <mat-icon> download </mat-icon> {{ solution.fileName }}
+              </div>
+            </mat-list-item>
+          </mat-list>
+        </mat-card>
+        <br /><br />
+        <form [formGroup]="gradeForm">
+          <p class="good_font2">
+            &ensp;&nbsp;Grade:&ensp;
+            <mat-form-field class="grade" appearance="outline">
+              <input
+                matInput
+                min="0"
+                max="10"
+                formControlName="grade"
+                type="number"
+              />
+            </mat-form-field>
+            &ensp;/ 10
+          </p>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-flat-button  color="primary" class="blue_button" (click)="onSubmit()">
+          Submit
+        </button>
+    </mat-card-actions>
+    </mat-card>
+  </form>
+</div>
