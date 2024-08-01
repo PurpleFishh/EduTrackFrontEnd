@@ -36,7 +36,7 @@
         </button>
         <button
           mat-menu-item
-          (click)="navigateTo('/dashboard')"
+          (click)="navigateTo('/dashboard/enrolled')"
           [ngClass]="isCurrentPage('/enrolled') ? 'selected' : ''"
           *ngIf="auth.isTeacher() && !auth.isAdmin()"
         >

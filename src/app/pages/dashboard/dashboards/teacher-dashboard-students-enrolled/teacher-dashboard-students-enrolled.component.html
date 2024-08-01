@@ -1,0 +1,41 @@
+<div class="course-panel">
+    <mat-expansion-panel (opened)="fetchCourses()">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{selectedCourse}}
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-container *ngIf="courses && courses.length > 0">
+            <div *ngFor="let course of courses" (click)="fetchCourseDetails(course)" class="course-item">
+                {{ course }}
+            </div>
+        </ng-container>
+    </mat-expansion-panel>
+
+    <div class="title">
+        Students enrolled - {{ totalStudents }}
+    </div>
+
+    <div class="attendance-container" *ngIf="selectedCourse">
+        <table mat-table [dataSource]="studentsEnrolled" class="mat-table">
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let student">
+                    <mat-icon>
+                        person
+                    </mat-icon>
+                    {{student.firstName}} {{student.lastName}}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef> Email </th>
+                <td mat-cell *matCellDef="let student"> {{student.email}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>
