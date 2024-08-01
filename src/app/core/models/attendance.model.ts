@@ -1,6 +1,6 @@
 export interface AttendanceDto {
     studentEmail: string;
-    LessonName: string;
+    lessonName: string;
     attended: boolean;
   }
 export interface AttendanceDictionary 
