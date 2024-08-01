@@ -24,8 +24,7 @@ export class FooterComponent {
 
   changeBackgroundColor() {
     console.log(this.currentRoute);
-    if(this.currentRoute == "/main") {
-      console.log('main');
+    if(this.currentRoute == "/") {
       return {
         'background-color': '#FAFCFC',
        // 'font-color': '#050B0C'
@@ -40,7 +39,7 @@ export class FooterComponent {
 
   changeColor() {
     console.log(this.currentRoute);
-    if(this.currentRoute == "/main") {
+    if(this.currentRoute == "/") {
       console.log('main');
       return {
          'color': '#050B0C'
@@ -55,7 +54,7 @@ export class FooterComponent {
     isWhitePictureNeeded()
     {
       console.log(this.currentRoute);
-      if(this.currentRoute == "/main") 
+      if(this.currentRoute == "/") 
         return false;
       else return true;
     }

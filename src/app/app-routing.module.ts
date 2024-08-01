@@ -20,6 +20,7 @@ import { CheckAttendanceComponent } from './pages/check-attendance/check-attenda
 import { StudentDashboardAssignmentsComponent } from './pages/dashboard/dashboards/student-dashboard-assignments/student-dashboard-assignments.component';
 import { teacherCourseOwner } from './core/guards/teacher-owner.guard';
 import { MainPageComponent } from './pages/main-page/main-page.component';
+import { loggedGuard } from './core/guards/logged.guard';
 
 const routes: Routes = [
   {
@@ -93,38 +94,19 @@ const routes: Routes = [
         ],
       },
       {
+        path: '',
+        component: MainPageComponent
+      },
+      {
         path: 'unauthorized',
         component: UnauthorizedComponent,
       },
-      
       {
         path: '**',
         component: UnauthorizedComponent,
       },
     ],
   },
-   {
-     path: '',
-     component: MainLayoutComponent,
-      children: [
-        {
-          path: 'login',
-          component: LoginComponent,
-        },
-        {
-          path: 'courses',
-          component: CoursesComponent,
-        },
-        {
-          path: '',
-          component: MainPageComponent
-        },
-        {
-          path: 'unauthorized',
-          component: UnauthorizedComponent,
-        }
-      ]
-   }
 ];
 
 @NgModule({
