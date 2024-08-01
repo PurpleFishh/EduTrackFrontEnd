@@ -1,0 +1,132 @@
+<div class="main-container">
+    <img class="logo" src="/assets/img/logo.png" alt="logo" />
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                Add a new teacher
+            </mat-card-title>
+           
+        </mat-card-header>
+
+        <mat-card-content>
+            <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                
+                <div class="form-row-container">
+                    <div class="input-group">
+                        <label>First name</label>
+                        <mat-form-field appearance="outline" class="small-input-box">
+                            <input  matInput  formControlName="firstname"/>
+                        </mat-form-field>
+
+                        <mat-error *ngIf="isControlNotProvided('firstname')">
+                            First name is required.
+                        </mat-error>
+
+                        <mat-error *ngIf="isNamePatternInvalid('firstname')">
+                            First name cannot contain other characters than alphabets.
+                        </mat-error>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Last name</label>
+                        <mat-form-field appearance="outline" class="small-input-box">
+                            <input  matInput   formControlName="lastname"/>
+                        </mat-form-field>
+
+                        <div *ngIf="isControlNotProvided('lastname')">
+                            Last name is required.
+                        </div>
+
+                        <div *ngIf="isNamePatternInvalid('lastname')">
+                            Last name cannot contain other characters than alphabets.
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="input-group">
+                    <label>Phone</label>
+                    <mat-form-field appearance="outline" class="big-input-box">
+                        <input  matInput   formControlName="phone"/>
+                    </mat-form-field>
+
+                    <div *ngIf="isControlNotProvided('phone')">
+                        Phone is required.
+                    </div>
+
+                    <div *ngIf="isNamePatternInvalid('phone')">
+                        Phone can contain only numbers.
+                    </div>
+
+                    <div *ngIf="isControlAtLeastXCharacters('phone',10) || isControlMaxXCharacters('phone',10)">
+                        Phone has wrong length.
+                    </div>
+                
+                </div>
+                
+
+                <div class="input-group">
+                    <label>Username</label>
+                    <mat-form-field appearance="outline" class="big-input-box">
+                        <input  matInput formControlName="username"/>
+                    </mat-form-field>
+
+                    <mat-error *ngIf="isControlNotProvided('username')">
+                        Username is required.
+                    </mat-error>
+
+                    <mat-error *ngIf="isControlAtLeastXCharacters('username', 5)">
+                        Username must be at least 5 characters long.
+                    </mat-error>
+                </div>
+
+                <div class="input-group">
+                    <label>Email</label>
+                    <mat-form-field appearance="outline" class="big-input-box"  type="email">
+                        <input  matInput formControlName="email" />
+                    </mat-form-field>
+
+                    <mat-error *ngIf="isControlNotProvided('email')">
+                        Email is required.
+                    </mat-error>
+
+                    <mat-error *ngIf="isEmailInCorrectFormat">
+                        Email must be in the correct format.
+                    </mat-error>
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <mat-form-field appearance="outline" class="big-input-box" >
+                        
+                        <input matInput formControlName="password"  [type]="hide ? 'password' : 'text'"/>
+
+                        <button mat-icon-button matSuffix (click)="hide = !hide" type="button">
+                            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+                        </button>
+
+                        <mat-error *ngIf="isControlNotProvided('password')">
+                            Password is required.
+                        </mat-error>
+
+                        <mat-error *ngIf="isControlAtLeastXCharacters('password', 6)">
+                            Password must be at least 6 characters long.
+                        </mat-error>
+
+                        <mat-error *ngIf="isPasswordInCorrectFormat">
+                            Password must contain at least one special character.
+                        </mat-error>
+                    </mat-form-field>  
+                </div>
+
+                <div class="button-container">
+                    <button mat-button class="register-button" type="submit">Register</button>
+                </div>
+                
+            </form>
+
+            
+        </mat-card-content>
+    </mat-card>
+</div>
