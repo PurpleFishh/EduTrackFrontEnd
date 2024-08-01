@@ -41,7 +41,7 @@ export class LoginComponent {
 
   onSubmit() {
     this.firstSubmited = true;
-    this.logginInfo = { status: StatusCodes.Info, message: '' };
+    this.logginInfo = { status: StatusCodes.Info, message: 'Please wait...' };
     if (this.form.valid) {
       let loginDo: LoginDto = this.form.getRawValue();
       this.authService.login(loginDo).subscribe({

@@ -13,7 +13,10 @@
           {{ course.name }}
         </p>
       </div>
-      <span class="prereq"> {{ course.prerequisites }} </span>
+      <span *ngIf="completedProcentage === undefined" class="prereq"> {{ course.prerequisites }} </span>
+      <div class="secondary-theme" *ngIf="completedProcentage !== undefined">
+        <mat-progress-bar mode="determinate" [value]="completedProcentage"></mat-progress-bar>
+      </div>
     </div>
     
     <button mat-icon-button class="frame-18">

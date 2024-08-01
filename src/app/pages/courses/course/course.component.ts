@@ -10,6 +10,7 @@ import { FileReaderService } from 'src/app/core/services/file-reader.service';
 })
 export class CourseComponent {
   @Input({ required: true }) course!: CourseDisplayDto;
+  @Input() completedProcentage: number | undefined;
 
   constructor(private readonly fileReader: FileReaderService, private readonly router: Router) {}
 

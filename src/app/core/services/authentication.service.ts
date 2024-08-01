@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { RestBaseService } from './rest-base.service';
-import { LoginDto } from '../models/login.model';
+import { LoginDto, ResetPasswordDto } from '../models/login.model';
 import { LoggedCredentialsDto } from '../models/logged-credentials.model';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Result, StatusCodes } from '../models/result.model';
 import { environment } from 'src/app/environments/environment';
 import { UserRoles } from '../models/user-role.model';
+import { UserInfoDto } from '../models/user-info.model';
 
 @Injectable({
   providedIn: 'root',
@@ -64,6 +65,19 @@ export class AuthenticationService {
     // });
   }
 
+  public recovery(email: string): Observable<boolean> {
+    return this.baseService.add(
+      `${this.endpoint}/RecoverPassword?email=${email}`,
+      {}
+    );
+  }
+  public reserPassword(token: string, reset: string): Observable<boolean> {
+    return this.baseService.add(
+      `${this.endpoint}/ResetPassword?token=${token}`,
+      reset, true
+    );
+  }
+
   public logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
@@ -71,8 +85,15 @@ export class AuthenticationService {
     environment.userRole = UserRoles.Guest;
   }
 
+  public getUserInfo(): Observable<UserInfoDto> {
+    return this.baseService.get<UserInfoDto>(`${this.endpoint}/GetUserInfo`);
+  }
+
   public isLogged(): boolean {
     return localStorage.getItem('token') !== null;
+  }
+  public getEmail(): string {
+    return localStorage.getItem('email') !== null ? localStorage.getItem('email') as string : '';
   }
 
   public getUserRole(): UserRoles {

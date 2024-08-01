@@ -31,7 +31,7 @@ footer{
     flex-direction: column;
     gap: 8px;
     button {
-      color: $color-bg !important;
+      color: $color-bg ; 
       justify-content: flex-start;
       font-size: 14px;
       font-weight: 500;
