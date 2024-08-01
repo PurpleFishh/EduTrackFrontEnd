@@ -1,0 +1,47 @@
+@import "src/config/variables";
+
+mat-card{
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding-top: 2%;
+    //margin: 0 auto;
+    width: 598px;
+    height: 280px;
+}
+
+mat-card-header {
+    display: flex;
+    width: 560px;
+    
+    justify-content: flex-end;
+}
+
+.feedback-text {
+    font-size: 20px;
+font-weight: 700;
+line-height: 24px;
+letter-spacing: -1%;
+text-align: center;
+}
+
+.feedback-name {
+    font-size: 40px;
+font-weight: 700;
+line-height: 24px;
+letter-spacing: -1%;
+text-align: center;
+}
+
+.content {
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+
+}
+
+mat-icon {
+    color: $color-secondary;
+    font-size:30px;
+}
+

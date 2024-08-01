@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 import { LoginComponent } from './pages/login/login.component';
-import { LandingpageComponent } from './pages/landingpage/landingpage.component';
-import { loggedGuard } from './core/guards/logged.guard';
 import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component';
 import { CoursesComponent } from './pages/courses/courses.component';
 import { CourseDetailsComponent } from './pages/course-details/course-details.component';
@@ -21,6 +19,8 @@ import { userAdminGuard, userTeacherGuard } from './core/guards/user-role.guard'
 import { CheckAttendanceComponent } from './pages/check-attendance/check-attendance.component';
 import { StudentDashboardAssignmentsComponent } from './pages/dashboard/dashboards/student-dashboard-assignments/student-dashboard-assignments.component';
 import { teacherCourseOwner } from './core/guards/teacher-owner.guard';
+import { MainPageComponent } from './pages/main-page/main-page.component';
+import { loggedGuard } from './core/guards/logged.guard';
 
 const routes: Routes = [
   {
@@ -94,13 +94,12 @@ const routes: Routes = [
         ],
       },
       {
-        path: 'unauthorized',
-        component: UnauthorizedComponent,
+        path: '',
+        component: MainPageComponent
       },
       {
-        path: '',
-        component: LandingpageComponent,
-        canActivate: [loggedGuard, userAdminGuard],
+        path: 'unauthorized',
+        component: UnauthorizedComponent,
       },
       {
         path: '**',
@@ -108,7 +107,6 @@ const routes: Routes = [
       },
     ],
   },
-
 ];
 
 @NgModule({

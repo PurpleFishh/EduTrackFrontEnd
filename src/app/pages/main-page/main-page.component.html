@@ -1,0 +1,85 @@
+<div class="main-container">
+
+    <section id="landing-section">
+        <div class="left">
+            <img src="/assets/img/white-logo.png" alt="edutrack-logo" class="logo-image"/>
+            <div class="presentation-text">
+                Lorem ipsum dolor sit amet , consectetur adipiscing elit. Praesent
+                lacinia viverra lectus sit amet dapibus.
+            </div>
+
+            <div class="presentation-buttons">
+                <button  mat-stroked-button class="login-button" (click)="navigate('login')">
+                    LOGIN
+                </button>
+                <button  mat-button class="register-button" (click)="navigate('login')">
+                    REGISTER
+                </button>
+            </div>
+        </div>
+        
+        <div class="right"> 
+            <img src="/assets/img/main-page-landing-photo.png" alt="presentation-photo" class="landing-image"/>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="main-text">
+            Lorem ipsum dolor sit amet
+        </div>
+        <div class="secondary-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </div>
+    </section>
+
+    <section id="course-preview">
+        <div class="main-text-white">
+            Lorem ipsum dolor sit amet
+        </div>
+        <div class="course-cards-container">
+            <app-course-presentation
+            *ngFor="let course of courses"
+            [course]="course"
+            >
+            </app-course-presentation>
+        </div>
+      <div class="explore-button-container"> 
+            <button  mat-button class="explore-button" (click)="navigate('courses')">
+                Explore
+            </button>
+        </div>
+        
+    </section>
+
+    <section id="feedback-section">
+        <div class="main-text">
+            Lorem ipsum dolor sit amet
+        </div>
+        <div class="feedback-container">
+           <app-testimonial-cards>
+           </app-testimonial-cards>
+
+           <app-testimonial-cards>
+           </app-testimonial-cards>
+        </div>
+    </section>
+
+    <section id="join-us-section">
+       
+        <div>
+            <img src="/assets/img/main-page-join.png" alt="logo-image" class="join-image"/>
+        </div>
+
+        <div class="right">
+            <div class="main-text-white">
+                Join us!
+            </div>
+            <div class="presentation-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit
+            </div>
+        </div>
+
+    </section>
+
+</div>
