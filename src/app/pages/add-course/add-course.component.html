@@ -53,9 +53,16 @@
             <label for="category">Category:</label>
             <mat-form-field appearance="outline">
               <mat-select formControlName="category" name="category">
-                <mat-option value="Prog">Programming</mat-option>
-                <mat-option value="Easy">Med</mat-option>
-                <mat-option value="Easy">Drawing</mat-option>
+                <mat-option value="Programming">Programming</mat-option>
+                <mat-option value="Web Dev">Web Dev</mat-option>
+                <mat-option value="Mobile Dev">Mobile Dev</mat-option>
+                <mat-option value="Data Science">Data Science</mat-option>
+                <mat-option value="DevOps">DevOps</mat-option>
+                <mat-option value="Machine Learning">Machine Learning</mat-option>
+                <mat-option value="Security">Security</mat-option>
+                <mat-option value="Blockchain">Blockchain</mat-option>
+                <mat-option value="IoT">IoT</mat-option>
+                <mat-option value="Game Development">Game Development</mat-option>
               </mat-select>
               <mat-error
                 *ngIf="formCourse.controls['category'].hasError('required')"

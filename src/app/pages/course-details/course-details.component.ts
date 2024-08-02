@@ -78,10 +78,10 @@ export class CourseDetailsComponent {
           (lesson) => (lesson.startDate = new Date(lesson.startDate))
         );
         this.lessons = this.lessons.sort(
-          (a, b) => b.startDate.getTime() - a.startDate.getTime()
+          (a, b) => a.startDate.getTime() - b.startDate.getTime()
         );
         this.thisWeekLesson = this.lessons.filter((lesson) => {
-          return lesson.startDate > new Date();
+          return lesson.startDate.getDate() + (lesson.startDate.getMonth()  * 30) >= new Date().getDate() + (new Date().getMonth() * 30);
         })[0];
       });
     });

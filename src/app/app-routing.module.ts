@@ -137,7 +137,7 @@ const routes: Routes = [
           },
           {
             path: 'enrolled',
-            component : TeacherDashboardStudentsEnrolledComponent
+            component: TeacherDashboardStudentsEnrolledComponent,
           },
           {
             path: '',
@@ -167,11 +167,11 @@ const routes: Routes = [
         path: 'unauthorized',
         component: UnauthorizedComponent,
       },
-      {
-        path: '**',
-        component: UnauthorizedComponent,
-      },
     ],
+  },
+  {
+    path: '**',
+    component: UnauthorizedComponent,
   },
 ];
 

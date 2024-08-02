@@ -19,6 +19,7 @@ import { AssignmentInventoryService } from 'src/app/core/services/assignment-inv
 import { CoursesService } from 'src/app/core/services/courses.service';
 import { LessonsService } from 'src/app/core/services/lessons.service';
 import { FormsModule } from '@angular/forms';
+import { FileReaderService } from 'src/app/core/services/file-reader.service';
 
 @Component({
   selector: 'app-view-assignment-page',
@@ -46,7 +47,8 @@ export class ViewAssignmentPageComponent {
     private readonly courseService: CoursesService,
     private readonly assService: AssignmentInventoryService,
     private readonly routerActive: ActivatedRoute,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly fileService: FileReaderService
   ) {
     this.solutionForm = new FormGroup({
       solutionContent: new FormControl({value: '', disabled: true}, Validators.required),
@@ -102,7 +104,37 @@ export class ViewAssignmentPageComponent {
     if (this.gradeForm.valid) {
       this.grade = this.gradeForm.get('grade')?.value;
       this.assService.gradeAssignment(this.courseTitle, this.lessonTitle, this.studentEmail,this.grade);
-      this.router.navigateByUrl('/course/' + this.courseTitle);
+      this.router.navigateByUrl('/dashboard/courses');
     }
+  }
+
+  downloadAttachment()
+  {
+    if (this.solution)
+      this.fileService
+        .getFile(this.solution.fileName)
+        .subscribe((data: any) => {
+          data = data as any;
+          const fileContents = data.fileContents;
+          const contentType = data.contentType;
+          const fileName = data.fileDownloadName || 'download';
+
+          const byteCharacters = atob(fileContents);
+          const byteNumbers = new Array(byteCharacters.length);
+          for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+          }
+          const byteArray = new Uint8Array(byteNumbers);
+          const blob = new Blob([byteArray], { type: contentType });
+
+          const link = document.createElement('a');
+          link.href = URL.createObjectURL(blob);
+          link.download = fileName;
+
+          document.body.appendChild(link);
+          link.click();
+
+          document.body.removeChild(link);
+        });
   }
 }

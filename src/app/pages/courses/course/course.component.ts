@@ -11,11 +11,12 @@ import { FileReaderService } from 'src/app/core/services/file-reader.service';
 export class CourseComponent {
   @Input({ required: true }) course!: CourseDisplayDto;
   @Input() completedProcentage: number | undefined;
+  image: string = '';
 
   constructor(private readonly fileReader: FileReaderService, private readonly router: Router) {}
 
   ngOnInit() {
-    this.course.imageContents = this.fileReader.readImage(this.course.imageContents);
+    this.image = this.fileReader.readImage(this.course.imageContents);
   }
 
   goToCourse()

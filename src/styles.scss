@@ -17,7 +17,6 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 
-
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
 $edutrack-theme: mat.define-light-theme(
@@ -83,22 +82,23 @@ $edutrack-theme-secondary: map.deep-merge(
 // Use this class if you want to apply the secondary theme to a component
 .secondary-theme {
   @include mat.all-component-themes($edutrack-theme-secondary);
-  button, a {
+  button,
+  a {
     color: white !important;
   }
 }
 
-.secondary-text{
-  color: $color-text-secondary
+.secondary-text {
+  color: $color-text-secondary;
 }
 
-.mat-mdc-form-field-infix{
+.mat-mdc-form-field-infix {
   padding: 0px !important;
   display: flex !important;
   align-items: center !important;
 }
 
-.continer{
+.continer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -106,31 +106,32 @@ $edutrack-theme-secondary: map.deep-merge(
   min-height: 100vh;
 }
 
-.alert{
+.alert {
   color: $color-error !important;
   font-size: 16px !important;
   font-weight: 500 !important;
 }
 
-mat-error, .error{
+mat-error,
+.error {
   color: $color-error !important;
   font-size: 16px !important;
   font-weight: 400 !important;
 }
 
-.info{
+.info {
   color: $color-info;
   font-size: 18px;
   font-weight: 500;
 }
 
-.warn{
+.warn {
   color: $color-warn;
   font-size: 18px;
   font-weight: 500;
 }
 
-.success{
+.success {
   color: $color-success;
   font-size: 18px;
   font-weight: 500;
@@ -148,13 +149,28 @@ body {
   background-color: $color-bg-secondary !important;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6, p{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+p {
   margin: 0;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

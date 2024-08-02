@@ -34,13 +34,13 @@
                             <input  matInput   formControlName="lastname"/>
                         </mat-form-field>
 
-                        <div *ngIf="isControlNotProvided('lastname')">
+                        <mat-error *ngIf="isControlNotProvided('lastname')">
                             Last name is required.
-                        </div>
+                        </mat-error>
 
-                        <div *ngIf="isNamePatternInvalid('lastname')">
+                        <mat-error *ngIf="isNamePatternInvalid('lastname')">
                             Last name cannot contain other characters than alphabets.
-                        </div>
+                        </mat-error>
                     </div>
 
                 </div>

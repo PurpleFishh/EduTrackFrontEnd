@@ -59,7 +59,7 @@ export class LessonDetailsTeacherComponent {
     });
     this.assService.getGrade().subscribe((grade) => {
       //console.log(grade);
-      this.current_grade = grade;
+      //this.current_grade = grade;
     });
     this.lessonSevice.getAllLessons('da').subscribe((lessons) => {
       //console.log(lessons);
