@@ -22,6 +22,7 @@ import {
 import { AssignmentInventoryService } from 'src/app/core/services/assignment-inventory-service.service';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { CoursesService } from 'src/app/core/services/courses.service';
+import { FileReaderService } from 'src/app/core/services/file-reader.service';
 import { LessonsService } from 'src/app/core/services/lessons.service';
 
 @Component({
@@ -36,6 +37,7 @@ export class LessonDetailsComponent {
   current_assignment: AssignmentDisplayDto[] = [];
   current_lesson: LessonDisplayDto | undefined;
   current_grade: Grade | undefined;
+  grade:string = '-';
   all_lessons: LessonDto[] = [];
   all_lessons_string: string[] = [];
   final_grade: number = 0;
@@ -55,7 +57,8 @@ export class LessonDetailsComponent {
     private readonly routerActive: ActivatedRoute,
     private readonly router: Router,
     private readonly dialog: MatDialog,
-    private readonly snackBar: MatSnackBar
+    private readonly snackBar: MatSnackBar,
+    private readonly fileService: FileReaderService
   ) {}
 
   ngOnInit() {
@@ -86,8 +89,9 @@ export class LessonDetailsComponent {
       this.assService
         .getGrade(this.courseId, this.lessonId)
         .subscribe((grade) => {
-          //console.log(grade);
-          this.current_grade = grade;
+          console.log(grade);
+          //this.current_grade = grade;
+          //this.grade = grade.grade;
         });
     });
 
@@ -148,7 +152,12 @@ export class LessonDetailsComponent {
 
   onSubmit() {
     if (this.isFormValid()) {
-      this.assService.addSolution(this.courseId, this.lessonId, this.solution, this.file);
+      this.assService.addSolution(
+        this.courseId,
+        this.lessonId,
+        this.solution,
+        this.file
+      );
       return true;
     } else {
       return false;
@@ -188,8 +197,39 @@ export class LessonDetailsComponent {
     });
   }
 
+  downloadAssignment() {
+    if (this.current_assignment[0])
+      this.fileService
+        .getFile(this.current_assignment[0].assignment_file)
+        .subscribe((data: any) => {
+          data = data as any;
+          const fileContents = data.fileContents;
+          const contentType = data.contentType;
+          const fileName = data.fileDownloadName || 'download';
+
+          const byteCharacters = atob(fileContents);
+          const byteNumbers = new Array(byteCharacters.length);
+          for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+          }
+          const byteArray = new Uint8Array(byteNumbers);
+          const blob = new Blob([byteArray], { type: contentType });
+
+          const link = document.createElement('a');
+          link.href = URL.createObjectURL(blob);
+          link.download = fileName;
+
+          document.body.appendChild(link);
+          link.click();
+
+          document.body.removeChild(link);
+        });
+  }
+
   goToEditLesson() {
-    this.router.navigateByUrl(`/edit/course/${this.courseId}/lesson/${this.lessonId}`);
+    this.router.navigateByUrl(
+      `/edit/course/${this.courseId}/lesson/${this.lessonId}`
+    );
   }
 }
 

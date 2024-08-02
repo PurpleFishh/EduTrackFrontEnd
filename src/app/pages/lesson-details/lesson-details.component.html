@@ -10,7 +10,7 @@
     </div>
     <app-lesson-action-area
       [isTeacher]="isTeacherOwner"
-      [currentGrade]="current_grade?.grade"
+    
       [lessonId]="lessonId"
       [lessonStatus]="current_lesson?.lessonStatus"
       (changeStatus)="changeLessonStatus($event)"
@@ -56,7 +56,7 @@
           *ngIf="
             current_assignment &&
             (current_lesson?.lessonStatus === allLessonStatus.Finished ||
-            isTeacherOwner)
+              isTeacherOwner)
           "
         >
           <p *ngFor="let assignment of current_assignment">
@@ -67,7 +67,7 @@
           *ngIf="
             current_assignment &&
             current_lesson?.lessonStatus !== allLessonStatus.Finished &&
-              !isTeacherOwner
+            !isTeacherOwner
           "
         >
           <p *ngFor="let assignment of current_assignment">
@@ -126,6 +126,15 @@
               <p>{{ fileName }}</p>
             </div>
           </div>
+          <button
+            mat-flat-button
+            color="primary"
+            class="download"
+            (click)="downloadAssignment()"
+          >
+            <mat-icon> download </mat-icon>
+            Download Assignment
+          </button>
         </div>
         <br />
         <div class="center secondary-theme">
@@ -139,6 +148,7 @@
             Submit
           </button>
         </div>
+
         <br />
       </span>
 
