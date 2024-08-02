@@ -22,7 +22,7 @@ export class CoursesComponent {
 
   filtersAvailable: CoursesFilterDto | undefined;
 
-  pageSizeOptions = [12, 20, 24, 32];
+  pageSizeOptions = [4, 8, 12, 20, 24];
   pageSize = this.pageSizeOptions[1];
 
   constructor(private readonly coursesService: CoursesService,

@@ -49,7 +49,7 @@ export class AssignmentInventoryService {
     const email = this.auth.getEmail();
     //const email = 'teacher@teacher.com';
 
-    return this.baseService.get<Grade>(
+    return this.baseService.get(
       this.getCompleteUrlWithQuery(`${this.endpoint}/GetGrade`, {
         courseName: courseName,
         lessonTitle: lessonTitle,

@@ -43,15 +43,25 @@
     </mat-form-field> -->
         <br />
         <p class="title">Uploaded content:</p>
-        <mat-card class="file">
-          <mat-list>
+        <mat-card (click)="downloadAttachment()" class="file">
+          <button
+            *ngIf="solution"
+            mat-flat-button
+            (click)="downloadAttachment()"
+            class="file"
+          >
+            <mat-icon> download </mat-icon> {{ solution.fileName }}
+          </button>
+
+          <!-- <mat-list>
             <mat-list-item>
               <div *ngIf="solution">
                 <mat-icon> download </mat-icon> {{ solution.fileName }}
               </div>
             </mat-list-item>
-          </mat-list>
+          </mat-list> -->
         </mat-card>
+
         <br /><br />
         <form [formGroup]="gradeForm">
           <p class="good_font2">
@@ -70,10 +80,15 @@
         </form>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-flat-button  color="primary" class="blue_button" (click)="onSubmit()">
+        <button
+          mat-flat-button
+          color="primary"
+          class="blue_button"
+          (click)="onSubmit()"
+        >
           Submit
         </button>
-    </mat-card-actions>
+      </mat-card-actions>
     </mat-card>
   </form>
 </div>

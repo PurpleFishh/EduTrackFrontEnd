@@ -36,7 +36,6 @@ export class CourseActionAreaComponent implements AfterContentInit, OnInit {
     this.image = this.fileReader.readImage(
       this.course.imageContents
     );
-    console.log(this.course.imageContents)
   }
   readImage(byteArray: string): string {
     return 'data:image/png;base64,' + byteArray;
@@ -50,7 +49,6 @@ export class CourseActionAreaComponent implements AfterContentInit, OnInit {
     this.image = this.fileReader.readImage(
       this.course.imageContents
     );
-    console.log(this.course.imageContents)
     this.isTeacherOwner =
       this.auth.isTeacher() &&
       this.auth.getEmail() === this.course.teacherEmail;
@@ -58,7 +56,6 @@ export class CourseActionAreaComponent implements AfterContentInit, OnInit {
       .isStudentEnrolled(this.course.name)
       .subscribe((isEnrolled) => {
         this.isEnrolled = isEnrolled;
-        console.log(this.isEnrolled)
       });
   }
   enroll() {
