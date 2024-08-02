@@ -79,22 +79,14 @@ export class StudentDashboardMainComponent implements OnInit {
     } else {
       this.statsService.getStudentStats().subscribe((data) => {
         this.statistics = data;
-        this.totalCourses = Object.keys(
-          this.statistics.allCoursesCompleted
-        ).length;
-        this.completedCourses = Object.values(
-          this.statistics.allCoursesCompleted
-        ).filter((value) => value === 100).length;
-        this.progressCourses = this.totalCourses - this.completedCourses;
-
-        this.courseService.getStudentEnrolledCourses().subscribe((data) => {
-          this.enrolledCourses = data.filter((course) =>
-            Object.keys(this.statistics?.allCoursesCompleted).includes(
-              course.name
-            )
-          );
-        });
+        this.totalCourses =  Object.keys(this.statistics.allCoursesCompleted).length
+        this.completedCourses =  Object.values(this.statistics.allCoursesCompleted).filter((value) => value === 100).length
+        this.progressCourses = this.totalCourses - this.completedCourses
       });
+      this.courseService.getStudentEnrolledCourses().subscribe((data) => {
+        this.enrolledCourses = data;
+      });
+         
     }
   }
 }
