@@ -158,6 +158,7 @@ export class LessonDetailsComponent {
         this.solution,
         this.file
       );
+      this.router.navigateByUrl('/course/' + this.courseId);
       return true;
     } else {
       return false;

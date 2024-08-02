@@ -10,7 +10,6 @@
     </div>
     <app-lesson-action-area
       [isTeacher]="isTeacherOwner"
-    
       [lessonId]="lessonId"
       [lessonStatus]="current_lesson?.lessonStatus"
       (changeStatus)="changeLessonStatus($event)"
@@ -34,21 +33,33 @@
 
     <mat-card>
       <mat-card-header>
-        <div *ngIf="current_assignment">
-          <div
-            class="assignment-title"
-            *ngFor="let assignment of current_assignment"
-          >
-            <mat-icon
-              *ngIf="
-                current_lesson?.lessonStatus !== allLessonStatus.Finished &&
-                !isTeacherOwner
-              "
+        <div class="assignment-header">
+          <div *ngIf="current_assignment">
+            <div
+              class="assignment-title"
+              *ngFor="let assignment of current_assignment"
             >
-              lock
-            </mat-icon>
-            <p>Assignment: {{ assignment.assignment_name }}</p>
+              <mat-icon
+                *ngIf="
+                  current_lesson?.lessonStatus !== allLessonStatus.Finished &&
+                  !isTeacherOwner
+                "
+              >
+                lock
+              </mat-icon>
+              <p>Assignment: {{ assignment.assignment_name }}</p>
+            </div>
           </div>
+
+          <button
+            mat-flat-button
+            color="primary"
+            class="download"
+            (click)="downloadAssignment()"
+          >
+            <mat-icon> download </mat-icon>
+            Download Assignment
+          </button>
         </div>
       </mat-card-header>
       <mat-card-content>
@@ -126,15 +137,6 @@
               <p>{{ fileName }}</p>
             </div>
           </div>
-          <button
-            mat-flat-button
-            color="primary"
-            class="download"
-            (click)="downloadAssignment()"
-          >
-            <mat-icon> download </mat-icon>
-            Download Assignment
-          </button>
         </div>
         <br />
         <div class="center secondary-theme">

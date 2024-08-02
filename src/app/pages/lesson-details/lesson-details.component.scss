@@ -100,7 +100,6 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 24px;
-
   }
 
   .green_button {
@@ -137,25 +136,28 @@
   .solution-continer {
     width: 100%;
 
-    mat-card-header{
+    mat-card-header {
       margin-bottom: 15px;
     }
-    mat-form-field{
+    mat-form-field {
       width: 100%;
     }
-    textarea{
+    textarea {
       padding: 20px 0;
     }
-    .center{
+    .center {
       display: flex;
       width: 100%;
       justify-content: center;
     }
-    .file{
+    .file {
       display: flex;
       width: 100%;
       gap: 10px;
       align-items: center;
+      p {
+        margin: 0;
+      }
     }
   }
   .finish-assignmnet {
@@ -166,7 +168,7 @@
     font-weight: 600;
     align-self: stretch;
   }
-  .download{
+  .download {
     margin-top: 15px;
     height: 44px;
 
@@ -175,5 +177,20 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 24px;
+  }
+
+  .assignment-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    button{
+      width: fit-content !important;
+    }
+
+    p{
+      margin: 0;
+    }
   }
 }
