@@ -41,8 +41,8 @@
             <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
           </button>
           <mat-hint
-            ><a href="/recovery" mat-line class="secondary-text"
-              >Forgot password?</a
+            ><span (click)="navigateTo('/recovery')" mat-line class="secondary-text"
+              >Forgot password?</span
             ></mat-hint
           >
         </mat-form-field>
@@ -50,7 +50,7 @@
         <div class="action">
           <button mat-flat-button color="primary">Login</button>
           <p mat-line class="secondary-text">
-            New to EduTrack? Create an account <a href="/register">here!</a>
+            New to EduTrack? Create an account <span (click)="navigateTo('/register')">here!</span>
           </p>
         </div>
       </form>

@@ -7,11 +7,8 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { CoursesComponent } from './courses/courses.component';
 import { CourseComponent } from './courses/course/course.component';
 import { LessonDetailsComponent } from './lesson-details/lesson-details.component';
-import { LessonDetailsTeacherComponent } from './lesson-details-teacher/lesson-details-teacher.component';
-import { LessonNotFinishedDetailsComponent } from './lesson-not-finished-details/lesson-not-finished-details.component';
 import { ViewAssignmentPageComponent } from './view-assignment-page/view-assignment-page.component';
 import { AddLessonComponent } from './add-lesson/add-lesson.component';
-import { UpdateLessonComponent } from './update-lesson/update-lesson.component';
 import { LessonActionAreaComponent } from './lesson-details/lesson-action-area/lesson-action-area.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
 import { CourseActionAreaComponent } from './course-details/course-action-area/course-action-area.component';
@@ -44,11 +41,8 @@ import { TeacherDashboardStudentsEnrolledComponent } from './dashboard/dashboard
     CoursesComponent,
     CourseComponent,
     LessonDetailsComponent,
-    LessonDetailsTeacherComponent,
-    LessonNotFinishedDetailsComponent,
     ViewAssignmentPageComponent,
     AddLessonComponent,
-    UpdateLessonComponent,
     LessonActionAreaComponent,
     CourseDetailsComponent,
     CourseActionAreaComponent,

@@ -55,4 +55,8 @@ export class LoginComponent {
       });
     }
   }
+
+  navigateTo(path: string) {
+    this.router.navigateByUrl(`${path}`);
+  }
 }

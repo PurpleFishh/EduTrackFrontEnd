@@ -52,6 +52,10 @@
           </div>
 
           <button
+            *ngIf="
+              current_lesson?.lessonStatus === allLessonStatus.Finished ||
+              isTeacherOwner
+            "
             mat-flat-button
             color="primary"
             class="download"
